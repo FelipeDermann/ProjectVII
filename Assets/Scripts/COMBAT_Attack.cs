@@ -7,7 +7,8 @@ public class COMBAT_Attack : MonoBehaviour
     public Animator anim;
     COMBAT_MovementInput move;
 
-    public int inputs;
+    public int inputsHeavy;
+    public int inputsLight;
 
     public bool canCombo;
 
@@ -22,6 +23,10 @@ public class COMBAT_Attack : MonoBehaviour
     {
         LightAttack();
         HeavyAttack();
+
+        //give inputs to animator variables
+        anim.SetInteger("heavy_inputs", inputsHeavy);
+        anim.SetInteger("light_inputs", inputsLight);
     }
 
     void LightAttack()
@@ -30,11 +35,15 @@ public class COMBAT_Attack : MonoBehaviour
 
         if (!canCombo)
         {
-            move.canMove = false;
-            canCombo = true;
+            ResetInputs();
+            anim.ResetTrigger("light");
+            anim.SetTrigger("startL");
+        }
+        else
+        {
+            Debug.Log("light");
             anim.SetTrigger("light");
         }
-        else anim.SetTrigger("continue");
     }
 
     void HeavyAttack()
@@ -43,13 +52,34 @@ public class COMBAT_Attack : MonoBehaviour
 
         if (!canCombo)
         {
-            move.canMove = false;
-            canCombo = true;
+            ResetInputs();
+            anim.ResetTrigger("heavy");
+            anim.SetTrigger("startH");
+        }
+        else
+        {
+            Debug.Log("heavy");
             anim.SetTrigger("heavy");
         }
-        else anim.SetTrigger("continue");
 
     }
 
+    void ResetInputs()
+    {
+        move.canMove = false;
+        canCombo = true;
+
+        inputsHeavy = 0;
+        inputsLight = 0;
+    }
+
+    public void AddHeavy()
+    {
+        inputsHeavy += 1;
+    }
+    public void AddLight()
+    {
+        inputsLight += 1;
+    }
 
 }

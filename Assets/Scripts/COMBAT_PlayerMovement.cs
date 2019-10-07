@@ -59,8 +59,6 @@ public class COMBAT_PlayerMovement : MonoBehaviour
             wait -= Time.deltaTime;
             controller.Move(movement * Time.deltaTime);
 
-            Debug.Log("EBA");
-
             yield return null;
 
         }

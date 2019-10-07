@@ -44,4 +44,14 @@ public class COMBAT_Animator : MonoBehaviour
     {
         move.MoveForwardCall();
     }
+
+    public void AddInputHeavy()
+    {
+        attack.AddHeavy();
+    }
+
+    public void AddInputLight()
+    {
+        attack.AddLight();
+    }
 }
