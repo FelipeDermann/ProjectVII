@@ -7,8 +7,11 @@ public class COMBAT_Animator : MonoBehaviour
     COMBAT_MovementInput inputs;
     COMBAT_PlayerMovement move;
     COMBAT_Attack attack;
+    COMBAT_Magic playerMagic;
 
     Animator anim;
+
+    COMBAT_WeaponHitbox weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,28 @@ public class COMBAT_Animator : MonoBehaviour
         inputs = GetComponentInParent<COMBAT_MovementInput>();
         attack = GetComponentInParent<COMBAT_Attack>();
         anim = GetComponent<Animator>();
+        weapon = GetComponentInChildren<COMBAT_WeaponHitbox>();
+        playerMagic = GetComponentInParent<COMBAT_Magic>();
+    }
+
+    public void TurnToEnemy()
+    {
+        attack.LookToClosestEnemy();
+    }
+
+    public void MagicAttackCall()
+    {
+        playerMagic.MagicAttack();
+    }
+
+    public void WeaponHitboxActivate()
+    {
+        weapon.ActivateHitbox();
+    }
+
+    public void WeaponHitboxDeactivate()
+    {
+        weapon.DeactivateHitbox();
     }
 
     public void DisableMove()
@@ -26,6 +51,7 @@ public class COMBAT_Animator : MonoBehaviour
 
     public void EnableMove()
     {
+        Debug.Log("Can move again");
         inputs.canMove = true;
         attack.canCombo = false;
     }

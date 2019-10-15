@@ -5,6 +5,7 @@ using UnityEngine;
 public class COMBAT_PlayerMovement : MonoBehaviour
 {
     CharacterController controller;
+    COMBAT_Attack attack;
     private COMBAT_MovementInput input;
     
     public Animator anim;
@@ -15,6 +16,7 @@ public class COMBAT_PlayerMovement : MonoBehaviour
 
     [Header("Ground Detection")]
     public bool isGrounded;
+    public bool canJump;
     public Transform boxPosition;
     public Vector3 boxSize;
     public LayerMask groundMask;
@@ -31,12 +33,15 @@ public class COMBAT_PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         controller = GetComponent<CharacterController>();
+        attack = GetComponent<COMBAT_Attack>();
     }
 
     // Update is called once per frame
     void Update()
     {
         anim.SetFloat("Blend", input.Speed);
+
+        canJump = !attack.canCombo;
 
         Jump();
         Gravity();
@@ -66,7 +71,7 @@ public class COMBAT_PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if (!isGrounded) return;
+        if (!isGrounded || !canJump) return;
 
         if(Input.GetButtonDown("Jump"))
         {

@@ -11,13 +11,9 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();    
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void GetHurt()
     {
-        if(other.CompareTag("HarmEnemy"))
-        {
-            anim.SetTrigger("hit");
-        }
-
+        anim.SetTrigger("hit");
     }
 
 }

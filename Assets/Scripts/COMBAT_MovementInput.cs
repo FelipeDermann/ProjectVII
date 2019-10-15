@@ -53,19 +53,6 @@ public class COMBAT_MovementInput : MonoBehaviour {
             return;
 
         InputMagnitude ();
-
-
-        //If you don't need the character grounded then get rid of this part.
-        //isGrounded = controller.isGrounded;
-        //if (isGrounded) {
-        //	verticalVel -= 0;
-        //} else {
-        //	verticalVel -= .05f * Time.deltaTime;
-        //}
-        //moveVector = new Vector3 (0, verticalVel, 0);
-        //controller.Move (moveVector);
-
-        //Updater
     }
 
 	void PlayerMoveAndRotation() {
