@@ -117,5 +117,9 @@ public class COMBAT_Attack : MonoBehaviour
     {
         canCombo = true;
     }
+    public void DeactivateCanCombo()
+    {
+        canCombo = false;
+    }
 
 }

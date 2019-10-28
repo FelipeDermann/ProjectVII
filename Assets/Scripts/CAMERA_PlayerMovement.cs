@@ -15,7 +15,6 @@ public class CAMERA_PlayerMovement : MonoBehaviour
     void Start()
     {
         input = GetComponent<CAMERA_MovementInput>();
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

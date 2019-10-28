@@ -21,6 +21,7 @@ public class COMBAT_Magic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         var canvasText = GameObject.FindObjectOfType(typeof(UIPlayer)) as UIPlayer;
         uiElement = canvasText.GetComponent<UIPlayer>();
 

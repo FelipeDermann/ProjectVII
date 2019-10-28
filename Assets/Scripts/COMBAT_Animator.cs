@@ -24,6 +24,11 @@ public class COMBAT_Animator : MonoBehaviour
         playerMagic = GetComponentInParent<COMBAT_Magic>();
     }
 
+    public void DashEnd()
+    {
+        move.DashEnd();
+    }
+
     public void TurnToEnemy()
     {
         attack.LookToClosestEnemy();

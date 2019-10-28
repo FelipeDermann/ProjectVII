@@ -43,15 +43,35 @@ public class COMBAT_PlayerMovement : MonoBehaviour
 
         canJump = !attack.canCombo;
 
+        Dash();
         Jump();
         Gravity();
         DetectGround();
+    }
+
+    void Dash()
+    {
+        if (!Input.GetButtonDown("dash")) return;
+
+        Debug.Log("DASH");
+        anim.SetTrigger("dash");
+        canJump = false;
+        input.canMove = true;
+        input.velocity = 16;
+        attack.DeactivateCanCombo();
+    }
+
+    public void DashEnd()
+    {
+        canJump = true;
+        input.velocity = 9;
     }
 
     public void MoveForwardCall()
     {
         StartCoroutine(nameof(MoveForward));
     }
+
     IEnumerator MoveForward()
     {
         float wait = attackMoveTime;
@@ -65,7 +85,6 @@ public class COMBAT_PlayerMovement : MonoBehaviour
             controller.Move(movement * Time.deltaTime);
 
             yield return null;
-
         }
     }
 
