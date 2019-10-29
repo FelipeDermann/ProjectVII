@@ -57,7 +57,7 @@ public class COMBAT_PlayerMovement : MonoBehaviour
         anim.SetTrigger("dash");
         canJump = false;
         input.canMove = true;
-        input.velocity = 16;
+        //input.velocity = 16;
         attack.DeactivateCanCombo();
     }
 
