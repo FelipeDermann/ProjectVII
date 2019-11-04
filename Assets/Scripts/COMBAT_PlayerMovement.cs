@@ -26,6 +26,24 @@ public class COMBAT_PlayerMovement : MonoBehaviour
     public float maxFallSpeed;
     public float verticalSpeed;
 
+    private void OnEnable()
+    {
+        DisableAttackState.FinishedAttack += CanWalkOn;
+        AttackAnimationBehaviour.StartedAttack += CanWalkOff;
+        AttackAnimationBehaviour.StartMoveForward += EnableMoveCoroutine;
+
+        DashBehaviour.DashStart += DashStart;
+        DashBehaviour.DashEnd += DashEnd;
+    }
+    private void OnDisable()
+    {
+        DisableAttackState.FinishedAttack -= CanWalkOn;
+        AttackAnimationBehaviour.StartedAttack -= CanWalkOff;
+        AttackAnimationBehaviour.StartMoveForward -= EnableMoveCoroutine;
+
+        DashBehaviour.DashStart -= DashStart;
+        DashBehaviour.DashEnd -= DashEnd;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +59,7 @@ public class COMBAT_PlayerMovement : MonoBehaviour
     {
         anim.SetFloat("Blend", input.Speed);
 
-        canJump = !attack.canCombo;
+        canJump = !attack.canInputNextAttack;
 
         Dash();
         Jump();
@@ -55,20 +73,41 @@ public class COMBAT_PlayerMovement : MonoBehaviour
 
         Debug.Log("DASH");
         anim.SetTrigger("dash");
-        canJump = false;
-        input.canMove = true;
-        //input.velocity = 16;
-        attack.DeactivateCanCombo();
     }
 
+    public void DashStart()
+    {
+        canJump = false;
+        CanWalkOn();
+        //input.velocity = 16;
+        attack.DisableNextAttackInput();
+    }
     public void DashEnd()
     {
         canJump = true;
         input.velocity = 9;
     }
 
-    public void MoveForwardCall()
+    public void CanWalkOn()
     {
+        input.canMove = true;
+        canJump = true;
+    }
+
+    public void CanWalkOff()
+    {
+        input.canMove = false;
+        canJump = false;
+    }
+
+    void EnableMoveCoroutine(float _time)
+    {
+        StartCoroutine(nameof(MoveCountdownCoroutine), _time);
+    }
+
+    IEnumerator MoveCountdownCoroutine(float _time)
+    {
+        yield return new WaitForSeconds(_time);
         StartCoroutine(nameof(MoveForward));
     }
 

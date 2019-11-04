@@ -58,31 +58,16 @@ public class COMBAT_Animator : MonoBehaviour
     {
         Debug.Log("Can move again");
         inputs.canMove = true;
-        attack.canCombo = false;
+        attack.canInputNextAttack = false;
     }
 
     public void EnableNextAttack()
     {
-        attack.canCombo = true;
+        attack.canInputNextAttack = true;
     }
 
     public void DisablePreviousInput()
     {
-        attack.canCombo = false;
-    }
-
-    public void MoveForward()
-    {
-        move.MoveForwardCall();
-    }
-
-    public void AddInputHeavy()
-    {
-        attack.AddHeavy();
-    }
-
-    public void AddInputLight()
-    {
-        attack.AddLight();
+        attack.canInputNextAttack = false;
     }
 }

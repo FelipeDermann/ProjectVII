@@ -1,6 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+public enum Combo
+{
+    None,
+    WaterCombo,
+    FireCombo,
+    EarthCombo,
+    MetalCombo,
+    WoodCombo
+}
 
 public class COMBAT_Attack : MonoBehaviour
 {
@@ -10,15 +21,70 @@ public class COMBAT_Attack : MonoBehaviour
     public int inputsHeavy;
     public int inputsLight;
 
-    public bool canCombo;
+    public bool canInputNextAttack;
+    public bool attacking;
 
     public BoxCollider getEnemyArea;
     public LayerMask enemyLayerMask;
+
+    public List<string> inputs = new List<string>();
+
+    [Header("Combos (Choose which element corresponds to which combo)")]
+    public Combo L_L_H;
+    public Combo L_H_H;
+    public Combo L_H_L;
+    public Combo H_L_H;
+    public Combo H_H_L;
+    public Combo H_L_L;
 
     // Start is called before the first frame update
     void Start()
     {
         move = GetComponentInParent<COMBAT_MovementInput>();
+    }
+
+    private void OnEnable()
+    {
+        AttackAnimationBehaviour.StartedAttack += StartAttacking;
+        AttackAnimationBehaviour.StartedAttack += LookToClosestEnemy;
+
+        NextInputBehaviour.StartNextAttackInput += EnableNextInputCoroutine;
+        AttackAnimationBehaviour.StopNextAttackInput += DisableNextAttackInput;
+
+        DisableAttackState.FinishedAttack += StopAttacking;
+        DisableAttackState.FinishedAttack += DisableNextAttackInput;
+    }
+    private void OnDisable()
+    {
+        AttackAnimationBehaviour.StartedAttack -= StartAttacking;
+        AttackAnimationBehaviour.StartedAttack -= LookToClosestEnemy;
+
+        NextInputBehaviour.StartNextAttackInput -= EnableNextInputCoroutine;
+        AttackAnimationBehaviour.StopNextAttackInput -= DisableNextAttackInput;
+
+        DisableAttackState.FinishedAttack -= StopAttacking;
+        DisableAttackState.FinishedAttack -= DisableNextAttackInput;
+    }
+
+    private void StartAttacking()
+    {
+        attacking = true;
+    }
+    private void StopAttacking()
+    {
+        attacking = false;
+        ClearInputList();
+    }
+
+    void EnableNextInputCoroutine(float _time)
+    {
+        StartCoroutine(nameof(NextInputEnableCountdown), _time);
+    }
+
+    IEnumerator NextInputEnableCountdown(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        EnableNextAttackInput();
     }
 
     // Update is called once per frame
@@ -29,9 +95,7 @@ public class COMBAT_Attack : MonoBehaviour
         LightAttack();
         HeavyAttack();
 
-        //give inputs to animator variables
-        anim.SetInteger("heavy_inputs", inputsHeavy);
-        anim.SetInteger("light_inputs", inputsLight);
+        if (Input.GetKeyDown(KeyCode.F)) CheckInputCombination();
     }
 
     public void LookToClosestEnemy()
@@ -64,16 +128,23 @@ public class COMBAT_Attack : MonoBehaviour
     {
         if (!Input.GetButtonDown("light")) return;
 
-        if (!canCombo)
+        if (!attacking)
         {
-            ResetInputs();
-            anim.ResetTrigger("light");
+            inputs.Add("light");
             anim.SetTrigger("startL");
+            ResetAnimTriggers();
         }
-        else
+        if (attacking && canInputNextAttack)
         {
-            Debug.Log("light");
-            anim.SetTrigger("light");
+            canInputNextAttack = false;
+            inputs.Add("light");
+
+            if (inputs.Count >= 3)
+            {
+                if (CheckInputCombination()) return;
+                else anim.SetTrigger("light");
+            }
+            else anim.SetTrigger("light");
         }
     }
 
@@ -81,45 +152,71 @@ public class COMBAT_Attack : MonoBehaviour
     {
         if (!Input.GetButtonDown("heavy")) return;
 
-        if (!canCombo)
+        if (!attacking)
         {
-            ResetInputs();
-            anim.ResetTrigger("heavy");
+            inputs.Add("heavy");
             anim.SetTrigger("startH");
+            ResetAnimTriggers();
         }
-        else
+        if (attacking && canInputNextAttack)
         {
-            Debug.Log("heavy");
-            anim.SetTrigger("heavy");
+            canInputNextAttack = false;
+            inputs.Add("heavy");
+
+            if (inputs.Count >= 3)
+            {
+                if (CheckInputCombination()) return;
+                else anim.SetTrigger("heavy");
+            }
+            else anim.SetTrigger("heavy");
+        }
+    }
+
+    void ResetAnimTriggers()
+    {
+        anim.ResetTrigger("light");
+        anim.ResetTrigger("heavy");
+        anim.ResetTrigger("WaterCombo");
+        anim.ResetTrigger("MetalCombo");
+        anim.ResetTrigger("EarthCombo");
+        anim.ResetTrigger("FireCombo");
+        anim.ResetTrigger("WoodCombo");
+    }
+
+    public void EnableNextAttackInput()
+    {
+        canInputNextAttack = true;
+
+    }
+    public void DisableNextAttackInput()
+    {
+        canInputNextAttack = false;
+    }
+
+    public bool CheckInputCombination()
+    {
+        bool comboIsTriggered = false;
+        string triggerToActivate = null;
+
+        if (inputs[0] == "light" && inputs[1] == "light" && inputs[2] == "heavy") triggerToActivate = L_L_H.ToString();
+        if (inputs[0] == "light" && inputs[1] == "heavy" && inputs[2] == "heavy") triggerToActivate = L_H_H.ToString();
+        if (inputs[0] == "light" && inputs[1] == "heavy" && inputs[2] == "light") triggerToActivate = L_H_L.ToString();
+        if (inputs[0] == "heavy" && inputs[1] == "heavy" && inputs[2] == "light") triggerToActivate = H_H_L.ToString();
+        if (inputs[0] == "heavy" && inputs[1] == "light" && inputs[2] == "heavy") triggerToActivate = H_L_H.ToString();
+
+        if (triggerToActivate != null)
+        {
+            comboIsTriggered = true;
+            anim.SetTrigger(triggerToActivate);
         }
 
+        ClearInputList();
+
+        return comboIsTriggered;
     }
 
-    void ResetInputs()
+    public void ClearInputList()
     {
-        move.canMove = false;
-        canCombo = true;
-
-        inputsHeavy = 0;
-        inputsLight = 0;
+        inputs.Clear();
     }
-
-    public void AddHeavy()
-    {
-        inputsHeavy += 1;
-    }
-    public void AddLight()
-    {
-        inputsLight += 1;
-    }
-
-    public void ActivateCanCombo()
-    {
-        canCombo = true;
-    }
-    public void DeactivateCanCombo()
-    {
-        canCombo = false;
-    }
-
 }

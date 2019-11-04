@@ -12,8 +12,8 @@ public enum Element
 };
 public class COMBAT_Elements : MonoBehaviour
 {
-
     public MeshRenderer swordRenderer;
+    public Color[] colorsToChange;
     public Material[] elementColors;
     public ParticleSystem[] elementParticles;
 
@@ -28,11 +28,15 @@ public class COMBAT_Elements : MonoBehaviour
 
     public UIPlayer uiElement;
 
+    public MeleeWeaponTrail weaponTrail;
+
     // Start is called before the first frame update
     void Start()
     {
         var canvasText = GameObject.FindObjectOfType(typeof(UIPlayer)) as UIPlayer;
         uiElement = canvasText.GetComponent<UIPlayer>();
+
+        weaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
     }
 
     public void ElementComboSpawn(Element _element)
@@ -78,18 +82,23 @@ public class COMBAT_Elements : MonoBehaviour
         {
             case Element.Fire:
                 materialsToChange[1] = elementColors[0];
+                weaponTrail._colors[0] = colorsToChange[0]; 
                 break;
             case Element.Water:
                 materialsToChange[1] = elementColors[1];
+                weaponTrail._colors[0] = colorsToChange[1]; 
                 break;
             case Element.Metal:
                 materialsToChange[1] = elementColors[2];
+                weaponTrail._colors[0] = colorsToChange[2]; 
                 break;
             case Element.Wood:
                 materialsToChange[1] = elementColors[3];
+                weaponTrail._colors[0] = colorsToChange[3]; 
                 break;
             case Element.Earth:
                 materialsToChange[1] = elementColors[4];
+                weaponTrail._colors[0] = colorsToChange[4]; 
                 break;
         }
 

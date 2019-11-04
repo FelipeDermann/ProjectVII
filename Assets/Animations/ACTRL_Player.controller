@@ -51,14 +51,32 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: heavy_inputs
-    m_Type: 3
+  - m_Name: WaterCombo
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: light_inputs
-    m_Type: 3
+  - m_Name: FireCombo
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: WoodCombo
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: EarthCombo
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: MetalCombo
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -76,6 +94,203 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &114025282038285988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableHitbox: 0.268
+  timeToMoveForward: 0.352
+  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
+    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
+--- !u!114 &114157421282091724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed84f0a942aa4d469901a149462662c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableNextAttackInput: 0.276
+--- !u!114 &114206620989339314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b3948d7c9be9c4395d79d24ab54bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114287561066576776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableHitbox: 0.236
+  timeToMoveForward: 0.67
+  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
+    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
+--- !u!114 &114421768150603808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed84f0a942aa4d469901a149462662c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableNextAttackInput: 0.276
+--- !u!114 &114459513582571616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed84f0a942aa4d469901a149462662c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableNextAttackInput: 0.276
+--- !u!114 &114529796474755790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableHitbox: 0.375
+  timeToMoveForward: 0.465
+  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
+    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
+--- !u!114 &114628901632487318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableHitbox: 0.096
+  timeToMoveForward: 0.492
+  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
+    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
+--- !u!114 &114681917159939000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed84f0a942aa4d469901a149462662c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableNextAttackInput: 0
+--- !u!114 &114718184198045828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableHitbox: 0.15
+  timeToMoveForward: 0.3
+  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
+    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
+--- !u!114 &114766949634003664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048b0c3a78ce14948a67cd09cdb510f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114806693636539848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048b0c3a78ce14948a67cd09cdb510f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114820849268059846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableHitbox: 0.4
+  timeToMoveForward: 0.253
+  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
+    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
+--- !u!114 &114824848115038174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed84f0a942aa4d469901a149462662c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEnableNextAttackInput: 0.212
 --- !u!206 &206328745837435770
 BlendTree:
   m_ObjectHideFlags: 1
@@ -146,9 +361,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.11879277
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 0.9140091
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -278,12 +493,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: light_inputs
-    m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: heavy_inputs
-    m_EventTreshold: 2
   - m_ConditionMode: 1
     m_ConditionEvent: heavy
     m_EventTreshold: 0
@@ -309,14 +518,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: light_inputs
-    m_EventTreshold: 1
-  - m_ConditionMode: 6
-    m_ConditionEvent: heavy_inputs
-    m_EventTreshold: 1
   - m_ConditionMode: 1
-    m_ConditionEvent: heavy
+    m_ConditionEvent: FireCombo
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102704806173556484}
@@ -324,9 +527,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.123559
   m_TransitionOffset: 0
-  m_ExitTime: 0.6875
+  m_ExitTime: 0.88980556
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -412,12 +615,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: light_inputs
-    m_EventTreshold: 2
-  - m_ConditionMode: 6
-    m_ConditionEvent: heavy_inputs
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: light
     m_EventTreshold: 1
@@ -427,9 +624,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.16693622
   m_TransitionOffset: 0
-  m_ExitTime: 0.5312501
+  m_ExitTime: 0.8462364
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -634,14 +831,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: light_inputs
-    m_EventTreshold: 1
-  - m_ConditionMode: 6
-    m_ConditionEvent: heavy_inputs
-    m_EventTreshold: 1
   - m_ConditionMode: 1
-    m_ConditionEvent: light
+    m_ConditionEvent: EarthCombo
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102223694880054562}
@@ -665,14 +856,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: light_inputs
-    m_EventTreshold: 1
-  - m_ConditionMode: 6
-    m_ConditionEvent: heavy_inputs
-    m_EventTreshold: 1
   - m_ConditionMode: 1
-    m_ConditionEvent: heavy
+    m_ConditionEvent: WaterCombo
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102113506558182858}
@@ -718,14 +903,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: light_inputs
-    m_EventTreshold: 2
-  - m_ConditionMode: 6
-    m_ConditionEvent: heavy_inputs
-    m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: heavy
+    m_ConditionEvent: MetalCombo
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102507706550708030}
@@ -733,9 +912,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.114289165
   m_TransitionOffset: 0
-  m_ExitTime: 0.6875
+  m_ExitTime: 0.8843339
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -837,14 +1016,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: light_inputs
-    m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: heavy_inputs
-    m_EventTreshold: 2
   - m_ConditionMode: 1
-    m_ConditionEvent: light
+    m_ConditionEvent: WoodCombo
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102205978077688084}
@@ -867,7 +1040,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: combo 1
+  m_Name: Water Combo
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -899,7 +1072,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101064734087131162}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114806693636539848}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -921,14 +1095,16 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Great Sword Slash (1)
+  m_Name: Light Attack 1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101205414119717270}
   - {fileID: 1101500940229749860}
   - {fileID: 1101359475837216046}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114628901632487318}
+  - {fileID: 114157421282091724}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -955,7 +1131,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101428319947336702}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114766949634003664}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -977,7 +1154,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: combo 3
+  m_Name: Wood Combo
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1004,7 +1181,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: combo 2
+  m_Name: Earth Combo
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1031,12 +1208,13 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword And Shield Slash (3)
+  m_Name: Heavy Attack 3
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101194273243035808}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114287561066576776}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1058,7 +1236,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword And Shield Slash (2)
+  m_Name: Heavy Attack 2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1067,7 +1245,9 @@ AnimatorState:
   - {fileID: 1101606505636474538}
   - {fileID: 1101599008513029990}
   - {fileID: 1101982193010384326}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114820849268059846}
+  - {fileID: 114421768150603808}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1082,32 +1262,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102412307123867972
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Slash
-  m_Speed: 1.2
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f0ee1ae1103eb944eb1849f84057f380, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102471138902077612
 AnimatorState:
   serializedVersion: 5
@@ -1115,7 +1269,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Great Sword Slash (2)
+  m_Name: Light Attack 2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1123,7 +1277,9 @@ AnimatorState:
   - {fileID: 1101827448602932708}
   - {fileID: 1101154771470430590}
   - {fileID: 1101719081335629012}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114025282038285988}
+  - {fileID: 114459513582571616}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1145,7 +1301,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: combo 5
+  m_Name: Metal Combo
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1172,7 +1328,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: magic
+  m_Name: Magic
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1204,7 +1360,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101520734345148042}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114206620989339314}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1226,14 +1383,16 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword And Shield Slash (1)
+  m_Name: Heavy Attack 1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101398786217725602}
   - {fileID: 1101025094343976758}
   - {fileID: 1101504089621241446}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114529796474755790}
+  - {fileID: 114824848115038174}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1248,32 +1407,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102660790145443764
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Great Sword Slash (2) 0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6e04f137f767aca4e820063840d4ffc8, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102704806173556484
 AnimatorState:
   serializedVersion: 5
@@ -1281,7 +1414,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: combo 4
+  m_Name: Fire Combo
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1308,12 +1441,13 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Great Sword Slash (3)
+  m_Name: Light Attack 3
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101440871255707408}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114718184198045828}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1323,58 +1457,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 190ed7e5c70901a41be271d8d9684b2b, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1102874099592572532
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Great Sword Slash (1) 0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a499d3bbd501be243b6d8d2ee7203334, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &1102981645060167592
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: light combo
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: dd2e91c669bd565499fba72dc5f0d2f0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1391,61 +1473,49 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102148107694685576}
-    m_Position: {x: -132, y: 168, z: 0}
+    m_Position: {x: -144, y: 168, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102204932025541464}
-    m_Position: {x: -132, y: 240, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102412307123867972}
-    m_Position: {x: 108, y: 168, z: 0}
+    m_Position: {x: -144, y: 252, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102166762918530972}
-    m_Position: {x: 360, y: 336, z: 0}
+    m_Position: {x: 360, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102471138902077612}
-    m_Position: {x: 528, y: 432, z: 0}
+    m_Position: {x: 360, y: 432, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102754569890030246}
-    m_Position: {x: 468, y: 612, z: 0}
+    m_Position: {x: 360, y: 516, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102575922667735426}
-    m_Position: {x: 120, y: 336, z: 0}
+    m_Position: {x: 120, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102249566413444512}
-    m_Position: {x: 0, y: 432, z: 0}
+    m_Position: {x: 120, y: 432, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102225119010458454}
-    m_Position: {x: 12, y: 588, z: 0}
+    m_Position: {x: 120, y: 516, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102113506558182858}
-    m_Position: {x: -444, y: 600, z: 0}
+    m_Position: {x: -144, y: 432, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102223694880054562}
-    m_Position: {x: -360, y: 684, z: 0}
+    m_Position: {x: -144, y: 516, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102205978077688084}
-    m_Position: {x: -216, y: 756, z: 0}
+    m_Position: {x: -144, y: 588, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102704806173556484}
-    m_Position: {x: 684, y: 720, z: 0}
+    m_Position: {x: 624, y: 432, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102507706550708030}
-    m_Position: {x: 816, y: 612, z: 0}
+    m_Position: {x: 624, y: 516, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102514202319776528}
-    m_Position: {x: -288, y: 372, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102981645060167592}
-    m_Position: {x: 684, y: 168, z: 0}
+    m_Position: {x: -144, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102566097260604964}
-    m_Position: {x: 552, y: 240, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102874099592572532}
-    m_Position: {x: 912, y: 408, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102660790145443764}
-    m_Position: {x: 912, y: 468, z: 0}
+    m_Position: {x: 624, y: 360, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1101455789501841718}
@@ -1456,7 +1526,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 264, y: 252, z: 0}
-  m_EntryPosition: {x: -108, y: 108, z: 0}
-  m_ExitPosition: {x: 264, y: 696, z: 0}
+  m_EntryPosition: {x: -120, y: 108, z: 0}
+  m_ExitPosition: {x: 264, y: 792, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102148107694685576}

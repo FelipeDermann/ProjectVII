@@ -9,22 +9,62 @@ public class COMBAT_WeaponHitbox : MonoBehaviour
 
     Transform playerPos;
 
+    public MeleeWeaponTrail weaponTrail;
+
+    private void OnEnable()
+    {
+        DisableAttackState.FinishedAttack += DeactivateHitbox;
+        AttackAnimationBehaviour.AttackFinished += DeactivateHitbox;
+        AttackAnimationBehaviour.StartHitbox += EnableCoroutine;
+    }
+    private void OnDisable()
+    {
+        DisableAttackState.FinishedAttack -= DeactivateHitbox;
+        AttackAnimationBehaviour.AttackFinished -= DeactivateHitbox;
+        AttackAnimationBehaviour.StartHitbox -= EnableCoroutine;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         active = false;
         playerMagic = GetComponentInParent<COMBAT_Magic>();
         playerPos = FindObjectOfType<COMBAT_PlayerMovement>().transform;
+
+        weaponTrail = GetComponentInParent<MeleeWeaponTrail>();
+        weaponTrail.Emit = false;
+    }
+
+    void TrailOn()
+    {
+        weaponTrail.Emit = true;
+    }
+    void TrailOff()
+    {
+        weaponTrail.Emit = false;
+    }
+
+    void EnableCoroutine(float _time)
+    {
+        StartCoroutine(nameof(ActivateHitboxCountdown), _time);
+    }
+
+    IEnumerator ActivateHitboxCountdown(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        ActivateHitbox();
     }
 
     public void ActivateHitbox()
     {
         active = true;
+        TrailOn();
     }
 
     public void DeactivateHitbox()
     {
         active = false;
+        TrailOff();
     }
 
     private void OnTriggerEnter(Collider other)

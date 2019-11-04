@@ -44,13 +44,13 @@ public class COMBAT_Magic : MonoBehaviour
     void MagicInput()
     {
         if (!Input.GetButtonDown("Special")) return;
-        if (!playerMove.isGrounded || playerAttack.canCombo) return;
+        if (!playerMove.isGrounded || playerAttack.canInputNextAttack) return;
         if (mana < maxMana) return;
         if (playerElements.currentElement == Element.None) return;
 
         anim.SetTrigger("special");
         inputs.canMove = false;
-        playerAttack.ActivateCanCombo();
+        playerAttack.DisableNextAttackInput();
 
         mana = 0;
     }
