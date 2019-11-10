@@ -8,9 +8,12 @@ public class EnemyMove : MonoBehaviour
     Animator anim;
     NavMeshAgent agent;
     Rigidbody rb;
+    Enemy enemy;
 
     public bool canMove;
     public bool knocked;
+    public bool knockedDown;
+    
     public float speed;
 
     public Transform target;
@@ -24,6 +27,7 @@ public class EnemyMove : MonoBehaviour
         anim = GetComponent<Animator>();
         target = FindObjectOfType<COMBAT_PlayerMovement>().transform;
         agent = GetComponent<NavMeshAgent>();
+        enemy = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody>();
 
     }
@@ -38,20 +42,75 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    public void KnockBack(Vector3 _direction)
+    public void KnockBack(Vector3 _direction, float forceAmount, float time)
     {
+        if (enemy.dead) return;
+        if (knockedDown) return;
+
+        knocked = true;
+
         agent.enabled = false;
         rb.isKinematic = false;
 
-        rb.AddForce(_direction * knockbackPower, ForceMode.Impulse);
-        knocked = true;
+        rb.velocity = Vector3.zero;
+        rb.AddForce(_direction * forceAmount, ForceMode.Impulse);
+
+        anim.SetTrigger("hit");
 
         if (IsInvoking(nameof(MoveAgain))) CancelInvoke(nameof(MoveAgain));
-        Invoke(nameof(MoveAgain), knockedTime);
+        Invoke(nameof(MoveAgain), time);
     }
 
-    void MoveAgain()
+    public void KnockAway(Vector3 _direction, float forceAmount, float time)
     {
+        if (enemy.dead) return;
+        if (knockedDown) return;
+
+        knockedDown = true;
+
+        agent.enabled = false;
+        rb.isKinematic = false;
+
+        rb.velocity = Vector3.zero;
+        rb.AddForce(_direction * forceAmount, ForceMode.Impulse);
+        knocked = true;
+
+        anim.SetTrigger("knockaway");
+    }
+
+    public void KnockUp(Vector3 _direction, float forceAmount, float time)
+    {
+        if (enemy.dead) return;
+        if (knockedDown) return;
+
+        knockedDown = true;
+
+        agent.enabled = false;
+        rb.isKinematic = false;
+
+        rb.velocity = Vector3.zero;
+        rb.AddForce(_direction * forceAmount + new Vector3(0,5,0), ForceMode.Impulse);
+        knocked = true;
+
+        anim.SetTrigger("knockup");
+    }
+
+    public void MoveAgain()
+    {
+        if (enemy.dead) return;
+        if (knockedDown) return;
+
+        agent.enabled = true;
+        rb.isKinematic = true;
+        knocked = false;
+    }
+
+    public void MoveAfterKnockDown()
+    {
+        CancelInvoke(nameof(MoveAgain));
+
+        knockedDown = false;
+
         agent.enabled = true;
         rb.isKinematic = true;
         knocked = false;

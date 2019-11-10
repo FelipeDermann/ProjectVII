@@ -4862,3 +4862,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMagic: {fileID: 0}
+  knockbackForce: 10
+  knockupForce: 0
+  knockTime: 2
+  knockType: 1
+  damage: 40

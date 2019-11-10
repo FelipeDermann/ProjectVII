@@ -15,8 +15,21 @@ public class COMBAT_Magic : MonoBehaviour
     public int maxMana;
     public int energyToGain;
 
+    public bool cancelMagicHitbox;
+
     public GameObject[] specialHitbox;
     public Transform specialSpawnPoint;
+
+    private void OnEnable()
+    {
+        MagicBehaviour.SpawnMagicHitbox += MagicAttackCall;
+
+    }
+    private void OnDisable()
+    {
+        MagicBehaviour.SpawnMagicHitbox -= MagicAttackCall;
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -54,33 +67,53 @@ public class COMBAT_Magic : MonoBehaviour
 
         mana = 0;
     }
-    public void MagicAttack()
-    {
-        GameObject special = null;
 
-        switch (playerElements.currentElement)
+    void CancelComboHitboxSpawn()
+    {
+        cancelMagicHitbox = true;
+    }
+    public void AllowComboHitboxSpawn()
+    {
+        cancelMagicHitbox = false;
+    }
+
+    void MagicAttackCall(float _time)
+    {
+        StartCoroutine(nameof(MagicAttack), _time);
+    }
+
+    IEnumerator MagicAttack(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+
+        GameObject special = null;
+        if (!cancelMagicHitbox)
         {
-            case Element.Fire:
-                special = Instantiate(specialHitbox[0], specialSpawnPoint.position, transform.rotation);
-                Destroy(special, 1);
-                break;
-            case Element.Water:
-                special = Instantiate(specialHitbox[1], specialSpawnPoint.position, transform.rotation);
-                Destroy(special, 1);
-                break;
-            case Element.Metal:
-                special = Instantiate(specialHitbox[2], transform.position, transform.rotation);
-                Destroy(special, 1);
-                break;
-            case Element.Wood:
-                special = Instantiate(specialHitbox[3], specialSpawnPoint.position, transform.rotation);
-                Destroy(special, 1);
-                break;
-            case Element.Earth:
-                special = Instantiate(specialHitbox[4], transform.position, transform.rotation);
-                Destroy(special, 1);
-                break;
+            switch (playerElements.currentElement)
+            {
+                case Element.Fire:
+                    special = Instantiate(specialHitbox[0], specialSpawnPoint.position, transform.rotation);
+                    Destroy(special, 1);
+                    break;
+                case Element.Water:
+                    special = Instantiate(specialHitbox[1], specialSpawnPoint.position, transform.rotation);
+                    Destroy(special, 1);
+                    break;
+                case Element.Metal:
+                    special = Instantiate(specialHitbox[2], transform.position, transform.rotation);
+                    Destroy(special, 1);
+                    break;
+                case Element.Wood:
+                    special = Instantiate(specialHitbox[3], specialSpawnPoint.position, transform.rotation);
+                    Destroy(special, 1);
+                    break;
+                case Element.Earth:
+                    special = Instantiate(specialHitbox[4], transform.position, transform.rotation);
+                    Destroy(special, 1);
+                    break;
+            }
         }
+        else cancelMagicHitbox = false; 
     }
 
     public void GainEnergy()

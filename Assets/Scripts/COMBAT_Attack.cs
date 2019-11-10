@@ -17,6 +17,7 @@ public class COMBAT_Attack : MonoBehaviour
 {
     public Animator anim;
     COMBAT_MovementInput move;
+    COMBAT_Elements elements;
 
     public int inputsHeavy;
     public int inputsLight;
@@ -41,6 +42,7 @@ public class COMBAT_Attack : MonoBehaviour
     void Start()
     {
         move = GetComponentInParent<COMBAT_MovementInput>();
+        elements = GetComponent<COMBAT_Elements>();
     }
 
     private void OnEnable()
@@ -130,6 +132,8 @@ public class COMBAT_Attack : MonoBehaviour
 
         if (!attacking)
         {
+            elements.AllowComboHitboxSpawn();
+            elements.currentCombo = Combo.None;
             inputs.Add("light");
             anim.SetTrigger("startL");
             ResetAnimTriggers();
@@ -154,6 +158,8 @@ public class COMBAT_Attack : MonoBehaviour
 
         if (!attacking)
         {
+            elements.AllowComboHitboxSpawn();
+            elements.currentCombo = Combo.None;
             inputs.Add("heavy");
             anim.SetTrigger("startH");
             ResetAnimTriggers();
@@ -196,18 +202,20 @@ public class COMBAT_Attack : MonoBehaviour
     public bool CheckInputCombination()
     {
         bool comboIsTriggered = false;
-        string triggerToActivate = null;
+        Combo triggerToActivate = Combo.None;
 
-        if (inputs[0] == "light" && inputs[1] == "light" && inputs[2] == "heavy") triggerToActivate = L_L_H.ToString();
-        if (inputs[0] == "light" && inputs[1] == "heavy" && inputs[2] == "heavy") triggerToActivate = L_H_H.ToString();
-        if (inputs[0] == "light" && inputs[1] == "heavy" && inputs[2] == "light") triggerToActivate = L_H_L.ToString();
-        if (inputs[0] == "heavy" && inputs[1] == "heavy" && inputs[2] == "light") triggerToActivate = H_H_L.ToString();
-        if (inputs[0] == "heavy" && inputs[1] == "light" && inputs[2] == "heavy") triggerToActivate = H_L_H.ToString();
+        if (inputs[0] == "light" && inputs[1] == "light" && inputs[2] == "heavy") triggerToActivate = L_L_H;
+        if (inputs[0] == "light" && inputs[1] == "heavy" && inputs[2] == "heavy") triggerToActivate = L_H_H;
+        if (inputs[0] == "light" && inputs[1] == "heavy" && inputs[2] == "light") triggerToActivate = L_H_L;
+        if (inputs[0] == "heavy" && inputs[1] == "heavy" && inputs[2] == "light") triggerToActivate = H_H_L;
+        if (inputs[0] == "heavy" && inputs[1] == "light" && inputs[2] == "heavy") triggerToActivate = H_L_H;
 
-        if (triggerToActivate != null)
+        if (triggerToActivate != Combo.None)
         {
             comboIsTriggered = true;
-            anim.SetTrigger(triggerToActivate);
+
+            elements.currentCombo = triggerToActivate;
+            anim.SetTrigger(triggerToActivate.ToString());
         }
 
         ClearInputList();

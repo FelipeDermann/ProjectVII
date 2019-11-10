@@ -23,12 +23,29 @@ public class COMBAT_Elements : MonoBehaviour
     public Element currentElement;
     public Element previousElement;
 
+    public Combo currentCombo;
+
+    public bool cancelComboHitbox;
+
     //public ScriptableObject playerStats;
     Quaternion zeroed = new Quaternion(0,0,0,0);
 
     public UIPlayer uiElement;
 
     public MeleeWeaponTrail weaponTrail;
+
+    private void OnEnable()
+    {
+        ComboBehaviour.SpawnComboHitbox += CallElementComboSpawn;
+        DashBehaviour.CancelSpawnHitbox += CancelComboHitboxSpawn;
+        MagicBehaviour.CancelComboHitbox += CancelComboHitboxSpawn;
+    }
+    private void OnDisable()
+    {
+        ComboBehaviour.SpawnComboHitbox -= CallElementComboSpawn;
+        DashBehaviour.CancelSpawnHitbox -= CancelComboHitboxSpawn;
+        MagicBehaviour.CancelComboHitbox -= CancelComboHitboxSpawn;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,68 +56,95 @@ public class COMBAT_Elements : MonoBehaviour
         weaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
     }
 
-    public void ElementComboSpawn(Element _element)
+    void CancelComboHitboxSpawn()
     {
+        cancelComboHitbox = true;
+    }
+    public void AllowComboHitboxSpawn()
+    {
+        cancelComboHitbox = false;
+    }
+
+    void CallElementComboSpawn(float time)
+    {
+        StartCoroutine(ElementComboSpawn(currentCombo, time));
+    }
+
+    IEnumerator ElementComboSpawn(Combo _combo, float time)
+    {
+        yield return new WaitForSeconds(time);
+
         GameObject combo = null;
 
-        switch (_element)
+        if (!cancelComboHitbox)
         {
-            case Element.Fire:
-                combo = Instantiate(comboHitbox[0], comboSpawnPoint.position, transform.rotation);
-                Destroy(combo, 1);
+            switch (_combo)
+            {
+                case Combo.FireCombo:
+                    combo = Instantiate(comboHitbox[0], comboSpawnPoint.position, transform.rotation);
+                    Destroy(combo, 1);
+                    break;
+                case Combo.WaterCombo:
+                    combo = Instantiate(comboHitbox[1], comboSpawnPoint.position, transform.rotation);
+                    Destroy(combo, 1);
+                    break;
+                case Combo.MetalCombo:
+                    combo = Instantiate(comboHitbox[2], comboSpawnPoint.position, transform.rotation);
+                    Destroy(combo, 1);
+                    break;
+                case Combo.WoodCombo:
+                    combo = Instantiate(comboHitbox[3], comboSpawnPoint.position, transform.rotation);
+                    Destroy(combo, 1);
+                    break;
+                case Combo.EarthCombo:
+                    combo = Instantiate(comboHitbox[4], comboSpawnPoint.position, transform.rotation);
+                    Destroy(combo, 1);
+                    break;
+            }
+
+            ChangeElement(currentCombo);
+            combo.GetComponent<COMBAT_ComboEffect>().playerMagic = GetComponent<COMBAT_Magic>();
+        }
+        else cancelComboHitbox = false;
+    }
+
+    public void ChangeElement(Combo combo)
+    {
+        Element _element = Element.None;
+        var materialsToChange = swordRenderer.materials;
+
+        switch (combo)
+        {
+            case Combo.FireCombo:
+                materialsToChange[1] = elementColors[0];
+                weaponTrail._colors[0] = colorsToChange[0]; 
+                _element = Element.Fire;
                 break;
-            case Element.Water:
-                combo = Instantiate(comboHitbox[1], comboSpawnPoint.position, transform.rotation);
-                Destroy(combo, 1);
+            case Combo.WaterCombo:
+                materialsToChange[1] = elementColors[1];
+                weaponTrail._colors[0] = colorsToChange[1]; 
+                _element = Element.Water;
                 break;
-            case Element.Metal:
-                combo = Instantiate(comboHitbox[2], comboSpawnPoint.position, transform.rotation);
-                Destroy(combo, 1);
+            case Combo.MetalCombo:
+                materialsToChange[1] = elementColors[2];
+                weaponTrail._colors[0] = colorsToChange[2]; 
+                _element = Element.Metal;
                 break;
-            case Element.Wood:
-                combo = Instantiate(comboHitbox[3], comboSpawnPoint.position, transform.rotation);
-                Destroy(combo, 1);
+            case Combo.WoodCombo:
+                materialsToChange[1] = elementColors[3];
+                weaponTrail._colors[0] = colorsToChange[3]; 
+                _element = Element.Wood;
                 break;
-            case Element.Earth:
-                combo = Instantiate(comboHitbox[4], comboSpawnPoint.position, transform.rotation);
-                Destroy(combo, 1);
+            case Combo.EarthCombo:
+                materialsToChange[1] = elementColors[4];
+                weaponTrail._colors[0] = colorsToChange[4];
+                _element = Element.Earth;
                 break;
         }
 
-        combo.GetComponent<COMBAT_ComboEffect>().playerMagic = GetComponent<COMBAT_Magic>();
-    }
-
-    public void ChangeElement(Element _element)
-    {
         currentElement = _element;
         uiElement.ChangeElementText(_element);
         ChangeWeaponParticles(_element);
-
-        var materialsToChange = swordRenderer.materials;
-
-        switch (_element)
-        {
-            case Element.Fire:
-                materialsToChange[1] = elementColors[0];
-                weaponTrail._colors[0] = colorsToChange[0]; 
-                break;
-            case Element.Water:
-                materialsToChange[1] = elementColors[1];
-                weaponTrail._colors[0] = colorsToChange[1]; 
-                break;
-            case Element.Metal:
-                materialsToChange[1] = elementColors[2];
-                weaponTrail._colors[0] = colorsToChange[2]; 
-                break;
-            case Element.Wood:
-                materialsToChange[1] = elementColors[3];
-                weaponTrail._colors[0] = colorsToChange[3]; 
-                break;
-            case Element.Earth:
-                materialsToChange[1] = elementColors[4];
-                weaponTrail._colors[0] = colorsToChange[4]; 
-                break;
-        }
 
         swordRenderer.materials = materialsToChange;
     }

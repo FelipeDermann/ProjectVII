@@ -11,6 +11,11 @@ public class COMBAT_WeaponHitbox : MonoBehaviour
 
     public MeleeWeaponTrail weaponTrail;
 
+    public float knockbackForce;
+    public float knockTime;
+
+    public float damage;
+
     private void OnEnable()
     {
         DisableAttackState.FinishedAttack += DeactivateHitbox;
@@ -80,9 +85,11 @@ public class COMBAT_WeaponHitbox : MonoBehaviour
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
 
-                enemyMove.KnockBack(-knockbackDirection);
-                enemy.GetHurt();
-                playerMagic.GainEnergy();
+                enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
+                enemy.TakeDamage(damage);
+
+                if (!enemy.dead && !enemyMove.knockedDown) playerMagic.GainEnergy();
+
             }
         }
     }

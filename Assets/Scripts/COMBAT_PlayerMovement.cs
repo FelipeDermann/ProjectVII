@@ -7,12 +7,16 @@ public class COMBAT_PlayerMovement : MonoBehaviour
     CharacterController controller;
     COMBAT_Attack attack;
     private COMBAT_MovementInput input;
-    
+
     public Animator anim;
     public float jumpForce;
     public bool jumped;
+    public bool dashing;
+    public float dashMoveSpeed;
     public float attackMoveSpeed;
     public float attackMoveTime;
+
+    Camera cam;
 
     [Header("Ground Detection")]
     public bool isGrounded;
@@ -52,6 +56,8 @@ public class COMBAT_PlayerMovement : MonoBehaviour
 
         controller = GetComponent<CharacterController>();
         attack = GetComponent<COMBAT_Attack>();
+
+        cam = Camera.main;
     }
 
     // Update is called once per frame
@@ -62,6 +68,7 @@ public class COMBAT_PlayerMovement : MonoBehaviour
         canJump = !attack.canInputNextAttack;
 
         Dash();
+        DashMove();
         Jump();
         Gravity();
         DetectGround();
@@ -70,20 +77,54 @@ public class COMBAT_PlayerMovement : MonoBehaviour
     void Dash()
     {
         if (!Input.GetButtonDown("dash")) return;
+        if (dashing) return;
 
-        Debug.Log("DASH");
+        //face input direction
+        float InputX = Input.GetAxis("Horizontal");
+        float InputZ = Input.GetAxis("Vertical");
+
+        var camera = Camera.main;
+        var forward = cam.transform.forward;
+        var right = cam.transform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        //Vector3 desiredMoveDirection = forward * InputZ + right * InputX;
+        Vector3 desiredMoveDirection = forward * InputZ + right * InputX;
+
+        //Debug.Log(InputX);
+        //Debug.Log(InputZ);
+        //Debug.Log(forward);
+        //Debug.Log(right);
+        //Debug.Log(desiredMoveDirection);
+
+        if (InputX != 0 || InputZ !=0) transform.rotation = Quaternion.LookRotation(desiredMoveDirection);
+
+        //set variables do start the dash
+        dashing = true;
         anim.SetTrigger("dash");
+        Debug.Log("DASH");
     }
 
     public void DashStart()
     {
         canJump = false;
-        CanWalkOn();
-        //input.velocity = 16;
+        CanWalkOff();
+
         attack.DisableNextAttackInput();
     }
     public void DashEnd()
     {
+        Debug.Log("DASH END ");
+
+        anim.ResetTrigger("dash");
+        CanWalkOn();
+
+        dashing = false;
         canJump = true;
         input.velocity = 9;
     }
@@ -113,17 +154,31 @@ public class COMBAT_PlayerMovement : MonoBehaviour
 
     IEnumerator MoveForward()
     {
-        float wait = attackMoveTime;
+        //float wait = attackMoveTime;
 
-        Vector3 movement = Vector3.zero;
-        movement = transform.forward * attackMoveSpeed;
+        //Vector3 movement = Vector3.zero;
+        //movement = transform.forward * attackMoveSpeed;
 
-        while (wait > 0)
+        //while (wait > 0)
+        //{
+        //    wait -= Time.deltaTime;
+        //    controller.Move(movement * Time.deltaTime);
+
+        //    yield return null;
+        //}
+        yield return null;
+    }
+
+    void DashMove()
+    {
+        if (dashing)
         {
-            wait -= Time.deltaTime;
-            controller.Move(movement * Time.deltaTime);
+            float wait = attackMoveTime;
 
-            yield return null;
+            Vector3 movement = Vector3.zero;
+            movement = transform.forward * dashMoveSpeed;
+
+            controller.Move(movement * Time.deltaTime);
         }
     }
 
@@ -131,7 +186,7 @@ public class COMBAT_PlayerMovement : MonoBehaviour
     {
         if (!isGrounded || !canJump) return;
 
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             //controller.SimpleMove
             verticalSpeed = jumpForce;
@@ -144,8 +199,8 @@ public class COMBAT_PlayerMovement : MonoBehaviour
         verticalSpeed -= gravity * Time.deltaTime;
         if (isGrounded && !jumped) verticalSpeed = -gravity * Time.deltaTime;
         if (!isGrounded) verticalSpeed -= gravity * Time.deltaTime;
-        
-        if (jumped) jumped = false;  
+
+        if (jumped) jumped = false;
 
         Vector3 moveVector = Vector3.zero;
         moveVector.y = verticalSpeed;

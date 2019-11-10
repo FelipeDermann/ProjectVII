@@ -105,6 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e050b72a384c9047be00cb0c59959b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackForce: 6
+  knockupForce: 0
+  knockTime: 2
+  knockType: 0
+  damage: 50
 --- !u!1 &7234171032365979842
 GameObject:
   m_ObjectHideFlags: 0
