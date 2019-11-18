@@ -192,6 +192,7 @@ Transform:
   - {fileID: 2090741675}
   - {fileID: 1610633334}
   - {fileID: 1712782073}
+  - {fileID: 1422563157}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 171.518, z: 0}
@@ -280,6 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   knocked: 0
+  knockedDown: 0
   speed: 2
   target: {fileID: 0}
   knockbackPower: 4
@@ -303,6 +305,7 @@ MonoBehaviour:
   deathParticles: {fileID: 1076456873343246756, guid: 56194790b58def948ac41987e2769f04,
     type: 3}
   deathParticlesSpawnPoint: {fileID: 1053257034}
+  mySpawner: {fileID: 0}
 --- !u!1 &249072298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1549,51 @@ Transform:
   m_Father: {fileID: 760950079}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -8.352402, y: 11.501673, z: -62.36568}
+--- !u!1 &1422563156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1422563157}
+  - component: {fileID: 1422563158}
+  m_Layer: 10
+  m_Name: Life Bar Offset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1422563157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422563156}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.916, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 247437170}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1422563158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422563156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8618648471091049adfeebd7c7c930f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeBar: {fileID: 3522139700795056413, guid: 462fd65fa67da9a41918ab678e7b75f6, type: 3}
+  barCurrentHealth: {fileID: 0}
 --- !u!1 &1430197318
 GameObject:
   m_ObjectHideFlags: 0
