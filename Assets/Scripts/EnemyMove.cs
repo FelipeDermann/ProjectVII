@@ -29,11 +29,11 @@ public class EnemyMove : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         enemy = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody>();
-
     }
 
     private void Update()
     {
+        //if(Input.GetKeyDown(KeyCode.Alpha3)) TurnToPlayer();
         if (canMove && !knocked)
         {
             if (target.position != agent.destination) agent.SetDestination(target.position);
@@ -66,6 +66,8 @@ public class EnemyMove : MonoBehaviour
         if (enemy.dead) return;
         if (knockedDown) return;
 
+        TurnToPlayer();
+
         knockedDown = true;
 
         agent.enabled = false;
@@ -82,6 +84,8 @@ public class EnemyMove : MonoBehaviour
     {
         if (enemy.dead) return;
         if (knockedDown) return;
+
+        TurnToPlayer();
 
         knockedDown = true;
 
@@ -114,6 +118,12 @@ public class EnemyMove : MonoBehaviour
         agent.enabled = true;
         rb.isKinematic = true;
         knocked = false;
+    }
+
+    void TurnToPlayer()
+    {
+        var playerHead = GameObject.FindGameObjectWithTag("PlayerHead");
+        transform.LookAt(new Vector3(playerHead.transform.position.x, transform.position.y, playerHead.transform.position.z));
     }
 
     //IEnumerator MoveForward()

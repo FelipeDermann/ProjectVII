@@ -82,6 +82,7 @@ public class COMBAT_Elements : MonoBehaviour
             {
                 case Combo.FireCombo:
                     combo = Instantiate(comboHitbox[0], comboSpawnPoint.position, transform.rotation);
+                    combo.GetComponent<FireWave>().GainSpeed();
                     Destroy(combo, 1);
                     break;
                 case Combo.WaterCombo:
