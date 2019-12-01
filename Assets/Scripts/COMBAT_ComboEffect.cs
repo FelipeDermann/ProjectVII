@@ -38,6 +38,8 @@ public class COMBAT_ComboEffect : MonoBehaviour
             knockbackDirection.Normalize();
             knockbackDirection.y = 0;
 
+            enemy.TakeDamage(damage);
+
             switch (knockType)
             {
                 case KnockType.Back:
@@ -50,7 +52,6 @@ public class COMBAT_ComboEffect : MonoBehaviour
                     enemyMove.KnockUp(-knockbackDirection, knockbackForce, knockTime);
                     break;
             }
-            enemy.TakeDamage(damage);
 
             if(!enemy.dead && !enemyMove.knockedDown) playerMagic.GainEnergy();
         }

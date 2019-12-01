@@ -21,6 +21,8 @@ public class EnemyMove : MonoBehaviour
     public float knockbackPower;
     public float knockedTime;
 
+    public float quickHitCooldownTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,30 @@ public class EnemyMove : MonoBehaviour
 
         if (IsInvoking(nameof(MoveAgain))) CancelInvoke(nameof(MoveAgain));
         Invoke(nameof(MoveAgain), time);
+
+        CheckIfDead();
+    }
+
+    public void SlightKnockUp(Vector3 _direction, float forceAmount, float upForceAmount, float time)
+    {
+        if (enemy.dead) return;
+        if (knockedDown) return;
+
+        //knockedDown = true;
+
+        agent.enabled = false;
+        rb.isKinematic = false;
+
+        rb.velocity = Vector3.zero;
+        rb.AddForce(_direction * forceAmount + new Vector3(0, upForceAmount, 0), ForceMode.Impulse);
+        knocked = true;
+
+        anim.SetTrigger("hit");
+
+        if (IsInvoking(nameof(MoveAgain))) CancelInvoke(nameof(MoveAgain));
+        Invoke(nameof(MoveAgain), time);
+
+        CheckIfDead();
     }
 
     public void KnockAway(Vector3 _direction, float forceAmount, float time)
@@ -78,6 +104,8 @@ public class EnemyMove : MonoBehaviour
         knocked = true;
 
         anim.SetTrigger("knockaway");
+
+        CheckIfDead();
     }
 
     public void KnockUp(Vector3 _direction, float forceAmount, float time)
@@ -97,6 +125,8 @@ public class EnemyMove : MonoBehaviour
         knocked = true;
 
         anim.SetTrigger("knockup");
+
+        CheckIfDead();
     }
 
     public void MoveAgain()
@@ -118,6 +148,18 @@ public class EnemyMove : MonoBehaviour
         agent.enabled = true;
         rb.isKinematic = true;
         knocked = false;
+    }
+
+    public void CheckIfDead()
+    {
+        if (enemy.currentHealth <= 0)
+        {
+            enemy.lifeBar.DisableBar();
+
+            anim.SetTrigger("die");
+            anim.SetBool("dead", true);
+            enemy.dead = true;
+        }
     }
 
     void TurnToPlayer()

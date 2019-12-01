@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed84f0a942aa4d469901a149462662c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableNextAttackInput: 0.276
+  timeToEnableNextAttackInput: 0.05
 --- !u!114 &114459513582571616
 MonoBehaviour:
   m_ObjectHideFlags: 1

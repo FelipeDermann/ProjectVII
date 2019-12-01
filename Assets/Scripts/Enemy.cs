@@ -17,12 +17,14 @@ public class Enemy : MonoBehaviour
 
     public EnemySpawner mySpawner;
 
-    LifeBar lifeBar;
+    public LifeBar lifeBar;
+    EnemyMove move;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         lifeBar = GetComponentInChildren<LifeBar>();
+        move = GetComponent<EnemyMove>();
 
         currentHealth = maxHealth;
     }
@@ -52,18 +54,10 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (dead) return;
+        if (move.knockedDown) return;
 
         currentHealth -= damage;
         lifeBar.UpdateLifeBar(currentHealth, maxHealth);
-
-        if (currentHealth <= 0)
-        {
-            lifeBar.DisableBar();
-
-            anim.SetTrigger("die");
-            anim.SetBool("dead", true);
-            dead = true;
-        }
     }
 
 }

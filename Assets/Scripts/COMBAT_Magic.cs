@@ -93,25 +93,22 @@ public class COMBAT_Magic : MonoBehaviour
             {
                 case Element.Fire:
                     special = Instantiate(specialHitbox[0], specialSpawnPoint.position, transform.rotation);
-                    Destroy(special, 1);
                     break;
                 case Element.Water:
                     special = Instantiate(specialHitbox[1], specialSpawnPoint.position, transform.rotation);
-                    Destroy(special, 1);
                     break;
                 case Element.Metal:
                     special = Instantiate(specialHitbox[2], transform.position, transform.rotation);
-                    Destroy(special, 1);
                     break;
                 case Element.Wood:
-                    special = Instantiate(specialHitbox[3], specialSpawnPoint.position, transform.rotation);
-                    Destroy(special, 1);
+                    special = Instantiate(specialHitbox[3], transform.position + new Vector3(0,0.92f,0), transform.rotation);
                     break;
                 case Element.Earth:
                     special = Instantiate(specialHitbox[4], transform.position, transform.rotation);
-                    Destroy(special, 1);
                     break;
             }
+
+            special.GetComponent<Spell>().playerPos = transform;
         }
         else cancelMagicHitbox = false; 
     }
