@@ -17,13 +17,14 @@ public class Enemy : MonoBehaviour
 
     public EnemySpawner mySpawner;
 
-    public LifeBar lifeBar;
+    //public LifeBar lifeBar;
+    public LifeBarEnemy lifeBar;
     EnemyMove move;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        lifeBar = GetComponentInChildren<LifeBar>();
+        lifeBar = GetComponentInChildren<LifeBarEnemy>();
         move = GetComponent<EnemyMove>();
 
         currentHealth = maxHealth;
