@@ -30198,7 +30198,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1892944856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a09dc753eaef6004aa8492d032195f5e, type: 3}
+  m_Script: {fileID: 11500000, guid: f2fc02fa4d130734aa6be779e101ae2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 802434397}
@@ -30244,7 +30244,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1892944856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d9da241cda667448be78a322c0bfdf3, type: 3}
+  m_Script: {fileID: 11500000, guid: 666acb358015a48489d3914971472585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 9
@@ -30319,15 +30319,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1892944856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba691100102adae48956c316d82a7b2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c80725f20dd8284481862d4adc33635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   swordRenderer: {fileID: 1367955270}
   colorsToChange:
-  - {r: 1, g: 0.23921569, b: 0.23921569, a: 1}
-  - {r: 0, g: 0.90434813, b: 1, a: 1}
-  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  - {r: 0.016242431, g: 0.6886792, b: 0.09847177, a: 1}
+  - {r: 1, g: 0.14841096, b: 0.0141509175, a: 1}
+  - {r: 0.032395888, g: 0.9811321, b: 0.9529754, a: 1}
+  - {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  - {r: 0.0038714937, g: 0.8207547, b: 0.24467488, a: 1}
   - {r: 0.7915549, g: 0.8396226, b: 0, a: 1}
   elementColors:
   - {fileID: 2100000, guid: ef1d5099ec45bf2429fead8c062ccd1c, type: 2}
@@ -30348,8 +30348,8 @@ MonoBehaviour:
   - {fileID: 7484786343870288975, guid: b4663d4984dc01340963f910244dc239, type: 3}
   - {fileID: 5227792078739438590, guid: 477db91c43599fb4abf0d887b3949c21, type: 3}
   comboSpawnPoint: {fileID: 1328620305}
-  currentElement: 5
-  previousElement: 5
+  currentElement: 0
+  previousElement: 0
   currentCombo: 0
   cancelComboHitbox: 0
   uiElement: {fileID: 0}
@@ -30363,10 +30363,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1892944856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bbb97b7eecc17f4e9194a6b77a06dfb, type: 3}
+  m_Script: {fileID: 11500000, guid: 02551ef983b0cd44d86139931cdeccdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiElement: {fileID: 0}
+  uiElement: {fileID: 2082239535}
   mana: 0
   maxMana: 100
   energyToGain: 10
