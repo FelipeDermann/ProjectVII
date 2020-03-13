@@ -34,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
     {
         DisableAttackState.FinishedAttack += CanWalkOn;
         AttackAnimationBehaviour.StartedAttack += CanWalkOff;
-        AttackAnimationBehaviour.StartMoveForward += EnableMoveCoroutine;
 
         DashBehaviour.DashStart += DashStart;
         DashBehaviour.DashEnd += DashEnd;
@@ -43,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
     {
         DisableAttackState.FinishedAttack -= CanWalkOn;
         AttackAnimationBehaviour.StartedAttack -= CanWalkOff;
-        AttackAnimationBehaviour.StartMoveForward -= EnableMoveCoroutine;
 
         DashBehaviour.DashStart -= DashStart;
         DashBehaviour.DashEnd -= DashEnd;
@@ -69,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
         Dash();
         DashMove();
-        Jump();
+        //Jump();
         Gravity();
         DetectGround();
     }
@@ -78,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!Input.GetButtonDown("dash")) return;
         if (dashing) return;
+        if (anim.GetBool("casting")) return;
 
         //face input direction
         float InputX = Input.GetAxis("Horizontal");
@@ -93,20 +92,14 @@ public class PlayerMovement : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        //Vector3 desiredMoveDirection = forward * InputZ + right * InputX;
         Vector3 desiredMoveDirection = forward * InputZ + right * InputX;
-
-        //Debug.Log(InputX);
-        //Debug.Log(InputZ);
-        //Debug.Log(forward);
-        //Debug.Log(right);
-        //Debug.Log(desiredMoveDirection);
 
         if (InputX != 0 || InputZ !=0) transform.rotation = Quaternion.LookRotation(desiredMoveDirection);
 
         //set variables do start the dash
         dashing = true;
         anim.SetTrigger("dash");
+        anim.SetBool("dashing", dashing);
         Debug.Log("DASH");
     }
 
@@ -127,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
         dashing = false;
         canJump = true;
         input.velocity = 9;
+        anim.SetBool("dashing", dashing);
     }
 
     public void CanWalkOn()
@@ -177,6 +171,8 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 movement = Vector3.zero;
             movement = transform.forward * dashMoveSpeed;
+
+            Debug.Log(movement);
 
             controller.Move(movement * Time.deltaTime);
         }

@@ -18,15 +18,17 @@ public class WeaponHitbox : MonoBehaviour
 
     private void OnEnable()
     {
+        DashBehaviour.DashStart += DeactivateHitbox;
         DisableAttackState.FinishedAttack += DeactivateHitbox;
-        AttackAnimationBehaviour.AttackFinished += DeactivateHitbox;
-        AttackAnimationBehaviour.StartHitbox += EnableCoroutine;
+        PlayerAnimation.EndHitbox += DeactivateHitbox;
+        PlayerAnimation.StartHitbox += ActivateHitbox;
     }
     private void OnDisable()
     {
+        DashBehaviour.DashStart += DeactivateHitbox;
         DisableAttackState.FinishedAttack -= DeactivateHitbox;
-        AttackAnimationBehaviour.AttackFinished -= DeactivateHitbox;
-        AttackAnimationBehaviour.StartHitbox -= EnableCoroutine;
+        PlayerAnimation.EndHitbox -= DeactivateHitbox;
+        PlayerAnimation.StartHitbox -= ActivateHitbox;
     }
 
     // Start is called before the first frame update
@@ -47,17 +49,6 @@ public class WeaponHitbox : MonoBehaviour
     void TrailOff()
     {
         weaponTrail.Emit = false;
-    }
-
-    void EnableCoroutine(float _time)
-    {
-        StartCoroutine(nameof(ActivateHitboxCountdown), _time);
-    }
-
-    IEnumerator ActivateHitboxCountdown(float _time)
-    {
-        yield return new WaitForSeconds(_time);
-        ActivateHitbox();
     }
 
     public void ActivateHitbox()

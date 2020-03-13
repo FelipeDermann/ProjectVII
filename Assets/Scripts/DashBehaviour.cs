@@ -7,13 +7,11 @@ public class DashBehaviour : StateMachineBehaviour
 {
     public static event Action DashStart;
     public static event Action DashEnd;
-    public static event Action CancelSpawnHitbox;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         DashStart?.Invoke();
-        CancelSpawnHitbox?.Invoke();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

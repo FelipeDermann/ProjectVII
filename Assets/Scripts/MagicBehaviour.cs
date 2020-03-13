@@ -5,20 +5,17 @@ using System;
 
 public class MagicBehaviour : StateMachineBehaviour
 {
-    public static event Action<float> SpawnMagicHitbox;
-    public static event Action CancelComboHitbox;
+    //public static event Action<float> SpawnMagicHitbox;
+    //public static event Action CancelComboHitbox;
 
-    [Header("Event Times")]
-    [Range(0.0f, 1.0f)]
-    public float timeToEnableHitbox;
+    //[Header("Event Times")]
+    //[Range(0.0f, 1.0f)]
+    //public float timeToEnableHitbox;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float timeHitbox = timeToEnableHitbox * stateInfo.length;
-
-        SpawnMagicHitbox?.Invoke(timeHitbox);
-        CancelComboHitbox?.Invoke();
+        animator.SetBool("casting", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -28,10 +25,10 @@ public class MagicBehaviour : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.SetBool("casting", false);
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

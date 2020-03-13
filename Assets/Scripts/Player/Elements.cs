@@ -36,15 +36,11 @@ public class Elements : MonoBehaviour
 
     private void OnEnable()
     {
-        ComboBehaviour.SpawnComboHitbox += CallElementComboSpawn;
-        DashBehaviour.CancelSpawnHitbox += CancelComboHitboxSpawn;
-        MagicBehaviour.CancelComboHitbox += CancelComboHitboxSpawn;
+        PlayerAnimation.SpawnComboHitbox += ElementComboSpawn;
     }
     private void OnDisable()
     {
-        ComboBehaviour.SpawnComboHitbox -= CallElementComboSpawn;
-        DashBehaviour.CancelSpawnHitbox -= CancelComboHitboxSpawn;
-        MagicBehaviour.CancelComboHitbox -= CancelComboHitboxSpawn;
+        PlayerAnimation.SpawnComboHitbox -= ElementComboSpawn;
     }
 
     // Start is called before the first frame update
@@ -56,57 +52,37 @@ public class Elements : MonoBehaviour
         weaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
     }
 
-    void CancelComboHitboxSpawn()
+    void ElementComboSpawn()
     {
-        cancelComboHitbox = true;
-    }
-    public void AllowComboHitboxSpawn()
-    {
-        cancelComboHitbox = false;
-    }
-
-    void CallElementComboSpawn(float time)
-    {
-        StartCoroutine(ElementComboSpawn(currentCombo, time));
-    }
-
-    IEnumerator ElementComboSpawn(Combo _combo, float time)
-    {
-        yield return new WaitForSeconds(time);
-
         GameObject combo = null;
 
-        if (!cancelComboHitbox)
+        switch (currentCombo)
         {
-            switch (_combo)
-            {
-                case Combo.FireCombo:
-                    combo = Instantiate(comboHitbox[0], comboSpawnPoint.position, transform.rotation);
-                    combo.GetComponent<FireWave>().GainSpeed();
-                    Destroy(combo, 1);
-                    break;
-                case Combo.WaterCombo:
-                    combo = Instantiate(comboHitbox[1], comboSpawnPoint.position, transform.rotation);
-                    Destroy(combo, 1);
-                    break;
-                case Combo.MetalCombo:
-                    combo = Instantiate(comboHitbox[2], comboSpawnPoint.position, transform.rotation);
-                    Destroy(combo, 1);
-                    break;
-                case Combo.WoodCombo:
-                    combo = Instantiate(comboHitbox[3], comboSpawnPoint.position, transform.rotation);
-                    Destroy(combo, 1);
-                    break;
-                case Combo.EarthCombo:
-                    combo = Instantiate(comboHitbox[4], comboSpawnPoint.position, transform.rotation);
-                    Destroy(combo, 1);
-                    break;
-            }
-
-            ChangeElement(currentCombo);
-            combo.GetComponent<ComboEffect>().playerMagic = GetComponent<Magic>();
+            case Combo.FireCombo:
+                combo = Instantiate(comboHitbox[0], comboSpawnPoint.position, transform.rotation);
+                combo.GetComponent<FireWave>().GainSpeed();
+                Destroy(combo, 1);
+                break;
+            case Combo.WaterCombo:
+                combo = Instantiate(comboHitbox[1], comboSpawnPoint.position, transform.rotation);
+                Destroy(combo, 1);
+                break;
+            case Combo.MetalCombo:
+                combo = Instantiate(comboHitbox[2], transform.position, transform.rotation);
+                Destroy(combo, 1);
+                break;
+            case Combo.WoodCombo:
+                combo = Instantiate(comboHitbox[3], comboSpawnPoint.position, transform.rotation);
+                Destroy(combo, 1);
+                break;
+            case Combo.EarthCombo:
+                combo = Instantiate(comboHitbox[4], comboSpawnPoint.position, transform.rotation);
+                Destroy(combo, 1);
+                break;
         }
-        else cancelComboHitbox = false;
+
+        ChangeElement(currentCombo);
+        combo.GetComponent<ComboEffect>().playerMagic = GetComponent<Magic>();
     }
 
     public void ChangeElement(Combo combo)

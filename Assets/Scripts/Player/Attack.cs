@@ -17,6 +17,7 @@ public class Attack : MonoBehaviour
 {
     public Animator anim;
     MovementInput move;
+    PlayerMovement playerMove;
     Elements elements;
 
     public int inputsHeavy;
@@ -42,6 +43,7 @@ public class Attack : MonoBehaviour
     void Start()
     {
         move = GetComponentInParent<MovementInput>();
+        playerMove = GetComponentInParent<PlayerMovement>();
         elements = GetComponent<Elements>();
     }
 
@@ -49,23 +51,19 @@ public class Attack : MonoBehaviour
     {
         AttackAnimationBehaviour.StartedAttack += StartAttacking;
         AttackAnimationBehaviour.StartedAttack += LookToClosestEnemy;
+        DashBehaviour.DashStart += StopAttacking;
 
-        NextInputBehaviour.StartNextAttackInput += EnableNextInputCoroutine;
-        AttackAnimationBehaviour.StopNextAttackInput += DisableNextAttackInput;
-
+        PlayerAnimation.StartNextAttackInput += EnableNextAttackInput;
         DisableAttackState.FinishedAttack += StopAttacking;
-        DisableAttackState.FinishedAttack += DisableNextAttackInput;
     }
     private void OnDisable()
     {
         AttackAnimationBehaviour.StartedAttack -= StartAttacking;
         AttackAnimationBehaviour.StartedAttack -= LookToClosestEnemy;
+        DashBehaviour.DashStart -= StopAttacking;
 
-        NextInputBehaviour.StartNextAttackInput -= EnableNextInputCoroutine;
-        AttackAnimationBehaviour.StopNextAttackInput -= DisableNextAttackInput;
-
+        PlayerAnimation.StartNextAttackInput -= EnableNextAttackInput;
         DisableAttackState.FinishedAttack -= StopAttacking;
-        DisableAttackState.FinishedAttack -= DisableNextAttackInput;
     }
 
     private void StartAttacking()
@@ -74,19 +72,9 @@ public class Attack : MonoBehaviour
     }
     private void StopAttacking()
     {
+        DisableNextAttackInput();
         attacking = false;
         ClearInputList();
-    }
-
-    void EnableNextInputCoroutine(float _time)
-    {
-        StartCoroutine(nameof(NextInputEnableCountdown), _time);
-    }
-
-    IEnumerator NextInputEnableCountdown(float _time)
-    {
-        yield return new WaitForSeconds(_time);
-        EnableNextAttackInput();
     }
 
     // Update is called once per frame
@@ -129,10 +117,10 @@ public class Attack : MonoBehaviour
     void LightAttack()
     {
         if (!Input.GetButtonDown("light")) return;
+        if (playerMove.dashing) return;
 
         if (!attacking)
         {
-            elements.AllowComboHitboxSpawn();
             elements.currentCombo = Combo.None;
             inputs.Add("light");
             anim.SetTrigger("startL");
@@ -155,10 +143,10 @@ public class Attack : MonoBehaviour
     void HeavyAttack()
     {
         if (!Input.GetButtonDown("heavy")) return;
+        if (playerMove.dashing) return;
 
         if (!attacking)
         {
-            elements.AllowComboHitboxSpawn();
             elements.currentCombo = Combo.None;
             inputs.Add("heavy");
             anim.SetTrigger("startH");
@@ -192,7 +180,6 @@ public class Attack : MonoBehaviour
     public void EnableNextAttackInput()
     {
         canInputNextAttack = true;
-
     }
     public void DisableNextAttackInput()
     {

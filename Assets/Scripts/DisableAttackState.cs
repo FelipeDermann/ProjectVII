@@ -11,7 +11,7 @@ public class DisableAttackState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         FinishedAttack?.Invoke();
-        Debug.Log("TURN OFF HITBOX");
+        Debug.Log("FINISHED ATTACKING");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

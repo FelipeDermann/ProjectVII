@@ -81,6 +81,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: dashing
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -106,10 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.268
-  timeToMoveForward: 0.352
-  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
-    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
 --- !u!114 &114157421282091724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,7 +119,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ed84f0a942aa4d469901a149462662c, type: 3}
   m_Name: 
@@ -147,8 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9118392e21477bf4eb7e80ae0374d2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.42
-  timeToChangeElement: 0
 --- !u!114 &114287561066576776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,10 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.236
-  timeToMoveForward: 0.67
-  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
-    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
 --- !u!114 &114370010186708254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,8 +173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9118392e21477bf4eb7e80ae0374d2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.4
-  timeToChangeElement: 0
 --- !u!114 &114421768150603808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,7 +180,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ed84f0a942aa4d469901a149462662c, type: 3}
   m_Name: 
@@ -199,7 +193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ed84f0a942aa4d469901a149462662c, type: 3}
   m_Name: 
@@ -217,10 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.25
-  timeToMoveForward: 0.465
-  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
-    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
 --- !u!114 &114547660949031824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,8 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9118392e21477bf4eb7e80ae0374d2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.5
-  timeToChangeElement: 0
 --- !u!114 &114628901632487318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,10 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.096
-  timeToMoveForward: 0.492
-  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
-    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
 --- !u!114 &114681917159939000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,10 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.15
-  timeToMoveForward: 0.3
-  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
-    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
 --- !u!114 &114741267477490906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,8 +272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9118392e21477bf4eb7e80ae0374d2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.5
-  timeToChangeElement: 0
 --- !u!114 &114766949634003664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,10 +308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3095f2a260cfc5143be455af14e1fdea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.4
-  timeToMoveForward: 0.253
-  "Observa\xE7\xE3o": "Esse n\xFAmero \xE9 a porcentagem da anima\xE7\xE3o. 0 \xE9
-    0% e 1 \xE9 o 100% de sua dura\xE7\xE3o"
 --- !u!114 &114824848115038174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,7 +315,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ed84f0a942aa4d469901a149462662c, type: 3}
   m_Name: 
@@ -359,8 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9118392e21477bf4eb7e80ae0374d2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.6
-  timeToChangeElement: 0
 --- !u!114 &114980001096968074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,12 +340,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e68f8138e08767b448ee5ce2f5a8d126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToEnableHitbox: 0.3
 --- !u!206 &206328745837435770
 BlendTree:
   m_ObjectHideFlags: 1
@@ -532,6 +503,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: startL
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: dashing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102166762918530972}
   m_Solo: 0
@@ -675,6 +649,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: special
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: dashing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102514202319776528}
@@ -822,6 +799,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: startH
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: dashing
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102575922667735426}
@@ -1592,7 +1572,7 @@ AnimatorStateMachine:
     m_Position: {x: -144, y: 516, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102205978077688084}
-    m_Position: {x: -144, y: 588, z: 0}
+    m_Position: {x: -140, y: 590, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102704806173556484}
     m_Position: {x: 624, y: 432, z: 0}

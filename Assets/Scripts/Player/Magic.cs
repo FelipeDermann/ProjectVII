@@ -22,19 +22,18 @@ public class Magic : MonoBehaviour
 
     private void OnEnable()
     {
-        MagicBehaviour.SpawnMagicHitbox += MagicAttackCall;
+        PlayerAnimation.SpawnMagicHitbox += MagicAttack;
 
     }
     private void OnDisable()
     {
-        MagicBehaviour.SpawnMagicHitbox -= MagicAttackCall;
+        PlayerAnimation.SpawnMagicHitbox -= MagicAttack;
 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
         var canvasText = GameObject.FindObjectOfType(typeof(UIPlayer)) as UIPlayer;
         uiElement = canvasText.GetComponent<UIPlayer>();
 
@@ -49,7 +48,6 @@ public class Magic : MonoBehaviour
     void Update()
     {
         MagicInput();
-        //MagicAttack();
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) mana = maxMana;
     }
@@ -57,6 +55,7 @@ public class Magic : MonoBehaviour
     void MagicInput()
     {
         if (!Input.GetButtonDown("Special")) return;
+        if (playerMove.dashing) return;
         if (!playerMove.isGrounded || playerAttack.canInputNextAttack) return;
         if (mana < maxMana) return;
         if (playerElements.currentElement == Element.None) return;
@@ -68,49 +67,31 @@ public class Magic : MonoBehaviour
         mana = 0;
     }
 
-    void CancelComboHitboxSpawn()
+    void MagicAttack()
     {
-        cancelMagicHitbox = true;
-    }
-    public void AllowComboHitboxSpawn()
-    {
-        cancelMagicHitbox = false;
-    }
-
-    void MagicAttackCall(float _time)
-    {
-        StartCoroutine(nameof(MagicAttack), _time);
-    }
-
-    IEnumerator MagicAttack(float _time)
-    {
-        yield return new WaitForSeconds(_time);
-
         GameObject special = null;
-        if (!cancelMagicHitbox)
-        {
-            switch (playerElements.currentElement)
-            {
-                case Element.Fire:
-                    special = Instantiate(specialHitbox[0], specialSpawnPoint.position, transform.rotation);
-                    break;
-                case Element.Water:
-                    special = Instantiate(specialHitbox[1], specialSpawnPoint.position, transform.rotation);
-                    break;
-                case Element.Metal:
-                    special = Instantiate(specialHitbox[2], transform.position, transform.rotation);
-                    break;
-                case Element.Wood:
-                    special = Instantiate(specialHitbox[3], transform.position + new Vector3(0,0.92f,0), transform.rotation);
-                    break;
-                case Element.Earth:
-                    special = Instantiate(specialHitbox[4], transform.position, transform.rotation);
-                    break;
-            }
 
-            special.GetComponent<Spell>().playerPos = transform;
+        switch (playerElements.currentElement)
+        {
+            case Element.Fire:
+                special = Instantiate(specialHitbox[0], specialSpawnPoint.position, transform.rotation);
+                break;
+            case Element.Water:
+                special = Instantiate(specialHitbox[1], specialSpawnPoint.position, transform.rotation);
+                break;
+            case Element.Metal:
+                special = Instantiate(specialHitbox[2], transform.position, transform.rotation);
+                break;
+            case Element.Wood:
+                special = Instantiate(specialHitbox[3], transform.position + new Vector3(0, 0.92f, 0), transform.rotation);
+                break;
+            case Element.Earth:
+                special = Instantiate(specialHitbox[4], transform.position, transform.rotation);
+                break;
         }
-        else cancelMagicHitbox = false; 
+
+        special.GetComponent<Spell>().playerPos = transform;
+
     }
 
     public void GainEnergy()
