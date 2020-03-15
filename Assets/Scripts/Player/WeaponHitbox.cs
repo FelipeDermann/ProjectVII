@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponHitbox : MonoBehaviour
 {
     public bool active;
-    public Magic playerMagic;
+    public PlayerStatus playerStatus;
 
     Transform playerPos;
 
@@ -35,7 +35,7 @@ public class WeaponHitbox : MonoBehaviour
     void Start()
     {
         active = false;
-        playerMagic = GetComponentInParent<Magic>();
+        playerStatus = GetComponentInParent<PlayerStatus>();
         playerPos = FindObjectOfType<PlayerMovement>().transform;
 
         weaponTrail = GetComponentInParent<MeleeWeaponTrail>();
@@ -79,7 +79,7 @@ public class WeaponHitbox : MonoBehaviour
                 enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
                 enemy.TakeDamage(damage);
 
-                if (!enemy.dead && !enemyMove.knockedDown) playerMagic.GainEnergy();
+                if (!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
 
             }
         }

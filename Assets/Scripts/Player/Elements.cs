@@ -82,7 +82,7 @@ public class Elements : MonoBehaviour
         }
 
         ChangeElement(currentCombo);
-        combo.GetComponent<ComboEffect>().playerMagic = GetComponent<Magic>();
+        combo.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
     }
 
     public void ChangeElement(Combo combo)

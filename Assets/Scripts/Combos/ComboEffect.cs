@@ -11,7 +11,7 @@ public enum KnockType
 
 public class ComboEffect : MonoBehaviour
 {
-    public Magic playerMagic;
+    public PlayerStatus playerStatus;
     Transform playerPos;
 
     public float knockbackForce;
@@ -53,7 +53,7 @@ public class ComboEffect : MonoBehaviour
                     break;
             }
 
-            if(!enemy.dead && !enemyMove.knockedDown) playerMagic.GainEnergy();
+            if(!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
         }
 
     }

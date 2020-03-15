@@ -5,15 +5,13 @@ using UnityEngine;
 public class Magic : MonoBehaviour
 {
     public UIPlayer uiElement;
+
     PlayerMovement playerMove;
     Attack playerAttack;
     MovementInput inputs;
     Elements playerElements;
     Animator anim;
-
-    public int mana;
-    public int maxMana;
-    public int energyToGain;
+    PlayerStatus playerStatus;
 
     public bool cancelMagicHitbox;
 
@@ -37,6 +35,7 @@ public class Magic : MonoBehaviour
         var canvasText = GameObject.FindObjectOfType(typeof(UIPlayer)) as UIPlayer;
         uiElement = canvasText.GetComponent<UIPlayer>();
 
+        playerStatus = GetComponent<PlayerStatus>();
         playerElements = GetComponentInParent<Elements>();
         inputs = GetComponentInParent<MovementInput>();
         playerMove = GetComponent<PlayerMovement>();
@@ -49,7 +48,7 @@ public class Magic : MonoBehaviour
     {
         MagicInput();
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) mana = maxMana;
+        if (Input.GetKeyDown(KeyCode.Alpha1)) playerStatus.IncreaseAllMana();
     }
 
     void MagicInput()
@@ -57,14 +56,14 @@ public class Magic : MonoBehaviour
         if (!Input.GetButtonDown("Special")) return;
         if (playerMove.dashing) return;
         if (!playerMove.isGrounded || playerAttack.canInputNextAttack) return;
-        if (mana < maxMana) return;
+        if (playerStatus.mana < playerStatus.maxMana) return;
         if (playerElements.currentElement == Element.None) return;
 
         anim.SetTrigger("special");
         inputs.canMove = false;
         playerAttack.DisableNextAttackInput();
 
-        mana = 0;
+        playerStatus.DecreaseAllMana();
     }
 
     void MagicAttack()
@@ -92,11 +91,5 @@ public class Magic : MonoBehaviour
 
         special.GetComponent<Spell>().playerPos = transform;
 
-    }
-
-    public void GainEnergy()
-    {
-        mana += energyToGain;
-        if (mana > maxMana) mana = maxMana;
     }
 }

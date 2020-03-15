@@ -33,16 +33,5 @@ public class SpecialBar : MonoBehaviour
         backBarRect = backBar.sizeDelta;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        playerMana = playerMagic.mana;
-        playerMaxMana = playerMagic.maxMana;
 
-        if (playerMana >= playerMaxMana) barImage.color = colorFilled;
-        else barImage.color = colorNotFilled;
-
-        barRect.x = (playerMana / playerMaxMana) * backBarRect.x;
-        bar.sizeDelta = barRect;
-    }
 }
