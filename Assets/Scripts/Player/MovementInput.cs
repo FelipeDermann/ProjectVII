@@ -49,8 +49,7 @@ public class MovementInput : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (!canMove)
-            return;
+        if (!canMove) return;
 
         InputMagnitude ();
     }
@@ -114,4 +113,9 @@ public class MovementInput : MonoBehaviour {
 			//anim.SetFloat ("InputMagnitude", Speed, StopAnimTime, Time.deltaTime);
 		}
 	}
+
+    public void ChangeMoveState(bool _state)
+    {
+        canMove = _state;
+    }
 }

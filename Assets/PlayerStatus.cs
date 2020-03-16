@@ -1,25 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
+    MovementInput movementInput;
+    PlayerMovement playerMovement;
     PlayerHUD playerHUD;
+    Animator animator;
 
     [Header("Health Attributes")]
     public int currentHealth;
     public int maxHealth;
+    public bool dead;
 
     [Header("Spell Attributes")]
     public int mana;
     public int maxMana;
     public int energyToGain;
 
+    private void OnEnable()
+    {
+        PlayerAnimation.RestartScene += RestartSceneCountdown;
+    }
+    private void OnDisable()
+    {
+        PlayerAnimation.RestartScene -= RestartSceneCountdown;
+    }
+
     void Start()
     {
         currentHealth = maxHealth;
-        //mana = 0;
 
+        movementInput = GetComponent<MovementInput>();
+        playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponentInChildren<Animator>();
         playerHUD = GetComponent<PlayerHUD>();
         playerHUD.StartHUD();
 
@@ -37,11 +53,32 @@ public class PlayerStatus : MonoBehaviour
     {
         currentHealth -= _damage;
 
-        if (currentHealth <= 0)
-        {
-            Debug.Log("YOU ARE DEAD, DEAD, DEAD!");
-        }
+        if (currentHealth <= 0) Death();
+
         playerHUD.UpdateHealthBar();
+    }
+
+    public void Death()
+    {
+        Debug.Log("YOU ARE DEAD, DEAD, DEAD!");
+
+        dead = true;
+
+        movementInput.ChangeMoveState(false);
+        playerMovement.ChangeDashState(false);
+
+        animator.SetBool("dead", true);
+        animator.SetTrigger("death");
+    }
+
+    void RestartSceneCountdown()
+    {
+        Invoke(nameof(RestartScene), 2);
+    }
+
+    void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void IncreaseMana()

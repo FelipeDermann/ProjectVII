@@ -13,7 +13,14 @@ public class PlayerAnimation : MonoBehaviour
 
     public static event Action StartNextAttackInput;
 
+    public static event Action RestartScene;
+
     public float secondsOfInputDetection;
+
+    public void RestartSceneAfterTime()
+    {
+        RestartScene?.Invoke();
+    }
 
     public void EnableInput()
     {

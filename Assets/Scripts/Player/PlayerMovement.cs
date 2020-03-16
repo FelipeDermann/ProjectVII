@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     public float jumpForce;
     public bool jumped;
+    public bool canDash;
     public bool dashing;
     public float dashMoveSpeed;
     public float attackMoveSpeed;
@@ -56,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
         attack = GetComponent<Attack>();
 
         cam = Camera.main;
+
+        canDash = true;
     }
 
     // Update is called once per frame
@@ -63,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetFloat("Blend", input.Speed);
 
-        canJump = !attack.canInputNextAttack;
+        //canJump = !attack.canInputNextAttack;
 
         Dash();
         DashMove();
@@ -77,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
         if (!Input.GetButtonDown("dash")) return;
         if (dashing) return;
         if (anim.GetBool("casting")) return;
+        if (!canDash) return;
 
         //face input direction
         float InputX = Input.GetAxis("Horizontal");
@@ -211,6 +215,11 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
         }
         else isGrounded = false;
+    }
+
+    public void ChangeDashState(bool _state)
+    {
+        canDash = _state;
     }
 
     void OnDrawGizmosSelected()
