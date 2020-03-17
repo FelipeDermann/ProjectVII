@@ -11,11 +11,23 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action SpawnMagicHitbox;
     public static event Action SpawnComboHitbox;
 
+    public static event Action StartSpellAnimation;
+    public static event Action TurnToEnemyIfLockedOn;
+
     public static event Action StartNextAttackInput;
 
     public static event Action RestartScene;
 
     public float secondsOfInputDetection;
+
+    public void CastingAnimation()
+    {
+        StartSpellAnimation?.Invoke();
+    }
+    public void TurnToEnemy()
+    {
+        TurnToEnemyIfLockedOn?.Invoke();
+    }
 
     public void RestartSceneAfterTime()
     {

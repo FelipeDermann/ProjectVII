@@ -21,12 +21,10 @@ public class Magic : MonoBehaviour
     private void OnEnable()
     {
         PlayerAnimation.SpawnMagicHitbox += MagicAttack;
-
     }
     private void OnDisable()
     {
         PlayerAnimation.SpawnMagicHitbox -= MagicAttack;
-
     }
 
     // Start is called before the first frame update
@@ -54,6 +52,7 @@ public class Magic : MonoBehaviour
     void MagicInput()
     {
         if (!Input.GetButtonDown("Special")) return;
+        if (anim.GetBool("attacking")) return;
         if (playerMove.dashing) return;
         if (!playerMove.isGrounded || playerAttack.canInputNextAttack) return;
         if (playerStatus.mana < playerStatus.maxMana) return;

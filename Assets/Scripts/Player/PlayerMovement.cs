@@ -78,8 +78,8 @@ public class PlayerMovement : MonoBehaviour
     void Dash()
     {
         if (!Input.GetButtonDown("dash")) return;
-        if (dashing) return;
         if (anim.GetBool("casting")) return;
+        if (dashing) return;
         if (!canDash) return;
 
         //face input direction
