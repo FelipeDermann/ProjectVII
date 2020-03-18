@@ -54,12 +54,12 @@ public class MeleeWeaponTrail : MonoBehaviour
 	int subdivisions = 4;
 #endif
 
-	[SerializeField]
-	Transform _base;
-	[SerializeField]
-	Transform _tip;
+    [SerializeField]
+    Transform _base;
+    [SerializeField]
+    Transform _tip;
 
-	List<Point> _points = new List<Point>();
+    List<Point> _points = new List<Point>();
 #if USE_INTERPOLATION
 	List<Point> _smoothedPoints = new List<Point>();
 #endif

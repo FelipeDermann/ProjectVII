@@ -23,6 +23,8 @@ public class EnemyMove : MonoBehaviour
 
     public float quickHitCooldownTime;
 
+    GameObject playerPointToLookAt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,9 +41,8 @@ public class EnemyMove : MonoBehaviour
         if (canMove && !knocked)
         {
             if (target.position != agent.destination) agent.SetDestination(target.position);
-
-            anim.SetFloat("Blend", agent.velocity.magnitude);
         }
+        if (!knocked) anim.SetFloat("Blend", agent.velocity.magnitude);
     }
 
     public void KnockBack(Vector3 _direction, float forceAmount, float time)
@@ -162,10 +163,15 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    void TurnToPlayer()
+    public void TurnToPlayer()
     {
-        var playerHead = GameObject.FindGameObjectWithTag("PlayerHead");
-        transform.LookAt(new Vector3(playerHead.transform.position.x, transform.position.y, playerHead.transform.position.z));
+        if(playerPointToLookAt == null) playerPointToLookAt = GameObject.FindGameObjectWithTag("PlayerHead");
+        transform.LookAt(new Vector3(playerPointToLookAt.transform.position.x, transform.position.y, playerPointToLookAt.transform.position.z));
+    }
+
+    public void ChangeCanMoveState(bool _state)
+    {
+        canMove = _state;
     }
 
     //IEnumerator MoveForward()

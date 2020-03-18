@@ -60,6 +60,8 @@ public class PlayerStatus : MonoBehaviour
 
     public void Death()
     {
+        if (dead) return;
+
         Debug.Log("YOU ARE DEAD, DEAD, DEAD!");
 
         dead = true;

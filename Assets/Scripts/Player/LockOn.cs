@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class LockOn : MonoBehaviour
 {
     [Header("Cameras")]
-    public GameObject normalCamera;
-    public GameObject lockOnCamera;
+    public CinemachineFreeLook normalCamera;
+    public CinemachineFreeLook lockOnCamera;
 
     [Header("Target Picking")]
     public List<Transform> screenTargets = new List<Transform>();
@@ -69,8 +70,8 @@ public class LockOn : MonoBehaviour
         isLocked = false;
 
         aim.enabled = false;
-        normalCamera.SetActive(true);
-        lockOnCamera.SetActive(false);
+        normalCamera.gameObject.SetActive(true);
+        lockOnCamera.gameObject.SetActive(false);
     }
 
     void CameraLockOn()
@@ -79,8 +80,9 @@ public class LockOn : MonoBehaviour
         isLocked = true;
 
         aim.enabled = true;
-        normalCamera.SetActive(false);
-        lockOnCamera.SetActive(true);
+        normalCamera.gameObject.SetActive(false);
+        lockOnCamera.gameObject.SetActive(true);
+        lockOnCamera.LookAt = target;
     }
 
     void CameraLocked()

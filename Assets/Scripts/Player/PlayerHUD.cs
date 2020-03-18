@@ -32,12 +32,6 @@ public class PlayerHUD : MonoBehaviour
     public Color colorNotFilled;
     public Color colorFilled;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public void StartHUD()
     {
         playerStatus = GetComponent<PlayerStatus>();
