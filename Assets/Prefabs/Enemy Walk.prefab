@@ -1404,7 +1404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerIndex: 12
   damageToDeal: 10
-  knockbackPower: 0
+  knockbackPower: 4
+  knockbackTime: 0.5
 --- !u!1 &987988958
 GameObject:
   m_ObjectHideFlags: 0

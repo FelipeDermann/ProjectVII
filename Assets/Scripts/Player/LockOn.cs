@@ -44,7 +44,7 @@ public class LockOn : MonoBehaviour
 
         if (!isLocked)
         {
-            Debug.Log(targetIndex());
+            //Debug.Log(targetIndex());
             target = screenTargets[targetIndex()];
         }
 

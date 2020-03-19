@@ -14,6 +14,7 @@ public class Magic : MonoBehaviour
     PlayerStatus playerStatus;
 
     public bool cancelMagicHitbox;
+    public bool canUseMagic;
 
     public GameObject[] specialHitbox;
     public Transform specialSpawnPoint;
@@ -40,6 +41,8 @@ public class Magic : MonoBehaviour
         playerAttack = GetComponent<Attack>();
 
         anim = GetComponentInChildren<Animator>();
+
+        canUseMagic = true;
     }
 
     void Update()
@@ -55,6 +58,8 @@ public class Magic : MonoBehaviour
         if (anim.GetBool("attacking")) return;
         if (playerMove.dashing) return;
         if (!playerMove.isGrounded || playerAttack.canInputNextAttack) return;
+        if (!canUseMagic) return;
+
         if (playerStatus.mana < playerStatus.maxMana) return;
         if (playerElements.currentElement == Element.None) return;
 
@@ -90,5 +95,10 @@ public class Magic : MonoBehaviour
 
         special.GetComponent<Spell>().playerPos = transform;
 
+    }
+
+    public void CanUseMagicAttack(bool _state)
+    {
+        canUseMagic = _state;
     }
 }

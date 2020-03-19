@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    PlayerStatus playerStatus;
     CharacterController controller;
     Attack attack;
     private MovementInput input;
@@ -54,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         controller = GetComponent<CharacterController>();
+        playerStatus = GetComponent<PlayerStatus>();
         attack = GetComponent<Attack>();
 
         cam = Camera.main;
@@ -171,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashing)
         {
-            float wait = attackMoveTime;
+            //float wait = attackMoveTime;
 
             Vector3 movement = Vector3.zero;
             movement = transform.forward * dashMoveSpeed;
@@ -180,6 +182,34 @@ public class PlayerMovement : MonoBehaviour
 
             controller.Move(movement * Time.deltaTime);
         }
+    }
+
+    public void KnockBack(Vector3 _direction, float _power, float _time)
+    {
+        if (playerStatus.invincible) return;
+
+        StartCoroutine(KnockBackCoroutine(_direction, _power, _time));
+    }
+
+    IEnumerator KnockBackCoroutine(Vector3 _direction, float _power, float _time)
+    {
+        //controller.Move(_direction * _power * Time.deltaTime);
+
+        //yield return new WaitForSeconds(_time);
+
+        float wait = _time;
+
+        Vector3 movement = Vector3.zero;
+        movement = transform.forward * attackMoveSpeed;
+
+        while (wait > 0)
+        {
+            wait -= Time.deltaTime;
+            controller.Move(_direction * _power * Time.deltaTime);
+
+            yield return null;
+        }
+        yield return null;
     }
 
     void Jump()

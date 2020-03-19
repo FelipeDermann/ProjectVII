@@ -26,6 +26,7 @@ public class Attack : MonoBehaviour
 
     public bool canInputNextAttack;
     public bool attacking;
+    public bool canAttack;
 
     public BoxCollider getEnemyArea;
     public LayerMask enemyLayerMask;
@@ -47,6 +48,8 @@ public class Attack : MonoBehaviour
         playerMove = GetComponentInParent<PlayerMovement>();
         elements = GetComponent<Elements>();
         lockOn = GetComponent<LockOn>();
+
+        canAttack = true;
     }
 
     private void OnEnable()
@@ -133,6 +136,7 @@ public class Attack : MonoBehaviour
         if (!Input.GetButtonDown("light")) return;
         if (anim.GetBool("casting")) return;
         if (playerMove.dashing) return;
+        if (!canAttack) return;
 
         if (!attacking)
         {
@@ -160,6 +164,7 @@ public class Attack : MonoBehaviour
         if (!Input.GetButtonDown("heavy")) return;
         if (anim.GetBool("casting")) return;
         if (playerMove.dashing) return;
+        if (!canAttack) return;
 
         if (!attacking)
         {
@@ -229,5 +234,10 @@ public class Attack : MonoBehaviour
     public void ClearInputList()
     {
         inputs.Clear();
+    }
+
+    public void CanPlayerAttack(bool _state)
+    {
+        canAttack = _state;
     }
 }
