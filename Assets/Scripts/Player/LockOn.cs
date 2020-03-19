@@ -15,6 +15,8 @@ public class LockOn : MonoBehaviour
     public Transform target;
 
     public bool isLocked;
+    public bool canLock;
+    public bool checkIfBelnding;
 
     public Image aim;
     public Vector2 uiOffset;
@@ -22,6 +24,7 @@ public class LockOn : MonoBehaviour
     [Header("Camera Locking")]
     public Transform cameraPoint;
     public float pointDistance;
+    public CinemachineBrain mainCamera;
 
     private void OnEnable()
     {
@@ -32,10 +35,19 @@ public class LockOn : MonoBehaviour
         PlayerAnimation.TurnToEnemyIfLockedOn -= TurnToLockedEnemy;
     }
 
+    private void Start()
+    {
+        mainCamera = Camera.main.GetComponent<CinemachineBrain>();
+
+        canLock = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
         UserInterface();
+
+        CheckCameraBlending();
 
         if (isLocked && target == null) CameraLockOff();
 
@@ -48,14 +60,41 @@ public class LockOn : MonoBehaviour
             target = screenTargets[targetIndex()];
         }
 
-        if (Input.GetButtonDown("LockOn"))
+        if (Input.GetButtonDown("LockOn") && canLock)
         {
+            checkIfBelnding = true;
             if (isLocked) CameraLockOff();
             else CameraLockOn();
         }
 
         if(isLocked) CameraLocked();
 
+    }
+
+    void CheckCameraBlending()
+    {
+        if (checkIfBelnding)
+        {
+            Debug.Log("TESTING IF BLENDING");
+            if (mainCamera.IsBlending)
+            {
+                canLock = false;
+                normalCamera.m_XAxis.m_MaxSpeed = 0;
+                normalCamera.m_YAxis.m_MaxSpeed = 0;
+            }
+            else
+            {
+                canLock = true;
+                checkIfBelnding = false;
+                normalCamera.m_XAxis.m_MaxSpeed = 300;
+                normalCamera.m_YAxis.m_MaxSpeed = 2;
+            }
+        }
+    }
+
+    public void CAMERATESTE()
+    {
+        Debug.Log("TESTE DE CAMERA");
     }
 
     public void TurnToLockedEnemy()
@@ -70,7 +109,10 @@ public class LockOn : MonoBehaviour
         isLocked = false;
 
         aim.enabled = false;
-        normalCamera.gameObject.SetActive(true);
+
+        normalCamera.m_XAxis.m_MaxSpeed = 300;
+        normalCamera.m_YAxis.m_MaxSpeed = 2;
+
         lockOnCamera.gameObject.SetActive(false);
     }
 
@@ -80,7 +122,10 @@ public class LockOn : MonoBehaviour
         isLocked = true;
 
         aim.enabled = true;
-        normalCamera.gameObject.SetActive(false);
+
+        normalCamera.m_XAxis.m_MaxSpeed = 0;
+        normalCamera.m_YAxis.m_MaxSpeed = 0;
+        
         lockOnCamera.gameObject.SetActive(true);
         lockOnCamera.LookAt = target;
     }

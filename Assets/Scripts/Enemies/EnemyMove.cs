@@ -13,15 +13,13 @@ public class EnemyMove : MonoBehaviour
     public bool canMove;
     public bool knocked;
     public bool knockedDown;
-    
-    public float speed;
+    public bool playerInRange;
 
+    [Header("Target point that the enemy is running towards")]
     public Transform target;
-
-    public float knockbackPower;
-    public float knockedTime;
-
-    public float quickHitCooldownTime;
+    
+    [Header("Time that enemy will chase player before giving up")]
+    public float chaseTime;
 
     GameObject playerPointToLookAt;
 
@@ -29,7 +27,7 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        target = FindObjectOfType<PlayerMovement>().transform;
+        //target = FindObjectOfType<PlayerMovement>().transform;
         agent = GetComponent<NavMeshAgent>();
         enemy = GetComponent<Enemy>();
         rb = GetComponent<Rigidbody>();
@@ -40,7 +38,8 @@ public class EnemyMove : MonoBehaviour
         //if(Input.GetKeyDown(KeyCode.Alpha3)) TurnToPlayer();
         if (canMove && !knocked)
         {
-            if (target.position != agent.destination) agent.SetDestination(target.position);
+            if (target != null) 
+                if(target.position != agent.destination) agent.SetDestination(target.position);
         }
         if (!knocked) anim.SetFloat("Blend", agent.velocity.magnitude);
     }
@@ -172,6 +171,25 @@ public class EnemyMove : MonoBehaviour
     public void ChangeCanMoveState(bool _state)
     {
         canMove = _state;
+    }
+
+    public void SetTarget(Transform _target)
+    {
+        CancelInvoke(nameof(RemoveTarget));
+        target = _target;
+    }
+
+    public void IsPlayerInRange(bool _state)
+    {
+        playerInRange = _state;
+
+        if (!_state) Invoke(nameof(RemoveTarget), chaseTime);
+    }
+
+    void RemoveTarget()
+    {
+        target = null;
+        agent.SetDestination(transform.position);
     }
 
     //IEnumerator MoveForward()
