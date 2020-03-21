@@ -48,7 +48,7 @@ public class PlayerHUD : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            playerStatus.TakeDamage(10);
+            playerStatus.DecreaseHealth(10);
             UpdateHealthBar();
         }
     }
