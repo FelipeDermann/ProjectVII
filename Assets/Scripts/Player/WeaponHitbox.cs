@@ -20,15 +20,23 @@ public class WeaponHitbox : MonoBehaviour
     {
         DashBehaviour.DashStart += DeactivateHitbox;
         DisableAttackState.FinishedAttack += DeactivateHitbox;
+
         PlayerAnimation.EndHitbox += DeactivateHitbox;
         PlayerAnimation.StartHitbox += ActivateHitbox;
+
+        PlayerAnimation.EndTrail += TrailOff;
+        PlayerAnimation.StartTrail += TrailOn;
     }
     private void OnDisable()
     {
         DashBehaviour.DashStart += DeactivateHitbox;
         DisableAttackState.FinishedAttack -= DeactivateHitbox;
+
         PlayerAnimation.EndHitbox -= DeactivateHitbox;
         PlayerAnimation.StartHitbox -= ActivateHitbox;
+
+        PlayerAnimation.EndTrail += TrailOff;
+        PlayerAnimation.StartTrail += TrailOn;
     }
 
     // Start is called before the first frame update
@@ -54,13 +62,11 @@ public class WeaponHitbox : MonoBehaviour
     public void ActivateHitbox()
     {
         active = true;
-        TrailOn();
     }
 
     public void DeactivateHitbox()
     {
         active = false;
-        TrailOff();
     }
 
     private void OnTriggerEnter(Collider other)

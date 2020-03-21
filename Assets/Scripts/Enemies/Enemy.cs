@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public Transform deathParticlesSpawnPoint;
 
     public EnemySpawner mySpawner;
+    public WaveSpawner myWaveSpawner;
 
     //public LifeBar lifeBar;
     public LifeBarEnemy lifeBar;
@@ -47,6 +48,7 @@ public class Enemy : MonoBehaviour
         GameObject deathParticleClone = Instantiate(deathParticles, deathParticlesSpawnPoint.position, transform.rotation);
 
         if (mySpawner != null) mySpawner.CallSpawnEnemy();
+        if (myWaveSpawner != null) myWaveSpawner.SpawnedEnemyDead();
 
         Destroy(deathParticleClone, 4);
         Destroy(gameObject);

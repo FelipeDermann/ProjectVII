@@ -8,6 +8,9 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action StartHitbox;
     public static event Action EndHitbox;
 
+    public static event Action StartTrail;
+    public static event Action EndTrail;
+
     public static event Action SpawnMagicHitbox;
     public static event Action SpawnComboHitbox;
 
@@ -38,6 +41,18 @@ public class PlayerAnimation : MonoBehaviour
     {
         StartNextAttackInput?.Invoke();
         Debug.Log("CAN INPUT NEXT ATTACK");
+    }
+
+    public void ActivateTrail()
+    {
+        StartTrail?.Invoke();
+        Debug.Log("HITBOX ON");
+    }
+
+    public void DeactivateTrail()
+    {
+        EndTrail?.Invoke();
+        Debug.Log("HITBOX OFF");
     }
 
     public void ActivateHitbox()
