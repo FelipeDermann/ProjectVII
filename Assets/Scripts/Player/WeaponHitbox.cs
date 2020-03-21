@@ -16,6 +16,11 @@ public class WeaponHitbox : MonoBehaviour
 
     public float damage;
 
+    public ParticleSystem[] attackTrail;
+    public ParticleSystem[] attackParticle;
+    public float particlePosXOn, particlePosXOff, particleLenghtOn, particleLenghtOff;
+
+
     private void OnEnable()
     {
         DashBehaviour.DashStart += DeactivateHitbox;
@@ -52,11 +57,31 @@ public class WeaponHitbox : MonoBehaviour
 
     void TrailOn()
     {
-        weaponTrail.Emit = true;
+        //weaponTrail.Emit = true;
+        foreach (var particle in attackParticle)
+        {
+            var particleShape = particle.shape;
+            particleShape.radius = particleLenghtOn;
+            particleShape.position = new Vector3(particlePosXOn, 0, 0);
+        }
+        foreach (var trail in attackTrail)
+        {
+            trail.Play();
+        }
     }
     void TrailOff()
     {
-        weaponTrail.Emit = false;
+        //weaponTrail.Emit = false;
+        foreach (var particle in attackParticle)
+        {
+            var particleShape = particle.shape;
+            particleShape.radius = particleLenghtOff;
+            particleShape.position = new Vector3(particlePosXOff, 0, 0);
+        }
+        foreach (var trail in attackTrail)
+        {
+            trail.Stop();
+        }
     }
 
     public void ActivateHitbox()

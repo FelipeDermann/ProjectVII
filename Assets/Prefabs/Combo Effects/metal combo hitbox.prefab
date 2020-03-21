@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7234171031332761186}
   - component: {fileID: 7234171031332761187}
   - component: {fileID: 8736248286156528551}
+  - component: {fileID: 7178102110551258657}
   m_Layer: 0
   m_Name: metal combo hitbox
   m_TagString: Untagged
@@ -106,12 +107,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdb5d77019d5e248a7ae89f9ff31135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMagic: {fileID: 0}
+  playerStatus: {fileID: 0}
   knockbackForce: 4
   knockupForce: 0
   knockTime: 2
   knockType: 0
   damage: 40
+--- !u!114 &7178102110551258657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7234171031332761184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c14d41fe46bca147b232362318dcd42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboFX: {fileID: 1357202848333763073, guid: f54216d64d0a09e479eca13da8f42292, type: 3}
+  destroyParticleTimer: 3
+  rotParticle: {x: -90, y: 0, z: 0}
+  posParticle: {x: 0, y: 0.5, z: 0}
 --- !u!1 &7234171032365979842
 GameObject:
   m_ObjectHideFlags: 0
