@@ -60,7 +60,21 @@ public class Enemy : MonoBehaviour
         if (move.knockedDown) return;
 
         currentHealth -= damage;
+        CheckIfDead();
+
         lifeBar.UpdateLifeBar(currentHealth, maxHealth);
+    }
+
+    public void CheckIfDead()
+    {
+        if (currentHealth <= 0)
+        {
+            lifeBar.DisableBar();
+
+            anim.SetTrigger("die");
+            anim.SetBool("dead", true);
+            dead = true;
+        }
     }
 
 }

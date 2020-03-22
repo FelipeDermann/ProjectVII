@@ -92,8 +92,6 @@ public class Attack : MonoBehaviour
 
         LightAttack();
         HeavyAttack();
-
-        //if (Input.GetKeyDown(KeyCode.F)) CheckInputCombination();
     }
 
     public void LookToEnemy()

@@ -73543,8 +73543,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.06666667
-    functionName: DeactivateTrail
+  - time: 1.0666667
+    functionName: ActivateTrail
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -73552,6 +73552,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1.1666666
     functionName: StartCombo
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.2
+    functionName: DeactivateTrail
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

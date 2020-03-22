@@ -55,6 +55,12 @@ public class WeaponHitbox : MonoBehaviour
         weaponTrail.Emit = false;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z)) TrailOn();
+        if (Input.GetKeyDown(KeyCode.X)) TrailOff();
+    }
+
     void TrailOn()
     {
         //weaponTrail.Emit = true;

@@ -12,6 +12,7 @@ public class ComboParticlesSpawner : MonoBehaviour
     void Start()
     {
         var combo = Instantiate(comboFX, transform.position + posParticle, Quaternion.Euler(rotParticle));
+        combo.transform.eulerAngles = new Vector3(combo.transform.eulerAngles.x, transform.eulerAngles.y, combo.transform.eulerAngles.z);
         Destroy(combo, destroyParticleTimer);
     }
 }

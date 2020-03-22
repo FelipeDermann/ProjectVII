@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireWave : MonoBehaviour
+public class TravelForward : MonoBehaviour
 {
     Rigidbody rb;
     public float speed;

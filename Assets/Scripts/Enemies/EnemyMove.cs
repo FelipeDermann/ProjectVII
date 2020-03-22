@@ -62,7 +62,7 @@ public class EnemyMove : MonoBehaviour
         if (IsInvoking(nameof(MoveAgain))) CancelInvoke(nameof(MoveAgain));
         Invoke(nameof(MoveAgain), time);
 
-        CheckIfDead();
+        enemy.CheckIfDead();
     }
 
     public void SlightKnockUp(Vector3 _direction, float forceAmount, float upForceAmount, float time)
@@ -84,7 +84,7 @@ public class EnemyMove : MonoBehaviour
         if (IsInvoking(nameof(MoveAgain))) CancelInvoke(nameof(MoveAgain));
         Invoke(nameof(MoveAgain), time);
 
-        CheckIfDead();
+        enemy.CheckIfDead();
     }
 
     public void KnockAway(Vector3 _direction, float forceAmount, float time)
@@ -105,7 +105,7 @@ public class EnemyMove : MonoBehaviour
 
         anim.SetTrigger("knockaway");
 
-        CheckIfDead();
+        enemy.CheckIfDead();
     }
 
     public void KnockUp(Vector3 _direction, float forceAmount, float time)
@@ -126,7 +126,7 @@ public class EnemyMove : MonoBehaviour
 
         anim.SetTrigger("knockup");
 
-        CheckIfDead();
+        enemy.CheckIfDead();
     }
 
     public void MoveAgain()
@@ -148,18 +148,6 @@ public class EnemyMove : MonoBehaviour
         agent.enabled = true;
         rb.isKinematic = true;
         knocked = false;
-    }
-
-    public void CheckIfDead()
-    {
-        if (enemy.currentHealth <= 0)
-        {
-            enemy.lifeBar.DisableBar();
-
-            anim.SetTrigger("die");
-            anim.SetBool("dead", true);
-            enemy.dead = true;
-        }
     }
 
     public void TurnToPlayer()

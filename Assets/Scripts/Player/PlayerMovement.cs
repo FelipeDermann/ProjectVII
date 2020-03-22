@@ -178,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 movement = Vector3.zero;
             movement = transform.forward * dashMoveSpeed;
 
-            Debug.Log(movement);
+            //Debug.Log(movement);
 
             controller.Move(movement * Time.deltaTime);
         }
