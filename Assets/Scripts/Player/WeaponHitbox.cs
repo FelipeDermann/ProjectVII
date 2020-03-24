@@ -6,6 +6,7 @@ public class WeaponHitbox : MonoBehaviour
 {
     public bool active;
     public PlayerStatus playerStatus;
+    public PlayerSounds playerSounds;
 
     Transform playerPos;
 
@@ -49,6 +50,7 @@ public class WeaponHitbox : MonoBehaviour
     {
         active = false;
         playerStatus = GetComponentInParent<PlayerStatus>();
+        playerSounds = GetComponentInParent<PlayerSounds>();
         playerPos = FindObjectOfType<PlayerMovement>().transform;
 
         weaponTrail = GetComponentInParent<MeleeWeaponTrail>();
@@ -113,10 +115,13 @@ public class WeaponHitbox : MonoBehaviour
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
 
+                if (!enemy.dead && !enemyMove.knockedDown) playerSounds.PlaySlashSound();
+
                 enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
                 enemy.TakeDamage(damage);
 
                 if (!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
+
 
             }
         }
