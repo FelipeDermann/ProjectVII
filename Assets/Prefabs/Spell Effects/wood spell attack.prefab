@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 726640583965271551}
   - component: {fileID: 726640583965271521}
   - component: {fileID: 726640583965271548}
-  - component: {fileID: 726640583965271549}
+  - component: {fileID: 3354001983769718867}
   m_Layer: 0
-  m_Name: wood spell attack
+  m_Name: Wood Spell Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,8 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 5, y: 2, z: 3}
-  m_Children:
-  - {fileID: 1960666796044226488}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -70,6 +69,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPos: {fileID: 0}
---- !u!114 &726640583965271549
+--- !u!114 &3354001983769718867
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,136 +133,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 726640583965271526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e914c670835f494d99d6fa253872860, type: 3}
+  m_Script: {fileID: 11500000, guid: f03e9341844fb864ead97a8203e4c650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodSpellController: {fileID: 0}
-  woodSpellToSpawn: {fileID: 726640583965271526}
-  spawnOffset: 4
-  riseSpeed: 4
-  downSpeed: 2
   knockbackForce: 0
   knockupForce: 0
-  knockTime: 2
+  knockTime: 0
   knockType: 2
-  damage: 40
---- !u!1001 &3256971745658921603
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 726640583965271522}
-    m_Modifications:
-    - target: {fileID: 3892982116759465278, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_Name
-      value: Wood Combo particle
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.251
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465276, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: ShapeModule.type
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465276, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 4.7428484
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465276, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.y
-      value: 3.012169
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465276, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465276, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: startDelay.scalar
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465276, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465276, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465276, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 3892982116759465276, guid: ddec3010f30c9d744b82843f047eada4,
-        type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ddec3010f30c9d744b82843f047eada4, type: 3}
---- !u!4 &1960666796044226488 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3892982116759465275, guid: ddec3010f30c9d744b82843f047eada4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3256971745658921603}
-  m_PrefabAsset: {fileID: 0}
+  damage: 50
+  projectileSpeed: 8
+  projectileLifeTime: 5

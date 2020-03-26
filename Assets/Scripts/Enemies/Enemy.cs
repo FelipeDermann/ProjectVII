@@ -65,6 +65,16 @@ public class Enemy : MonoBehaviour
         lifeBar.UpdateLifeBar(currentHealth, maxHealth);
     }
 
+    public void DecreaseHealth(float damage)
+    {
+        if (dead) return;
+        if (move.knockedDown) return;
+
+        currentHealth -= damage;
+
+        lifeBar.UpdateLifeBar(currentHealth, maxHealth);
+    }
+
     public void CheckIfDead()
     {
         if (currentHealth <= 0)

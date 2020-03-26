@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8564617931663412234}
   - component: {fileID: 8564617931663412233}
   - component: {fileID: 8564617931663412232}
+  - component: {fileID: -7315478199329591792}
   m_Layer: 0
   m_Name: Fire Combo
   m_TagString: Untagged
@@ -4815,6 +4816,25 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-7315478199329591792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8564617931663412239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf2f8dd2b503d94ab9d3b367726c0e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipToPlay: {fileID: 8300000, guid: 32e40e1b044509d48987e791949c57c9, type: 3}
+  clipVolume: 1
+  timeToDestroyEmitterAfterDeath: 0
+  timeOfAudioFadeOut: 0.5
+  loopSound: 1
+  audioEmitterPrefab: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
+    type: 3}
 --- !u!1001 &3119668799415440061
 PrefabInstance:
   m_ObjectHideFlags: 0

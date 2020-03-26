@@ -86,5 +86,10 @@ public class BladeSpecial : MonoBehaviour
             BoxCollider box = GetComponentInChildren<BoxCollider>();
             box.enabled = false;
         }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

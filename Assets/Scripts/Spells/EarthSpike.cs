@@ -36,7 +36,7 @@ public class EarthSpike : MonoBehaviour
             knockbackDirection.Normalize();
             knockbackDirection.y = 0;
 
-            enemy.TakeDamage(damage);
+            enemy.DecreaseHealth(damage);
 
             switch (knockType)
             {

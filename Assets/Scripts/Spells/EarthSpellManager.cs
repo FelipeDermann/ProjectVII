@@ -26,7 +26,7 @@ public class EarthSpellManager : MonoBehaviour
 
         anim = GetComponent<Animator>();
 
-        Destroy(gameObject, timeUntilDeath);
+        Destroy(transform.parent.gameObject, timeUntilDeath);
     }
 
     public void PlayParticle()
@@ -34,5 +34,10 @@ public class EarthSpellManager : MonoBehaviour
         GameObject particle = Instantiate(earthParticle, transform.parent.transform.position, transform.rotation);
         particle.transform.eulerAngles = new Vector3(-90,0,0);
         Destroy(particle, 2);
+    }
+
+    public void Activate()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 }

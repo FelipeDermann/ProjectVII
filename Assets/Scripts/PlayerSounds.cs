@@ -15,19 +15,35 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip hurtSound;
     public AudioClip deathSound;
 
-    [Header("Combos")]
-    public AudioClip waterComboSound;
-    public AudioClip fireComboSound;
-    public AudioClip earthComboSound;
-    public AudioClip metalComboSound;
-    public AudioClip woodComboSound;
+    //[Header("Combos")]
+    //public AudioClip waterComboSound;
+    //public AudioClip fireComboSound;
+    //public AudioClip earthComboSound;
+    //public AudioClip metalComboSound;
+    //public AudioClip woodComboSound;
 
-    [Header("Specials")]
-    public AudioClip waterSpecialSound;
-    public AudioClip fireSpecialSound;
-    public AudioClip earthSpecialSound;
-    public AudioClip metalSpecialSound;
-    public AudioClip woodSpecialSound;
+    //[Header("Specials")]
+    //public AudioClip waterSpecialSound;
+    //public AudioClip fireSpecialSound;
+    //public AudioClip earthSpecialSound;
+    //public AudioClip metalSpecialSound;
+    //public AudioClip woodSpecialSound;
+
+    [Header("Basic Sounds Volumes")]
+    [Range(0.0f, 1.0f)]
+    public float stepsVolume;
+    [Range(0.0f, 1.0f)]
+    public float slashVolume;
+    [Range(0.0f, 1.0f)]
+    public float swingVolume;
+    [Range(0.0f, 1.0f)]
+    public float swingHeavyVolume;
+    [Range(0.0f, 1.0f)]
+    public float dashVolume;
+    [Range(0.0f, 1.0f)]
+    public float hurtVolume;
+    [Range(0.0f, 1.0f)]
+    public float deathVolume;
 
     int stepToPlayIndex;
 
@@ -60,7 +76,8 @@ public class PlayerSounds : MonoBehaviour
 
     void PlayStepSound()
     {
-        audioSource.PlayOneShot(stepSounds[stepToPlayIndex]);
+        //audioSource.volume = stepsVolume;
+        audioSource.PlayOneShot(stepSounds[stepToPlayIndex], stepsVolume);
 
         stepToPlayIndex += 1;
         if (stepToPlayIndex > 1) stepToPlayIndex = 0;
@@ -68,29 +85,35 @@ public class PlayerSounds : MonoBehaviour
 
     public void PlaySlashSound()
     {
-        audioSource.PlayOneShot(slashSound);
+        //audioSource.volume = slashVolume;
+        audioSource.PlayOneShot(slashSound, slashVolume);
     }
 
     void PlaySwingSound()
     {
-        audioSource.PlayOneShot(swingSound);
+        //audioSource.volume = swingVolume;
+        audioSource.PlayOneShot(swingSound, swingVolume);
     }
 
     void PlayHeavySwingSound()
     {
-        audioSource.PlayOneShot(heavySwingSound);
+        //audioSource.volume = swingHeavyVolume;
+        audioSource.PlayOneShot(heavySwingSound, swingHeavyVolume);
     }
     void PlayDashSound()
     {
-        audioSource.PlayOneShot(dashSound);
+        //audioSource.volume = dashVolume;
+        audioSource.PlayOneShot(dashSound, dashVolume);
     }
 
     void PlayHurtSound()
     {
-        audioSource.PlayOneShot(hurtSound);
+        //audioSource.volume = hurtVolume;
+        audioSource.PlayOneShot(hurtSound, hurtVolume);
     }
     void PlayDeathSound()
     {
-        audioSource.PlayOneShot(deathSound);
+        //audioSource.volume = deathVolume;
+        audioSource.PlayOneShot(deathSound, deathVolume);
     }
 }

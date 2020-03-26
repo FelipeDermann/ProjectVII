@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1357202848333763076}
   - component: {fileID: 1357202848333763079}
   - component: {fileID: 1357202848333763078}
+  - component: {fileID: -422750040336063370}
   m_Layer: 0
   m_Name: Metal Combo
   m_TagString: Untagged
@@ -4813,6 +4814,23 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-422750040336063370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357202848333763073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf2f8dd2b503d94ab9d3b367726c0e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipToPlay: {fileID: 8300000, guid: cbb3a14ad1ed8bc439acb126bfe8b867, type: 3}
+  clipVolume: 1
+  timeToDestroyEmitterAfterDeath: 1
+  audioEmitterPrefab: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
+    type: 3}
 --- !u!1001 &106803615640810740
 PrefabInstance:
   m_ObjectHideFlags: 0

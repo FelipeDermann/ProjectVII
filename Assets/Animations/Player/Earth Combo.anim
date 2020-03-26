@@ -75472,7 +75472,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.625
-    functionName: TurnToEnemy
+    functionName: ActivateTrail
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

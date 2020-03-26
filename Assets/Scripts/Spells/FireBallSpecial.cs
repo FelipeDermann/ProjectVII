@@ -9,6 +9,7 @@ public class FireBallSpecial : MonoBehaviour
 
     [Header("Basic Attributes")]
     public float speed;
+    public float lifetime;
     public float damage;
     public float explosionRadius;
     public GameObject explosionparticle;
@@ -26,6 +27,8 @@ public class FireBallSpecial : MonoBehaviour
         rb.velocity = transform.forward * speed;
 
         spell = GetComponent<Spell>();
+
+        Invoke(nameof(Death), lifetime);
     }
 
     void Explosion()
@@ -43,7 +46,7 @@ public class FireBallSpecial : MonoBehaviour
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
 
-                enemy.TakeDamage(damage);
+                enemy.DecreaseHealth(damage);
 
                 switch (knockType)
                 {
@@ -62,19 +65,26 @@ public class FireBallSpecial : MonoBehaviour
         }
     }
 
+    void Death()
+    {
+        Collider col = GetComponent<Collider>();
+        col.enabled = false;
+
+        GameObject particle = Instantiate(explosionparticle, transform.position, transform.rotation);
+        Destroy(particle, 2);
+
+        Explosion();
+
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy") || other.CompareTag("Ground"))
+        if(other.CompareTag("Enemy") || other.CompareTag("Ground") || other.CompareTag("Wall"))
         {
-            Collider col = GetComponent<Collider>();
-            col.enabled = false;
-
-            GameObject particle = Instantiate(explosionparticle, transform.position, transform.rotation);
-            Destroy(particle, 2);
-
-            Explosion();
-
-            Destroy(gameObject);
+            Death();
         }
     }
+
+   
 }

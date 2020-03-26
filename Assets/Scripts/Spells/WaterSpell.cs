@@ -52,7 +52,8 @@ public class WaterSpell : MonoBehaviour
                 if (numberOfHitsDone != maxNumberOfHits) enemyMove.SlightKnockUp(-knockbackDirection, KnockbackForce, smallKnockupForce, KnockbackTimeToRecover);
                 else enemyMove.KnockUp(-knockbackDirection, knockbackForceOnFinalHit, hurtTime);
 
-                enemy.TakeDamage(damagePerHit);
+                enemy.DecreaseHealth(damagePerHit);
+
             }
         }
         
