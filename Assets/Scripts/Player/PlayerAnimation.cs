@@ -8,6 +8,9 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action StartHitbox;
     public static event Action EndHitbox;
 
+    public static event Action<bool> DashSpeedStart;
+    public static event Action<bool> DashSpeedEnd;
+
     public static event Action StartTrail;
     public static event Action EndTrail;
 
@@ -22,6 +25,15 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action RestartScene;
 
     public float secondsOfInputDetection;
+
+    public void DashStart()
+    {
+        DashSpeedStart?.Invoke(true);
+    }
+    public void DashEnd()
+    {
+        DashSpeedEnd?.Invoke(false);
+    }
 
     public void CastingAnimation()
     {

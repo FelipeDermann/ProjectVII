@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     PlayerStatus playerStatus;
+    LockOn playerLockOn;
     CharacterController controller;
     Attack attack;
     private MovementInput input;
@@ -14,9 +15,11 @@ public class PlayerMovement : MonoBehaviour
     public bool jumped;
     public bool canDash;
     public bool dashing;
+    public bool sideStepCanGainSpeed;
     public float dashMoveSpeed;
     public float attackMoveSpeed;
     public float attackMoveTime;
+    Vector3 desiredMoveDirection;
 
     Camera cam;
 
@@ -39,6 +42,9 @@ public class PlayerMovement : MonoBehaviour
 
         DashBehaviour.DashStart += DashStart;
         DashBehaviour.DashEnd += DashEnd;
+
+        PlayerAnimation.DashSpeedStart += CanSideStepApplySpeed;
+        PlayerAnimation.DashSpeedEnd += CanSideStepApplySpeed;
     }
     private void OnDisable()
     {
@@ -47,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
 
         DashBehaviour.DashStart -= DashStart;
         DashBehaviour.DashEnd -= DashEnd;
+
+        PlayerAnimation.DashSpeedStart -= CanSideStepApplySpeed;
+        PlayerAnimation.DashSpeedEnd -= CanSideStepApplySpeed;
     }
     // Start is called before the first frame update
     void Start()
@@ -56,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller = GetComponent<CharacterController>();
         playerStatus = GetComponent<PlayerStatus>();
+        playerLockOn = GetComponent<LockOn>();
         attack = GetComponent<Attack>();
 
         cam = Camera.main;
@@ -69,12 +79,64 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("Blend", input.Speed);
 
         //canJump = !attack.canInputNextAttack;
-
-        Dash();
-        DashMove();
+        SideStep();
+        SideStepSpeed();
+        //Dash();
+        //DashMove();
         //Jump();
         Gravity();
         DetectGround();
+    }
+
+    void SideStep()
+    {
+        if (!Input.GetButtonDown("SideStepR") && !Input.GetButtonDown("SideStepL")) return;
+        if (anim.GetBool("casting")) return;
+        if (dashing) return;
+        if (!canDash) return;
+
+        var camera = Camera.main;
+        var forward = cam.transform.forward;
+        var right = cam.transform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        if (playerLockOn.isLocked)
+        { 
+            if (Input.GetButtonDown("SideStepR")) desiredMoveDirection = forward * 0 + right * 1;
+            if (Input.GetButtonDown("SideStepL")) desiredMoveDirection = forward * 0 + right * -1;
+        }
+        else
+        {
+            if (Input.GetButtonDown("SideStepR")) desiredMoveDirection = transform.right;
+            if (Input.GetButtonDown("SideStepL")) desiredMoveDirection = -transform.right;
+        }
+        //controller.Move(desiredMoveDirection * Time.deltaTime * dashMoveSpeed);
+
+        dashing = true;
+        if (Input.GetButtonDown("SideStepL")) anim.SetTrigger("dashleft");
+        if (Input.GetButtonDown("SideStepR")) anim.SetTrigger("dashright");
+
+        anim.SetBool("dashing", dashing);
+        Debug.Log("DASH LEFT");
+    }
+
+    void SideStepSpeed()
+    {
+        if (sideStepCanGainSpeed)
+        {
+            controller.Move(desiredMoveDirection * Time.deltaTime * dashMoveSpeed);
+        }
+    }
+
+    void CanSideStepApplySpeed(bool _state)
+    {
+        Debug.Log("SIDESTEP YO");
+        sideStepCanGainSpeed = _state;
     }
 
     void Dash()
@@ -116,6 +178,7 @@ public class PlayerMovement : MonoBehaviour
 
         attack.DisableNextAttackInput();
     }
+
     public void DashEnd()
     {
         Debug.Log("DASH END ");
@@ -127,6 +190,21 @@ public class PlayerMovement : MonoBehaviour
         canJump = true;
         input.velocity = 9;
         anim.SetBool("dashing", dashing);
+    }
+
+    void DashMove()
+    {
+        if (dashing)
+        {
+            //float wait = attackMoveTime;
+
+            Vector3 movement = Vector3.zero;
+            movement = transform.forward * dashMoveSpeed;
+
+            //Debug.Log(movement);
+
+            controller.Move(movement * Time.deltaTime);
+        }
     }
 
     public void CanWalkOn()
@@ -167,21 +245,6 @@ public class PlayerMovement : MonoBehaviour
         //    yield return null;
         //}
         yield return null;
-    }
-
-    void DashMove()
-    {
-        if (dashing)
-        {
-            //float wait = attackMoveTime;
-
-            Vector3 movement = Vector3.zero;
-            movement = transform.forward * dashMoveSpeed;
-
-            //Debug.Log(movement);
-
-            controller.Move(movement * Time.deltaTime);
-        }
     }
 
     public void KnockBack(Vector3 _direction, float _power, float _time)
