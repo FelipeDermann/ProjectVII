@@ -102073,8 +102073,22 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.17142858
+  - time: 0
+    functionName: DashStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.08571429
     functionName: PlayDashSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.74285716
+    functionName: DashEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

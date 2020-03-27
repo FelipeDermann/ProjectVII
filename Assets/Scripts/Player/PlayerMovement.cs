@@ -15,10 +15,10 @@ public class PlayerMovement : MonoBehaviour
     public bool jumped;
     public bool canDash;
     public bool dashing;
-    public bool sideStepCanGainSpeed;
+    public bool dashCanGainSpeed;
+    public bool attackCanGainSpeed;
     public float dashMoveSpeed;
     public float attackMoveSpeed;
-    public float attackMoveTime;
     Vector3 desiredMoveDirection;
 
     Camera cam;
@@ -43,8 +43,11 @@ public class PlayerMovement : MonoBehaviour
         DashBehaviour.DashStart += DashStart;
         DashBehaviour.DashEnd += DashEnd;
 
-        PlayerAnimation.DashSpeedStart += CanSideStepApplySpeed;
-        PlayerAnimation.DashSpeedEnd += CanSideStepApplySpeed;
+        PlayerAnimation.DashSpeedStart += CanDashApplySpeed;
+        PlayerAnimation.DashSpeedEnd += CanDashApplySpeed;
+
+        PlayerAnimation.AttackMoveStart += CanMoveWhenAttacking;
+        PlayerAnimation.AttackMoveEnd += CanMoveWhenAttacking;
     }
     private void OnDisable()
     {
@@ -54,8 +57,11 @@ public class PlayerMovement : MonoBehaviour
         DashBehaviour.DashStart -= DashStart;
         DashBehaviour.DashEnd -= DashEnd;
 
-        PlayerAnimation.DashSpeedStart -= CanSideStepApplySpeed;
-        PlayerAnimation.DashSpeedEnd -= CanSideStepApplySpeed;
+        PlayerAnimation.DashSpeedStart -= CanDashApplySpeed;
+        PlayerAnimation.DashSpeedEnd -= CanDashApplySpeed;
+
+        PlayerAnimation.AttackMoveStart -= CanMoveWhenAttacking;
+        PlayerAnimation.AttackMoveEnd -= CanMoveWhenAttacking;
     }
     // Start is called before the first frame update
     void Start()
@@ -78,65 +84,12 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetFloat("Blend", input.Speed);
 
-        //canJump = !attack.canInputNextAttack;
-        SideStep();
-        SideStepSpeed();
-        //Dash();
-        //DashMove();
+        Dash();
+        DashMove();
+        AttackMove();
         //Jump();
         Gravity();
         DetectGround();
-    }
-
-    void SideStep()
-    {
-        if (!Input.GetButtonDown("SideStepR") && !Input.GetButtonDown("SideStepL")) return;
-        if (anim.GetBool("casting")) return;
-        if (dashing) return;
-        if (!canDash) return;
-
-        var camera = Camera.main;
-        var forward = cam.transform.forward;
-        var right = cam.transform.right;
-
-        forward.y = 0f;
-        right.y = 0f;
-
-        forward.Normalize();
-        right.Normalize();
-
-        if (playerLockOn.isLocked)
-        { 
-            if (Input.GetButtonDown("SideStepR")) desiredMoveDirection = forward * 0 + right * 1;
-            if (Input.GetButtonDown("SideStepL")) desiredMoveDirection = forward * 0 + right * -1;
-        }
-        else
-        {
-            if (Input.GetButtonDown("SideStepR")) desiredMoveDirection = transform.right;
-            if (Input.GetButtonDown("SideStepL")) desiredMoveDirection = -transform.right;
-        }
-        //controller.Move(desiredMoveDirection * Time.deltaTime * dashMoveSpeed);
-
-        dashing = true;
-        if (Input.GetButtonDown("SideStepL")) anim.SetTrigger("dashleft");
-        if (Input.GetButtonDown("SideStepR")) anim.SetTrigger("dashright");
-
-        anim.SetBool("dashing", dashing);
-        Debug.Log("DASH LEFT");
-    }
-
-    void SideStepSpeed()
-    {
-        if (sideStepCanGainSpeed)
-        {
-            controller.Move(desiredMoveDirection * Time.deltaTime * dashMoveSpeed);
-        }
-    }
-
-    void CanSideStepApplySpeed(bool _state)
-    {
-        Debug.Log("SIDESTEP YO");
-        sideStepCanGainSpeed = _state;
     }
 
     void Dash()
@@ -186,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
         anim.ResetTrigger("dash");
         CanWalkOn();
 
+        dashCanGainSpeed = false;
         dashing = false;
         canJump = true;
         input.velocity = 9;
@@ -194,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
 
     void DashMove()
     {
-        if (dashing)
+        if (dashCanGainSpeed)
         {
             //float wait = attackMoveTime;
 
@@ -205,6 +159,11 @@ public class PlayerMovement : MonoBehaviour
 
             controller.Move(movement * Time.deltaTime);
         }
+    }
+
+    void CanDashApplySpeed(bool _state)
+    {
+        dashCanGainSpeed = _state;
     }
 
     public void CanWalkOn()
@@ -219,32 +178,19 @@ public class PlayerMovement : MonoBehaviour
         canJump = false;
     }
 
-    void EnableMoveCoroutine(float _time)
+    void AttackMove()
     {
-        StartCoroutine(nameof(MoveCountdownCoroutine), _time);
+        if (attackCanGainSpeed)
+        {
+            Vector3 movement = Vector3.zero;
+            movement = transform.forward * attackMoveSpeed;
+            controller.Move(movement * Time.deltaTime);
+        }
     }
 
-    IEnumerator MoveCountdownCoroutine(float _time)
+    public void CanMoveWhenAttacking(bool _state)
     {
-        yield return new WaitForSeconds(_time);
-        StartCoroutine(nameof(MoveForward));
-    }
-
-    IEnumerator MoveForward()
-    {
-        //float wait = attackMoveTime;
-
-        //Vector3 movement = Vector3.zero;
-        //movement = transform.forward * attackMoveSpeed;
-
-        //while (wait > 0)
-        //{
-        //    wait -= Time.deltaTime;
-        //    controller.Move(movement * Time.deltaTime);
-
-        //    yield return null;
-        //}
-        yield return null;
+        attackCanGainSpeed = _state;
     }
 
     public void KnockBack(Vector3 _direction, float _power, float _time)

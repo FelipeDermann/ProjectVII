@@ -6,6 +6,8 @@ using Cinemachine;
 
 public class LockOn : MonoBehaviour
 {
+    int targetIndexToUse;
+
     [Header("Cameras")]
     public CinemachineFreeLook normalCamera;
     public CinemachineFreeLook lockOnCamera;
@@ -56,7 +58,7 @@ public class LockOn : MonoBehaviour
 
         if (!isLocked)
         {
-            //Debug.Log(targetIndex());
+            //Debug.Log(targetIndex());         
             target = screenTargets[targetIndex()];
         }
 
@@ -64,7 +66,12 @@ public class LockOn : MonoBehaviour
         {
             checkIfBelnding = true;
             if (isLocked) CameraLockOff();
-            else CameraLockOn();
+            else
+            {
+                targetIndexToUse = targetIndex();
+                //if (target.gameObject.GetComponent<Enemy>().dead) 
+                    CameraLockOn();
+            }
         }
 
         if(isLocked) CameraLocked();
@@ -100,10 +107,31 @@ public class LockOn : MonoBehaviour
     public void TurnToLockedEnemy()
     {
         if (!isLocked) return;
-        transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+        //transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+        StartCoroutine(nameof(Turn));
     }
 
-    void CameraLockOff()
+    IEnumerator Turn()
+    {
+        var direction = target.position - transform.position;
+
+        float dot = 0;
+        while (dot < 0.96f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
+            
+            dot = Vector3.Dot(transform.forward, (target.position - transform.position).normalized);
+            
+            Debug.Log(dot);
+
+            yield return null;
+        }
+
+        transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+
+    }
+
+    public void CameraLockOff()
     {
         Debug.Log("TARGET NO LONGER LOCKED");
         isLocked = false;

@@ -11,6 +11,9 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action<bool> DashSpeedStart;
     public static event Action<bool> DashSpeedEnd;
 
+    public static event Action<bool> AttackMoveStart;
+    public static event Action<bool> AttackMoveEnd;
+
     public static event Action StartTrail;
     public static event Action EndTrail;
 
@@ -25,6 +28,15 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action RestartScene;
 
     public float secondsOfInputDetection;
+
+    public void AttackMovementStart()
+    {
+        AttackMoveStart?.Invoke(true);
+    }
+    public void AttackMovementEnd()
+    {
+        AttackMoveEnd?.Invoke(false);
+    }
 
     public void DashStart()
     {

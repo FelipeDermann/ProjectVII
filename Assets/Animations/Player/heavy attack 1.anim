@@ -81930,6 +81930,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.26666668
+    functionName: AttackMovementStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.3
     functionName: ActivateTrail
     data: 
@@ -81953,6 +81960,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.4
     functionName: DeactivateTrail
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: AttackMovementEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

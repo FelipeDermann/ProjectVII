@@ -11,9 +11,14 @@ public class TargetScript : MonoBehaviour
         lockOn = FindObjectOfType<LockOn>();
     }
 
+    public void RemoveFromList()
+    {
+        lockOn.screenTargets.Remove(transform);
+    }
+
     private void OnBecameVisible()
     {
-        if (!lockOn.screenTargets.Contains(transform))
+        if (!lockOn.screenTargets.Contains(transform) && !transform.parent.GetComponent<Enemy>().dead)
             lockOn.screenTargets.Add(transform);
     }
 

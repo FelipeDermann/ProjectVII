@@ -5,10 +5,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     Animator anim;
+    TargetScript targetScriptForLockOn;
     public float currentHealth;
     public float maxHealth;
 
     public float timeUntilDeath;
+    public int layerWhenDead;
 
     public bool dead;
 
@@ -27,6 +29,7 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         lifeBar = GetComponentInChildren<LifeBarEnemy>();
         move = GetComponent<EnemyMove>();
+        targetScriptForLockOn = GetComponentInChildren<TargetScript>();
 
         currentHealth = maxHealth;
     }
@@ -80,6 +83,10 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             lifeBar.DisableBar();
+
+            targetScriptForLockOn.RemoveFromList();
+
+            gameObject.layer = layerWhenDead;
 
             anim.SetTrigger("die");
             anim.SetBool("dead", true);

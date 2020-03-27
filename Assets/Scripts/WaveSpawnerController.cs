@@ -55,8 +55,12 @@ public class WaveSpawnerController : MonoBehaviour
                 DisableBarrier();
                 return;
             }
-           
-            else Invoke(nameof(SpawnWaveOfEnemies), waitTimeBetweenWaves);
+
+            else
+            {
+                CancelInvoke();
+                Invoke(nameof(SpawnWaveOfEnemies), waitTimeBetweenWaves);
+            }
         }
         else Debug.Log("ENEMIES ARE STILL ALIVE");
 

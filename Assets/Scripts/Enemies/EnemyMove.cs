@@ -183,6 +183,11 @@ public class EnemyMove : MonoBehaviour
         agent.SetDestination(transform.position);
     }
 
+    public void WarnPlayerOfDeath()
+    {
+        if (target != null) target.GetComponent<LockOn>().CameraLockOff();
+    }
+
     //IEnumerator MoveForward()
     //{
     //    float wait = attackMoveTime;

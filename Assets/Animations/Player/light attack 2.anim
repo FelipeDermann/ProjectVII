@@ -102802,6 +102802,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.6
+    functionName: AttackMovementStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.65
     functionName: PlaySwingSound
     data: 
@@ -102811,6 +102818,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.75
     functionName: DeactivateTrail
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.8
+    functionName: AttackMovementEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

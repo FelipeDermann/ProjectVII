@@ -33,6 +33,8 @@ public class Attack : MonoBehaviour
 
     public List<string> inputs = new List<string>();
 
+    public Transform currentEnemyTarget;
+
     [Header("Combos (Choose which element corresponds to which combo)")]
     public Combo L_L_H;
     public Combo L_H_H;
@@ -79,6 +81,8 @@ public class Attack : MonoBehaviour
     private void StopAttacking()
     {
         anim.SetBool("attacking", false);
+        currentEnemyTarget = null;
+        playerMove.CanMoveWhenAttacking(false);
 
         DisableNextAttackInput();
         attacking = false;
@@ -99,34 +103,59 @@ public class Attack : MonoBehaviour
         //Look to closest enemy if not locked on
         if (!lockOn.isLocked)
         {
-            Vector3 boxBounds = getEnemyArea.bounds.extents;
-            Collider[] colliders = Physics.OverlapBox(getEnemyArea.transform.position, boxBounds, getEnemyArea.transform.rotation, enemyLayerMask);
-
-            float distanceToClosestEnemy = Mathf.Infinity;
-            Transform closestEnemy = null;
-
-            foreach (Collider currentEnemy in colliders)
+            if (currentEnemyTarget == null)
             {
-                float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
-                if (distanceToEnemy < distanceToClosestEnemy)
+                Vector3 boxBounds = getEnemyArea.bounds.extents;
+                Collider[] colliders = Physics.OverlapBox(getEnemyArea.transform.position, boxBounds, getEnemyArea.transform.rotation, enemyLayerMask);
+
+                float distanceToClosestEnemy = Mathf.Infinity;
+                Transform closestEnemy = null;
+
+                foreach (Collider currentEnemy in colliders)
                 {
-                    distanceToClosestEnemy = distanceToEnemy;
-                    closestEnemy = currentEnemy.transform;
+                    float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
+                    if (distanceToEnemy < distanceToClosestEnemy)
+                    {
+                        distanceToClosestEnemy = distanceToEnemy;
+                        closestEnemy = currentEnemy.transform;
+                    }
                 }
-            }
 
-            if (closestEnemy != null)
-            {
-                Debug.Log(closestEnemy.gameObject);
-                transform.LookAt(new Vector3(closestEnemy.position.x, transform.position.y, closestEnemy.position.z));
+                if (closestEnemy != null)
+                {
+                    Debug.Log(closestEnemy.gameObject);
+                    //transform.LookAt(new Vector3(closestEnemy.position.x, transform.position.y, closestEnemy.position.z));
+                    StartCoroutine(nameof(TurnToEnemySmooth), closestEnemy);
+                    currentEnemyTarget = closestEnemy;
+                }
+                else return;
             }
-            else return;
+            else StartCoroutine(nameof(TurnToEnemySmooth), currentEnemyTarget);
         }
         //attack locked on enemy 
         else
         {
             lockOn.TurnToLockedEnemy();
         }
+    }
+
+    IEnumerator TurnToEnemySmooth(Transform _enemy)
+    {
+        var direction = _enemy.position - transform.position;
+
+        float dot = 0;
+        while (dot < 0.96f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
+
+            dot = Vector3.Dot(transform.forward, (_enemy.position - transform.position).normalized);
+
+            Debug.Log(dot);
+
+            yield return null;
+        }
+
+        transform.LookAt(new Vector3(_enemy.position.x, transform.position.y, _enemy.position.z));
     }
 
     void LightAttack()
