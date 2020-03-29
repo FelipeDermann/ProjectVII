@@ -117,7 +117,7 @@ public class EnemyMove : MonoBehaviour
         TurnToPlayer();
 
         knockedDown = true;
-        anim.SetBool("knockedDown", true);
+        anim.SetBool("knockeddown", true);
 
         agent.enabled = false;
         rb.isKinematic = false;
@@ -146,7 +146,7 @@ public class EnemyMove : MonoBehaviour
         CancelInvoke(nameof(MoveAgain));
 
         knockedDown = false;
-        anim.SetBool("knockedDown", false);
+        anim.SetBool("knockeddown", false);
 
         agent.enabled = true;
         rb.isKinematic = true;

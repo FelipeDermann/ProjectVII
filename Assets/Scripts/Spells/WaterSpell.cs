@@ -11,7 +11,10 @@ public class WaterSpell : MonoBehaviour
     public float damagePerHit;
 
     public float numberOfHitsDone;
+    public float timeUntilDeath;
+
     bool canApplyDamage;
+    public ParticleSystem tornadoParticle;
 
     [Header("Knockback")]
     public float KnockbackForce;
@@ -65,10 +68,16 @@ public class WaterSpell : MonoBehaviour
     {
         if (numberOfHitsDone >= maxNumberOfHits)
         {
-            Destroy(gameObject);
+            PrepareToDestroy();
             return;
         }
 
         Invoke(nameof(ApplyDamage), timeUntilNextHit);
+    }
+
+    void PrepareToDestroy()
+    {
+        tornadoParticle.Stop();
+        Destroy(gameObject, timeUntilDeath);
     }
 }

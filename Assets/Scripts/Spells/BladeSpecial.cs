@@ -9,11 +9,17 @@ public class BladeSpecial : MonoBehaviour
     MeshRenderer mesh;
     Transform playerPos;
 
+    [Header("Basic Attributes")]
     public float speed;
     public float timeToStart;
     public float timeToDestroyAfterImpact;
 
-    [Header("Basic Attributes")]
+    [Header("Blade Death Particle Effect")]
+    public GameObject deathParticle;
+    public float timeToDestroyParticle;
+    public Vector3 deathParticleOffset;
+
+    [Header("Knockback")]
     public float knockbackForce;
     public float knockupForce;
     public float knockTime;
@@ -78,18 +84,25 @@ public class BladeSpecial : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             rb.isKinematic = true;
-            //Destroy(gameObject, timeToDestroyAfterImpact - timeToStart);
 
             CapsuleCollider capsule = GetComponent<CapsuleCollider>();
             capsule.enabled = false;
 
             BoxCollider box = GetComponentInChildren<BoxCollider>();
             box.enabled = false;
+
+            Destroy(gameObject, timeToDestroyAfterImpact);
         }
 
         if (collision.gameObject.CompareTag("Wall"))
         {
             Destroy(gameObject);
         }
+    }
+
+    void OnDestroy()
+    {
+        var burst = Instantiate(deathParticle, transform.position + deathParticleOffset, Quaternion.identity);
+        Destroy(burst, timeToDestroyParticle);
     }
 }
