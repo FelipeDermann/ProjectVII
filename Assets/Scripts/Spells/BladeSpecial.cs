@@ -7,15 +7,27 @@ public class BladeSpecial : MonoBehaviour
     Rigidbody rb;
     Vector3 direction;
     MeshRenderer mesh;
-    Transform playerPos;
+    CapsuleCollider capsule;
+    BoxCollider box;
+
+    [Header("Assign the audio emitters here")]
+    public AudioEmitter startEmitter;
+    public AudioEmitter burstEmitter;
+
+    [Header("Do not alter")]
+    public Transform playerPos;
+    public Vector3 initialPos;
+    public Vector3 initialRot;
 
     [Header("Basic Attributes")]
     public float speed;
     public float timeToStart;
+    public float lifetime;
     public float timeToDestroyAfterImpact;
 
-    [Header("Blade Death Particle Effect")]
-    public GameObject deathParticle;
+    [Header("Blade Death and Particle Effect")]
+    public ParticleSystem deathParticle;
+    public ParticleSystem trailParticle;
     public float timeToDestroyParticle;
     public Vector3 deathParticleOffset;
 
@@ -28,21 +40,33 @@ public class BladeSpecial : MonoBehaviour
 
     public float damage;
 
-    // Start is called before the first frame update
-    void Start()
+    public void StartBlade(Transform _playerPos)
     {
-        playerPos = GameObject.FindObjectOfType<Attack>().transform;
+        playerPos = _playerPos;
 
         rb = GetComponent<Rigidbody>();
+        box = GetComponentInChildren<BoxCollider>();
+        capsule = GetComponent<CapsuleCollider>();
+
         mesh = GetComponentInChildren<MeshRenderer>();
-        mesh.enabled = false;
+        mesh.enabled = true;
+
+        initialPos = transform.localPosition;
+        initialRot = transform.localEulerAngles;
+
+        capsule.enabled = true;
+        box.enabled = true;
+        rb.isKinematic = false;
+
+        trailParticle.Play();
 
         Invoke(nameof(Move), timeToStart);
+        Invoke(nameof(CallEndBladeEarly), lifetime);
     }
 
     void Move()
     {
-        mesh.enabled = true;
+        startEmitter.PlaySound();
 
         Vector3 dir = transform.right;
         direction = -dir.normalized;
@@ -56,6 +80,8 @@ public class BladeSpecial : MonoBehaviour
         {
             var enemy = other.gameObject.GetComponent<Enemy>();
             var enemyMove = other.gameObject.GetComponent<EnemyMove>();
+
+            if (playerPos == null) playerPos = GameObject.FindObjectOfType<PlayerMovement>().transform;
 
             Vector3 knockbackDirection = playerPos.position - other.transform.position;
             knockbackDirection.Normalize();
@@ -85,24 +111,62 @@ public class BladeSpecial : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.isKinematic = true;
 
-            CapsuleCollider capsule = GetComponent<CapsuleCollider>();
             capsule.enabled = false;
-
-            BoxCollider box = GetComponentInChildren<BoxCollider>();
             box.enabled = false;
 
-            Destroy(gameObject, timeToDestroyAfterImpact);
+            Invoke(nameof(CallEndBlade), timeToDestroyAfterImpact);
         }
 
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Destroy(gameObject);
+            rb.velocity = Vector3.zero;
+            rb.isKinematic = true;
+
+            capsule.enabled = false;
+            box.enabled = false;
+
+            EndBlade();
         }
     }
 
-    void OnDestroy()
+    void CallEndBladeEarly()
     {
-        var burst = Instantiate(deathParticle, transform.position + deathParticleOffset, Quaternion.identity);
-        Destroy(burst, timeToDestroyParticle);
+        rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
+
+        capsule.enabled = false;
+        box.enabled = false;
+
+        EndBlade();
+    }
+
+    void CallEndBlade()
+    {
+        EndBlade();
+    }
+
+    void EndBlade()
+    {
+        CancelInvoke();
+
+        trailParticle.Stop();
+        mesh.enabled = false;
+        deathParticle.Play();
+
+        burstEmitter.PlaySound();
+
+        Invoke(nameof(CallReturnToOriginalPosition), 4);
+    }
+
+    void CallReturnToOriginalPosition()
+    {
+        ReturnToOriginalPosition();
+    }
+
+    void ReturnToOriginalPosition()
+    {
+        CancelInvoke();
+        transform.localPosition = initialPos;
+        transform.localEulerAngles = initialRot;
     }
 }

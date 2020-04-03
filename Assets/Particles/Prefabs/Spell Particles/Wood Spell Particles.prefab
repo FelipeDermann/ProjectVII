@@ -19377,6 +19377,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8232632018151679320}
     m_Modifications:
+    - target: {fileID: 5329485270439684815, guid: f0e013ca6d8b1c940a87605d8ba965df,
+        type: 3}
+      propertyPath: m_Name
+      value: Leafs
+      objectReference: {fileID: 0}
     - target: {fileID: 4358139169154026130, guid: f0e013ca6d8b1c940a87605d8ba965df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19446,11 +19451,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5329485270439684815, guid: f0e013ca6d8b1c940a87605d8ba965df,
-        type: 3}
-      propertyPath: m_Name
-      value: Leafs
       objectReference: {fileID: 0}
     - target: {fileID: 1999174517117719179, guid: f0e013ca6d8b1c940a87605d8ba965df,
         type: 3}

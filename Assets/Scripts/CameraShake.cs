@@ -12,16 +12,11 @@ public class CameraShake : MonoBehaviour
     public SignalSourceAsset signalAsset;
     CinemachineImpulseSource impulseSource;
 
-    void Start()
-    {
-        impulseSource = GetComponent<CinemachineImpulseSource>();
-        impulseSource.m_ImpulseDefinition.m_RawSignal = signalAsset;
-
-        Shake();
-    }
-
     public void Shake()
     {
+        if(impulseSource == null) impulseSource = GetComponent<CinemachineImpulseSource>();
+        impulseSource.m_ImpulseDefinition.m_RawSignal = signalAsset;
+
         impulseSource.GenerateImpulse();
     }
 }

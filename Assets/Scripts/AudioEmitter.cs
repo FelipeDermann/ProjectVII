@@ -5,50 +5,43 @@ using UnityEngine;
 public class AudioEmitter : MonoBehaviour
 {
     //public AudioClip clipToPlay;
-    public Transform target;
+    //public Transform target;
 
-    float audiofadeTime;
+    public AudioClip clipToPlay;
+    [Range(0.0f, 1.0f)]
+    public float clipVolume;
+    public float timeOfAudioFadeOut;
+    public bool loopSound;
+
     AudioSource audioSource;
 
-    // Update is called once per frame
-    void Update()
+    public void PlaySound()
     {
-        if (target != null) transform.position = target.position; 
-    }
+        if(audioSource == null) audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clipToPlay;
+        audioSource.loop = loopSound;
 
-    public void PlaySound(float _volume, AudioClip _audioCLip, bool _loop)
-    {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = _audioCLip;
-        audioSource.loop = _loop;
-
-        audioSource.volume = _volume;
+        audioSource.volume = clipVolume;
         audioSource.Play();
     }
 
-    public void DeathCountdown(float _time, float _audioFadeTime)
+    public void FadeOut()
     {
-        audiofadeTime = _audioFadeTime;
-        Invoke(nameof(FadeOutAndDieCall), _time);
+        StartCoroutine(FadeOutCoroutine());
     }
 
-    void FadeOutAndDieCall()
-    {
-        StartCoroutine(FadeOutAndDieCoroutine());
-    }
-
-    IEnumerator FadeOutAndDieCoroutine()
+    IEnumerator FadeOutCoroutine()
     {
         float startVolume = audioSource.volume;
 
         while (audioSource.volume > 0)
         {
-            audioSource.volume -= startVolume * Time.deltaTime / audiofadeTime;
+            audioSource.volume -= startVolume * Time.deltaTime / timeOfAudioFadeOut;
 
             yield return null;
         }
 
-        Destroy(gameObject);
+        audioSource.Stop();
     }
 
 }

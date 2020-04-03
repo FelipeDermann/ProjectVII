@@ -10,25 +10,42 @@ public class FireBallSpecial : MonoBehaviour
     [Header("Basic Attributes")]
     public float speed;
     public float lifetime;
+    public float timeToReturnObjectToPoolAfterDeath;
     public float damage;
     public float explosionRadius;
-    public GameObject explosionparticle;
+
+    [Header("Particles")]
+    public ParticleSystem explosionParticle;
+    public ParticleSystem fireBallParticle;
+    public ParticleSystem fireBallTrailParticle;
+
+    [Header("Others")]
     public LayerMask enemyLayerMask;
+    public AudioEmitter audioEmitterFireBall;
+    public AudioEmitter audioEmitterExplosion;
+    Collider col;
+    PoolableObject thisObject;
 
     [Header("Knockback")]
     public float knockbackForce;
     public float knockTime;
     public KnockType knockType;
 
-    // Start is called before the first frame update
-    void Start()
+    public void StartSpell()
     {
-        rb = GetComponent<Rigidbody>();
+        if (thisObject == null) thisObject = GetComponent<PoolableObject>();
+        if (rb == null) rb = GetComponent<Rigidbody>();
+        if (col == null) col = GetComponent<Collider>();
+        
         rb.velocity = transform.forward * speed;
 
-        spell = GetComponent<Spell>();
+        fireBallTrailParticle.gameObject.SetActive(true);
+        fireBallParticle.Play();
+        audioEmitterFireBall.PlaySound();
 
-        Invoke(nameof(Death), lifetime);
+        col.enabled = true;
+
+        Invoke(nameof(CallDeath), lifetime);
     }
 
     void Explosion()
@@ -65,17 +82,26 @@ public class FireBallSpecial : MonoBehaviour
         }
     }
 
+    void CallDeath()
+    {
+        Death();
+    }
+
     void Death()
     {
-        Collider col = GetComponent<Collider>();
+        CancelInvoke();
         col.enabled = false;
 
-        GameObject particle = Instantiate(explosionparticle, transform.position, transform.rotation);
-        Destroy(particle, 2);
+        fireBallTrailParticle.gameObject.SetActive(false);
+        fireBallParticle.Stop();
+        explosionParticle.Play();
+
+        audioEmitterExplosion.PlaySound();
+        rb.velocity = Vector3.zero;
 
         Explosion();
 
-        Destroy(gameObject);
+        GameManager.Instance.FireSpellPool.ReturnObject(thisObject, timeToReturnObjectToPoolAfterDeath);
     }
 
     private void OnTriggerEnter(Collider other)

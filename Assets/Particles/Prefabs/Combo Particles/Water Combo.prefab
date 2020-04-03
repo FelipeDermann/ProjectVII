@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3084516021650114884}
   - component: {fileID: 3084516021650114887}
   - component: {fileID: 3084516021650114886}
-  - component: {fileID: -4596051794736016458}
   m_Layer: 0
   m_Name: Water Combo
   m_TagString: Untagged
@@ -4815,23 +4814,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &-4596051794736016458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3084516021650114889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bf2f8dd2b503d94ab9d3b367726c0e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clipToPlay: {fileID: 8300000, guid: 3762498794164b3489c22d063efa50ec, type: 3}
-  clipVolume: 1
-  timeToDestroyEmitterAfterDeath: 1
-  audioEmitterPrefab: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
-    type: 3}
 --- !u!1 &8689596714747952796
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public enum Element
     Earth,
     None
 };
+
 public class Elements : MonoBehaviour
 {
     public MeshRenderer swordRenderer;
@@ -17,7 +18,6 @@ public class Elements : MonoBehaviour
     public Material[] elementColors;
     public ParticleSystem[] elementParticles;
 
-    public GameObject[] comboHitbox;
     public Transform comboSpawnPoint;
 
     public Element currentElement;
@@ -26,6 +26,8 @@ public class Elements : MonoBehaviour
     public Combo currentCombo;
 
     public bool cancelComboHitbox;
+
+    PoolableObject combo;
 
     //public ScriptableObject playerStats;
     Quaternion zeroed = new Quaternion(0,0,0,0);
@@ -54,35 +56,39 @@ public class Elements : MonoBehaviour
 
     void ElementComboSpawn()
     {
-        GameObject combo = null;
-
         switch (currentCombo)
         {
             case Combo.FireCombo:
-                combo = Instantiate(comboHitbox[0], comboSpawnPoint.position, transform.rotation);
-                Destroy(combo, 3);
+                combo = GameManager.Instance.FireComboPool.RequestObject(comboSpawnPoint.position, transform.rotation);
+                combo.GetComponent<ComboEffect>().playerPos = transform;
+                combo.gameObject.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
                 break;
             case Combo.WaterCombo:
-                combo = Instantiate(comboHitbox[1], comboSpawnPoint.position, transform.rotation);
-                combo.GetComponent<TravelForward>().GainSpeed();
-                Destroy(combo, 2);
+                combo = GameManager.Instance.WaterComboPool.RequestObject(comboSpawnPoint.position, transform.rotation);
+                combo.GetComponent<ComboEffect>().playerPos = transform;
+                combo.gameObject.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
+                combo.GetComponentInChildren<TravelForward>().GainSpeed();
                 break;
             case Combo.MetalCombo:
-                combo = Instantiate(comboHitbox[2], transform.position, transform.rotation);
-                Destroy(combo, 2);
+                combo = GameManager.Instance.MetalComboPool.RequestObject(comboSpawnPoint.position, transform.rotation);
+                combo.GetComponent<ComboEffect>().playerPos = transform;
+                combo.gameObject.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
                 break;
             case Combo.WoodCombo:
-                combo = Instantiate(comboHitbox[3], comboSpawnPoint.position, transform.rotation);
-                Destroy(combo, 2);
+                combo = GameManager.Instance.WoodComboPool.RequestObject(comboSpawnPoint.position, transform.rotation);
+                combo.GetComponent<ComboEffect>().playerPos = transform;
+                combo.gameObject.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
                 break;
             case Combo.EarthCombo:
-                combo = Instantiate(comboHitbox[4], comboSpawnPoint.position, transform.rotation);
-                Destroy(combo, 1);
+                combo = GameManager.Instance.EarthComboPool.RequestObject(comboSpawnPoint.position + new Vector3(0,-0.3f,0), transform.rotation);
+                combo.GetComponent<ComboEffect>().playerPos = transform;
+                combo.GetComponent<CameraShake>().Shake();
+                combo.gameObject.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
                 break;
         }
 
         ChangeElement(currentCombo);
-        combo.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
+        //combo.gameObject.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
     }
 
     public void ChangeElement(Combo combo)

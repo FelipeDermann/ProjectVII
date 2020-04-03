@@ -19,12 +19,12 @@ public class AttackEffectSound : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        emitter = Instantiate(audioEmitterPrefab, transform.position, transform.rotation);
-        emitter.GetComponent<AudioEmitter>().PlaySound(clipVolume, clipToPlay, loopSound);
+        //emitter = Instantiate(audioEmitterPrefab, transform.position, transform.rotation);
+        //emitter.GetComponent<AudioEmitter>().PlaySound(clipVolume, clipToPlay, loopSound);
     }
 
     private void OnDestroy()
     {
-        emitter.GetComponent<AudioEmitter>().DeathCountdown(timeToDestroyEmitterAfterDeath, timeOfAudioFadeOut);
+        //emitter.GetComponent<AudioEmitter>().DeathCountdown(timeToDestroyEmitterAfterDeath, timeOfAudioFadeOut);
     }
 }

@@ -4800,7 +4800,6 @@ GameObject:
   - component: {fileID: 6843364713806042356}
   - component: {fileID: 6843364713806042357}
   - component: {fileID: 6843364713806042358}
-  - component: {fileID: 6571112054319236563}
   m_Layer: 0
   m_Name: Wood Combo
   m_TagString: Untagged
@@ -9608,23 +9607,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &6571112054319236563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6843364713806042359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bf2f8dd2b503d94ab9d3b367726c0e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clipToPlay: {fileID: 8300000, guid: 0452f6bbc61e71140938ec9061d0bf91, type: 3}
-  clipVolume: 1
-  timeToDestroyEmitterAfterDeath: 1
-  audioEmitterPrefab: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
-    type: 3}
 --- !u!1001 &1088926986721074588
 PrefabInstance:
   m_ObjectHideFlags: 0

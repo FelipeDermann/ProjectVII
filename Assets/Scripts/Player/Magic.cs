@@ -13,11 +13,11 @@ public class Magic : MonoBehaviour
     Animator anim;
     PlayerStatus playerStatus;
 
-    public bool cancelMagicHitbox;
     public bool canUseMagic;
 
-    public GameObject[] specialHitbox;
     public Transform specialSpawnPoint;
+
+    PoolableObject special;
 
     private void OnEnable()
     {
@@ -72,24 +72,27 @@ public class Magic : MonoBehaviour
 
     void MagicAttack()
     {
-        GameObject special = null;
-
         switch (playerElements.currentElement)
         {
             case Element.Fire:
-                special = Instantiate(specialHitbox[0], specialSpawnPoint.position, transform.rotation);
+                special = GameManager.Instance.FireSpellPool.RequestObject(specialSpawnPoint.position, transform.rotation);
+                special.GetComponent<FireBallSpecial>().StartSpell();
                 break;
             case Element.Water:
-                special = Instantiate(specialHitbox[1], specialSpawnPoint.position, transform.rotation);
+                special = GameManager.Instance.WaterSpellPool.RequestObject(specialSpawnPoint.position, transform.rotation);
+                special.GetComponent<WaterSpell>().CheckIfCanSpawn();
                 break;
             case Element.Metal:
-                special = Instantiate(specialHitbox[2], transform.position, transform.rotation);
+                special = GameManager.Instance.MetalSpellPool.RequestObject(transform.position, transform.rotation);
+                special.GetComponent<MetalSpell>().StartSpell();
                 break;
             case Element.Wood:
-                special = Instantiate(specialHitbox[3], transform.position, transform.rotation);
+                special = GameManager.Instance.WoodSpellPool.RequestObject(transform.position, transform.rotation);
+                special.GetComponent<WoodSpell>().StartSpell();
                 break;
             case Element.Earth:
-                special = Instantiate(specialHitbox[4], transform.position, transform.rotation);
+                special = GameManager.Instance.EarthSpellPool.RequestObject(transform.position, transform.rotation);
+                special.GetComponentInChildren<EarthSpellManager>().StartSpell();
                 break;
         }
 

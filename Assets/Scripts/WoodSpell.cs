@@ -4,30 +4,44 @@ using UnityEngine;
 
 public class WoodSpell : MonoBehaviour
 {
-    [Header("Basic Attributes")]
+    [Header("Knockback")]
     public float knockbackForce;
     public float knockupForce;
     public float knockTime;
 
+    public KnockType knockType;
+
+    [Header("Particles")]
     public ParticleSystem parentParticle;
     public ParticleSystem glowParticle;
     public ParticleSystem root;
 
-    public KnockType knockType;
 
+    [Header("Basic Attributes")]
     public float damage;
     public float projectileSpeed;
     public float projectileLifeTime;
-    Rigidbody rb;
+    public float timeToRemoveObjectAfterDeath;
 
-    void Start()
+    [Header("Others")]
+    public AudioEmitter audioEmitter;
+
+    Rigidbody rb;
+    PoolableObject thisObject;
+    Collider col;
+
+    public void StartSpell()
     {
-        rb = GetComponent<Rigidbody>();
+        if (col == null) col = GetComponent<Collider>();
+        if(rb == null) rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * projectileSpeed;
 
         //root.startRotation3D = new Vector3(transform.rotation.x/Mathf.PI, transform.rotation.y / Mathf.PI, transform.rotation.z / Mathf.PI);
+        parentParticle.Play();
+        audioEmitter.PlaySound();
+        col.enabled = true;
 
-        Invoke(nameof(EndEffect), projectileLifeTime);
+        Invoke(nameof(CallEndEffect), projectileLifeTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,19 +73,29 @@ public class WoodSpell : MonoBehaviour
 
         if (other.CompareTag("Wall"))
         {
-            //Destroy(gameObject);
             EndEffect();
         }
     }
 
+    void CallEndEffect()
+    {
+        EndEffect();
+    }
+
     void EndEffect()
     {
+        CancelInvoke();
+
         rb.velocity = Vector3.zero;
         //rb.velocity = -transform.up * projectileSpeed;
         //root.transform.parent = null;
         parentParticle.Stop();
         glowParticle.Clear();
 
-        Destroy(gameObject, 3);
+        audioEmitter.FadeOut();
+        col.enabled = false;
+
+        if (thisObject == null) thisObject = GetComponent<PoolableObject>();
+        GameManager.Instance.WoodSpellPool.ReturnObject(thisObject, timeToRemoveObjectAfterDeath);
     }
 }

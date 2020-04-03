@@ -6,7 +6,14 @@ public class EarthSpellManager : MonoBehaviour
 {
     public Transform playerPos;
     Animator anim;
-    public Transform earthParticle;
+
+    CameraShake cameraShaking;
+    PoolableObject thisObject;
+    public List<EarthSpike> spikes;
+
+    [Header("Set these up")]
+    public Transform spikeParent;
+    public AudioEmitter audioEmitter;
 
     [Header("Basic Attributes")]
     public float damage;
@@ -15,28 +22,49 @@ public class EarthSpellManager : MonoBehaviour
     public float knockTime;
     public KnockType knockType;
 
+    public float timeToRemoveSpell;
+    public ParticleSystem earthParticle;
+
 
     // Start is called before the first frame update
-    void Start()
+    public void StartSpell()
     {
-        playerPos = GetComponentInParent<Spell>().playerPos;
+        if (playerPos == null) playerPos = GetComponentInParent<Spell>().playerPos;
+        if(anim == null) anim = GetComponent<Animator>();
 
-        anim = GetComponent<Animator>();
+        anim.Play("earthSpikes");
     }
 
     public void Activate()
     {
-        earthParticle.gameObject.SetActive(true);
+        if (cameraShaking == null) cameraShaking = GetComponentInParent<CameraShake>();
+        cameraShaking.Shake();
+
+        audioEmitter.PlaySound();
+        
+        earthParticle.Play();
+
+        for (int i = 0; i < spikeParent.childCount; i++)
+        {
+            spikes.Add(spikeParent.GetChild(i).GetComponent<EarthSpike>());
+        }
+
+        foreach (EarthSpike spike in spikes)
+        {
+            spike.StartSpike(playerPos, this);
+        }
     }
 
     public void DestroySelf()
     {
-        Destroy(transform.parent.gameObject);
-    }
+        if (thisObject == null) thisObject = GetComponentInParent<PoolableObject>();
+        GameManager.Instance.EarthSpellPool.ReturnObject(thisObject, timeToRemoveSpell);
 
-    public void DestroyParticle()
-    {
-        Destroy(earthParticle.gameObject, 2);
-        earthParticle.parent = null;
+        foreach (EarthSpike spike in spikes)
+        {
+            spike.Hide();
+        }
+
+        spikes.Clear();
     }
 }

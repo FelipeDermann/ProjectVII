@@ -6,12 +6,11 @@ public class WaterSpell : MonoBehaviour
 {
     [Header("Basic Attributes")]
     public float timeUntilNextHit;
-    public float timeHitboxIsActive;
     public float maxNumberOfHits;
     public float damagePerHit;
 
-    public float numberOfHitsDone;
-    public float timeUntilDeath;
+    float numberOfHitsDone;
+    public float timeToRemoveObjectAfterFinalHit;
 
     bool canApplyDamage;
     public ParticleSystem tornadoParticle;
@@ -23,15 +22,49 @@ public class WaterSpell : MonoBehaviour
     public float knockbackForceOnFinalHit;
     public float hurtTime;
 
+    [Header("Others")]
+    public AudioEmitter audioEmitter;
     Spell spell;
     BoxCollider boxCollider;
     public LayerMask enemyLayerMask;
+    PoolableObject thisObject;
 
-    // Start is called before the first frame update
-    void Start()
+    [Header("Spawn Check")]
+    public LayerMask layerMask;
+    public BoxCollider spawnCheckHitbox;
+
+    public void CheckIfCanSpawn()
     {
+        Vector3 boxBounds = spawnCheckHitbox.bounds.extents;
+        Collider[] walls = Physics.OverlapBox(transform.position, boxBounds, transform.rotation, layerMask);
+        bool mustDestroy = false;
+
+        foreach (Collider currentWall in walls)
+        {
+            if (currentWall.gameObject.CompareTag("Wall"))
+            {
+                Debug.Log("HIT WALL");
+                mustDestroy = true;
+            }
+        }
+
+        if (mustDestroy) ReturnObjectToPool();
+        else
+        {
+            StartSpell();
+        }
+    }
+
+    public void StartSpell()
+    {
+        numberOfHitsDone = 0;
+        Debug.Log("START WATER SPELL");
+
         boxCollider = GetComponent<BoxCollider>();
         spell = GetComponent<Spell>();
+
+        tornadoParticle.Play();
+        audioEmitter.PlaySound();
 
         Invoke(nameof(ApplyDamage), .5f);
     }
@@ -77,7 +110,14 @@ public class WaterSpell : MonoBehaviour
 
     void PrepareToDestroy()
     {
+        audioEmitter.FadeOut();
+
         tornadoParticle.Stop();
-        Destroy(gameObject, timeUntilDeath);
+    }
+
+    void ReturnObjectToPool()
+    {
+        if (thisObject == null) thisObject = GetComponent<PoolableObject>();
+        GameManager.Instance.WaterSpellPool.ReturnObject(thisObject, timeToRemoveObjectAfterFinalHit);
     }
 }

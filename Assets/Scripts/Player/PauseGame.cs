@@ -27,12 +27,14 @@ public class PauseGame : MonoBehaviour
 
     private void Pause()
     {
+        AudioListener.pause = true;
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
     }
 
     private void Unpause()
     {
+        AudioListener.pause = false;
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
     }
