@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 726640583965271526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: 5, y: 2, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7977374826916601521}
   - {fileID: 405105917883896226}
@@ -64,7 +64,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 5, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &726640583965271548
 MonoBehaviour:
@@ -128,56 +128,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood Spell Particles
       objectReference: {fileID: 0}
-    - target: {fileID: 7599154921816312821, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532728, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: InitialModule.startRotationY.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532728, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: InitialModule.startRotationY.minScalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532728, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: InitialModule.startRotation.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532728, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: InitialModule.rotation3D
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532728, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: InitialModule.startRotation.minScalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532728, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: InitialModule.startRotation.minMaxState
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532728, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: InitialModule.startRotationX.minMaxState
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532728, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: InitialModule.startRotationY.minMaxState
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532728, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7431159314908911632, guid: 8440c977c0ae3e34eb4161952f684e98,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -231,56 +181,6 @@ PrefabInstance:
     - target: {fileID: 7431159314908911632, guid: 8440c977c0ae3e34eb4161952f684e98,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232632018151679327, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532730, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532730, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532730, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532730, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532730, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532730, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7599154921243532730, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5880663840166789231, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8271953090014756897, guid: 8440c977c0ae3e34eb4161952f684e98,
-        type: 3}
-      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
