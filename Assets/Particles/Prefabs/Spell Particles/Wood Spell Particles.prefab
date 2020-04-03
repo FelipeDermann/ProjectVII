@@ -4896,7 +4896,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 0
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -5285,8 +5285,8 @@ ParticleSystem:
     startRotationY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.2217305
-      minScalar: 1.9198622
+      scalar: 1.3962634
+      minScalar: 1.7453293
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9758,7 +9758,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 1
+  m_RenderAlignment: 4
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
@@ -14582,7 +14582,7 @@ Transform:
   m_GameObject: {fileID: 8232632018151679325}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.050201416, y: -1.2, z: -0.3837679}
-  m_LocalScale: {x: 5, y: 3, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7599154921243532730}
   - {fileID: 6129020140419979320}
@@ -19437,21 +19437,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4358139169154026130, guid: f0e013ca6d8b1c940a87605d8ba965df,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4358139169154026130, guid: f0e013ca6d8b1c940a87605d8ba965df,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4358139169154026130, guid: f0e013ca6d8b1c940a87605d8ba965df,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1999174517117719179, guid: f0e013ca6d8b1c940a87605d8ba965df,
         type: 3}
       propertyPath: looping
@@ -19459,18 +19444,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1999174517117719179, guid: f0e013ca6d8b1c940a87605d8ba965df,
         type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 100
+      propertyPath: VelocityModule.orbitalX.scalar
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1999174517117719179, guid: f0e013ca6d8b1c940a87605d8ba965df,
         type: 3}
       propertyPath: VelocityModule.orbitalZ.scalar
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999174517117719179, guid: f0e013ca6d8b1c940a87605d8ba965df,
-        type: 3}
-      propertyPath: VelocityModule.orbitalX.scalar
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0e013ca6d8b1c940a87605d8ba965df, type: 3}
