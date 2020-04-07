@@ -78,6 +78,7 @@ public class Attack : MonoBehaviour
         attacking = true;
         anim.SetBool("attacking", true);
     }
+
     private void StopAttacking()
     {
         anim.SetBool("attacking", false);

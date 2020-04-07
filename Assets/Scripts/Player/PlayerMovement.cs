@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         AttackMove();
         //Jump();
         Gravity();
-        DetectGround();
+        //DetectGround();
     }
 
     void Dash()
@@ -264,7 +264,7 @@ public class PlayerMovement : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         // Draw a semitransparent blue cube at the transforms position
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(boxPosition.position, boxSize);
+        //Gizmos.color = new Color(1, 0, 0, 0.5f);
+        //Gizmos.DrawCube(boxPosition.position, boxSize);
     }
 }

@@ -82,7 +82,6 @@ public class LockOn : MonoBehaviour
     {
         if (checkIfBelnding)
         {
-            Debug.Log("TESTING IF BLENDING");
             if (mainCamera.IsBlending)
             {
                 canLock = false;

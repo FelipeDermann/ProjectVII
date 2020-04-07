@@ -9,6 +9,7 @@ TagManager:
   - PlayerHead
   - Ground
   - Wall
+  - ShopMenu
   layers:
   - Default
   - TransparentFX

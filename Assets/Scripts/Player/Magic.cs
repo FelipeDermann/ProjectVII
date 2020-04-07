@@ -57,7 +57,7 @@ public class Magic : MonoBehaviour
         if (!Input.GetButtonDown("Special")) return;
         if (anim.GetBool("attacking")) return;
         if (playerMove.dashing) return;
-        if (!playerMove.isGrounded || playerAttack.canInputNextAttack) return;
+        if (playerAttack.canInputNextAttack) return;
         if (!canUseMagic) return;
 
         if (playerStatus.mana < playerStatus.maxMana) return;

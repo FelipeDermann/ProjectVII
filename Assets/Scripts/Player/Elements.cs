@@ -68,6 +68,7 @@ public class Elements : MonoBehaviour
                 combo.GetComponent<ComboEffect>().playerPos = transform;
                 combo.gameObject.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
                 combo.GetComponentInChildren<TravelForward>().GainSpeed();
+                combo.GetComponentInChildren<TravelForward>().player = GetComponent<PlayerStatus>();
                 break;
             case Combo.MetalCombo:
                 combo = GameManager.Instance.MetalComboPool.RequestObject(comboSpawnPoint.position, transform.rotation);

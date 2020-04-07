@@ -6,8 +6,18 @@ public class TravelForward : MonoBehaviour
 {
     Collider collider;
     Rigidbody rb;
+    public PlayerStatus player;
+
+    [Header("Basic Attributes")]
     public float speed;
     public float timeToStop;
+    public int damage;
+
+    [Header("Knockback")]
+    public float knockbackForce;
+    public float knockupForce;
+    public float knockTime;
+    public KnockType knockType;
 
     public void GainSpeed()
     {
@@ -22,5 +32,37 @@ public class TravelForward : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
         if (collider != null) collider.enabled = false;
+        transform.localPosition = Vector3.zero;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            var enemy = other.GetComponent<Enemy>();
+            var enemyMove = other.GetComponent<EnemyMove>();
+
+            Vector3 knockbackDirection = transform.position - other.transform.position;
+            knockbackDirection.Normalize();
+            knockbackDirection.y = 0;
+
+            enemy.TakeDamage(damage);
+
+            switch (knockType)
+            {
+                case KnockType.Back:
+                    enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
+                    break;
+                case KnockType.Away:
+                    enemyMove.KnockAway(-knockbackDirection, knockbackForce, knockTime);
+                    break;
+                case KnockType.Up:
+                    enemyMove.KnockUp(-knockbackDirection, knockbackForce, knockTime);
+                    break;
+            }
+
+            if (!enemy.dead && !enemyMove.knockedDown) player.IncreaseMana();
+        }
+
     }
 }

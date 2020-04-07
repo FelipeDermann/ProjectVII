@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class Enemy : MonoBehaviour
     //public LifeBar lifeBar;
     public LifeBarEnemy lifeBar;
     EnemyMove move;
+
+    public static event Action EnemyDead;
 
     void Start()
     {
@@ -92,6 +95,11 @@ public class Enemy : MonoBehaviour
             anim.SetBool("dead", true);
             dead = true;
         }
+    }
+
+    void OnDestroy()
+    {
+        EnemyDead?.Invoke();
     }
 
 }
