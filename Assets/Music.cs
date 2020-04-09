@@ -132,6 +132,8 @@ public class Music : MonoBehaviour
     IEnumerator FadeInBattle()
     {
         audioSourceBattle.Play();
+        StopCoroutine(nameof(FadeOutBattle));
+        StopCoroutine(nameof(FadeInAmbient));
 
         float currentTime = 0;
         float currentVol;

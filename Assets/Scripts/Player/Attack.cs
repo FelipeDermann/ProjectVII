@@ -151,8 +151,6 @@ public class Attack : MonoBehaviour
 
             dot = Vector3.Dot(transform.forward, (_enemy.position - transform.position).normalized);
 
-            Debug.Log(dot);
-
             yield return null;
         }
 
