@@ -7,12 +7,12 @@ public class WaveSpawnerController : MonoBehaviour
     [Header("Set up variables. Alter these at will")]
     public float numberOfWaves;
     public float waitTimeBetweenWaves;
-    public GameObject barrierToDeactivate;
+    public GameObject[] barriers;
 
     [Header("Control variables. Do not alter these.")]
     public List<WaveSpawner> spawners;
     float currentNumberOfWaves;
-    public bool playerInRange;
+    public bool startWaveOfEnemies;
     public bool waveCompleted;
 
 
@@ -26,14 +26,12 @@ public class WaveSpawnerController : MonoBehaviour
         }
     }
 
-    public void IsPlayerInRange(bool _state)
+    public void IsPlayerInRange()
     {
-        playerInRange = _state;
+        startWaveOfEnemies = true;
 
-        if (_state)
-        {
-            CheckIfCanSpawn();
-        }
+        CheckIfCanSpawn();
+        EnableBarriers();
     }
 
     public void CheckIfCanSpawn()
@@ -52,7 +50,7 @@ public class WaveSpawnerController : MonoBehaviour
             if (currentNumberOfWaves == numberOfWaves)
             {
                 waveCompleted = true;
-                DisableBarrier();
+                DisableBarriers();
                 return;
             }
 
@@ -66,9 +64,16 @@ public class WaveSpawnerController : MonoBehaviour
 
     }
 
-    void DisableBarrier()
+    void DisableBarriers()
     {
-        barrierToDeactivate.SetActive(false);
+        for (int i = 0; i < barriers.Length; i++)
+        barriers[i].SetActive(false);
+    }
+
+    void EnableBarriers()
+    {
+        for (int i = 0; i < barriers.Length; i++)
+            barriers[i].SetActive(true);
     }
 
     void SpawnWaveOfEnemies()

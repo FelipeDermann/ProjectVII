@@ -244,6 +244,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveVector = Vector3.zero;
         moveVector.y = verticalSpeed;
 
+        verticalSpeed = -maxFallSpeed;
         controller.Move(moveVector * Time.deltaTime);
     }
 

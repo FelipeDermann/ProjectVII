@@ -92,8 +92,6 @@ public class Companion : MonoBehaviour
 
     IEnumerator RotateForward()
     {
-        Debug.Log("ROTATING TO FACE PLAYER DIRECTION I GUESS");
-
         canRotate = false;
 
         var direction = target.position - transform.position;

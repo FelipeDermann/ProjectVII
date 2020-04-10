@@ -69,7 +69,6 @@ public class MovementInput : MonoBehaviour {
 		right.Normalize ();
 
 		desiredMoveDirection = forward * InputZ + right * InputX;
-        Debug.Log(desiredMoveDirection);
 
 		if (blockRotationPlayer == false) {
 			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (desiredMoveDirection), desiredRotationSpeed);
