@@ -16,6 +16,8 @@ public class SpawnerDetectPlayer : MonoBehaviour
             {
                 waveController = transform.parent.GetComponentInChildren<WaveSpawnerController>();
             }
+
+            gameObject.SetActive(false);
         }
     }
 }
