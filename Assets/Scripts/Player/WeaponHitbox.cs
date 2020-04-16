@@ -15,7 +15,8 @@ public class WeaponHitbox : MonoBehaviour
     public float knockbackForce;
     public float knockTime;
 
-    public float damage;
+    float lightDamage;
+    float heavyDamage;
 
     public ParticleSystem[] attackTrail;
     public ParticleSystem[] attackParticle;
@@ -52,6 +53,9 @@ public class WeaponHitbox : MonoBehaviour
         playerStatus = GetComponentInParent<PlayerStatus>();
         playerSounds = GetComponentInParent<PlayerSounds>();
         playerPos = FindObjectOfType<PlayerMovement>().transform;
+
+        lightDamage = playerStatus.lightAttackDamage;
+        heavyDamage = playerStatus.heavyAttackDamage;
 
         weaponTrail = GetComponentInParent<MeleeWeaponTrail>();
         weaponTrail.Emit = false;
@@ -118,7 +122,7 @@ public class WeaponHitbox : MonoBehaviour
                 if (!enemy.dead && !enemyMove.knockedDown) playerSounds.PlaySlashSound();
 
                 enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(lightDamage);
 
                 if (!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
 

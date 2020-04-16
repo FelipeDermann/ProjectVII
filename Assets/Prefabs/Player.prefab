@@ -19450,7 +19450,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   gravity: 8
-  maxFallSpeed: 1
+  maxFallSpeed: 10
   verticalSpeed: 0
 --- !u!114 &7316435880804652780
 MonoBehaviour:
@@ -19553,9 +19553,12 @@ MonoBehaviour:
   invincibilityTime: 3
   invincible: 0
   dead: 0
+  lightAttackDamage: 100
+  heavyAttackDamage: 100
   mana: 0
   maxMana: 100
   energyToGain: 5
+  money: 0
 --- !u!114 &7316435880804652755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24687,7 +24690,6 @@ MonoBehaviour:
   weaponTrail: {fileID: 0}
   knockbackForce: 5
   knockTime: 2
-  damage: 10
   attackTrail:
   - {fileID: 7801005518926586831}
   - {fileID: 7801005519298757003}

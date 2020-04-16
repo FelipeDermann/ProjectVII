@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public ObjectPool MetalSpellPool;
     public ObjectPool WoodSpellPool;
 
+    [Header("Coin Pool")]
+    public ObjectPool CoinPool;
+
     private void Awake()
     {
         if (Instance != null)

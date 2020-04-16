@@ -303,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 100
   maxHealth: 100
+  numberOfCoinsToDrop: 3
   timeUntilDeath: 3
   layerWhenDead: 13
   dead: 0

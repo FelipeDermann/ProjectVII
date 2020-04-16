@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
 
+    public int numberOfCoinsToDrop;
+
     public float timeUntilDeath;
     public int layerWhenDead;
 
@@ -94,6 +96,17 @@ public class Enemy : MonoBehaviour
             anim.SetTrigger("die");
             anim.SetBool("dead", true);
             dead = true;
+
+            SpawnCoins();
+        }
+    }
+
+    void SpawnCoins()
+    {
+        for (int i = 0; i < numberOfCoinsToDrop; i++)
+        {
+            PoolableObject coin = GameManager.Instance.CoinPool.RequestObject(transform.position + Vector3.up/2, transform.rotation);
+            coin.GetComponent<Coin>().Activate();
         }
     }
 

@@ -10,7 +10,7 @@ public class PlayerStatus : MonoBehaviour
     Attack playerAttack;
     Magic playerMagic;
     PlayerHUD playerHUD;
-    Animator animator;
+    Animator animator;   
 
     [Header("Health Attributes")]
     public int currentHealth;
@@ -19,10 +19,17 @@ public class PlayerStatus : MonoBehaviour
     public bool invincible;
     public bool dead;
 
+    [Header("Health Attributes")]
+    public float lightAttackDamage;
+    public float heavyAttackDamage;
+
     [Header("Spell Attributes")]
     public int mana;
     public int maxMana;
     public int energyToGain;
+
+    [Header("Money")]
+    public int money;
 
     private void OnEnable()
     {
@@ -47,6 +54,16 @@ public class PlayerStatus : MonoBehaviour
 
         playerHUD.UpdateHealthBar();
         playerHUD.UpdateSpecialBar();
+    }
+
+    public void GainMoney(int _amount)
+    {
+        money += _amount;
+    }
+
+    public void LoseMoney(int _amount)
+    {
+        money -= _amount;
     }
 
     public void IncreaseHealth(int _damage)
