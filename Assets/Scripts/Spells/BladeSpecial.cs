@@ -36,8 +36,6 @@ public class BladeSpecial : MonoBehaviour
     public float knockupForce;
     public float knockTime;
 
-    public KnockType knockType;
-
     public float damage;
 
     public void StartBlade(Transform _playerPos)
@@ -87,20 +85,8 @@ public class BladeSpecial : MonoBehaviour
             knockbackDirection.Normalize();
             knockbackDirection.y = 0;
 
+            enemyMove.KnockBack(knockbackDirection, knockbackForce, knockupForce, knockTime);
             enemy.TakeDamage(damage);
-
-            switch (knockType)
-            {
-                case KnockType.Back:
-                    enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-                case KnockType.Away:
-                    enemyMove.KnockAway(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-                case KnockType.Up:
-                    enemyMove.KnockUp(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-            }
         }
     }
 

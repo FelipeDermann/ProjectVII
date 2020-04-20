@@ -17,7 +17,6 @@ public class TravelForward : MonoBehaviour
     public float knockbackForce;
     public float knockupForce;
     public float knockTime;
-    public KnockType knockType;
 
     public void GainSpeed()
     {
@@ -47,19 +46,6 @@ public class TravelForward : MonoBehaviour
             knockbackDirection.y = 0;
 
             enemy.TakeDamage(damage);
-
-            switch (knockType)
-            {
-                case KnockType.Back:
-                    enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-                case KnockType.Away:
-                    enemyMove.KnockAway(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-                case KnockType.Up:
-                    enemyMove.KnockUp(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-            }
 
             if (!enemy.dead && !enemyMove.knockedDown) player.IncreaseMana();
         }

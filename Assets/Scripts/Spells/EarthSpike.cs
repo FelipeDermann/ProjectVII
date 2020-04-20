@@ -13,7 +13,7 @@ public class EarthSpike : MonoBehaviour
     float knockbackForce;
     float knockupForce;
     float knockTime;
-    KnockType knockType;
+    float invincibilityTime;
 
     public void StartSpike(Transform _playerPos, EarthSpellManager _manager)
     { 
@@ -28,8 +28,8 @@ public class EarthSpike : MonoBehaviour
         knockbackForce = manager.knockbackForce;
         knockupForce = manager.knockupForce;
         knockTime = manager.knockTime;
-        knockType = manager.knockType;
         damage = manager.damage;
+        invincibilityTime = manager.invincbilityTime;
     }
 
     public void ChangeAppearState(bool _state)
@@ -51,27 +51,17 @@ public class EarthSpike : MonoBehaviour
         {
             var enemy = other.GetComponent<Enemy>();
             var enemyMove = other.GetComponent<EnemyMove>();
+            if (enemy.invincible) return;
 
             if (playerPos == null) playerPos = GameObject.FindObjectOfType<PlayerMovement>().transform;
 
-            Vector3 knockbackDirection = playerPos.position - other.transform.position;
+            Vector3 knockbackDirection = other.transform.position - playerPos.position;
             knockbackDirection.Normalize();
             knockbackDirection.y = 0;
 
-            enemy.DecreaseHealth(damage);
-
-            switch (knockType)
-            {
-                case KnockType.Back:
-                    enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-                case KnockType.Away:
-                    enemyMove.KnockAway(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-                case KnockType.Up:
-                    enemyMove.KnockUp(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-            }
+            enemyMove.KnockBack(knockbackDirection, knockbackForce, knockupForce, knockTime);
+            enemy.TakeDamage(damage);
+            enemy.Invincibility(invincibilityTime);
 
         }
     }

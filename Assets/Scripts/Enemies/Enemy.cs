@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public int layerWhenDead;
 
     public bool dead;
+    public bool invincible;
 
     public GameObject deathParticles;
     public Transform deathParticlesSpawnPoint;
@@ -49,6 +50,18 @@ public class Enemy : MonoBehaviour
         StartCoroutine(nameof(EnemyDeath));
     }
 
+    public void Invincibility(float _time)
+    {
+        StartCoroutine(nameof(InvincibilityCoroutine), _time);
+    }
+
+    IEnumerator InvincibilityCoroutine(float _time)
+    {
+        invincible = true;
+        yield return new WaitForSeconds(_time);
+        invincible = false;
+    }
+
     IEnumerator EnemyDeath()
     {
         yield return new WaitForSeconds(timeUntilDeath);
@@ -62,10 +75,22 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void EnemyDeathSimple()
+    {
+        GameObject deathParticleClone = Instantiate(deathParticles, deathParticlesSpawnPoint.position, transform.rotation);
+
+        if (mySpawner != null) mySpawner.CallSpawnEnemy();
+        if (myWaveSpawner != null) myWaveSpawner.SpawnedEnemyDead();
+
+        Destroy(deathParticleClone, 4);
+        Destroy(gameObject);
+    }
+
     public void TakeDamage(float damage)
     {
         if (dead) return;
         if (move.knockedDown) return;
+        if (invincible) return;
 
         currentHealth -= damage;
         CheckIfDead();
@@ -93,11 +118,12 @@ public class Enemy : MonoBehaviour
 
             gameObject.layer = layerWhenDead;
 
-            anim.SetTrigger("die");
             anim.SetBool("dead", true);
             dead = true;
 
             SpawnCoins();
+
+            EnemyDeathSimple();
         }
     }
 

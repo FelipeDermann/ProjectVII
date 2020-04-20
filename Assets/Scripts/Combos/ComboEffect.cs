@@ -1,13 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum KnockType
-{
-    Back,
-    Away,
-    Up
-}
+using UnityEngine.AI;
 
 public class ComboEffect : MonoBehaviour
 {
@@ -24,9 +18,8 @@ public class ComboEffect : MonoBehaviour
 
     [Header("Knockback")]
     public float knockbackForce;
+    public float knockbackTime;
     public float knockupForce;
-    public float knockTime;
-    public KnockType knockType;
 
     [Header("Basic Attributes")]
     public float damage;
@@ -102,26 +95,14 @@ public class ComboEffect : MonoBehaviour
             var enemy = other.GetComponent<Enemy>();
             var enemyMove = other.GetComponent<EnemyMove>();
 
-            Vector3 knockbackDirection = playerPos.position - other.transform.position;
+            Vector3 knockbackDirection = other.transform.position - playerPos.position;
             knockbackDirection.Normalize();
             knockbackDirection.y = 0;
 
+            enemyMove.KnockBack(knockbackDirection, knockbackForce, knockupForce, knockbackTime);
             enemy.TakeDamage(damage);
 
-            switch (knockType)
-            {
-                case KnockType.Back:
-                    enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-                case KnockType.Away:
-                    enemyMove.KnockAway(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-                case KnockType.Up:
-                    enemyMove.KnockUp(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-            }
-
-            if(!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
+            if(!enemy.dead) playerStatus.IncreaseMana();
         }
 
     }

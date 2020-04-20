@@ -116,7 +116,7 @@ MonoBehaviour:
   KnockbackTimeToRecover: 1
   smallKnockupForce: 2
   knockbackForceOnFinalHit: 0
-  hurtTime: 0
+  hurtTime: 0.5
   audioEmitter: {fileID: 2615776823054178697}
   enemyLayerMask:
     serializedVersion: 2

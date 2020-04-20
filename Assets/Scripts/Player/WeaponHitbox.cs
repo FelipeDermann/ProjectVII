@@ -115,17 +115,16 @@ public class WeaponHitbox : MonoBehaviour
                 var enemy = other.GetComponent<Enemy>();
                 var enemyMove = other.GetComponent<EnemyMove>();
 
-                Vector3 knockbackDirection = playerPos.position - other.transform.position;
+                Vector3 knockbackDirection = other.transform.position - playerPos.position;
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
 
                 if (!enemy.dead && !enemyMove.knockedDown) playerSounds.PlaySlashSound();
 
-                enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
+                enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
                 enemy.TakeDamage(lightDamage);
 
                 if (!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
-
 
             }
         }

@@ -9,8 +9,6 @@ public class WoodSpell : MonoBehaviour
     public float knockupForce;
     public float knockTime;
 
-    public KnockType knockType;
-
     [Header("Particles")]
     public ParticleSystem parentParticle;
     public ParticleSystem glowParticle;
@@ -55,20 +53,8 @@ public class WoodSpell : MonoBehaviour
             knockbackDirection.Normalize();
             knockbackDirection.y = 0;
 
-            enemy.DecreaseHealth(damage);
-
-            switch (knockType)
-            {
-                case KnockType.Back:
-                    enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-                case KnockType.Away:
-                    enemyMove.KnockAway(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-                case KnockType.Up:
-                    enemyMove.KnockUp(-knockbackDirection, knockbackForce, knockTime);
-                    break;
-            }
+            enemyMove.KnockBack(knockbackDirection, knockbackForce, knockupForce, knockTime);
+            enemy.TakeDamage(damage);
         }
 
         if (other.CompareTag("Wall"))

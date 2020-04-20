@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 178995919}
   - component: {fileID: 1865930337}
   - component: {fileID: 9219634573124534347}
+  - component: {fileID: 6694963497835717219}
   m_Layer: 10
   m_Name: Enemy Walk
   m_TagString: Enemy
@@ -307,6 +308,7 @@ MonoBehaviour:
   timeUntilDeath: 3
   layerWhenDead: 13
   dead: 0
+  invincible: 0
   deathParticles: {fileID: 1076456873343246756, guid: 56194790b58def948ac41987e2769f04,
     type: 3}
   deathParticlesSpawnPoint: {fileID: 1053257034}
@@ -451,6 +453,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6694963497835717219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247437171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6653c1e57f2d84bac25747c6386f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 0}
 --- !u!1 &249072298
 GameObject:
   m_ObjectHideFlags: 0

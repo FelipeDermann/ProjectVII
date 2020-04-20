@@ -20,7 +20,7 @@ public class EarthSpellManager : MonoBehaviour
     public float knockbackForce;
     public float knockupForce;
     public float knockTime;
-    public KnockType knockType;
+    public float invincbilityTime;
 
     public float timeToRemoveSpell;
     public ParticleSystem earthParticle;

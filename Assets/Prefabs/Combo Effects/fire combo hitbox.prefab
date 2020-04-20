@@ -68,9 +68,7 @@ MonoBehaviour:
   element: 0
   comboFX: {fileID: 3033857441112240573}
   knockbackForce: 10
-  knockupForce: 0
-  knockTime: 2
-  knockType: 1
+  knockbackTime: 1
   damage: 40
   hitboxLifetime: 3
   particleLifetime: 5

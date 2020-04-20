@@ -92,9 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackForce: 0
-  knockupForce: 0
-  knockTime: 0
-  knockType: 2
+  knockupForce: 5
+  knockTime: 1
   parentParticle: {fileID: 8923235144790893566}
   glowParticle: {fileID: 6980582748087848276}
   root: {fileID: 6980582748693666585}

@@ -35,119 +35,44 @@ public class EnemyMove : MonoBehaviour
 
     private void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Alpha3)) TurnToPlayer();
         if (canMove && !knocked)
         {
             if (target != null) 
-                if(target.position != agent.destination) agent.SetDestination(target.position);
+                if(target.position != agent.destination && agent.isActiveAndEnabled) agent.SetDestination(target.position);
         }
         if (!knocked) anim.SetFloat("Blend", agent.velocity.magnitude);
     }
 
-    public void KnockBack(Vector3 _direction, float forceAmount, float time)
+    public void KnockBack(Vector3 _direction, float forceAmount, float _knockUpForce, float time)
     {
         if (enemy.dead) return;
-        if (knockedDown) return;
 
         knocked = true;
 
+        //agent.isStopped = true;
         agent.enabled = false;
         rb.isKinematic = false;
 
         rb.velocity = Vector3.zero;
-        rb.AddForce(_direction * forceAmount, ForceMode.Impulse);
+
+        Vector3 forceToApply = _direction * forceAmount;
+        forceToApply.y = _knockUpForce;
+
+        rb.AddForce( forceToApply, ForceMode.Impulse);
 
         anim.SetTrigger("hit");
 
         if (IsInvoking(nameof(MoveAgain))) CancelInvoke(nameof(MoveAgain));
         Invoke(nameof(MoveAgain), time);
 
-        enemy.CheckIfDead();
-    }
-
-    public void SlightKnockUp(Vector3 _direction, float forceAmount, float upForceAmount, float time)
-    {
-        if (enemy.dead) return;
-        if (knockedDown) return;
-
-        //knockedDown = true;
-
-        agent.enabled = false;
-        rb.isKinematic = false;
-
-        rb.velocity = Vector3.zero;
-        rb.AddForce(_direction * forceAmount + new Vector3(0, upForceAmount, 0), ForceMode.Impulse);
-        knocked = true;
-
-        anim.SetTrigger("hit");
-
-        if (IsInvoking(nameof(MoveAgain))) CancelInvoke(nameof(MoveAgain));
-        Invoke(nameof(MoveAgain), time);
-
-        enemy.CheckIfDead();
-    }
-
-    public void KnockAway(Vector3 _direction, float forceAmount, float time)
-    {
-        if (enemy.dead) return;
-        if (knockedDown) return;
-
-        TurnToPlayer();
-
-        knockedDown = true;
-        anim.SetBool("knockeddown", true);
-
-        agent.enabled = false;
-        rb.isKinematic = false;
-
-        rb.velocity = Vector3.zero;
-        rb.AddForce(_direction * forceAmount, ForceMode.Impulse);
-        knocked = true;
-
-        anim.SetTrigger("knockaway");
-
-        enemy.CheckIfDead();
-    }
-
-    public void KnockUp(Vector3 _direction, float forceAmount, float time)
-    {
-        if (enemy.dead) return;
-        if (knockedDown) return;
-
-        TurnToPlayer();
-
-        knockedDown = true;
-        anim.SetBool("knockeddown", true);
-
-        agent.enabled = false;
-        rb.isKinematic = false;
-
-        rb.velocity = Vector3.zero;
-        rb.AddForce(_direction * forceAmount + new Vector3(0,5,0), ForceMode.Impulse);
-        knocked = true;
-
-        anim.SetTrigger("knockup");
-
-        enemy.CheckIfDead();
+        //enemy.CheckIfDead();
     }
 
     public void MoveAgain()
     {
         if (enemy.dead) return;
-        if (knockedDown) return;
 
-        agent.enabled = true;
-        rb.isKinematic = true;
-        knocked = false;
-    }
-
-    public void MoveAfterKnockDown()
-    {
-        CancelInvoke(nameof(MoveAgain));
-
-        knockedDown = false;
-        anim.SetBool("knockeddown", false);
-
+        //agent.isStopped = false;
         agent.enabled = true;
         rb.isKinematic = true;
         knocked = false;
@@ -180,7 +105,7 @@ public class EnemyMove : MonoBehaviour
     void RemoveTarget()
     {
         target = null;
-        agent.SetDestination(transform.position);
+        if(agent.isActiveAndEnabled) agent.SetDestination(transform.position);
     }
 
     public void WarnPlayerOfDeath()

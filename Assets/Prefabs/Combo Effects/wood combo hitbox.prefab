@@ -68,9 +68,7 @@ MonoBehaviour:
   element: 3
   comboFX: {fileID: 0}
   knockbackForce: 4
-  knockupForce: 0
-  knockTime: 2
-  knockType: 2
+  knockbackTime: 1
   damage: 60
   hitboxLifetime: 2
   particleLifetime: 4
@@ -156,15 +154,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2747066969983066160, guid: 11e6a31ebc36bdd4aa2b247c7962afbf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3704102017266669326, guid: 11e6a31ebc36bdd4aa2b247c7962afbf,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747066969983066160, guid: 11e6a31ebc36bdd4aa2b247c7962afbf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11e6a31ebc36bdd4aa2b247c7962afbf, type: 3}

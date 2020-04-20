@@ -81,7 +81,6 @@ MonoBehaviour:
   knockbackForce: 10
   knockupForce: 0
   knockTime: 2
-  knockType: 1
 --- !u!1 &7299691176463339977
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,9 +136,7 @@ MonoBehaviour:
   element: 1
   comboFX: {fileID: 0}
   knockbackForce: 10
-  knockupForce: 0
-  knockTime: 2
-  knockType: 1
+  knockbackTime: 1
   damage: 40
   hitboxLifetime: 2
   particleLifetime: 6

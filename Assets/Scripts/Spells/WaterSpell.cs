@@ -81,14 +81,15 @@ public class WaterSpell : MonoBehaviour
                 var enemy = currentEnemy.gameObject.GetComponent<Enemy>();
                 var enemyMove = currentEnemy.gameObject.GetComponent<EnemyMove>();
 
-                Vector3 knockbackDirection = spell.playerPos.position - currentEnemy.transform.position;
+                Vector3 knockbackDirection = currentEnemy.transform.position - spell.playerPos.position;
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
 
-                if (numberOfHitsDone != maxNumberOfHits) enemyMove.SlightKnockUp(-knockbackDirection, KnockbackForce, smallKnockupForce, KnockbackTimeToRecover);
-                else enemyMove.KnockUp(-knockbackDirection, knockbackForceOnFinalHit, hurtTime);
+                //if (numberOfHitsDone != maxNumberOfHits) enemyMove.SlightKnockUp(-knockbackDirection, KnockbackForce, smallKnockupForce, KnockbackTimeToRecover);
+                //else enemyMove.KnockUp(-knockbackDirection, knockbackForceOnFinalHit, hurtTime);
 
-                enemy.DecreaseHealth(damagePerHit);
+                enemyMove.KnockBack(knockbackDirection, KnockbackForce, smallKnockupForce, hurtTime);
+                enemy.TakeDamage(damagePerHit);
 
             }
         }

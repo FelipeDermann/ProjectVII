@@ -28,8 +28,8 @@ public class FireBallSpecial : MonoBehaviour
 
     [Header("Knockback")]
     public float knockbackForce;
+    public float knockUpForce;
     public float knockTime;
-    public KnockType knockType;
 
     public void StartSpell()
     {
@@ -59,24 +59,12 @@ public class FireBallSpecial : MonoBehaviour
                 var enemy = currentEnemy.gameObject.GetComponent<Enemy>();
                 var enemyMove = currentEnemy.gameObject.GetComponent<EnemyMove>();
 
-                Vector3 knockbackDirection = transform.position - currentEnemy.transform.position;
+                Vector3 knockbackDirection = currentEnemy.transform.position - transform.position;
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
 
-                enemy.DecreaseHealth(damage);
-
-                switch (knockType)
-                {
-                    case KnockType.Back:
-                        enemyMove.KnockBack(-knockbackDirection, knockbackForce, knockTime);
-                        break;
-                    case KnockType.Away:
-                        enemyMove.KnockAway(-knockbackDirection, knockbackForce, knockTime);
-                        break;
-                    case KnockType.Up:
-                        enemyMove.KnockUp(-knockbackDirection, knockbackForce, knockTime);
-                        break;
-                }
+                enemyMove.KnockBack(knockbackDirection, knockbackForce, knockUpForce, knockTime);
+                enemy.TakeDamage(damage);
 
             }
         }

@@ -214,6 +214,21 @@ PrefabInstance:
       propertyPath: audioEmitter
       value: 
       objectReference: {fileID: 13492044408672750}
+    - target: {fileID: 5831009098004146784, guid: 5b018d104afcddc4c8d58df9ca1cad1a,
+        type: 3}
+      propertyPath: knockupForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831009098004146784, guid: 5b018d104afcddc4c8d58df9ca1cad1a,
+        type: 3}
+      propertyPath: knockTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831009098004146784, guid: 5b018d104afcddc4c8d58df9ca1cad1a,
+        type: 3}
+      propertyPath: invincbilityTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5937857622489343855, guid: 5b018d104afcddc4c8d58df9ca1cad1a,
         type: 3}
       propertyPath: m_LocalPosition.x
