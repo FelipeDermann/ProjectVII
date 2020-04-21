@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public ObjectPool CoinPool;
 
     [Header("Enemies Pool")]
-    public ObjectPool enemyPool;
+    public ObjectPool EnemyPool;
 
     private void Awake()
     {

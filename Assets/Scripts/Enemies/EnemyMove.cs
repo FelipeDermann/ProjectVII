@@ -5,9 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
+    [SerializeField]
     Animator anim;
+    [SerializeField]
     NavMeshAgent agent;
+    [SerializeField]
     Rigidbody rb;
+    [SerializeField]
     Enemy enemy;
 
     public bool canMove;
@@ -23,14 +27,10 @@ public class EnemyMove : MonoBehaviour
 
     GameObject playerPointToLookAt;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Activate()
     {
-        anim = GetComponent<Animator>();
-        //target = FindObjectOfType<PlayerMovement>().transform;
-        agent = GetComponent<NavMeshAgent>();
-        enemy = GetComponent<Enemy>();
-        rb = GetComponent<Rigidbody>();
+        canMove = true;
+        knocked = false;
     }
 
     private void Update()

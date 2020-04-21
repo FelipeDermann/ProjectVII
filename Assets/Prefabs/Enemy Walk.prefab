@@ -189,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247437171}
   m_LocalRotation: {x: 0, y: 0.9972619, z: 0, w: 0.07395186}
-  m_LocalPosition: {x: 9.44, y: 0.54845893, z: 6.28}
+  m_LocalPosition: {x: 9.44, y: 0, z: 6.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 764819823}
@@ -284,6 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f1d05ac9348cb4d9ac5bef62f9ddd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 247437177}
+  agent: {fileID: 247437172}
+  rb: {fileID: 247437176}
+  enemy: {fileID: 247437174}
   canMove: 1
   knocked: 0
   knockedDown: 0
@@ -302,19 +306,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c0d6f63d78fc14b83a0ccedaa4a0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beingTargetedByLockOn: 0
+  meshRenderer: {fileID: 764819824}
+  meshRenderer2: {fileID: 2090741676}
+  poolToReturnTo: {fileID: 0}
+  thisObject: {fileID: 6694963497835717219}
+  rb: {fileID: 247437176}
+  anim: {fileID: 247437177}
+  capsuleCol: {fileID: 247437175}
+  targetScriptForLockOn: {fileID: 1498315270}
+  agent: {fileID: 247437172}
   currentHealth: 100
   maxHealth: 100
   numberOfCoinsToDrop: 3
-  timeUntilDeath: 3
+  timeUntilReturnToPool: 3
   layerWhenDead: 13
   dead: 0
   invincible: 0
   deathParticles: {fileID: 1076456873343246756, guid: 56194790b58def948ac41987e2769f04,
     type: 3}
   deathParticlesSpawnPoint: {fileID: 1053257034}
+  lifeBar: {fileID: 2068062086}
+  move: {fileID: 247437173}
+  attack: {fileID: 178995919}
   mySpawner: {fileID: 0}
   myWaveSpawner: {fileID: 0}
-  lifeBar: {fileID: 0}
 --- !u!114 &178995919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,13 +343,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada082111e920d44e8b14bab24a67d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 247437177}
+  enemyMove: {fileID: 247437173}
   attackArea: {fileID: 1284873607}
   attackHitbox: {fileID: 954605118}
   timeToWaitBeforeAttacking: 1
   timeBeforeAttackingAgain: 2
   playerInRange: 0
   attacking: 0
-  canAttack: 0
+  canAttack: 1
   hurt: 0
 --- !u!114 &1865930337
 MonoBehaviour:
@@ -357,6 +375,7 @@ MonoBehaviour:
   attackVolume: 0.75
   hurtVolume: 0.75
   deathVolume: 1
+  audioSource: {fileID: 9219634573124534347}
 --- !u!82 &9219634573124534347
 AudioSource:
   m_ObjectHideFlags: 0

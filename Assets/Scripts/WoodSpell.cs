@@ -57,7 +57,7 @@ public class WoodSpell : MonoBehaviour
             enemy.TakeDamage(damage);
         }
 
-        if (other.CompareTag("Wall"))
+        if (other.CompareTag("Wall") || other.CompareTag("Fence"))
         {
             EndEffect();
         }

@@ -22,14 +22,9 @@ public class EnemySound : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float deathVolume;
 
+    [SerializeField]
     AudioSource audioSource;
     int stepToPlayIndex;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     public void PlayStepSound()
     {

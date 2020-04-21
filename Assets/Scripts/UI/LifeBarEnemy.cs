@@ -38,4 +38,9 @@ public class LifeBarEnemy : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public void EnableBar()
+    {
+        gameObject.SetActive(true);
+    }
 }

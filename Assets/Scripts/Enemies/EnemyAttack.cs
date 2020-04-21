@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    [SerializeField]
     Animator animator;
+    [SerializeField]
     EnemyMove enemyMove;
 
     [Header("Colliders")]
@@ -19,12 +21,9 @@ public class EnemyAttack : MonoBehaviour
     public bool canAttack;
     public bool hurt;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Activate()
     {
-        animator = GetComponentInParent<Animator>();
-        enemyMove = GetComponentInParent<EnemyMove>();
-
+        hurt = false;
         canAttack = true;
     }
 

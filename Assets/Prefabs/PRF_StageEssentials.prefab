@@ -3598,7 +3598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504091159799007204}
   m_LocalRotation: {x: 0.061691616, y: 0.70441055, z: -0.061691612, w: 0.7044105}
-  m_LocalPosition: {x: -81.14793, y: 6.5529156, z: 21.19069}
+  m_LocalPosition: {x: -81.14793, y: 6.8269153, z: 21.19069}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4504091160350972825}
@@ -3712,7 +3712,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504091159816613896}
-  m_LocalRotation: {x: 0.10535082, y: -0.00000008940697, z: 0.000000033527613, w: 0.9944352}
+  m_LocalRotation: {x: 0.10535078, y: -0.00000017881392, z: 0.00000004097819, w: 0.99443513}
   m_LocalPosition: {x: -0.000007629395, y: 0, z: -9.094947e-13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3824,7 +3824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504091159882170872}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -81.14793, y: 6.5529156, z: 21.19069}
+  m_LocalPosition: {x: -81.14793, y: 6.8269153, z: 21.19069}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4504091159816613902}
@@ -4727,7 +4727,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504091160232191728}
-  m_LocalRotation: {x: 0.0872451, y: -0.00000008940696, z: -0.000000055879347, w: 0.99618685}
+  m_LocalRotation: {x: 0.0872451, y: -0.00000008940696, z: -0.00000003352761, w: 0.99618685}
   m_LocalPosition: {x: -0.0000038146977, y: 0, z: -4.5474735e-13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4835,7 +4835,7 @@ MonoBehaviour:
   MetalSpellPool: {fileID: 1495200101715037698}
   WoodSpellPool: {fileID: 1428121133368105230}
   CoinPool: {fileID: 358210947347395912}
-  enemyPool: {fileID: 371876033643385299}
+  EnemyPool: {fileID: 0}
 --- !u!1 &4504091160327750898
 GameObject:
   m_ObjectHideFlags: 0

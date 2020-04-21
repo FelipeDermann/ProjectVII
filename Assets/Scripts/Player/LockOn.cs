@@ -31,10 +31,12 @@ public class LockOn : MonoBehaviour
     private void OnEnable()
     {
         PlayerAnimation.TurnToEnemyIfLockedOn += TurnToLockedEnemy;
+        Enemy.RemoveLockOnTarget += CameraLockOff;
     }
     private void OnDisable()
     {
         PlayerAnimation.TurnToEnemyIfLockedOn -= TurnToLockedEnemy;
+        Enemy.RemoveLockOnTarget -= CameraLockOff;
     }
 
     private void Start()
@@ -98,11 +100,6 @@ public class LockOn : MonoBehaviour
         }
     }
 
-    public void CAMERATESTE()
-    {
-        Debug.Log("TESTE DE CAMERA");
-    }
-
     public void TurnToLockedEnemy()
     {
         if (!isLocked) return;
@@ -141,6 +138,7 @@ public class LockOn : MonoBehaviour
         normalCamera.m_YAxis.m_MaxSpeed = 2;
 
         lockOnCamera.gameObject.SetActive(false);
+        target.GetComponentInParent<Enemy>().beingTargetedByLockOn = false;
     }
 
     void CameraLockOn()
@@ -155,6 +153,7 @@ public class LockOn : MonoBehaviour
         
         lockOnCamera.gameObject.SetActive(true);
         lockOnCamera.LookAt = target;
+        target.GetComponentInParent<Enemy>().beingTargetedByLockOn = true;
     }
 
     void CameraLocked()
