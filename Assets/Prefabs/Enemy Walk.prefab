@@ -400,7 +400,7 @@ MonoBehaviour:
   - {fileID: 5452101932673531262}
   damagePerStack: 1
   damageTickTime: 0.5
-  debuffDuration: 100
+  debuffDuration: 1000
 --- !u!82 &9219634573124534347
 AudioSource:
   m_ObjectHideFlags: 0
