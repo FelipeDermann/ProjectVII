@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class ComboEffect : MonoBehaviour
 {
+    public static event Action GenerationCycleHit;
+    public static event Action EnemyHit;
+
     [Header("--References (don't alter them)--")]
     public PlayerStatus playerStatus;
     public Transform playerPos;
     public Collider hitbox;
     public PoolableObject thisObject;
     public AudioEmitter audioEmitter;
-    public Element element;
+    public ElementType element;
 
     [Header("--Place Combo Effect Here--")]
     public ParticleSystem comboFX;
@@ -20,6 +24,7 @@ public class ComboEffect : MonoBehaviour
     public float knockbackForce;
     public float knockbackTime;
     public float knockupForce;
+    public float invincibilityTime;
 
     [Header("Basic Attributes")]
     public float damage;
@@ -28,6 +33,19 @@ public class ComboEffect : MonoBehaviour
     public float audioLifetime;
     public float timeToRemoveEntireObject;
 
+    public bool controlCycleEffect;
+    public bool generationCycleEffect;
+    public bool canApplyGenerationCycle;
+
+    public void ActivateControlCycleEffect()
+    {
+        controlCycleEffect = true;
+    }
+    public void ActivateGenerationCycleEffect()
+    {
+        generationCycleEffect = true;
+        canApplyGenerationCycle = true;
+    }
 
     void OnEnable()
     {
@@ -68,21 +86,25 @@ public class ComboEffect : MonoBehaviour
 
     void ReturnObjectToPool(float _time)
     {
+        generationCycleEffect = false;
+        canApplyGenerationCycle = false;
+        controlCycleEffect = false;
+
         switch (element)
         {
-            case Element.Fire:
+            case ElementType.Fire:
                 GameManager.Instance.FireComboPool.ReturnObject(thisObject, _time);
                 break;
-            case Element.Water:
+            case ElementType.Water:
                 GameManager.Instance.WaterComboPool.ReturnObject(thisObject, _time);
                 break;
-            case Element.Metal:
+            case ElementType.Metal:
                 GameManager.Instance.MetalComboPool.ReturnObject(thisObject, _time);
                 break;
-            case Element.Wood:
+            case ElementType.Wood:
                 GameManager.Instance.WoodComboPool.ReturnObject(thisObject, _time);
                 break;
-            case Element.Earth:
+            case ElementType.Earth:
                 GameManager.Instance.EarthComboPool.ReturnObject(thisObject, _time);
                 break;
         }
@@ -101,8 +123,17 @@ public class ComboEffect : MonoBehaviour
 
             enemyMove.KnockBack(knockbackDirection, knockbackForce, knockupForce, knockbackTime);
             enemy.TakeDamage(damage);
+            if (controlCycleEffect) other.GetComponent<EnemyDebuff>().GainStack();
+            if (generationCycleEffect && canApplyGenerationCycle)
+            {
+                canApplyGenerationCycle = false;
+                GenerationCycleHit?.Invoke();
+                Debug.Log(other.name + " WAS HIT WITH GENERATION CYCLE ON GENERAL COMBO");
+            }
 
-            if(!enemy.dead) playerStatus.IncreaseMana();
+            EnemyHit?.Invoke();
+
+            if (!enemy.dead) playerStatus.IncreaseMana();
         }
 
     }

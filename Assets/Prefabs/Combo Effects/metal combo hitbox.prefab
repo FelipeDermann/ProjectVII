@@ -69,11 +69,13 @@ MonoBehaviour:
   comboFX: {fileID: 5064888702037385381}
   knockbackForce: 10
   knockbackTime: 1
-  damage: 40
+  knockupForce: 0
+  damage: 1
   hitboxLifetime: 4
   particleLifetime: 5
   audioLifetime: 4
   timeToRemoveEntireObject: 6
+  controlCycleEffect: 0
 --- !u!114 &8673153629111028770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,12 +109,12 @@ PrefabInstance:
     - target: {fileID: 1357202848333763076, guid: f54216d64d0a09e479eca13da8f42292,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1357202848333763076, guid: f54216d64d0a09e479eca13da8f42292,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1357202848333763076, guid: f54216d64d0a09e479eca13da8f42292,
         type: 3}

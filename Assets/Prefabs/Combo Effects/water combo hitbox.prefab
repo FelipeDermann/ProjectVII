@@ -77,10 +77,10 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 3
   timeToStop: 2
-  damage: 40
   knockbackForce: 10
   knockupForce: 0
-  knockTime: 2
+  knockbackTime: 1
+  controlCycleEffect: 0
 --- !u!1 &7299691176463339977
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,13 +135,15 @@ MonoBehaviour:
   audioEmitter: {fileID: 0}
   element: 1
   comboFX: {fileID: 0}
-  knockbackForce: 10
+  knockbackForce: 5
   knockbackTime: 1
-  damage: 40
+  knockupForce: 0
+  damage: 1
   hitboxLifetime: 2
   particleLifetime: 6
   audioLifetime: 4
   timeToRemoveEntireObject: 8
+  controlCycleEffect: 0
 --- !u!114 &3480132800044606308
 MonoBehaviour:
   m_ObjectHideFlags: 0

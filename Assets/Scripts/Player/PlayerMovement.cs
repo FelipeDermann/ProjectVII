@@ -196,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
     public void KnockBack(Vector3 _direction, float _power, float _time)
     {
         if (playerStatus.invincible) return;
+        if (playerStatus.ignoreStagger) return;
 
         StartCoroutine(KnockBackCoroutine(_direction, _power, _time));
     }

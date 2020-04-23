@@ -118,13 +118,10 @@ public class LockOn : MonoBehaviour
             
             dot = Vector3.Dot(transform.forward, (target.position - transform.position).normalized);
             
-            Debug.Log(dot);
-
             yield return null;
         }
 
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
-
     }
 
     public void CameraLockOff()
