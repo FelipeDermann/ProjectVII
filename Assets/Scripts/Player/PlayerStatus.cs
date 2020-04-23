@@ -13,10 +13,11 @@ public class PlayerStatus : MonoBehaviour
     Animator animator;   
 
     [Header("Health Attributes")]
-    public int currentHealth;
-    public int maxHealth;
+    public float currentHealth;
+    public float maxHealth;
     public float invincibilityTime;
     public bool invincible;
+    public bool ignoreStagger;
     public bool dead;
 
     [Header("Health Attributes")]
@@ -56,6 +57,11 @@ public class PlayerStatus : MonoBehaviour
         playerHUD.UpdateSpecialBar();
     }
 
+    public void ChangeStagger(bool _state)
+    {
+        ignoreStagger = _state;
+    }
+
     public void GainMoney(int _amount)
     {
         money += _amount;
@@ -66,13 +72,14 @@ public class PlayerStatus : MonoBehaviour
         money -= _amount;
     }
 
-    public void IncreaseHealth(int _damage)
+    public void IncreaseHealth(float _heal)
     {
-        currentHealth += _damage;
+        currentHealth += _heal;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
         playerHUD.UpdateHealthBar();
     }
 
-    public void TakeDamage(int _damage)
+    public void TakeDamage(float _damage)
     {
         if (invincible) return;
 
@@ -82,13 +89,13 @@ public class PlayerStatus : MonoBehaviour
         else
         {
             StartCoroutine(nameof(Invincibility));
-            if(!animator.GetBool("hurt")) animator.SetTrigger("hit");
+            if(!animator.GetBool("hurt") && !ignoreStagger) animator.SetTrigger("hit");
         }
 
         playerHUD.UpdateHealthBar();
     }
 
-    public void DecreaseHealth(int _damage)
+    public void DecreaseHealth(float _damage)
     {
         currentHealth -= _damage;
 

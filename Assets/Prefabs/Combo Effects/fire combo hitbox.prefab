@@ -69,11 +69,13 @@ MonoBehaviour:
   comboFX: {fileID: 3033857441112240573}
   knockbackForce: 10
   knockbackTime: 1
-  damage: 40
+  knockupForce: 0
+  damage: 1
   hitboxLifetime: 3
   particleLifetime: 5
   audioLifetime: 2
   timeToRemoveEntireObject: 8
+  controlCycleEffect: 0
 --- !u!114 &-5887323099348075665
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ public class AttackAnimationBehaviour : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //animator.GetCurrentAnimatorStateInfo(0).speedMultiplier = 1 + PlayerBuff.atkSpeedToAnimator;
+        animator.SetFloat("AttackSpeed", 1 + PlayerBuff.atkSpeedToAnimator);
         StartedAttack?.Invoke();
     }
 

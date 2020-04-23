@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum Combo
+public enum AttackType
 {
-    None,
-    WaterCombo,
-    FireCombo,
-    EarthCombo,
-    MetalCombo,
-    WoodCombo
+    LIGHT,
+    HEAVY
 }
 
 public class Attack : MonoBehaviour
@@ -18,7 +14,7 @@ public class Attack : MonoBehaviour
     public Animator anim;
     MovementInput move;
     PlayerMovement playerMove;
-    Elements elements;
+    PlayerElements elements;
     LockOn lockOn;
 
     public int inputsHeavy;
@@ -36,19 +32,19 @@ public class Attack : MonoBehaviour
     public Transform currentEnemyTarget;
 
     [Header("Combos (Choose which element corresponds to which combo)")]
-    public Combo L_L_H;
-    public Combo L_H_H;
-    public Combo L_H_L;
-    public Combo H_L_H;
-    public Combo H_H_L;
-    public Combo H_L_L;
+    public Element L_L_H;
+    public Element L_H_H;
+    public Element L_H_L;
+    public Element H_L_H;
+    public Element H_H_L;
+    public Element H_L_L;
 
     // Start is called before the first frame update
     void Start()
     {
         move = GetComponentInParent<MovementInput>();
         playerMove = GetComponentInParent<PlayerMovement>();
-        elements = GetComponent<Elements>();
+        elements = GetComponent<PlayerElements>();
         lockOn = GetComponent<LockOn>();
 
         canAttack = true;
@@ -166,7 +162,6 @@ public class Attack : MonoBehaviour
 
         if (!attacking)
         {
-            elements.currentCombo = Combo.None;
             inputs.Add("light");
             anim.SetTrigger("startL");
             ResetAnimTriggers();
@@ -193,8 +188,7 @@ public class Attack : MonoBehaviour
         if (!canAttack) return;
 
         if (!attacking)
-        {
-            elements.currentCombo = Combo.None;
+        { 
             inputs.Add("heavy");
             anim.SetTrigger("startH");
             ResetAnimTriggers();
@@ -217,11 +211,7 @@ public class Attack : MonoBehaviour
     {
         anim.ResetTrigger("light");
         anim.ResetTrigger("heavy");
-        anim.ResetTrigger("WaterCombo");
-        anim.ResetTrigger("MetalCombo");
-        anim.ResetTrigger("EarthCombo");
-        anim.ResetTrigger("FireCombo");
-        anim.ResetTrigger("WoodCombo");
+        anim.ResetTrigger("combo");
     }
 
     public void EnableNextAttackInput()
@@ -236,20 +226,20 @@ public class Attack : MonoBehaviour
     public bool CheckInputCombination()
     {
         bool comboIsTriggered = false;
-        Combo triggerToActivate = Combo.None;
+        Element elementToGive = null;
 
-        if (inputs[0] == "light" && inputs[1] == "light" && inputs[2] == "heavy") triggerToActivate = L_L_H;
-        if (inputs[0] == "light" && inputs[1] == "heavy" && inputs[2] == "heavy") triggerToActivate = L_H_H;
-        if (inputs[0] == "light" && inputs[1] == "heavy" && inputs[2] == "light") triggerToActivate = L_H_L;
-        if (inputs[0] == "heavy" && inputs[1] == "heavy" && inputs[2] == "light") triggerToActivate = H_H_L;
-        if (inputs[0] == "heavy" && inputs[1] == "light" && inputs[2] == "heavy") triggerToActivate = H_L_H;
+        if (inputs[0] == "light" && inputs[1] == "light" && inputs[2] == "heavy") elementToGive = L_L_H;
+        if (inputs[0] == "light" && inputs[1] == "heavy" && inputs[2] == "heavy") elementToGive = L_H_H;
+        if (inputs[0] == "light" && inputs[1] == "heavy" && inputs[2] == "light") elementToGive = L_H_L;
+        if (inputs[0] == "heavy" && inputs[1] == "heavy" && inputs[2] == "light") elementToGive = H_H_L;
+        if (inputs[0] == "heavy" && inputs[1] == "light" && inputs[2] == "heavy") elementToGive = H_L_H;
 
-        if (triggerToActivate != Combo.None)
+        if (elementToGive != null)
         {
             comboIsTriggered = true;
 
-            elements.currentCombo = triggerToActivate;
-            anim.SetTrigger(triggerToActivate.ToString());
+            elements.ChangeElements(elementToGive);
+            anim.SetTrigger("combo");
         }
 
         ClearInputList();

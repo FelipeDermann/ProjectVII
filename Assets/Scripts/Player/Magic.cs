@@ -9,7 +9,7 @@ public class Magic : MonoBehaviour
     PlayerMovement playerMove;
     Attack playerAttack;
     MovementInput inputs;
-    Elements playerElements;
+    PlayerElements playerElements;
     Animator anim;
     PlayerStatus playerStatus;
 
@@ -35,7 +35,7 @@ public class Magic : MonoBehaviour
         uiElement = canvasText.GetComponent<UIPlayer>();
 
         playerStatus = GetComponent<PlayerStatus>();
-        playerElements = GetComponentInParent<Elements>();
+        playerElements = GetComponentInParent<PlayerElements>();
         inputs = GetComponentInParent<MovementInput>();
         playerMove = GetComponent<PlayerMovement>();
         playerAttack = GetComponent<Attack>();
@@ -61,7 +61,7 @@ public class Magic : MonoBehaviour
         if (!canUseMagic) return;
 
         if (playerStatus.mana < playerStatus.maxMana) return;
-        if (playerElements.currentElement == Element.None) return;
+        if (playerElements.currentElement.ElementName == ElementType.None) return;
 
         anim.SetTrigger("special");
         inputs.canMove = false;
@@ -72,25 +72,25 @@ public class Magic : MonoBehaviour
 
     void MagicAttack()
     {
-        switch (playerElements.currentElement)
+        switch (playerElements.currentElement.ElementName)
         {
-            case Element.Fire:
+            case ElementType.Fire:
                 special = GameManager.Instance.FireSpellPool.RequestObject(specialSpawnPoint.position, transform.rotation);
                 special.GetComponent<FireBallSpecial>().StartSpell();
                 break;
-            case Element.Water:
+            case ElementType.Water:
                 special = GameManager.Instance.WaterSpellPool.RequestObject(specialSpawnPoint.position, transform.rotation);
                 special.GetComponent<WaterSpell>().CheckIfCanSpawn();
                 break;
-            case Element.Metal:
+            case ElementType.Metal:
                 special = GameManager.Instance.MetalSpellPool.RequestObject(transform.position, transform.rotation);
                 special.GetComponent<MetalSpell>().StartSpell();
                 break;
-            case Element.Wood:
+            case ElementType.Wood:
                 special = GameManager.Instance.WoodSpellPool.RequestObject(transform.position, transform.rotation);
                 special.GetComponent<WoodSpell>().StartSpell();
                 break;
-            case Element.Earth:
+            case ElementType.Earth:
                 special = GameManager.Instance.EarthSpellPool.RequestObject(transform.position, transform.rotation);
                 special.GetComponentInChildren<EarthSpellManager>().StartSpell();
                 break;

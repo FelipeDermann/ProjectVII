@@ -72,11 +72,12 @@ MonoBehaviour:
   knockbackForce: 10
   knockbackTime: 1
   knockupForce: 5
-  damage: 40
+  damage: 1
   hitboxLifetime: 1
   particleLifetime: 4
   audioLifetime: 3
   timeToRemoveEntireObject: 6
+  controlCycleEffect: 0
 --- !u!114 &5497010694907915958
 MonoBehaviour:
   m_ObjectHideFlags: 0

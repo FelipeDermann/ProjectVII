@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class WeaponHitbox : MonoBehaviour
 {
+    public static event Action EnemyHit;
+
     public bool active;
     public PlayerStatus playerStatus;
     public PlayerSounds playerSounds;
@@ -14,6 +17,7 @@ public class WeaponHitbox : MonoBehaviour
 
     public float knockbackForce;
     public float knockTime;
+    public AttackType attackType;
 
     float lightDamage;
     float heavyDamage;
@@ -22,9 +26,11 @@ public class WeaponHitbox : MonoBehaviour
     public ParticleSystem[] attackParticle;
     public float particlePosXOn, particlePosXOff, particleLenghtOn, particleLenghtOff;
 
-
     private void OnEnable()
     {
+        PlayerAnimation.LightAttackDamage += SetAttackType;
+        PlayerAnimation.HeavyAttackDamage += SetAttackType;
+
         DashBehaviour.DashStart += DeactivateHitbox;
         DisableAttackState.FinishedAttack += DeactivateHitbox;
 
@@ -34,8 +40,12 @@ public class WeaponHitbox : MonoBehaviour
         PlayerAnimation.EndTrail += TrailOff;
         PlayerAnimation.StartTrail += TrailOn;
     }
+
     private void OnDisable()
     {
+        PlayerAnimation.LightAttackDamage -= SetAttackType;
+        PlayerAnimation.HeavyAttackDamage -= SetAttackType;
+
         DashBehaviour.DashStart += DeactivateHitbox;
         DisableAttackState.FinishedAttack -= DeactivateHitbox;
 
@@ -46,6 +56,11 @@ public class WeaponHitbox : MonoBehaviour
         PlayerAnimation.StartTrail += TrailOn;
     }
 
+    public void SetAttackType(AttackType _attackType)
+    {
+        attackType = _attackType;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,9 +68,6 @@ public class WeaponHitbox : MonoBehaviour
         playerStatus = GetComponentInParent<PlayerStatus>();
         playerSounds = GetComponentInParent<PlayerSounds>();
         playerPos = FindObjectOfType<PlayerMovement>().transform;
-
-        lightDamage = playerStatus.lightAttackDamage;
-        heavyDamage = playerStatus.heavyAttackDamage;
 
         weaponTrail = GetComponentInParent<MeleeWeaponTrail>();
         weaponTrail.Emit = false;
@@ -122,7 +134,19 @@ public class WeaponHitbox : MonoBehaviour
                 if (!enemy.dead && !enemyMove.knockedDown) playerSounds.PlaySlashSound();
 
                 enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
-                enemy.TakeDamage(lightDamage);
+
+                if (attackType == AttackType.LIGHT)
+                {
+                    lightDamage = playerStatus.lightAttackDamage;
+                    enemy.TakeDamage(lightDamage);
+                }
+                if (attackType == AttackType.HEAVY)
+                {
+                    heavyDamage = playerStatus.heavyAttackDamage;
+                    enemy.TakeDamage(heavyDamage);
+                }
+
+                EnemyHit?.Invoke();
 
                 if (!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
 

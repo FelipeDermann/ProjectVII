@@ -11,6 +11,9 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action<bool> DashSpeedStart;
     public static event Action<bool> DashSpeedEnd;
 
+    public static event Action<AttackType> LightAttackDamage;
+    public static event Action<AttackType> HeavyAttackDamage;
+
     public static event Action<bool> AttackMoveStart;
     public static event Action<bool> AttackMoveEnd;
 
@@ -28,6 +31,16 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action RestartScene;
 
     public float secondsOfInputDetection;
+
+    public void LightAttack()
+    {
+        LightAttackDamage?.Invoke(AttackType.LIGHT);
+    }
+
+    public void HeavyAttack()
+    {
+        HeavyAttackDamage?.Invoke(AttackType.HEAVY);
+    }
 
     public void AttackMovementStart()
     {

@@ -13,25 +13,25 @@ public class UIPlayer : MonoBehaviour
         myText = GetComponent<TextMeshProUGUI>();
     }
 
-    public void ChangeElementText(Element _element)
+    public void ChangeElementText(ElementType _element)
     {
         string textToAdd = "Teste";
 
         switch(_element)
         {
-            case Element.Fire: 
+            case ElementType.Fire: 
                 textToAdd = "<color=red>Fire</color>";
                 break;
-            case Element.Water: 
+            case ElementType.Water: 
                 textToAdd = "<color=blue>Water</color>";
                 break;
-            case Element.Wood:
+            case ElementType.Wood:
                 textToAdd = "<color=green>Wood</color>";
                 break;
-            case Element.Metal:
+            case ElementType.Metal:
                 textToAdd = "<color=black>Metal</color>";
                 break;
-            case Element.Earth:
+            case ElementType.Earth:
                 textToAdd = "<color=yellow>Earth</color>";
                 break;
         }

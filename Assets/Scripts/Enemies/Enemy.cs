@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 {
     public bool beingTargetedByLockOn;
     [SerializeField]
+    private EnemyDebuff enemyDebuff;
+    [SerializeField]
     private SkinnedMeshRenderer meshRenderer;
     [SerializeField]
     private SkinnedMeshRenderer meshRenderer2;
@@ -86,6 +88,8 @@ public class Enemy : MonoBehaviour
         agent.enabled = false;
         meshRenderer.enabled = false;
         meshRenderer2.enabled = false;
+
+        enemyDebuff.Deactivate();
 
         //GameManager.Instance.EnemyPool.ReturnObject(thisObject, timeUntilReturnToPool);
         poolToReturnTo.ReturnObject(thisObject, timeUntilReturnToPool);
