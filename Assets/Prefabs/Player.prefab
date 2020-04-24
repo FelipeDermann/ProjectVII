@@ -34230,6 +34230,7 @@ MonoBehaviour:
   active: 0
   playerStatus: {fileID: 0}
   playerSounds: {fileID: 0}
+  playerMove: {fileID: 0}
   weaponTrail: {fileID: 0}
   knockbackForce: 5
   knockTime: 1

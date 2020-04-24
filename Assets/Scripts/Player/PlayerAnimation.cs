@@ -83,25 +83,23 @@ public class PlayerAnimation : MonoBehaviour
     public void ActivateTrail()
     {
         StartTrail?.Invoke();
-        Debug.Log("HITBOX ON");
     }
 
     public void DeactivateTrail()
     {
         EndTrail?.Invoke();
-        Debug.Log("HITBOX OFF");
     }
 
     public void ActivateHitbox()
     {
         StartHitbox?.Invoke();
-        Debug.Log("HITBOX ON");
+        //Debug.Log("HITBOX ON");
     }
 
     public void DeactivateHitbox()
     {
         EndHitbox?.Invoke();
-        Debug.Log("HITBOX OFF");
+        //Debug.Log("HITBOX OFF");
     }
 
     public void StartCombo()

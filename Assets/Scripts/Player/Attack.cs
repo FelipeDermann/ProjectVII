@@ -106,6 +106,7 @@ public class Attack : MonoBehaviour
         //Look to closest enemy if not locked on
         if (!lockOn.isLocked)
         {
+            //Change direction if pressing one
             if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
             {
                 currentEnemyTarget = null;

@@ -35,6 +35,11 @@ public class PlayerMovement : MonoBehaviour
     public float maxFallSpeed;
     public float verticalSpeed;
 
+    //dashing
+    Vector3 dashMoveDirection;
+    float DashInputX;
+    float DashInputZ;
+
     private void OnEnable()
     {
         DisableAttackState.FinishedAttack += CanWalkOn;
@@ -90,6 +95,15 @@ public class PlayerMovement : MonoBehaviour
         //Jump();
         Gravity();
         //DetectGround();
+        DashInput();
+    }
+
+    void DashInput()
+    {
+        if (dashing) return;
+        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0) return;
+        DashInputX = Input.GetAxisRaw("Horizontal");
+        DashInputZ = Input.GetAxisRaw("Vertical");
     }
 
     void Dash()
@@ -100,10 +114,6 @@ public class PlayerMovement : MonoBehaviour
         if (!canDash) return;
 
         //face input direction
-        float InputX = Input.GetAxis("Horizontal");
-        float InputZ = Input.GetAxis("Vertical");
-
-        var camera = Camera.main;
         var forward = cam.transform.forward;
         var right = cam.transform.right;
 
@@ -113,9 +123,9 @@ public class PlayerMovement : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        Vector3 desiredMoveDirection = forward * InputZ + right * InputX;
+        desiredMoveDirection = forward * DashInputZ + right * DashInputX;
 
-        if (InputX != 0 || InputZ !=0) transform.rotation = Quaternion.LookRotation(desiredMoveDirection);
+        if (DashInputX != 0 || DashInputZ !=0) transform.rotation = Quaternion.LookRotation(desiredMoveDirection);
 
         //set variables do start the dash
         dashing = true;
@@ -137,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("DASH END ");
 
         anim.ResetTrigger("dash");
-        CanWalkOn();
+        if (!anim.GetBool("hurt")) CanWalkOn();
 
         dashCanGainSpeed = false;
         dashing = false;
@@ -150,14 +160,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashCanGainSpeed)
         {
-            //float wait = attackMoveTime;
+            var forward = cam.transform.forward;
+            var right = cam.transform.right;
+            desiredMoveDirection = forward * DashInputZ + right * DashInputX;
 
-            Vector3 movement = Vector3.zero;
-            movement = transform.forward * dashMoveSpeed;
+            //if ((DashInputZ == 0 && DashInputX == 0) && playerLockOn.isLocked) desiredMoveDirection = forward * transform.forward.z + right * transform.forward.x;
+            if ((DashInputZ == 0 && DashInputX == 0) && !playerLockOn.isLocked) desiredMoveDirection = transform.forward;
+            //if ((DashInputZ == 0 && DashInputX == 0)) desiredMoveDirection = transform.forward;
 
-            //Debug.Log(movement);
-
-            controller.Move(movement * Time.deltaTime);
+            controller.Move(desiredMoveDirection.normalized * Time.deltaTime * dashMoveSpeed);
         }
     }
 

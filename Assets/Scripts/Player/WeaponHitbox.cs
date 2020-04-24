@@ -10,6 +10,7 @@ public class WeaponHitbox : MonoBehaviour
     public bool active;
     public PlayerStatus playerStatus;
     public PlayerSounds playerSounds;
+    public PlayerMovement playerMove;
 
     Transform playerPos;
 
@@ -68,6 +69,7 @@ public class WeaponHitbox : MonoBehaviour
         playerStatus = GetComponentInParent<PlayerStatus>();
         playerSounds = GetComponentInParent<PlayerSounds>();
         playerPos = FindObjectOfType<PlayerMovement>().transform;
+        playerMove = GetComponentInParent<PlayerMovement>();
 
         weaponTrail = GetComponentInParent<MeleeWeaponTrail>();
         weaponTrail.Emit = false;
@@ -110,12 +112,15 @@ public class WeaponHitbox : MonoBehaviour
 
     public void ActivateHitbox()
     {
+        Debug.Log("HITBOX ACTIVE");
+        if (playerMove.dashing) return;
         active = true;
     }
 
     public void DeactivateHitbox()
     {
         active = false;
+        Debug.Log("HITBOX DISABLED");
     }
 
     private void OnTriggerEnter(Collider other)
