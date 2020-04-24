@@ -28991,6 +28991,8 @@ MonoBehaviour:
   H_L_H: {fileID: 11400000, guid: 06425f0bdf763ea4fa7218352fa7afd3, type: 2}
   H_H_L: {fileID: 11400000, guid: ac05b76983f72f24a8cb788a9cadf119, type: 2}
   H_L_L: {fileID: 11400000, guid: 1ab50ee5db538ea4a9340a5f2aefc3f5, type: 2}
+  rotationSpeed: 0.25
+  timeToFullyRotate: 0.5
 --- !u!114 &7316435880804652783
 MonoBehaviour:
   m_ObjectHideFlags: 0

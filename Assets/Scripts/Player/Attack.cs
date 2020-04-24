@@ -39,6 +39,11 @@ public class Attack : MonoBehaviour
     public Element H_H_L;
     public Element H_L_L;
 
+    [Header("Rotation when attacking")]
+    public float rotationSpeed;
+    public float timeToFullyRotate;
+    Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +51,7 @@ public class Attack : MonoBehaviour
         playerMove = GetComponentInParent<PlayerMovement>();
         elements = GetComponent<PlayerElements>();
         lockOn = GetComponent<LockOn>();
+        cam = Camera.main;
 
         canAttack = true;
     }
@@ -100,6 +106,13 @@ public class Attack : MonoBehaviour
         //Look to closest enemy if not locked on
         if (!lockOn.isLocked)
         {
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            {
+                currentEnemyTarget = null;
+                ChangeDirection();
+                return;
+            }
+
             if (currentEnemyTarget == null)
             {
                 Vector3 boxBounds = getEnemyArea.bounds.extents;
@@ -151,6 +164,38 @@ public class Attack : MonoBehaviour
         }
 
         transform.LookAt(new Vector3(_enemy.position.x, transform.position.y, _enemy.position.z));
+    }
+
+    void ChangeDirection()
+    {
+        float InputX = Input.GetAxis("Horizontal");
+        float InputZ = Input.GetAxis("Vertical");
+
+        var forward = cam.transform.forward;
+        var right = cam.transform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        Vector3 desiredMoveDirection = forward * InputZ + right * InputX;
+
+        StartCoroutine(nameof(TurnToDirection), desiredMoveDirection);
+    }
+
+    IEnumerator TurnToDirection(Vector3 direction)
+    {
+        float time = 0;
+        while (time < 0.5f)
+        {
+            time += Time.deltaTime;
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotationSpeed);
+
+            yield return null;
+        }
     }
 
     void LightAttack()
