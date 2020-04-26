@@ -27,6 +27,8 @@ public class WeaponHitbox : MonoBehaviour
     public ParticleSystem[] attackParticle;
     public float particlePosXOn, particlePosXOff, particleLenghtOn, particleLenghtOff;
 
+    public List<Collider> enemyColliders;
+
     private void OnEnable()
     {
         PlayerAnimation.LightAttackDamage += SetAttackType;
@@ -121,9 +123,15 @@ public class WeaponHitbox : MonoBehaviour
     {
         active = false;
         Debug.Log("HITBOX DISABLED");
+
+        foreach (Collider collider in enemyColliders)
+        {
+            Physics.IgnoreCollision(GetComponent<Collider>(), collider, false);
+        }
+        enemyColliders.Clear();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (active)
         {
@@ -155,6 +163,8 @@ public class WeaponHitbox : MonoBehaviour
 
                 if (!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
 
+                enemyColliders.Add(other.GetComponent<Collider>());
+                Physics.IgnoreCollision(GetComponent<Collider>(), other.GetComponent<Collider>());
             }
         }
     }

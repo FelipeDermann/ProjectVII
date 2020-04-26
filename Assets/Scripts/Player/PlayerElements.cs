@@ -21,7 +21,7 @@ public enum ElementRelation
 
 public class PlayerElements : MonoBehaviour
 {
-    public MeshRenderer swordRenderer;
+    public SkinnedMeshRenderer swordRenderer;
     public Color[] colorsToChange;
     public Material[] elementColors;
     public ParticleSystem[] elementParticles;
@@ -88,7 +88,7 @@ public class PlayerElements : MonoBehaviour
                 if (currentCycle == ElementRelation.GENERATION_CYCLE) comboEffect.ActivateGenerationCycleEffect();
 
                 //Change element
-                materialsToChange[1] = elementColors[0];
+                materialsToChange[0] = elementColors[0];
                 weaponTrail._colors[0] = colorsToChange[0];
                 break;
             case ElementType.Water:
@@ -102,7 +102,7 @@ public class PlayerElements : MonoBehaviour
                 combo.GetComponentInChildren<TravelForward>().GainSpeed(GetComponent<PlayerStatus>());
 
                 //Change element
-                materialsToChange[1] = elementColors[1];
+                materialsToChange[0] = elementColors[1];
                 weaponTrail._colors[0] = colorsToChange[1];
                 break;
             case ElementType.Metal:
@@ -115,7 +115,7 @@ public class PlayerElements : MonoBehaviour
                 if (currentCycle == ElementRelation.GENERATION_CYCLE) comboEffect.ActivateGenerationCycleEffect();
 
                 //Change element
-                materialsToChange[1] = elementColors[2];
+                materialsToChange[0] = elementColors[2];
                 weaponTrail._colors[0] = colorsToChange[2];
                 break;
             case ElementType.Wood:
@@ -128,7 +128,7 @@ public class PlayerElements : MonoBehaviour
                 if (currentCycle == ElementRelation.GENERATION_CYCLE) comboEffect.ActivateGenerationCycleEffect();
 
                 //Change element
-                materialsToChange[1] = elementColors[3];
+                materialsToChange[0] = elementColors[3];
                 weaponTrail._colors[0] = colorsToChange[3];
                 break;
             case ElementType.Earth:
@@ -144,7 +144,7 @@ public class PlayerElements : MonoBehaviour
             
 
                 //Change element
-                materialsToChange[1] = elementColors[4];
+                materialsToChange[0] = elementColors[4];
                 weaponTrail._colors[0] = colorsToChange[4];
                 break;
         }
