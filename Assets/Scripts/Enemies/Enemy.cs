@@ -88,10 +88,12 @@ public class Enemy : MonoBehaviour
         agent.enabled = false;
         meshRenderer.enabled = false;
         meshRenderer2.enabled = false;
+        rb.isKinematic = true;
 
         enemyDebuff.Deactivate();
 
         //GameManager.Instance.EnemyPool.ReturnObject(thisObject, timeUntilReturnToPool);
+        EnemyDead?.Invoke();
         poolToReturnTo.ReturnObject(thisObject, timeUntilReturnToPool);
     }
 
@@ -137,7 +139,6 @@ public class Enemy : MonoBehaviour
         if (mySpawner != null) mySpawner.CallSpawnEnemy();
         if (myWaveSpawner != null) myWaveSpawner.SpawnedEnemyDead();
 
-        EnemyDead?.Invoke();
         if(beingTargetedByLockOn)
         {
             beingTargetedByLockOn = false;
