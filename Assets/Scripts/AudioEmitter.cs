@@ -11,6 +11,10 @@ public class AudioEmitter : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float clipVolume;
     public float timeOfAudioFadeOut;
+    [Range(-3.0f, 3.0f)]
+    public float minPitch;
+    [Range(-3.0f, 3.0f)]
+    public float maxPitch;
     public bool loopSound;
 
     AudioSource audioSource;
@@ -22,6 +26,20 @@ public class AudioEmitter : MonoBehaviour
         audioSource.loop = loopSound;
 
         audioSource.volume = clipVolume;
+        audioSource.Play();
+    }
+
+    public void PlaySoundWithPitch()
+    {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clipToPlay;
+        audioSource.loop = loopSound;
+
+        audioSource.volume = clipVolume;
+
+        float pitchToGive = Random.Range(minPitch, maxPitch);
+        audioSource.pitch = pitchToGive;
+
         audioSource.Play();
     }
 

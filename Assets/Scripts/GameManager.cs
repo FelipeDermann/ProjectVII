@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     [Header("Enemies Pool")]
     public ObjectPool EnemyPool;
 
+    [Header("Player Audio Pools")]
+    public ObjectPool AudioLightAttackPool;
+
     private void Awake()
     {
         if (Instance != null)

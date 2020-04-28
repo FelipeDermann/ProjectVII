@@ -15,20 +15,6 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip hurtSound;
     public AudioClip deathSound;
 
-    //[Header("Combos")]
-    //public AudioClip waterComboSound;
-    //public AudioClip fireComboSound;
-    //public AudioClip earthComboSound;
-    //public AudioClip metalComboSound;
-    //public AudioClip woodComboSound;
-
-    //[Header("Specials")]
-    //public AudioClip waterSpecialSound;
-    //public AudioClip fireSpecialSound;
-    //public AudioClip earthSpecialSound;
-    //public AudioClip metalSpecialSound;
-    //public AudioClip woodSpecialSound;
-
     [Header("Basic Sounds Volumes")]
     [Range(0.0f, 1.0f)]
     public float stepsVolume;
@@ -92,7 +78,15 @@ public class PlayerSounds : MonoBehaviour
     void PlaySwingSound()
     {
         //audioSource.volume = swingVolume;
-        audioSource.PlayOneShot(swingSound, swingVolume);
+        //audioSource.PlayOneShot(swingSound, swingVolume);
+        //GameManager.Instance.WaterComboPool.RequestObject(transform.position, transform.rotation);
+        var audioEmitter = GameManager.Instance.AudioLightAttackPool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.EarthComboPool.ReturnObject(audioEmitter, clipLength+1);
     }
 
     void PlayHeavySwingSound()
