@@ -167,11 +167,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7299691176463339981}
     m_Modifications:
-    - target: {fileID: 3084516021650114889, guid: dcb99e477d3effb4fbe596df99e3a35c,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Combo
-      objectReference: {fileID: 0}
     - target: {fileID: 3084516021650114884, guid: dcb99e477d3effb4fbe596df99e3a35c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -227,6 +222,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3084516021650114889, guid: dcb99e477d3effb4fbe596df99e3a35c,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Combo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcb99e477d3effb4fbe596df99e3a35c, type: 3}
 --- !u!4 &1533603009233149354 stripped
@@ -242,10 +242,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7299691176463339981}
     m_Modifications:
-    - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
-      propertyPath: m_Name
-      value: Audio Emitter
+      propertyPath: clipVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: clipToPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: b026dfaa3ee3bde4a997f5c73de75b35, type: 3}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: minPitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1837000052617181491, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
@@ -302,25 +317,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+    - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
-      propertyPath: clipVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipToPlay
-      value: 
-      objectReference: {fileID: 8300000, guid: 3762498794164b3489c22d063efa50ec, type: 3}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: minPitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: maxPitch
-      value: 1
+      propertyPath: m_Name
+      value: Audio Emitter
       objectReference: {fileID: 0}
     - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
