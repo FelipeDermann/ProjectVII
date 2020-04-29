@@ -36,7 +36,7 @@ public class WoodSpell : MonoBehaviour
 
         //root.startRotation3D = new Vector3(transform.rotation.x/Mathf.PI, transform.rotation.y / Mathf.PI, transform.rotation.z / Mathf.PI);
         parentParticle.Play();
-        audioEmitter.PlaySound();
+        audioEmitter.PlaySoundWithPitch();
         col.enabled = true;
 
         Invoke(nameof(CallEndEffect), projectileLifeTime);

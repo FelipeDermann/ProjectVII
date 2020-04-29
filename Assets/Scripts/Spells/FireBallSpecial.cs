@@ -41,7 +41,7 @@ public class FireBallSpecial : MonoBehaviour
 
         fireBallTrailParticle.gameObject.SetActive(true);
         fireBallParticle.Play();
-        audioEmitterFireBall.PlaySound();
+        audioEmitterFireBall.PlaySoundWithPitch();
 
         col.enabled = true;
 
@@ -84,7 +84,7 @@ public class FireBallSpecial : MonoBehaviour
         fireBallParticle.Stop();
         explosionParticle.Play();
 
-        audioEmitterExplosion.PlaySound();
+        audioEmitterExplosion.PlaySoundWithPitch();
         rb.velocity = Vector3.zero;
 
         Explosion();

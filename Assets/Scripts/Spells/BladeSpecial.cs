@@ -64,7 +64,7 @@ public class BladeSpecial : MonoBehaviour
 
     void Move()
     {
-        startEmitter.PlaySound();
+        startEmitter.PlaySoundWithPitch();
 
         Vector3 dir = transform.right;
         direction = -dir.normalized;
@@ -139,7 +139,7 @@ public class BladeSpecial : MonoBehaviour
         mesh.enabled = false;
         deathParticle.Play();
 
-        burstEmitter.PlaySound();
+        burstEmitter.PlaySoundWithPitch();
 
         Invoke(nameof(CallReturnToOriginalPosition), 4);
     }

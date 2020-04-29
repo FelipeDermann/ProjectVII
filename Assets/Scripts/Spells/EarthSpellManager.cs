@@ -40,7 +40,7 @@ public class EarthSpellManager : MonoBehaviour
         if (cameraShaking == null) cameraShaking = GetComponentInParent<CameraShake>();
         cameraShaking.Shake();
 
-        audioEmitter.PlaySound();
+        audioEmitter.PlaySoundWithPitch();
         
         earthParticle.Play();
 

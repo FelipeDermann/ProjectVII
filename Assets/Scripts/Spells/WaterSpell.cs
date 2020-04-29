@@ -64,7 +64,7 @@ public class WaterSpell : MonoBehaviour
         spell = GetComponent<Spell>();
 
         tornadoParticle.Play();
-        audioEmitter.PlaySound();
+        audioEmitter.PlaySoundWithPitch();
 
         Invoke(nameof(ApplyDamage), .5f);
     }
