@@ -56,7 +56,7 @@ public class ComboEffect : MonoBehaviour
 
         if (hitbox != null) hitbox.enabled = true;
         comboFX.Play();
-        audioEmitter.PlaySound();
+        audioEmitter.PlaySoundWithPitch();
 
         Invoke(nameof(DisableHitbox), hitboxLifetime);
         Invoke(nameof(DisableParticle), particleLifetime);

@@ -5,44 +5,130 @@ using System;
 
 public class PlayerAnimationSounds : MonoBehaviour
 {
-    public static event Action StepSound;
-    public static event Action SwingSound;
-    public static event Action HeavySwingSound;
-    public static event Action SlashSound;
-    public static event Action DashSound;
-    public static event Action HurtSound;
-    public static event Action DeathSound;
+    int stepToPlayIndex = 0;
 
     public void PlayStepSound()
     {
-        StepSound?.Invoke();
+        PoolableObject audioEmitter = null;
+
+        if (stepToPlayIndex == 0)
+        {
+            audioEmitter = GameManager.Instance.AudioStepPool.RequestObject(transform.position, transform.rotation);
+            var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+            emitterScript.PlaySoundWithPitch();
+            float clipLength = emitterScript.clipToPlay.length;
+
+            GameManager.Instance.AudioStepPool.ReturnObject(audioEmitter, clipLength + 1);
+        }
+
+        if (stepToPlayIndex == 1)
+        {
+            audioEmitter = GameManager.Instance.AudioStep2Pool.RequestObject(transform.position, transform.rotation);
+            var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+            emitterScript.PlaySoundWithPitch();
+            float clipLength = emitterScript.clipToPlay.length;
+
+            GameManager.Instance.AudioStep2Pool.ReturnObject(audioEmitter, clipLength + 1);
+        }
+
+        stepToPlayIndex += 1;
+        if (stepToPlayIndex > 1) stepToPlayIndex = 0;
     }
 
     public void PlaySwingSound()
     {
-        SwingSound?.Invoke();
+        var audioEmitter = GameManager.Instance.AudioLightAttackPool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioLightAttackPool.ReturnObject(audioEmitter, clipLength + 1);
     }
-    public void PlayHeavySwingSound()
+    public void PlaySwingSound2()
     {
-        HeavySwingSound?.Invoke();
+        var audioEmitter = GameManager.Instance.AudioLightAttack2Pool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioLightAttack2Pool.ReturnObject(audioEmitter, clipLength + 1);
+    }
+    public void PlaySwingSound3()
+    {
+        var audioEmitter = GameManager.Instance.AudioLightAttack3Pool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioLightAttack3Pool.ReturnObject(audioEmitter, clipLength + 1);
     }
 
-    public void PlaySlashSound()
+    public void PlayHeavySwingSound()
     {
-        SlashSound?.Invoke();
+        var audioEmitter = GameManager.Instance.AudioHeavyAttack1Pool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioHeavyAttack1Pool.ReturnObject(audioEmitter, clipLength + 1);
     }
+    public void PlayHeavySwingSound2()
+    {
+        var audioEmitter = GameManager.Instance.AudioHeavyAttack2Pool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioHeavyAttack2Pool.ReturnObject(audioEmitter, clipLength + 1);
+    }
+    public void PlayHeavySwingSound3()
+    {
+        var audioEmitter = GameManager.Instance.AudioHeavyAttack3Pool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioHeavyAttack3Pool.ReturnObject(audioEmitter, clipLength + 1);
+    }
+
     public void PlayDashSound()
     {
-        DashSound?.Invoke();
+        var audioEmitter = GameManager.Instance.AudioDashPool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioDashPool.ReturnObject(audioEmitter, clipLength + 1);
     }
 
     public void PlayHurtSound()
     {
-        HurtSound?.Invoke();
+        var audioEmitter = GameManager.Instance.AudioHurtPool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioHurtPool.ReturnObject(audioEmitter, clipLength + 1);
     }
 
     public void PlayDeathSound()
     {
-        DeathSound?.Invoke();
+        var audioEmitter = GameManager.Instance.AudioDeathPool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioDeathPool.ReturnObject(audioEmitter, clipLength + 1);
     }
 }

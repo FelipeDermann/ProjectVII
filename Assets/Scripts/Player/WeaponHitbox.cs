@@ -9,7 +9,6 @@ public class WeaponHitbox : MonoBehaviour
 
     public bool active;
     public PlayerStatus playerStatus;
-    public PlayerSounds playerSounds;
     public PlayerMovement playerMove;
 
     Transform playerPos;
@@ -69,7 +68,6 @@ public class WeaponHitbox : MonoBehaviour
     {
         active = false;
         playerStatus = GetComponentInParent<PlayerStatus>();
-        playerSounds = GetComponentInParent<PlayerSounds>();
         playerPos = FindObjectOfType<PlayerMovement>().transform;
         playerMove = GetComponentInParent<PlayerMovement>();
 
@@ -144,7 +142,15 @@ public class WeaponHitbox : MonoBehaviour
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
 
-                if (!enemy.dead && !enemyMove.knockedDown) playerSounds.PlaySlashSound();
+                if (!enemy.dead && !enemyMove.knockedDown)
+                {
+                    var audioEmitter = GameManager.Instance.AudioSlashPool.RequestObject(other.transform.position, transform.rotation);
+                    var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+                    emitterScript.PlaySoundWithPitch();
+                    float clipLength = emitterScript.clipToPlay.length;
+                    GameManager.Instance.AudioSlashPool.ReturnObject(audioEmitter, clipLength + 1);
+                }
 
                 enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
 

@@ -4,31 +4,33 @@ using UnityEngine;
 
 public class EnemySound : MonoBehaviour
 {
-    [Header("Audio Clips")]
-    public AudioClip[] stepSounds;
-
-    public AudioClip hurtSound;
-    public AudioClip deathSound;
-
-    public AudioClip attackSound;
-
-    [Header("Volumes")]
-    [Range(0.0f, 1.0f)]
-    public float stepsVolume;
-    [Range(0.0f, 1.0f)]
-    public float attackVolume;
-    [Range(0.0f, 1.0f)]
-    public float hurtVolume;
-    [Range(0.0f, 1.0f)]
-    public float deathVolume;
-
-    [SerializeField]
-    AudioSource audioSource;
     int stepToPlayIndex;
 
     public void PlayStepSound()
     {
-        audioSource.PlayOneShot(stepSounds[stepToPlayIndex], stepsVolume);
+        PoolableObject audioEmitter = null;
+
+        if (stepToPlayIndex == 0)
+        {
+            audioEmitter = GameManager.Instance.AudioEnemyStep1Pool.RequestObject(transform.position, transform.rotation);
+            var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+            emitterScript.PlaySoundWithPitch();
+            float clipLength = emitterScript.clipToPlay.length;
+
+            GameManager.Instance.AudioEnemyStep1Pool.ReturnObject(audioEmitter, clipLength + 1);
+        }
+
+        if (stepToPlayIndex == 1)
+        {
+            audioEmitter = GameManager.Instance.AudioEnemyStep2Pool.RequestObject(transform.position, transform.rotation);
+            var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+            emitterScript.PlaySoundWithPitch();
+            float clipLength = emitterScript.clipToPlay.length;
+
+            GameManager.Instance.AudioEnemyStep2Pool.ReturnObject(audioEmitter, clipLength + 1);
+        }
 
         stepToPlayIndex += 1;
         if (stepToPlayIndex > 1) stepToPlayIndex = 0;
@@ -36,16 +38,34 @@ public class EnemySound : MonoBehaviour
 
     public void PlayDeathSound()
     {
-        audioSource.PlayOneShot(deathSound, deathVolume);
+        var audioEmitter = GameManager.Instance.AudioEnemyDeathPool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioEnemyDeathPool.ReturnObject(audioEmitter, clipLength + 1);
     }
 
     public void PlayAttackSound()
     {
-        audioSource.PlayOneShot(attackSound, attackVolume);
+        var audioEmitter = GameManager.Instance.AudioEnemyAttackPool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioEnemyAttackPool.ReturnObject(audioEmitter, clipLength + 1);
     }
 
     public void PlayHurtSound()
     {
-        audioSource.PlayOneShot(hurtSound, hurtVolume);
+        var audioEmitter = GameManager.Instance.AudioEnemyHurtPool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioEnemyHurtPool.ReturnObject(audioEmitter, clipLength + 1);
     }
 }

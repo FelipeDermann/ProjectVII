@@ -107,8 +107,8 @@ MonoBehaviour:
   audioEmitterFireBall: {fileID: 8819773239405449454}
   audioEmitterExplosion: {fileID: 8641381221163838225}
   knockbackForce: 18
+  knockUpForce: 0
   knockTime: 2
-  knockType: 1
 --- !u!114 &5576835930087701548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +204,22 @@ PrefabInstance:
       propertyPath: timeOfAudioFadeOut
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: minPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 5199258190922609518, guid: 9f96cb92327c13746ba95a843e36ba23,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 766857c30753cec4fa33b1b1827ea9b4, type: 3}
 --- !u!4 &2272060285990506279 stripped
@@ -301,6 +317,22 @@ PrefabInstance:
       propertyPath: clipToPlay
       value: 
       objectReference: {fileID: 8300000, guid: e21ea2da83b858d41aa78e3a3f982826, type: 3}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: minPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 5199258190922609518, guid: 9f96cb92327c13746ba95a843e36ba23,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 766857c30753cec4fa33b1b1827ea9b4, type: 3}
 --- !u!4 &1300838448228021464 stripped
@@ -332,6 +364,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire Spell Particles
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414583011378859341, guid: 9a3b2c9f9352bf04db9bc110de161f45,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578231163536584290, guid: 9a3b2c9f9352bf04db9bc110de161f45,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5578231163285951016, guid: 9a3b2c9f9352bf04db9bc110de161f45,
         type: 3}
@@ -388,20 +430,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1414583011378859341, guid: 9a3b2c9f9352bf04db9bc110de161f45,
+    - target: {fileID: 5578231163536584351, guid: 9a3b2c9f9352bf04db9bc110de161f45,
         type: 3}
-      propertyPath: playOnAwake
-      value: 0
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5578231163527405795, guid: 9a3b2c9f9352bf04db9bc110de161f45,
         type: 3}
       propertyPath: playOnAwake
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5578231163536584351, guid: 9a3b2c9f9352bf04db9bc110de161f45,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8609989038740569241, guid: 9a3b2c9f9352bf04db9bc110de161f45,
         type: 3}
@@ -422,11 +459,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5578231163536584290, guid: 9a3b2c9f9352bf04db9bc110de161f45,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5578231163445337641, guid: 9a3b2c9f9352bf04db9bc110de161f45,
         type: 3}
@@ -560,12 +592,12 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2374078675002284707, guid: 4920700366e4c8a4883a1c0de82e4952,
+    - target: {fileID: 3646454580805387320, guid: 4920700366e4c8a4883a1c0de82e4952,
         type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9195566293928030614, guid: 4920700366e4c8a4883a1c0de82e4952,
+    - target: {fileID: 2374078675002284707, guid: 4920700366e4c8a4883a1c0de82e4952,
         type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -575,17 +607,17 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7093399994659360123, guid: 4920700366e4c8a4883a1c0de82e4952,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3646454580805387320, guid: 4920700366e4c8a4883a1c0de82e4952,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 373252030134453140, guid: 4920700366e4c8a4883a1c0de82e4952,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195566293928030614, guid: 4920700366e4c8a4883a1c0de82e4952,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093399994659360123, guid: 4920700366e4c8a4883a1c0de82e4952,
         type: 3}
       propertyPath: playOnAwake
       value: 0

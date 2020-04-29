@@ -295,6 +295,22 @@ PrefabInstance:
       propertyPath: loopSound
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: minPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 5199258190922609518, guid: 9f96cb92327c13746ba95a843e36ba23,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 766857c30753cec4fa33b1b1827ea9b4, type: 3}
 --- !u!4 &405105917883896226 stripped

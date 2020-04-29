@@ -28,6 +28,25 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Audio Pools")]
     public ObjectPool AudioLightAttackPool;
+    public ObjectPool AudioLightAttack2Pool;
+    public ObjectPool AudioLightAttack3Pool;
+    public ObjectPool AudioHeavyAttack1Pool;
+    public ObjectPool AudioHeavyAttack2Pool;
+    public ObjectPool AudioHeavyAttack3Pool;
+    public ObjectPool AudioStepPool;
+    public ObjectPool AudioStep2Pool;
+    public ObjectPool AudioDashPool;
+    public ObjectPool AudioHurtPool;
+    public ObjectPool AudioDeathPool;
+    public ObjectPool AudioSlashPool;
+
+    [Header("Enemy Audio Pools")]
+    public ObjectPool AudioEnemyAttackPool;
+    public ObjectPool AudioEnemyHurtPool;
+    public ObjectPool AudioEnemyDeathPool;
+    public ObjectPool AudioEnemyStep1Pool;
+    public ObjectPool AudioEnemyStep2Pool;
+
 
     private void Awake()
     {
