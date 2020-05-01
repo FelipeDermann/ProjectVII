@@ -162,7 +162,7 @@ PrefabInstance:
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: loopSound
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
@@ -173,7 +173,7 @@ PrefabInstance:
         type: 3}
       propertyPath: clipToPlay
       value: 
-      objectReference: {fileID: 8300000, guid: 32e40e1b044509d48987e791949c57c9, type: 3}
+      objectReference: {fileID: 8300000, guid: fa2db304c33eb6a4ca25211408d4e532, type: 3}
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: clipVolume
@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: minPitch
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
