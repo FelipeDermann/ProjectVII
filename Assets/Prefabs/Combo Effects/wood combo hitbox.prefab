@@ -248,7 +248,7 @@ PrefabInstance:
         type: 3}
       propertyPath: clipToPlay
       value: 
-      objectReference: {fileID: 8300000, guid: 0452f6bbc61e71140938ec9061d0bf91, type: 3}
+      objectReference: {fileID: 8300000, guid: 7507b703fb9ccb540a9caf646defdd55, type: 3}
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: clipVolume

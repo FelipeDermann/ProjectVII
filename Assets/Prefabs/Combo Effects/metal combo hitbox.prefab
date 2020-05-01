@@ -244,7 +244,7 @@ PrefabInstance:
         type: 3}
       propertyPath: clipToPlay
       value: 
-      objectReference: {fileID: 8300000, guid: cbb3a14ad1ed8bc439acb126bfe8b867, type: 3}
+      objectReference: {fileID: 8300000, guid: 94b568278a4c2704892ced245b863f8a, type: 3}
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: clipVolume
@@ -253,7 +253,7 @@ PrefabInstance:
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: minPitch
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
