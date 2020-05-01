@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5227792078739438590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4067319415803971513}
@@ -155,10 +155,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5227792078739438586}
     m_Modifications:
-    - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
-      propertyPath: m_Name
-      value: Audio Emitter
+      propertyPath: clipToPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: a7da37f53faee024889dfd9cf0960a4b, type: 3}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: clipVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: minPitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1837000052617181491, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
@@ -215,25 +230,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+    - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
-      propertyPath: clipToPlay
-      value: 
-      objectReference: {fileID: 8300000, guid: a7da37f53faee024889dfd9cf0960a4b, type: 3}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: minPitch
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: maxPitch
-      value: 1
+      propertyPath: m_Name
+      value: Audio Emitter
       objectReference: {fileID: 0}
     - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}

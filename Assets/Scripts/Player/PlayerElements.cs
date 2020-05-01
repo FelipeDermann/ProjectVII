@@ -27,6 +27,7 @@ public class PlayerElements : MonoBehaviour
     public ParticleSystem[] elementParticles;
 
     public Transform comboSpawnPoint;
+    public Transform earthComboSpawnPoint;
 
     public Element[] allElementsReference;
     public Element currentElement;
@@ -133,7 +134,7 @@ public class PlayerElements : MonoBehaviour
                 break;
             case ElementType.Earth:
                 //Spawn Combo Hitbox
-                combo = GameManager.Instance.EarthComboPool.RequestObject(comboSpawnPoint.position + new Vector3(0,-0.3f,0), transform.rotation);
+                combo = GameManager.Instance.EarthComboPool.RequestObject(earthComboSpawnPoint.position, transform.rotation);
                 comboEffect = combo.GetComponent<ComboEffect>();
                 comboEffect.playerPos = transform;
                 comboEffect.playerStatus = GetComponent<PlayerStatus>();

@@ -11,13 +11,12 @@ public class SpawnerDetectPlayer : MonoBehaviour
     {
         if (other.gameObject.layer == layerIndex)
         {
-            if(waveController != null) waveController.IsPlayerInRange();
-            else
-            {
-                waveController = transform.parent.GetComponentInChildren<WaveSpawnerController>();
-            }
+            if(waveController == null) waveController = transform.parent.GetComponentInChildren<WaveSpawnerController>();
+            waveController.IsPlayerInRange();
 
             gameObject.SetActive(false);
+
+            Debug.Log("YOO");
         }
     }
 }

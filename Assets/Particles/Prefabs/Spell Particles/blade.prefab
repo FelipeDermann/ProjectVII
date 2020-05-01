@@ -19322,6 +19322,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8825443551766924981}
     m_Modifications:
+    - target: {fileID: 1125010049107685353, guid: cd7845d89afd36c4cbf40edc1c7d3871,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3531066548701688987, guid: cd7845d89afd36c4cbf40edc1c7d3871,
         type: 3}
       propertyPath: m_Name
@@ -19387,11 +19392,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 86.954
       objectReference: {fileID: 0}
-    - target: {fileID: 1125010049107685353, guid: cd7845d89afd36c4cbf40edc1c7d3871,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 231840003472292814, guid: cd7845d89afd36c4cbf40edc1c7d3871,
         type: 3}
       propertyPath: playOnAwake
@@ -19442,11 +19442,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxPitch
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: m_Name
-      value: Audio Emitter Burst
       objectReference: {fileID: 0}
     - target: {fileID: 1837000052617181491, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
@@ -19503,12 +19498,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: m_Name
+      value: Audio Emitter Burst
+      objectReference: {fileID: 0}
     - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 5199258190922609518, guid: 9f96cb92327c13746ba95a843e36ba23,
         type: 2}
+    - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: MinDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 766857c30753cec4fa33b1b1827ea9b4, type: 3}
 --- !u!4 &8938299099546429070 stripped
@@ -19555,11 +19565,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxPitch
       value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: m_Name
-      value: Audio Emitter Start
       objectReference: {fileID: 0}
     - target: {fileID: 1837000052617181491, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
@@ -19616,12 +19621,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: m_Name
+      value: Audio Emitter Start
+      objectReference: {fileID: 0}
     - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 5199258190922609518, guid: 9f96cb92327c13746ba95a843e36ba23,
         type: 2}
+    - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: MinDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 766857c30753cec4fa33b1b1827ea9b4, type: 3}
 --- !u!4 &7569990544631555757 stripped
