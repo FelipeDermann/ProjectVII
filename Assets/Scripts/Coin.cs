@@ -18,11 +18,15 @@ public class Coin : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private AudioEmitter audioEmitter;
 
+    bool flying;
+    float flySpeed;
+
     public void Activate()
     {
         meshRenderer.enabled = true;
         sphereCollider.enabled = true;
         rb.isKinematic = false;
+        rb.useGravity = true;
 
         Vector3 randomDir = UnityEngine.Random.insideUnitSphere;
         randomDir.y = coinVerticalSpeed;
@@ -44,6 +48,33 @@ public class Coin : MonoBehaviour
         rb.isKinematic = true;
     }
 
+    public void MagnetEffect(Transform _player, float _flySpeed)
+    {
+        if (flying) return;
+        flying = true;
+
+        flySpeed = _flySpeed;
+
+        rb.isKinematic = false;
+        rb.useGravity = false;
+        EnableCollectHitbox();
+
+        StopCoroutine(nameof(FlyToPlayer));
+        StartCoroutine(nameof(FlyToPlayer), _player);
+    }
+
+    IEnumerator FlyToPlayer(Transform _playerTransform)
+    {
+        while (flying)
+        {
+            Vector3 dir = (_playerTransform.position - transform.position).normalized * flySpeed;
+            rb.velocity = dir;
+
+            yield return null;
+        }
+        yield break;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -51,6 +82,8 @@ public class Coin : MonoBehaviour
             other.GetComponent<PlayerStatus>().GainMoney(value);
             audioEmitter.PlaySound();
 
+            flying = false;
+            StopCoroutine(nameof(FlyToPlayer));
             Deactivate();
 
             GameManager.Instance.CoinPool.ReturnObject(thisObject, timeToDespawnAfterCollected);

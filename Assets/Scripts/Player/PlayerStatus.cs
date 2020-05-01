@@ -19,6 +19,8 @@ public class PlayerStatus : MonoBehaviour
     public bool invincible;
     public bool ignoreStagger;
     public bool dead;
+    public bool shopping;
+    public bool coinMagnetIsOn;
 
     [Header("Health Attributes")]
     public float lightAttackDamage;
@@ -65,11 +67,13 @@ public class PlayerStatus : MonoBehaviour
     public void GainMoney(int _amount)
     {
         money += _amount;
+        playerHUD.UpdateCoins(money);
     }
 
     public void LoseMoney(int _amount)
     {
         money -= _amount;
+        playerHUD.UpdateCoins(money);
     }
 
     public void IncreaseHealth(float _heal)
@@ -115,7 +119,6 @@ public class PlayerStatus : MonoBehaviour
 
     public void HurtState(bool _state)
     {
-        Debug.Log("PLAYER INJURED");
 
         if (_state)
         {
@@ -148,6 +151,18 @@ public class PlayerStatus : MonoBehaviour
 
         animator.SetBool("dead", true);
         animator.SetTrigger("death");
+    }
+
+    public void CanMoveState(bool _canControl)
+    {
+        playerMagic.CanUseMagicAttack(_canControl);
+        movementInput.ChangeMoveState(_canControl);
+        playerMovement.ChangeDashState(_canControl);
+    }
+
+    public void CanAttackState(bool _canControl)
+    {
+        playerAttack.CanPlayerAttack(_canControl);
     }
 
     void RestartSceneCountdown()

@@ -41,7 +41,6 @@ public class AudioEmitter : MonoBehaviour
         audioSource.pitch = pitchToGive;
 
         audioSource.Play();
-        Debug.Log("PLAYING SOUND WITH PITCH");
     }
 
     public void FadeOut()

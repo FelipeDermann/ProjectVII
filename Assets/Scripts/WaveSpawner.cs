@@ -12,6 +12,10 @@ public class WaveSpawner : MonoBehaviour
     public bool spawnedEnemyIsAlive;
     public WaveSpawnerController spawnerController;
 
+    [Header("Configurable")]
+    public ParticleSystem portal;
+    public float timeToSpawn;
+
     void Start()
     {
         spawnerController = transform.parent.GetComponent<WaveSpawnerController>();    
@@ -19,8 +23,15 @@ public class WaveSpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        //GameObject enemySpawned = Instantiate(enemyToSpawn[currentEnemyIndex], transform.position, transform.rotation);
-        //PoolableObject enemySpawned = GameManager.Instance.EnemyPool.RequestObject(transform.position, transform.rotation);
+        portal.Play();
+
+        StartCoroutine(nameof(Spawn));
+    }
+
+    IEnumerator Spawn()
+    {
+        yield return new WaitForSeconds(timeToSpawn);
+
         PoolableObject enemySpawned = enemyToSpawn[currentEnemyPoolIndex].RequestObject(transform.position, transform.rotation);
         Enemy enemySpawnedScript = enemySpawned.GetComponent<Enemy>();
 
@@ -31,6 +42,8 @@ public class WaveSpawner : MonoBehaviour
         enemySpawnedScript.Activate();
 
         spawnedEnemyIsAlive = true;
+
+        portal.Stop();
     }
 
     public void SpawnedEnemyDead()

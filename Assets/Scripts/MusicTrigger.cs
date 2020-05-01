@@ -30,7 +30,6 @@ public class MusicTrigger : MonoBehaviour
         {
             if (currentEnemy.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log("HIT ENEMY THAT MAYBE IS DEAD");
                 stopBattleMusic = false;
             }
         }

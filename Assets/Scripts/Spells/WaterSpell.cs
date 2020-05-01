@@ -58,7 +58,6 @@ public class WaterSpell : MonoBehaviour
     public void StartSpell()
     {
         numberOfHitsDone = 0;
-        Debug.Log("START WATER SPELL");
 
         boxCollider = GetComponent<BoxCollider>();
         spell = GetComponent<Spell>();

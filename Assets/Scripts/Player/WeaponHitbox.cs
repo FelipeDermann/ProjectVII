@@ -112,7 +112,6 @@ public class WeaponHitbox : MonoBehaviour
 
     public void ActivateHitbox()
     {
-        Debug.Log("HITBOX ACTIVE");
         if (playerMove.dashing) return;
         active = true;
     }
@@ -120,7 +119,6 @@ public class WeaponHitbox : MonoBehaviour
     public void DeactivateHitbox()
     {
         active = false;
-        Debug.Log("HITBOX DISABLED");
 
         foreach (Collider collider in enemyColliders)
         {

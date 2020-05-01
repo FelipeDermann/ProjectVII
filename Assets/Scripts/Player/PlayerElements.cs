@@ -163,7 +163,6 @@ public class PlayerElements : MonoBehaviour
         if (previousElement.nextGenerationCycleElement == currentElement) cycle = ElementRelation.GENERATION_CYCLE;
         if (previousElement.nextControlCycleElement == currentElement) cycle = ElementRelation.CONTROL_CYCLE;
 
-        Debug.Log(cycle);
         return cycle;
     }
 

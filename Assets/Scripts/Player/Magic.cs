@@ -49,7 +49,6 @@ public class Magic : MonoBehaviour
     {
         MagicInput();
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) playerStatus.IncreaseAllMana();
     }
 
     void MagicInput()

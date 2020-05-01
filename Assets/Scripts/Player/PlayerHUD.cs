@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHUD : MonoBehaviour
 {
     PlayerStatus playerStatus;
+
+    [Header("Coin HUD")]
+    public TextMeshProUGUI coinText;
 
     [Header("Health HUD")]
     public Image barImage;
@@ -43,14 +47,9 @@ public class PlayerHUD : MonoBehaviour
         specialBackBarRect = specialBackBar.sizeDelta;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateCoins(int _coins)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            playerStatus.DecreaseHealth(10);
-            UpdateHealthBar();
-        }
+        coinText.text = _coins.ToString();
     }
 
     public void UpdateHealthBar()

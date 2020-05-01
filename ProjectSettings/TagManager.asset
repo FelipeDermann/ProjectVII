@@ -11,6 +11,8 @@ TagManager:
   - Wall
   - ShopMenu
   - Fence
+  - FreeLook
+  - Coin
   layers:
   - Default
   - TransparentFX

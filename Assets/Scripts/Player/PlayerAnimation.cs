@@ -77,7 +77,6 @@ public class PlayerAnimation : MonoBehaviour
     public void EnableInput()
     {
         StartNextAttackInput?.Invoke();
-        Debug.Log("CAN INPUT NEXT ATTACK");
     }
 
     public void ActivateTrail()

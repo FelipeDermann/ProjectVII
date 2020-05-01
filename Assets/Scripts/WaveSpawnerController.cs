@@ -60,7 +60,6 @@ public class WaveSpawnerController : MonoBehaviour
                 Invoke(nameof(SpawnWaveOfEnemies), waitTimeBetweenWaves);
             }
         }
-        else Debug.Log("ENEMIES ARE STILL ALIVE");
 
     }
 

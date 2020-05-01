@@ -179,6 +179,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void CanWalkOn()
     {
+        if (playerStatus.shopping) return;
         input.canMove = true;
         canJump = true;
     }
