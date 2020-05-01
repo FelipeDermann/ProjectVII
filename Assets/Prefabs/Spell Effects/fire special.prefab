@@ -129,6 +129,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9187867254695542392}
     m_Modifications:
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: clipVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: clipToPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: 2580f2861b4908243b8f58fad075ae2b, type: 3}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: timeOfAudioFadeOut
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: minPitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: m_Name
@@ -189,31 +214,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipToPlay
-      value: 
-      objectReference: {fileID: 8300000, guid: 16b22d196e88343418df33dc639c9c79, type: 3}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: timeOfAudioFadeOut
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: minPitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: maxPitch
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -247,6 +247,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9187867254695542392}
     m_Modifications:
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: clipVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: clipToPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: f7767884156dbc0428cc7f6f1c6c3a01, type: 3}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: minPitch
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: m_Name
@@ -307,26 +327,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipToPlay
-      value: 
-      objectReference: {fileID: 8300000, guid: e21ea2da83b858d41aa78e3a3f982826, type: 3}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: minPitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: maxPitch
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -360,11 +360,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9187867254695542392}
     m_Modifications:
-    - target: {fileID: 5578231163285951013, guid: 9a3b2c9f9352bf04db9bc110de161f45,
-        type: 3}
-      propertyPath: m_Name
-      value: Fire Spell Particles
-      objectReference: {fileID: 0}
     - target: {fileID: 1414583011378859341, guid: 9a3b2c9f9352bf04db9bc110de161f45,
         type: 3}
       propertyPath: playOnAwake
@@ -434,6 +429,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578231163285951013, guid: 9a3b2c9f9352bf04db9bc110de161f45,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire Spell Particles
       objectReference: {fileID: 0}
     - target: {fileID: 5578231163527405795, guid: 9a3b2c9f9352bf04db9bc110de161f45,
         type: 3}
@@ -522,11 +522,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9187867254695542392}
     m_Modifications:
-    - target: {fileID: 7289213869752956581, guid: 4920700366e4c8a4883a1c0de82e4952,
-        type: 3}
-      propertyPath: m_Name
-      value: Fireball Impact
-      objectReference: {fileID: 0}
     - target: {fileID: 7289213869752956582, guid: 4920700366e4c8a4883a1c0de82e4952,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -586,6 +581,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7289213869752956581, guid: 4920700366e4c8a4883a1c0de82e4952,
+        type: 3}
+      propertyPath: m_Name
+      value: Fireball Impact
       objectReference: {fileID: 0}
     - target: {fileID: 2600236105810779636, guid: 4920700366e4c8a4883a1c0de82e4952,
         type: 3}

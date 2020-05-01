@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clipToPlay: {fileID: 8300000, guid: 85517d8f6ddcbd24e98b01ea1265000e, type: 3}
-  clipVolume: 0.2
+  clipVolume: 0.1
   timeOfAudioFadeOut: 0.5
   minPitch: 0.8
   maxPitch: 1.1

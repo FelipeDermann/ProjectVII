@@ -174,11 +174,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7299691176463339981}
     m_Modifications:
-    - target: {fileID: 3714265205822116223, guid: 5c50834bb350418498889747c3081b29,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Spell Particles
-      objectReference: {fileID: 0}
     - target: {fileID: 3714265207217384724, guid: 5c50834bb350418498889747c3081b29,
         type: 3}
       propertyPath: playOnAwake
@@ -254,6 +249,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3714265205822116223, guid: 5c50834bb350418498889747c3081b29,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Spell Particles
+      objectReference: {fileID: 0}
     - target: {fileID: 3714265207046259245, guid: 5c50834bb350418498889747c3081b29,
         type: 3}
       propertyPath: playOnAwake
@@ -295,6 +295,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7299691176463339981}
     m_Modifications:
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: clipVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: loopSound
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: timeOfAudioFadeOut
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: clipToPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: 280d58cb2519440419a7d78efbea0c63, type: 3}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: minPitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: m_Name
@@ -354,36 +384,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: loopSound
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: timeOfAudioFadeOut
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipToPlay
-      value: 
-      objectReference: {fileID: 8300000, guid: 4af3b3da62094db48b9ebab7b555c5e3, type: 3}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: minPitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: maxPitch
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}

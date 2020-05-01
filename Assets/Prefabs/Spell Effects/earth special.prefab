@@ -124,11 +124,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5227792078739438586}
     m_Modifications:
-    - target: {fileID: 5831009098004146787, guid: 5b018d104afcddc4c8d58df9ca1cad1a,
-        type: 3}
-      propertyPath: m_Name
-      value: Earth Spell Controller
-      objectReference: {fileID: 0}
     - target: {fileID: 5831009098004146785, guid: 5b018d104afcddc4c8d58df9ca1cad1a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -183,6 +178,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831009098004146787, guid: 5b018d104afcddc4c8d58df9ca1cad1a,
+        type: 3}
+      propertyPath: m_Name
+      value: Earth Spell Controller
       objectReference: {fileID: 0}
     - target: {fileID: 2383041511414820283, guid: 5b018d104afcddc4c8d58df9ca1cad1a,
         type: 3}
@@ -685,6 +685,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5227792078739438586}
     m_Modifications:
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: clipToPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: 6dae0aa4362960242b44677425e3a092, type: 3}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: clipVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: minPitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
+        type: 3}
+      propertyPath: maxPitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: m_Name
@@ -745,26 +765,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipToPlay
-      value: 
-      objectReference: {fileID: 8300000, guid: 4b6f1bc419273b348b7cd7dac0869b08, type: 3}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipVolume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: minPitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: maxPitch
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -798,11 +798,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5227792078739438586}
     m_Modifications:
-    - target: {fileID: 7700571377139815261, guid: 9bc976f7fa095554a88f67534b8aa4f0,
-        type: 3}
-      propertyPath: m_Name
-      value: Earth Spell Particles
-      objectReference: {fileID: 0}
     - target: {fileID: 7700571377139815262, guid: 9bc976f7fa095554a88f67534b8aa4f0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -857,6 +852,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700571377139815261, guid: 9bc976f7fa095554a88f67534b8aa4f0,
+        type: 3}
+      propertyPath: m_Name
+      value: Earth Spell Particles
       objectReference: {fileID: 0}
     - target: {fileID: 7204897329297348802, guid: 9bc976f7fa095554a88f67534b8aa4f0,
         type: 3}
