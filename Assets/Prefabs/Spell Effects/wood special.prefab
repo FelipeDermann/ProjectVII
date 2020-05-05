@@ -228,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: timeOfAudioFadeOut
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
