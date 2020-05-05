@@ -67,14 +67,14 @@ MonoBehaviour:
   audioEmitter: {fileID: 0}
   element: 3
   comboFX: {fileID: 0}
-  knockbackForce: 4
+  knockbackForce: 2
   knockbackTime: 1
-  knockupForce: 0
+  knockupForce: 3
   invincibilityTime: 0
   damage: 1
-  hitboxLifetime: 2
-  particleLifetime: 4
-  audioLifetime: 4
+  hitboxLifetime: 1
+  particleLifetime: 3
+  audioLifetime: 3
   timeToRemoveEntireObject: 5
   controlCycleEffect: 0
   generationCycleEffect: 0

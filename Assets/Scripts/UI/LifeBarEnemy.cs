@@ -22,7 +22,6 @@ public class LifeBarEnemy : MonoBehaviour
     void Update()
     {
         if (!gameObject.activeSelf) return;
-        Debug.Log("CHAOS CHAOS CHAOS");
         var dist = Vector3.Distance(transform.position, camTransform.position);
         transform.localScale = Vector3.one * dist / initialDistance;
 

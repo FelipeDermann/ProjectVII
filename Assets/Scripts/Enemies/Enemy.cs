@@ -60,6 +60,9 @@ public class Enemy : MonoBehaviour
     public EnemySpawner mySpawner;
     public WaveSpawner myWaveSpawner;
 
+    [Header("Particles")]
+    public ParticleSystem hitParticle;
+
     public static event Action EnemyDead;
     public static event Action RemoveLockOnTarget;
 
@@ -100,6 +103,12 @@ public class Enemy : MonoBehaviour
     public void GetHurt()
     {
         anim.SetTrigger("hit");
+    }
+
+    public void HitParticle()
+    {
+        Debug.Log("HIT  MOTHERFUCLKER");
+        hitParticle.Play();
     }
 
     public void CallDeathRoutine()

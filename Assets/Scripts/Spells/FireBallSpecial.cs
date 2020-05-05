@@ -22,6 +22,7 @@ public class FireBallSpecial : MonoBehaviour
     [Header("Others")]
     public LayerMask enemyLayerMask;
     public AudioEmitter audioEmitterFireBall;
+    public AudioEmitter audioEmitterBurning;
     public AudioEmitter audioEmitterExplosion;
     Collider col;
     PoolableObject thisObject;
@@ -42,6 +43,7 @@ public class FireBallSpecial : MonoBehaviour
         fireBallTrailParticle.gameObject.SetActive(true);
         fireBallParticle.Play();
         audioEmitterFireBall.PlaySoundWithPitch();
+        audioEmitterBurning.PlaySoundWithPitch();
 
         col.enabled = true;
 
@@ -85,6 +87,7 @@ public class FireBallSpecial : MonoBehaviour
         explosionParticle.Play();
 
         audioEmitterExplosion.PlaySoundWithPitch();
+        audioEmitterBurning.FadeOut();
         rb.velocity = Vector3.zero;
 
         Explosion();

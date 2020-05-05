@@ -35,6 +35,10 @@ public class PlayerMovement : MonoBehaviour
     public float maxFallSpeed;
     public float verticalSpeed;
 
+    [Header("Particles")]
+    public ParticleSystem[] dashParticles;
+    public ParticleSystem hitParticle;
+
     //dashing
     Vector3 dashMoveDirection;
     float DashInputX;
@@ -47,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
 
         DashBehaviour.DashStart += DashStart;
         DashBehaviour.DashEnd += DashEnd;
+        
+        PlayerAnimation.HurtAnimation += HurtParticle;
 
         PlayerAnimation.DashSpeedStart += CanDashApplySpeed;
         PlayerAnimation.DashSpeedEnd += CanDashApplySpeed;
@@ -61,6 +67,8 @@ public class PlayerMovement : MonoBehaviour
 
         DashBehaviour.DashStart -= DashStart;
         DashBehaviour.DashEnd -= DashEnd;
+
+        PlayerAnimation.HurtAnimation -= HurtParticle;
 
         PlayerAnimation.DashSpeedStart -= CanDashApplySpeed;
         PlayerAnimation.DashSpeedEnd -= CanDashApplySpeed;
@@ -96,6 +104,11 @@ public class PlayerMovement : MonoBehaviour
         Gravity();
         //DetectGround();
         DashInput();
+    }
+
+    void HurtParticle()
+    {
+        hitParticle.Play();
     }
 
     void DashInput()
@@ -138,6 +151,8 @@ public class PlayerMovement : MonoBehaviour
     {
         canJump = false;
         CanWalkOff();
+
+        for (int i = 0; i < dashParticles.Length; i++) dashParticles[i].Play();
 
         attack.DisableNextAttackInput();
     }

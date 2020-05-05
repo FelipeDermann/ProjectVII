@@ -8,6 +8,8 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action StartHitbox;
     public static event Action EndHitbox;
 
+    public static event Action HurtAnimation;
+
     public static event Action<bool> DashSpeedStart;
     public static event Action<bool> DashSpeedEnd;
 
@@ -31,6 +33,11 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action RestartScene;
 
     public float secondsOfInputDetection;
+
+    public void Hurt()
+    {
+        HurtAnimation?.Invoke();
+    }
 
     public void LightAttack()
     {
