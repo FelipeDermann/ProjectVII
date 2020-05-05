@@ -215,36 +215,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 726640583965271522}
     m_Modifications:
-<<<<<<< Updated upstream
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: m_Name
-      value: Audio Emitter
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: clipToPlay
-      value: 
-      objectReference: {fileID: 8300000, guid: 591b6e0492a16ad4ca01717fb60b9a1e, type: 3}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: timeOfAudioFadeOut
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: loopSound
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-        type: 3}
-      propertyPath: minPitch
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148688986375838981, guid: 766857c30753cec4fa33b1b1827ea9b4,
-=======
     - target: {fileID: 9107954908612147841, guid: 766857c30753cec4fa33b1b1827ea9b4,
->>>>>>> Stashed changes
         type: 3}
       propertyPath: m_Name
       value: Audio Emitter
