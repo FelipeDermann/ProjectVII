@@ -23,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
 
     Camera cam;
 
+    [Header("Attack Move Stop")]
+    public BoxCollider attackMoveStopBoxPosition;
+    public LayerMask attackMoveStopLayerMask;
+
     [Header("Ground Detection")]
     public bool isGrounded;
     public bool canJump;
@@ -209,6 +213,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (attackCanGainSpeed)
         {
+            if (Physics.CheckBox(attackMoveStopBoxPosition.transform.position, attackMoveStopBoxPosition.bounds.size, Quaternion.identity, attackMoveStopLayerMask))
+            {
+                attackCanGainSpeed = false;
+                Debug.Log("EBA");
+            }
+
             Vector3 movement = Vector3.zero;
             movement = transform.forward * attackMoveSpeed;
             controller.Move(movement * Time.deltaTime);
