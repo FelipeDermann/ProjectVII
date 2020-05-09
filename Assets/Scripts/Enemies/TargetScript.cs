@@ -18,7 +18,7 @@ public class TargetScript : MonoBehaviour
 
     private void OnBecameVisible()
     {
-        if (!lockOn.screenTargets.Contains(transform) && !transform.parent.GetComponent<Enemy>().dead)
+        if (!lockOn.screenTargets.Contains(transform) && !transform.root.GetComponent<Enemy>().dead)
             lockOn.screenTargets.Add(transform);
     }
 

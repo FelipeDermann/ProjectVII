@@ -83,7 +83,6 @@ public class EnemyMove : MonoBehaviour
     public void MoveAgain()
     {
         if (enemy.dead) return;
-        Debug.Log("MOVING AGAIN FAM");
         airborne = false;
         anim.SetBool("airborne", false);
 

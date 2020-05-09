@@ -66,6 +66,21 @@ public class Enemy : MonoBehaviour
     public static event Action EnemyDead;
     public static event Action RemoveLockOnTarget;
 
+    void OnEnable()
+    {
+        WeaponHitbox.AttackEnded += CanBeHurtAgainBySword;
+    }
+
+    void OnDisable()
+    {
+        WeaponHitbox.AttackEnded -= CanBeHurtAgainBySword;
+    }
+
+    void CanBeHurtAgainBySword()
+    {
+        invincible = false;
+    }
+
     public void Activate()
     {
         currentHealth = maxHealth;
@@ -107,7 +122,6 @@ public class Enemy : MonoBehaviour
 
     public void HitParticle()
     {
-        Debug.Log("HIT  MOTHERFUCLKER");
         hitParticle.Play();
     }
 

@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     float DashInputX;
     float DashInputZ;
 
-    private void OnEnable()
+    private void Awake()
     {
         DisableAttackState.FinishedAttack += CanWalkOn;
         AttackAnimationBehaviour.StartedAttack += CanWalkOff;
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerAnimation.AttackMoveStart += CanMoveWhenAttacking;
         PlayerAnimation.AttackMoveEnd += CanMoveWhenAttacking;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         DisableAttackState.FinishedAttack -= CanWalkOn;
         AttackAnimationBehaviour.StartedAttack -= CanWalkOff;
@@ -216,7 +216,6 @@ public class PlayerMovement : MonoBehaviour
             if (Physics.CheckBox(attackMoveStopBoxPosition.transform.position, attackMoveStopBoxPosition.bounds.size, Quaternion.identity, attackMoveStopLayerMask))
             {
                 attackCanGainSpeed = false;
-                Debug.Log("EBA");
             }
 
             Vector3 movement = Vector3.zero;

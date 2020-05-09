@@ -5,7 +5,7 @@ using System;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    public static event Action StartHitbox;
+    public static Action StartHitbox;
     public static event Action EndHitbox;
 
     public static event Action HurtAnimation;

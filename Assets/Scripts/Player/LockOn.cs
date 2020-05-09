@@ -140,7 +140,6 @@ public class LockOn : MonoBehaviour
 
     void CameraLockOn()
     {
-        Debug.Log("TARGET LOCKED");
         isLocked = true;
 
         aim.enabled = true;

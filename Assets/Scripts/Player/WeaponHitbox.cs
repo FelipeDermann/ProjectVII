@@ -6,6 +6,7 @@ using System;
 public class WeaponHitbox : MonoBehaviour
 {
     public static event Action EnemyHit;
+    public static event Action AttackEnded;
 
     public bool active;
     public PlayerStatus playerStatus;
@@ -118,13 +119,14 @@ public class WeaponHitbox : MonoBehaviour
 
     public void DeactivateHitbox()
     {
+        Debug.Log("AHAHAHAHA");
+        AttackEnded?.Invoke();
         active = false;
-
-        foreach (Collider collider in enemyColliders)
-        {
-            Physics.IgnoreCollision(GetComponent<Collider>(), collider, false);
-        }
-        enemyColliders.Clear();
+        //foreach (Collider collider in enemyColliders)
+        //{
+        //    Physics.IgnoreCollision(GetComponent<Collider>(), collider, false);
+        //}
+        //enemyColliders.Clear();
     }
 
     private void OnTriggerStay(Collider other)
@@ -135,6 +137,7 @@ public class WeaponHitbox : MonoBehaviour
             {
                 var enemy = other.GetComponent<Enemy>();
                 var enemyMove = other.GetComponent<EnemyMove>();
+                if (enemy.invincible) return;
 
                 Vector3 knockbackDirection = other.transform.position - playerPos.position;
                 knockbackDirection.Normalize();
@@ -150,6 +153,7 @@ public class WeaponHitbox : MonoBehaviour
                     GameManager.Instance.AudioSlashPool.ReturnObject(audioEmitter, clipLength + 1);
                 }
 
+                //Debug.Log("ENEMY HIT BY SORD");
                 enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
 
                 if (attackType == AttackType.LIGHT)
@@ -166,9 +170,10 @@ public class WeaponHitbox : MonoBehaviour
                 EnemyHit?.Invoke();
 
                 if (!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
+                enemy.invincible = true;
 
-                enemyColliders.Add(other.GetComponent<Collider>());
-                Physics.IgnoreCollision(GetComponent<Collider>(), other.GetComponent<Collider>());
+                //enemyColliders.Add(other.GetComponent<Collider>());
+                //Physics.IgnoreCollision(GetComponent<Collider>(), other.GetComponent<Collider>());
             }
         }
     }
