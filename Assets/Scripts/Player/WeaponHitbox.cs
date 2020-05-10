@@ -153,7 +153,7 @@ public class WeaponHitbox : MonoBehaviour
                     GameManager.Instance.AudioSlashPool.ReturnObject(audioEmitter, clipLength + 1);
                 }
 
-                //Debug.Log("ENEMY HIT BY SORD");
+                Debug.Log("ENEMY HIT BY SORD");
                 enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
 
                 if (attackType == AttackType.LIGHT)

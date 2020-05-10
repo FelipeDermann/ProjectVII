@@ -27,7 +27,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Animator anim;
     [SerializeField]
-    private CapsuleCollider capsuleCol;
+    private CapsuleCollider capsuleCol1;
+    [SerializeField]
+    private CapsuleCollider capsuleCol2;
     [SerializeField]
     private TargetScript targetScriptForLockOn;
     [SerializeField]
@@ -85,7 +87,8 @@ public class Enemy : MonoBehaviour
     {
         currentHealth = maxHealth;
 
-        capsuleCol.enabled = true;
+        capsuleCol1.enabled = true;
+        capsuleCol2.enabled = true;
         agent.enabled = true;
         rb.isKinematic = true;
         meshRenderer.enabled = true;
@@ -102,7 +105,8 @@ public class Enemy : MonoBehaviour
 
     void Deactivate()
     {
-        capsuleCol.enabled = false;
+        capsuleCol1.enabled = false;
+        capsuleCol2.enabled = false;
         agent.enabled = false;
         meshRenderer.enabled = false;
         meshRenderer2.enabled = false;
