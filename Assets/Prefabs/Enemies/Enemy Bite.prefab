@@ -16622,7 +16622,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5863650252929523565, guid: eae57e86f7897e241b8ca165c34ab841, type: 3}
+  - {fileID: 2100000, guid: feccb1b8cc5f5a6498d81561f11bec9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26724,11 +26724,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1073756839937691453}
     m_Modifications:
-    - target: {fileID: 8380754416967878768, guid: 68c1bdcfefb4c2f4ca65e70e9b5463e4,
-        type: 3}
-      propertyPath: m_Name
-      value: Bite Attack
-      objectReference: {fileID: 0}
     - target: {fileID: 8380754416967878769, guid: 68c1bdcfefb4c2f4ca65e70e9b5463e4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26783,6 +26778,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8380754416967878768, guid: 68c1bdcfefb4c2f4ca65e70e9b5463e4,
+        type: 3}
+      propertyPath: m_Name
+      value: Bite Attack
       objectReference: {fileID: 0}
     - target: {fileID: 4139450769231585102, guid: 68c1bdcfefb4c2f4ca65e70e9b5463e4,
         type: 3}
@@ -26855,11 +26855,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1073756839937691453}
     m_Modifications:
-    - target: {fileID: 5309460256514450084, guid: 458378f81268dc64c80e4d027db21c63,
-        type: 3}
-      propertyPath: m_Name
-      value: Hitmarker
-      objectReference: {fileID: 0}
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26914,6 +26909,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460256514450084, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_Name
+      value: Hitmarker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458378f81268dc64c80e4d027db21c63, type: 3}
