@@ -34,6 +34,6 @@ Material:
     - Vector1_DFB80773: 0.5
     - Vector1_FD7EE1B: 0.5
     m_Colors:
-    - Color_AAEC372: {r: 0.8479441, g: 0.9327587, b: 0.9716981, a: 0}
-    - Color_B386B955: {r: 1, g: 1, b: 1, a: 0}
+    - Color_AAEC372: {r: 0.627451, g: 0.8156863, b: 1, a: 1}
+    - Color_B386B955: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
     - Vector2_F8CE1E4B: {r: 0.1, g: 0.1, b: 0, a: 0}
