@@ -76,15 +76,9 @@ public class WeaponHitbox : MonoBehaviour
         weaponTrail.Emit = false;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z)) TrailOn();
-        if (Input.GetKeyDown(KeyCode.X)) TrailOff();
-    }
-
     void TrailOn()
     {
-        //weaponTrail.Emit = true;
+        weaponTrail.Emit = true;
         foreach (var particle in attackParticle)
         {
             var particleShape = particle.shape;
@@ -98,7 +92,7 @@ public class WeaponHitbox : MonoBehaviour
     }
     void TrailOff()
     {
-        //weaponTrail.Emit = false;
+        weaponTrail.Emit = false;
         foreach (var particle in attackParticle)
         {
             var particleShape = particle.shape;
@@ -119,7 +113,6 @@ public class WeaponHitbox : MonoBehaviour
 
     public void DeactivateHitbox()
     {
-        Debug.Log("AHAHAHAHA");
         AttackEnded?.Invoke();
         active = false;
         //foreach (Collider collider in enemyColliders)
