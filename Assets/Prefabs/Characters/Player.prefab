@@ -25734,11 +25734,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordRenderer: {fileID: 7721573643428495164}
   colorsToChange:
-  - {r: 1, g: 0.14841096, b: 0.0141509175, a: 1}
-  - {r: 0.032395888, g: 0.9811321, b: 0.9529754, a: 1}
-  - {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
-  - {r: 0.0038714937, g: 0.8207547, b: 0.24467488, a: 1}
-  - {r: 0.7915549, g: 0.8396226, b: 0, a: 1}
+  - {r: 1, g: 0.15532212, b: 0, a: 1}
+  - {r: 0, g: 0.6183791, b: 1, a: 1}
+  - {r: 0.627451, g: 0.8156863, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0.101960786, a: 1}
+  - {r: 0.99285436, g: 1, b: 0, a: 1}
   elementColors:
   - {fileID: 2100000, guid: ef1d5099ec45bf2429fead8c062ccd1c, type: 2}
   - {fileID: 2100000, guid: 16912ece8c60a224a964f44638af5871, type: 2}
@@ -38095,6 +38095,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hitmarker
       objectReference: {fileID: 0}
+    - target: {fileID: 5309460256514450087, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38164,11 +38169,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.054654606
-      objectReference: {fileID: 0}
-    - target: {fileID: 5309460256514450087, guid: 458378f81268dc64c80e4d027db21c63,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458378f81268dc64c80e4d027db21c63, type: 3}
