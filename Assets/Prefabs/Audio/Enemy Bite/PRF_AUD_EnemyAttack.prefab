@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3439813440373834411}
   - component: {fileID: 3439813440373834410}
   - component: {fileID: -3301908658744648921}
+  - component: {fileID: 6120646508664812217}
   m_Layer: 0
   m_Name: PRF_AUD_EnemyAttack
   m_TagString: Untagged
@@ -161,3 +162,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfx: {fileID: 0}
+--- !u!114 &6120646508664812217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3439813440373834409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c0e2defe318e748a7aaf04e74d23cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
