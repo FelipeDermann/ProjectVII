@@ -538,7 +538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1073756839937691453
 Transform:
   m_ObjectHideFlags: 0
@@ -36922,17 +36922,17 @@ PrefabInstance:
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.3089447
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9562869
+      value: 2.04
       objectReference: {fileID: 0}
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -36.6749
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
@@ -36973,6 +36973,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460255755209710, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460255755209710, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460255755209710, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458378f81268dc64c80e4d027db21c63, type: 3}

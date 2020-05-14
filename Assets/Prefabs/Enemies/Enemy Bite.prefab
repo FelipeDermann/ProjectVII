@@ -714,6 +714,7 @@ MonoBehaviour:
   layerWhenDead: 13
   dead: 0
   invincible: 0
+  isElite: 0
   deathParticles: {fileID: 1076456873343246756, guid: 56194790b58def948ac41987e2769f04,
     type: 3}
   deathParticlesSpawnPoint: {fileID: 6672473265204452977}
@@ -723,6 +724,7 @@ MonoBehaviour:
   mySpawner: {fileID: 0}
   myWaveSpawner: {fileID: 0}
   hitParticle: {fileID: 1528865341960557859}
+  eliteParticle: {fileID: 0}
 --- !u!114 &1073756840006064768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32047,6 +32049,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bite Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 4139450769231585102, guid: 68c1bdcfefb4c2f4ca65e70e9b5463e4,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8380754416967878769, guid: 68c1bdcfefb4c2f4ca65e70e9b5463e4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32100,11 +32107,6 @@ PrefabInstance:
     - target: {fileID: 8380754416967878769, guid: 68c1bdcfefb4c2f4ca65e70e9b5463e4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4139450769231585102, guid: 68c1bdcfefb4c2f4ca65e70e9b5463e4,
-        type: 3}
-      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8380754416290474687, guid: 68c1bdcfefb4c2f4ca65e70e9b5463e4,
@@ -32181,17 +32183,17 @@ PrefabInstance:
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.3089447
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9562869
+      value: 2.02
       objectReference: {fileID: 0}
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -36.6749
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
@@ -32232,6 +32234,61 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460256121179026, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460256121179026, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460256121179026, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460255755209710, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_Pivot.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460255755209710, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_RenderAlignment
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460255755209710, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_SortMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460255755209710, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460255755209705, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458378f81268dc64c80e4d027db21c63, type: 3}

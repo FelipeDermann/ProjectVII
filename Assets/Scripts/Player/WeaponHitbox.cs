@@ -136,15 +136,15 @@ public class WeaponHitbox : MonoBehaviour
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
 
-                //if (!enemy.dead && !enemyMove.knockedDown)
-                //{
-                //    var audioEmitter = GameManager.Instance.AudioSlashPool.RequestObject(other.transform.position, transform.rotation);
-                //    var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+                if (!enemy.dead && !enemyMove.knockedDown)
+                {
+                    var audioEmitter = GameManager.Instance.AudioSlashPool.RequestObject(other.transform.position, transform.rotation);
+                    var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
 
-                //    emitterScript.PlaySoundWithPitch();
-                //    float clipLength = emitterScript.clipToPlay.length;
-                //    GameManager.Instance.AudioSlashPool.ReturnObject(audioEmitter, clipLength + 1);
-                //}
+                    emitterScript.PlaySoundWithPitch();
+                    float clipLength = emitterScript.clipToPlay.length;
+                    GameManager.Instance.AudioSlashPool.ReturnObject(audioEmitter, clipLength + 1);
+                }
 
                 Debug.Log("ENEMY HIT BY SORD");
                 enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
@@ -160,6 +160,7 @@ public class WeaponHitbox : MonoBehaviour
                     enemy.TakeDamage(heavyDamage);
                 }
 
+                enemy.HitParticle();
                 EnemyHit?.Invoke();
 
                 if (!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
