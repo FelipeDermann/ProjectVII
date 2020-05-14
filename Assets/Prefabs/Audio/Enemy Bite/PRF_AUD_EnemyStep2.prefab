@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3439813440373834411}
   - component: {fileID: 3439813440373834410}
   - component: {fileID: -3301908658744648921}
+  - component: {fileID: 161221682190857615}
   m_Layer: 0
-  m_Name: PRF_AUD_EnemyDeath
+  m_Name: PRF_AUD_EnemyStep2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,8 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6474e3286cbeb4498c8c3a4d282c44b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipToPlay: {fileID: 8300000, guid: 1cde0f5ff417cde4f8934ee5993e1c3b, type: 3}
-  clipVolume: 0.8
+  clipToPlay: {fileID: 8300000, guid: fde3bff9dae38fe4a9d6e6a49c416b87, type: 3}
+  clipVolume: 0.4
   timeOfAudioFadeOut: 0.5
   minPitch: 1
   maxPitch: 1
@@ -161,3 +162,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfx: {fileID: 0}
+--- !u!114 &161221682190857615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3439813440373834409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c0e2defe318e748a7aaf04e74d23cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
