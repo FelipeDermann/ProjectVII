@@ -41,14 +41,17 @@ Material:
     - Vector1_9131E5E: 15
     - Vector1_DFB80773: 0.5
     - Vector1_FD7EE1B: 0.5
+    - _DistortionAmount: 0.1
     - _GradientNoiseScale: 15
     - _GradientnoisePower: 5
     - _Metallic: 0.5
+    - _NoiseScale: 10
     - _Smoothness: 0.5
     m_Colors:
     - Color_AAEC372: {r: 0.627451, g: 0.8156863, b: 1, a: 1}
     - Color_B386B955: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
     - Vector2_F8CE1E4B: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _GradientNoiseColor: {r: 0.3254272, g: 0.77135414, b: 0.9716981, a: 1}
+    - _GradientNoiseColor: {r: 0, g: 0, b: 0, a: 1}
     - _GradientNoiseSpeed: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _NoiseSpeed: {r: 0.01, g: -0.01, b: 0, a: 0}

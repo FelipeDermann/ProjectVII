@@ -89,7 +89,7 @@ public class PlayerElements : MonoBehaviour
 
                 //Change element
                 swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[0]);
-                //weaponTrail._colors[0] = colorsToChange[0];
+                weaponTrail._colors[0] = colorsToChange[0];
                 break;
             case ElementType.Water:
                 //Spawn Combo Hitbox
@@ -103,7 +103,7 @@ public class PlayerElements : MonoBehaviour
 
                 //Change element
                 swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[1]);
-                //weaponTrail._colors[0] = colorsToChange[1];
+                weaponTrail._colors[0] = colorsToChange[1];
                 break;
             case ElementType.Metal:
                 //Spawn Combo Hitbox
@@ -116,7 +116,7 @@ public class PlayerElements : MonoBehaviour
 
                 //Change element
                 swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[2]);
-                //weaponTrail._colors[0] = colorsToChange[2];
+                weaponTrail._colors[0] = colorsToChange[2];
                 break;
             case ElementType.Wood:
                 //Spawn Combo Hitbox
@@ -129,7 +129,7 @@ public class PlayerElements : MonoBehaviour
 
                 //Change element
                 swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[3]);
-                //weaponTrail._colors[0] = colorsToChange[3];
+                weaponTrail._colors[0] = colorsToChange[3];
                 break;
             case ElementType.Earth:
                 //Spawn Combo Hitbox
@@ -145,7 +145,7 @@ public class PlayerElements : MonoBehaviour
 
                 //Change element
                 swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[4]);
-                //weaponTrail._colors[0] = colorsToChange[4];
+                weaponTrail._colors[0] = colorsToChange[4];
                 break;
         }
 
