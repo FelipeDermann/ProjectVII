@@ -49,6 +49,7 @@ public class EnemyMove : MonoBehaviour
     public void KnockBack(Vector3 _direction, float forceAmount, float _knockUpForce, float time)
     {
         if (enemy.dead) return;
+        if (enemy.isElite) return;
         CancelInvoke(nameof(MoveAgain));
         knocked = true;
 
