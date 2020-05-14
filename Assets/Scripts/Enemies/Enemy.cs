@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
 
     public bool dead;
     public bool invincible;
+    public bool isElite;
 
     public GameObject deathParticles;
     public Transform deathParticlesSpawnPoint;
@@ -64,6 +65,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Particles")]
     public ParticleSystem hitParticle;
+    public ParticleSystem eliteParticle;
 
     public static event Action EnemyDead;
     public static event Action RemoveLockOnTarget;
@@ -85,6 +87,8 @@ public class Enemy : MonoBehaviour
 
     public void Activate()
     {
+        if (isElite) eliteParticle.Play();
+
         currentHealth = maxHealth;
 
         capsuleCol1.enabled = true;
@@ -105,6 +109,8 @@ public class Enemy : MonoBehaviour
 
     void Deactivate()
     {
+        if (isElite) eliteParticle.Stop();
+     
         capsuleCol1.enabled = false;
         capsuleCol2.enabled = false;
         agent.enabled = false;
