@@ -132,7 +132,7 @@ public class Attack : MonoBehaviour
 
                 if (closestEnemy != null)
                 {
-                    Debug.Log(closestEnemy.gameObject);
+                    //Debug.Log(closestEnemy.gameObject);
                     //transform.LookAt(new Vector3(closestEnemy.position.x, transform.position.y, closestEnemy.position.z));
                     StartCoroutine(nameof(TurnToEnemySmooth), closestEnemy);
                     currentEnemyTarget = closestEnemy;

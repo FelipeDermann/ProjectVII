@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [Header("Coin Pool")]
     public ObjectPool CoinPool;
 
+    [Header("Particle Pools")]
+    public ObjectPool hitMarkerPool;
+
     [Header("Enemies Pool")]
     public ObjectPool EnemyPool;
 

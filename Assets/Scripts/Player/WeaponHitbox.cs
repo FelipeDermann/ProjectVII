@@ -8,6 +8,13 @@ public class WeaponHitbox : MonoBehaviour
     public static event Action EnemyHit;
     public static event Action AttackEnded;
 
+    [Header("Hitmarker")]
+    public Transform swordHiltPos;
+    public Transform swordTipPos;
+    public LayerMask enemyLayerMask;
+    public Vector3 enemyDir;
+    public Vector3 hitPoint;
+
     public bool active;
     public PlayerStatus playerStatus;
     public PlayerMovement playerMove;
@@ -115,11 +122,6 @@ public class WeaponHitbox : MonoBehaviour
     {
         AttackEnded?.Invoke();
         active = false;
-        //foreach (Collider collider in enemyColliders)
-        //{
-        //    Physics.IgnoreCollision(GetComponent<Collider>(), collider, false);
-        //}
-        //enemyColliders.Clear();
     }
 
     private void OnTriggerStay(Collider other)
@@ -133,9 +135,26 @@ public class WeaponHitbox : MonoBehaviour
                 if (enemy.invincible) return;
 
                 Vector3 knockbackDirection = other.transform.position - playerPos.position;
+                enemyDir = other.transform.position - transform.position;
+                enemyDir.Normalize();
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
 
+                //rickmartin
+                Ray ray = new Ray(transform.position, enemyDir);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayerMask))
+                {
+                    print(hit.point + " on object: " + hit.transform.name);
+                    hitPoint = hit.point;
+                    var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point, transform.rotation);
+                    var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
+                    hitmarkerParticleSystem.Play();
+
+                    GameManager.Instance.hitMarkerPool.ReturnObject(hitmarker, 2);
+                }
+
+                //hit sound
                 if (!enemy.dead && !enemyMove.knockedDown)
                 {
                     var audioEmitter = GameManager.Instance.AudioSlashPool.RequestObject(other.transform.position, transform.rotation);
@@ -146,7 +165,7 @@ public class WeaponHitbox : MonoBehaviour
                     GameManager.Instance.AudioSlashPool.ReturnObject(audioEmitter, clipLength + 1);
                 }
 
-                Debug.Log("ENEMY HIT BY SORD");
+                //Debug.Log("ENEMY HIT BY SORD");
                 enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
 
                 if (attackType == AttackType.LIGHT)
@@ -160,15 +179,21 @@ public class WeaponHitbox : MonoBehaviour
                     enemy.TakeDamage(heavyDamage);
                 }
 
-                enemy.HitParticle();
+                //enemy.HitParticle();
                 EnemyHit?.Invoke();
 
                 if (!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();
                 enemy.invincible = true;
-
-                //enemyColliders.Add(other.GetComponent<Collider>());
-                //Physics.IgnoreCollision(GetComponent<Collider>(), other.GetComponent<Collider>());
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Ray ray = new Ray(transform.position, enemyDir);
+        Gizmos.DrawRay(ray);
+
+        Gizmos.DrawSphere(hitPoint, .2f);
     }
 }
