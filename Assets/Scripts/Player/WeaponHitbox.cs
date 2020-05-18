@@ -12,8 +12,8 @@ public class WeaponHitbox : MonoBehaviour
     public Transform swordHiltPos;
     public Transform swordTipPos;
     public LayerMask enemyLayerMask;
-    public Vector3 enemyDir;
-    public Vector3 hitPoint;
+    Vector3 enemyDir;
+    Vector3 hitPoint;
 
     public bool active;
     public PlayerStatus playerStatus;
@@ -133,6 +133,7 @@ public class WeaponHitbox : MonoBehaviour
                 var enemy = other.GetComponent<Enemy>();
                 var enemyMove = other.GetComponent<EnemyMove>();
                 if (enemy.invincible) return;
+                if (enemy.isElite) return;
 
                 Vector3 knockbackDirection = other.transform.position - playerPos.position;
                 enemyDir = other.transform.position - transform.position;
@@ -145,7 +146,6 @@ public class WeaponHitbox : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayerMask))
                 {
-                    print(hit.point + " on object: " + hit.transform.name);
                     hitPoint = hit.point;
                     var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point, transform.rotation);
                     var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
@@ -165,7 +165,6 @@ public class WeaponHitbox : MonoBehaviour
                     GameManager.Instance.AudioSlashPool.ReturnObject(audioEmitter, clipLength + 1);
                 }
 
-                //Debug.Log("ENEMY HIT BY SORD");
                 enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
 
                 if (attackType == AttackType.LIGHT)
@@ -179,7 +178,6 @@ public class WeaponHitbox : MonoBehaviour
                     enemy.TakeDamage(heavyDamage);
                 }
 
-                //enemy.HitParticle();
                 EnemyHit?.Invoke();
 
                 if (!enemy.dead && !enemyMove.knockedDown) playerStatus.IncreaseMana();

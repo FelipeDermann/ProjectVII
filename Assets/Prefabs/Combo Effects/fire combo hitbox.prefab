@@ -71,7 +71,7 @@ MonoBehaviour:
   knockbackTime: 1
   knockupForce: 0
   invincibilityTime: 0
-  damage: 1
+  damage: 20
   hitboxLifetime: 3
   particleLifetime: 5
   audioLifetime: 2
@@ -79,6 +79,9 @@ MonoBehaviour:
   controlCycleEffect: 0
   generationCycleEffect: 0
   canApplyGenerationCycle: 0
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &-5887323099348075665
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,6 +26,10 @@ public class TravelForward : MonoBehaviour
 
     public List<Collider> enemyColliders;
 
+    Vector3 enemyDir;
+    Vector3 hitPoint;
+    public LayerMask enemyLayerMask;
+
     public void ActivateControlCycleEffect()
     {
         controlCycleEffect = true;
@@ -56,10 +60,6 @@ public class TravelForward : MonoBehaviour
         if (col != null) col.enabled = false;
         transform.localPosition = Vector3.zero;
 
-        foreach(Collider collider in enemyColliders)
-        {
-            Physics.IgnoreCollision(GetComponent<Collider>(), collider, false);
-        }
         enemyColliders.Clear();
     }
 
@@ -69,8 +69,11 @@ public class TravelForward : MonoBehaviour
         {
             var enemy = other.GetComponent<Enemy>();
             var enemyMove = other.GetComponent<EnemyMove>();
+            if (enemyColliders.Contains(other.GetComponent<Collider>())) return;
 
             Vector3 knockbackDirection = other.transform.position - transform.position;
+            enemyDir = other.transform.position - transform.position;
+            enemyDir.Normalize();
             knockbackDirection.Normalize();
             knockbackDirection.y = 0;
 
@@ -90,12 +93,25 @@ public class TravelForward : MonoBehaviour
                 Debug.Log(other.name + " WAS HIT WITH GENERATION CYCLE ON WATER COMBO");
             }
 
+            //rickmartin
+            Ray ray = new Ray(transform.position, enemyDir);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayerMask))
+            {
+                print(hit.point + " on object: " + hit.transform.name);
+                hitPoint = hit.point;
+                var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point, transform.rotation);
+                var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
+                hitmarkerParticleSystem.Play();
+
+                GameManager.Instance.hitMarkerPool.ReturnObject(hitmarker, 2);
+            }
+
             EnemyHit?.Invoke();
 
             if (!enemy.dead && !enemyMove.knockedDown) player.IncreaseMana();
 
             enemyColliders.Add(other.GetComponent<Collider>());
-            Physics.IgnoreCollision(GetComponent<Collider>(), other.GetComponent<Collider>());
         }
 
     }

@@ -22,6 +22,12 @@ public class EnemyMove : MonoBehaviour
     public bool playerInRange;
     public bool airborne;
 
+    [Header("Attack Rotation")]
+    public bool isRotating;
+    public float timeToRotateToPlayer;
+
+    Vector3 direction;
+
     [Header("Target point that the enemy is running towards")]
     public Transform target;
     
@@ -36,7 +42,7 @@ public class EnemyMove : MonoBehaviour
         knocked = false;
     }
 
-    private void Update()
+    void Update()
     {
         if (canMove && !knocked)
         {
@@ -46,12 +52,25 @@ public class EnemyMove : MonoBehaviour
         if (!knocked) anim.SetFloat("Blend", agent.velocity.magnitude);
     }
 
+    void FixedUpdate()
+    {
+        if (isRotating)
+        {
+            Quaternion rotationDirection = Quaternion.LookRotation(direction);
+            rotationDirection.x = 0;
+            rotationDirection.z = 0;
+            rb.rotation = Quaternion.Slerp(rb.rotation, rotationDirection.normalized, 0.25f);
+        }
+    }
+
     public void KnockBack(Vector3 _direction, float forceAmount, float _knockUpForce, float time)
     {
         if (enemy.dead) return;
-        if (enemy.isElite) return;
         CancelInvoke(nameof(MoveAgain));
         knocked = true;
+
+        StopAllCoroutines();
+        isRotating = false;
 
         //agent.isStopped = true;
         agent.enabled = false;
@@ -95,7 +114,16 @@ public class EnemyMove : MonoBehaviour
     public void TurnToPlayer()
     {
         if(playerPointToLookAt == null) playerPointToLookAt = GameObject.FindGameObjectWithTag("PlayerHead");
-        transform.LookAt(new Vector3(playerPointToLookAt.transform.position.x, transform.position.y, playerPointToLookAt.transform.position.z));
+        direction = playerPointToLookAt.transform.position - transform.position;
+
+        StartCoroutine(WaitForRotation());
+    }
+
+    IEnumerator WaitForRotation()
+    {
+        isRotating = true;
+        yield return new WaitForSeconds(1);
+        isRotating = false;
     }
 
     public void ChangeCanMoveState(bool _state)
@@ -126,21 +154,4 @@ public class EnemyMove : MonoBehaviour
     {
         if (target != null) target.GetComponent<LockOn>().CameraLockOff();
     }
-
-    //IEnumerator MoveForward()
-    //{
-    //    float wait = attackMoveTime;
-
-    //    Vector3 movement = Vector3.zero;
-    //    movement = transform.forward * attackMoveSpeed;
-
-    //    while (wait > 0)
-    //    {
-    //        wait -= Time.deltaTime;
-    //        controller.Move(movement * Time.deltaTime);
-
-    //        yield return null;
-
-    //    }
-    //}
 }

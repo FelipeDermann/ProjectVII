@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spikeRenderer: {fileID: 8273424646319522791}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!65 &8958694986834557661
 BoxCollider:
   m_ObjectHideFlags: 0

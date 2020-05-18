@@ -24,6 +24,9 @@ public class BladeSpecial : MonoBehaviour
     public float timeToStart;
     public float lifetime;
     public float timeToDestroyAfterImpact;
+    Vector3 enemyDir;
+    Vector3 hitPoint;
+    public LayerMask enemyLayerMask;
 
     [Header("Blade Death and Particle Effect")]
     public ParticleSystem deathParticle;
@@ -82,8 +85,24 @@ public class BladeSpecial : MonoBehaviour
             if (playerPos == null) playerPos = GameObject.FindObjectOfType<PlayerMovement>().transform;
 
             Vector3 knockbackDirection = playerPos.position - other.transform.position;
+            enemyDir = other.transform.position - transform.position;
+            enemyDir.Normalize();
             knockbackDirection.Normalize();
             knockbackDirection.y = 0;
+
+            //rickmartin
+            Ray ray = new Ray(transform.position, enemyDir);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayerMask))
+            {
+                print(hit.point + " on object: " + hit.transform.name);
+                hitPoint = hit.point;
+                var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point, transform.rotation);
+                var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
+                hitmarkerParticleSystem.Play();
+
+                GameManager.Instance.hitMarkerPool.ReturnObject(hitmarker, 2);
+            }
 
             enemyMove.KnockBack(knockbackDirection, knockbackForce, knockupForce, knockTime);
             enemy.TakeDamage(damage);
