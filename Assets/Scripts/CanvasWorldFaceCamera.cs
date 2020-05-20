@@ -22,7 +22,7 @@ public class CanvasWorldFaceCamera : MonoBehaviour
     {
         if (!gameObject.activeSelf) return;
         var dist = Vector3.Distance(transform.position, camTransform.position);
-        if (!constantScale) transform.localScale = Vector3.one * dist / initialDistance;
+        if (constantScale) transform.localScale = Vector3.one * dist / initialDistance;
 
         vec1 = transform.position + camTransform.rotation * Vector3.back;
         vec2 = camTransform.rotation * Vector3.down;
