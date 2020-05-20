@@ -133,7 +133,6 @@ public class WeaponHitbox : MonoBehaviour
                 var enemy = other.GetComponent<Enemy>();
                 var enemyMove = other.GetComponent<EnemyMove>();
                 if (enemy.invincible) return;
-                if (enemy.isElite) return;
 
                 Vector3 knockbackDirection = other.transform.position - playerPos.position;
                 enemyDir = other.transform.position - transform.position;
@@ -165,7 +164,7 @@ public class WeaponHitbox : MonoBehaviour
                     GameManager.Instance.AudioSlashPool.ReturnObject(audioEmitter, clipLength + 1);
                 }
 
-                enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
+                if(!enemy.isElite) enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
 
                 if (attackType == AttackType.LIGHT)
                 {

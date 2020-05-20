@@ -116,7 +116,7 @@ public class EnemyMove : MonoBehaviour
         if(playerPointToLookAt == null) playerPointToLookAt = GameObject.FindGameObjectWithTag("PlayerHead");
         direction = playerPointToLookAt.transform.position - transform.position;
 
-        StartCoroutine(WaitForRotation());
+        if(gameObject.activeSelf) StartCoroutine(WaitForRotation());
     }
 
     IEnumerator WaitForRotation()
