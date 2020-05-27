@@ -143,11 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6474e3286cbeb4498c8c3a4d282c44b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipToPlay: {fileID: 8300000, guid: 354dfddac8dc144479ad577e87e6ae45, type: 3}
+  clipToPlay: {fileID: 8300000, guid: d5fbc30996f328243a3b325e656002eb, type: 3}
   clipVolume: 0.4
   timeOfAudioFadeOut: 0.5
   minPitch: 1
-  maxPitch: 1
+  maxPitch: 0.8
   loopSound: 0
 --- !u!114 &-3301908658744648921
 MonoBehaviour:
