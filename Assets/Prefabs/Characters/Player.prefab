@@ -12121,8 +12121,6 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  enemyDir: {x: 0, y: 0, z: 0}
-  hitPoint: {x: 0, y: 0, z: 0}
   active: 0
   playerStatus: {fileID: 0}
   playerMove: {fileID: 0}
@@ -25570,8 +25568,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7316435880804652779}
-  - component: {fileID: 7316435880804652781}
-  - component: {fileID: 7316435880804652778}
+  - component: {fileID: 954106917609882962}
+  - component: {fileID: 6647774947873232447}
   - component: {fileID: 7316435880804652776}
   - component: {fileID: 7316435880804652780}
   - component: {fileID: 7316435880804652783}
@@ -25608,53 +25606,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &7316435880804652781
-CharacterController:
+--- !u!54 &954106917609882962
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7316435880804652777}
-  m_Material: {fileID: 0}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 1
+--- !u!136 &6647774947873232447
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7316435880804652777}
+  m_Material: {fileID: 13400000, guid: 524b25eefd622f743ac843ba1ccf354c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.65
-  m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.96, z: 0}
---- !u!114 &7316435880804652778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7316435880804652777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 666acb358015a48489d3914971472585, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 9
-  InputX: 0
-  InputZ: 0
-  desiredMoveDirection: {x: 0, y: 0, z: 0}
-  blockRotationPlayer: 0
-  desiredRotationSpeed: 0.4
-  anim: {fileID: 0}
-  Speed: 0
-  allowPlayerRotation: 0.1
-  cam: {fileID: 0}
-  controller: {fileID: 0}
-  isGrounded: 0
-  HorizontalAnimSmoothTime: 0.2
-  VerticalAnimTime: 0.2
-  StartAnimTime: 0.3
-  StopAnimTime: 0.15
-  canMove: 1
+  m_Radius: 0.4
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.06, z: 0}
 --- !u!114 &7316435880804652776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25676,6 +25657,11 @@ MonoBehaviour:
   attackCanGainSpeed: 0
   dashMoveSpeed: 12
   attackMoveSpeed: 6
+  input: {x: 0, y: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  moveSpeed: 9
+  rotationSpeed: 0.6
+  canMove: 1
   attackMoveStopBoxPosition: {fileID: 2278587946594883099}
   attackMoveStopLayerMask:
     serializedVersion: 2
@@ -25687,9 +25673,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 512
-  gravity: 8
-  maxFallSpeed: 10
-  verticalSpeed: 0
   dashParticles:
   - {fileID: 2527289945545559062}
   - {fileID: 6526604270702994156}
@@ -25726,7 +25709,7 @@ MonoBehaviour:
   H_H_L: {fileID: 11400000, guid: ac05b76983f72f24a8cb788a9cadf119, type: 2}
   H_L_L: {fileID: 11400000, guid: 1ab50ee5db538ea4a9340a5f2aefc3f5, type: 2}
   rotationSpeed: 0.25
-  timeToFullyRotate: 0.5
+  timeToFullyRotate: 1
 --- !u!114 &7316435880804652783
 MonoBehaviour:
   m_ObjectHideFlags: 0

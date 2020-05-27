@@ -8,7 +8,6 @@ public class Magic : MonoBehaviour
 
     PlayerMovement playerMove;
     Attack playerAttack;
-    MovementInput inputs;
     PlayerElements playerElements;
     Animator anim;
     PlayerStatus playerStatus;
@@ -36,7 +35,6 @@ public class Magic : MonoBehaviour
 
         playerStatus = GetComponent<PlayerStatus>();
         playerElements = GetComponentInParent<PlayerElements>();
-        inputs = GetComponentInParent<MovementInput>();
         playerMove = GetComponent<PlayerMovement>();
         playerAttack = GetComponent<Attack>();
 
@@ -63,7 +61,6 @@ public class Magic : MonoBehaviour
         if (playerElements.currentElement.ElementName == ElementType.None) return;
 
         anim.SetTrigger("special");
-        inputs.canMove = false;
         playerAttack.DisableNextAttackInput();
 
         playerStatus.DecreaseAllMana();

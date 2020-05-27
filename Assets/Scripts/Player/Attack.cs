@@ -12,7 +12,6 @@ public enum AttackType
 public class Attack : MonoBehaviour
 {
     public Animator anim;
-    MovementInput move;
     PlayerMovement playerMove;
     PlayerElements elements;
     LockOn lockOn;
@@ -20,6 +19,7 @@ public class Attack : MonoBehaviour
     public int inputsHeavy;
     public int inputsLight;
 
+    [Header("Attack states")]
     public bool canInputNextAttack;
     public bool attacking;
     public bool canAttack;
@@ -47,7 +47,6 @@ public class Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        move = GetComponentInParent<MovementInput>();
         playerMove = GetComponentInParent<PlayerMovement>();
         elements = GetComponent<PlayerElements>();
         lockOn = GetComponent<LockOn>();
@@ -151,18 +150,18 @@ public class Attack : MonoBehaviour
     IEnumerator TurnToEnemySmooth(Transform _enemy)
     {
         var direction = _enemy.position - transform.position;
-
+        float time = timeToFullyRotate;
         float dot = 0;
-        while (dot < 0.96f)
+
+        while (time > 0)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
+            time -= Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotationSpeed);
 
             dot = Vector3.Dot(transform.forward, (_enemy.position - transform.position).normalized);
 
             yield return null;
         }
-
-        transform.LookAt(new Vector3(_enemy.position.x, transform.position.y, _enemy.position.z));
     }
 
     void ChangeDirection()
@@ -190,7 +189,6 @@ public class Attack : MonoBehaviour
         while (time < 0.5f)
         {
             time += Time.deltaTime;
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 0.25f);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotationSpeed);
 
             yield return null;
