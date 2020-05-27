@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //gains speed
+        ////gains speed
         velocity.y = rb.velocity.y;
         rb.velocity = velocity;
         Debug.Log(rb.velocity);
@@ -163,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
         //set speed variables
         velocity = inputDir * moveSpeed;
+        //rb.MovePosition(rb.position + (inputDir * Time.deltaTime * moveSpeed));
 
         ////////// ANIMATIONS
         anim.SetFloat("Blend", input.sqrMagnitude);
