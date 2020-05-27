@@ -25660,6 +25660,7 @@ MonoBehaviour:
   input: {x: 0, y: 0}
   velocity: {x: 0, y: 0, z: 0}
   moveSpeed: 9
+  rotationSpeed: 0.6
   canMove: 1
   attackMoveStopBoxPosition: {fileID: 2278587946594883099}
   attackMoveStopLayerMask:
