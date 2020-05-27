@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStatus : MonoBehaviour
 {
-    MovementInput movementInput;
     PlayerMovement playerMovement;
     Attack playerAttack;
     Magic playerMagic;
@@ -47,7 +46,6 @@ public class PlayerStatus : MonoBehaviour
     {
         currentHealth = maxHealth;
 
-        movementInput = GetComponent<MovementInput>();
         playerMovement = GetComponent<PlayerMovement>();
         playerAttack = GetComponent<Attack>();
         playerMagic = GetComponent<Magic>();
@@ -124,15 +122,15 @@ public class PlayerStatus : MonoBehaviour
         {
             playerAttack.CanPlayerAttack(false);
             playerMagic.CanUseMagicAttack(false);
-            movementInput.ChangeMoveState(false);
             playerMovement.ChangeDashState(false);
+            playerMovement.canMove = false;
         }
         else
         {
             playerAttack.CanPlayerAttack(true);
             playerMagic.CanUseMagicAttack(true);
-            movementInput.ChangeMoveState(true);
             playerMovement.ChangeDashState(true);
+            playerMovement.canMove = true;
         }
 
         animator.SetBool("hurt", _state);
@@ -146,7 +144,6 @@ public class PlayerStatus : MonoBehaviour
 
         dead = true;
 
-        movementInput.ChangeMoveState(false);
         playerMovement.ChangeDashState(false);
 
         animator.SetBool("dead", true);
@@ -156,8 +153,9 @@ public class PlayerStatus : MonoBehaviour
     public void CanMoveState(bool _canControl)
     {
         playerMagic.CanUseMagicAttack(_canControl);
-        movementInput.ChangeMoveState(_canControl);
         playerMovement.ChangeDashState(_canControl);
+        playerMovement.canMove = _canControl;
+        playerMovement.velocity = Vector3.zero;
     }
 
     public void CanAttackState(bool _canControl)

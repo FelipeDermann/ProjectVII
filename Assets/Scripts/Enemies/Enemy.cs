@@ -58,6 +58,8 @@ public class Enemy : MonoBehaviour
     private EnemyMove move;
     [SerializeField]
     private EnemyAttack attack;
+    [SerializeField]
+    private EnemySound sound;
 
     [Header("Spawners - do not alter")]
     public EnemySpawner mySpawner;
@@ -168,6 +170,7 @@ public class Enemy : MonoBehaviour
     void EnemyDeathSimple()
     {
         GameObject deathParticleClone = Instantiate(deathParticles, deathParticlesSpawnPoint.position, transform.rotation);
+        sound.PlayDeathSound();
 
         if (mySpawner != null) mySpawner.CallSpawnEnemy();
         if (myWaveSpawner != null) myWaveSpawner.SpawnedEnemyDead();

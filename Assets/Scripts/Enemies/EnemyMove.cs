@@ -22,6 +22,11 @@ public class EnemyMove : MonoBehaviour
     public bool playerInRange;
     public bool airborne;
 
+    Vector3 knockbackDirection;
+    Ray rayKnockback;
+    RaycastHit hit;
+    public LayerMask playerLayerMask;
+
     [Header("Attack Rotation")]
     public bool isRotating;
     public float timeToRotateToPlayer;
@@ -50,6 +55,16 @@ public class EnemyMove : MonoBehaviour
                 if(target.position != agent.destination && agent.isActiveAndEnabled) agent.SetDestination(target.position);
         }
         if (!knocked) anim.SetFloat("Blend", agent.velocity.magnitude);
+        else
+        {
+            if (Physics.Raycast(rayKnockback, out hit, Mathf.Infinity, playerLayerMask))
+            {
+                if(hit.transform.GetComponent<PlayerMovement>() != null)
+                {
+                    rb.velocity = Vector3.zero;
+                }
+            }
+        }
     }
 
     void FixedUpdate()
@@ -67,6 +82,9 @@ public class EnemyMove : MonoBehaviour
     {
         if (enemy.dead) return;
         CancelInvoke(nameof(MoveAgain));
+
+        rayKnockback = new Ray(transform.position + new Vector3(0, 1, 0), _direction);
+        knockbackDirection = _direction;
         knocked = true;
 
         StopAllCoroutines();
@@ -89,7 +107,6 @@ public class EnemyMove : MonoBehaviour
         }
 
         rb.AddForce( forceToApply, ForceMode.Impulse);
-
         anim.SetTrigger("hit");
 
         if (!airborne)
@@ -97,7 +114,6 @@ public class EnemyMove : MonoBehaviour
             if (IsInvoking(nameof(MoveAgain))) CancelInvoke(nameof(MoveAgain));
             Invoke(nameof(MoveAgain), time);
         }
-        //enemy.CheckIfDead();
     }
 
     public void MoveAgain()
@@ -153,5 +169,11 @@ public class EnemyMove : MonoBehaviour
     public void WarnPlayerOfDeath()
     {
         if (target != null) target.GetComponent<LockOn>().CameraLockOff();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(rayKnockback);
     }
 }

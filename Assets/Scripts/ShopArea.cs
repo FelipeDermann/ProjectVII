@@ -53,7 +53,6 @@ public class ShopArea : MonoBehaviour
         if (playerStatus.GetComponent<PlayerMovement>().dashing) return;
         if (shopping) return;
             
-        playerStatus.GetComponent<MovementInput>().Speed = 0;
         Music.Instance.TurnAllMusicVolumeDown();
         shopMenu.SetActive(true);
         shopping = true;
