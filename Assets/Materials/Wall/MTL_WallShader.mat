@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MTL_WallShader
+  m_Shader: {fileID: -6465566751694194690, guid: 4f9e7cd150fee61428f7993964cd3015,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Mask:
+        m_Texture: {fileID: 2800000, guid: 9b518452f9a3f5041ad81fd1e606d40c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BottomBrightness: 2.15
+    - _BottomStrength: 3.54
+    - _FoamEmission: -10
+    - _Fresnel_Power: 0
+    - _RippleAmount: 3
+    - _VectorOffsetAmount: 0
+    - _VoronoiScale: 10
+    - _VoronoiSpeed: 5
+    m_Colors:
+    - _DarknessAmount: {r: 0.4, g: 1, b: 0, a: 0}
+    - _RippleSpeed: {r: 0, g: -0.4, b: 0, a: 0}
+    - _RipplesColor: {r: 1.6388663, g: 0.44493085, b: 2.0961185, a: 1}
