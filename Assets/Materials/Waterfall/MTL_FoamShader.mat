@@ -23,7 +23,7 @@ Material:
     m_Floats:
     - _BottomBrightness: 3.61
     - _BottomStrength: 15.44
-    - _FoamEmission: 0.43
+    - _FoamEmission: 0.35
     - _RippleAmount: 3.29
     - _VectorOffsetAmount: 1.5
     - _VoronoiScale: 10

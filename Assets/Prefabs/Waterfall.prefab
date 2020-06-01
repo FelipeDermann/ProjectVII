@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771223395793641367}
   m_LocalRotation: {x: -0.7071067, y: -0, z: -0, w: 0.70710695}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4249178616247847748}
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9855,7 +9855,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14666,7 +14666,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -19219,8 +19219,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4108458546445343649}
   m_LocalRotation: {x: -0.60231394, y: -0, z: -0, w: 0.7982594}
-  m_LocalPosition: {x: 0, y: 0.1, z: -3.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 14.1, z: -0.9}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3683085652986255141}
   m_Father: {fileID: 4249178616247847748}
@@ -24231,7 +24231,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -28776,7 +28776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5302808005739076203
 Transform:
   m_ObjectHideFlags: 0
@@ -28877,8 +28877,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6137694356793702312}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.7, y: 4.3, z: -1.9}
-  m_LocalScale: {x: 1.4316986, y: 1, z: 1}
+  m_LocalPosition: {x: 1.7, y: 4.3, z: -5.1}
+  m_LocalScale: {x: 6, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4249178616247847748}
   m_RootOrder: 5
@@ -29135,8 +29135,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 8
-      minScalar: 10
+      scalar: 12
+      minScalar: 8
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -29716,7 +29716,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 80
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -33640,7 +33640,7 @@ Transform:
   m_GameObject: {fileID: 6714735833167368871}
   m_LocalRotation: {x: -0.05733358, y: -0, z: -0, w: 0.99835515}
   m_LocalPosition: {x: 0, y: 0.0000007920738, z: 0.00000016909871}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 7487951634676263154}
   m_RootOrder: 0
