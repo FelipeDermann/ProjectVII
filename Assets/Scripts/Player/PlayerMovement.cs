@@ -303,6 +303,7 @@ public class PlayerMovement : MonoBehaviour
         if (playerStatus.invincible) return;
         if (playerStatus.ignoreStagger) return;
 
+        rb.velocity = Vector3.zero;
         velocity = _direction * _power;
 
         //StartCoroutine(KnockBackCoroutine(_direction, _power, _time));

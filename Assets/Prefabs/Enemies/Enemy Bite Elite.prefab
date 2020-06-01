@@ -727,6 +727,7 @@ MonoBehaviour:
   lifeBar: {fileID: 1073756840788641737}
   move: {fileID: 1073756839937691450}
   attack: {fileID: 1073756840006064768}
+  sound: {fileID: 1073756840449904174}
   mySpawner: {fileID: 0}
   myWaveSpawner: {fileID: 0}
   hitParticle: {fileID: 1528865341960557859}

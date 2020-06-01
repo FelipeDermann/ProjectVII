@@ -106,7 +106,7 @@ public class EnemyMove : MonoBehaviour
             groundDetect.timeToMoveAgain = time;
         }
 
-        rb.AddForce( forceToApply, ForceMode.Impulse);
+        rb.AddForce(forceToApply * rb.mass, ForceMode.Impulse);
         anim.SetTrigger("hit");
 
         if (!airborne)
