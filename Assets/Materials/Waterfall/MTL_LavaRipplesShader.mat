@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MTL_RipplesShader
+  m_Name: MTL_LavaRipplesShader
   m_Shader: {fileID: -6465566751694194690, guid: 1b2ebffc30788424fb9d56cde0bfc09f,
     type: 3}
   m_ShaderKeywords: 
@@ -29,12 +29,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DissolveAmount: 0.31
+    - _DissolveAmount: 0.96
     - _DissolvePower: 0.5
     - _DistortionAmount: 0.076
     - _ScrollSpeed: 0.2
     - _VoronoiScale: 10
     m_Colors:
-    - _Color: {r: 0.9339622, g: 2, b: 2, a: 1}
+    - _Color: {r: 2.365023, g: 1.2675809, b: 0.50200963, a: 1}
     - _ScrollSpeed: {r: 0, g: 0.4, b: 0, a: 0}
     - _VoronoiSpeed: {r: -0.1, g: 0.3, b: 0, a: 0}
