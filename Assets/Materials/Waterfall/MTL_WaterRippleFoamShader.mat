@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MTL_RippleFoamShader
+  m_Name: MTL_WaterRippleFoamShader
   m_Shader: {fileID: -6465566751694194690, guid: ccefed068ec8ec841a6ca3bb4916dec0,
     type: 3}
   m_ShaderKeywords: 

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MTL_FoamShader
-  m_Shader: {fileID: -6465566751694194690, guid: ccefed068ec8ec841a6ca3bb4916dec0,
+  m_Name: MTL_WaterShaderGraph
+  m_Shader: {fileID: -6465566751694194690, guid: 51f7ac7f124e6604c924614e88c5889b,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -21,14 +21,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _BottomBrightness: 3.61
-    - _BottomStrength: 15.44
-    - _FoamEmission: 0.35
-    - _RippleAmount: 3.29
-    - _VectorOffsetAmount: 1.5
-    - _VoronoiScale: 10
-    - _VoronoiSpeed: 5
+    - _NoiseScale: 2
+    - _RippleDensity: 27.9
+    - _RippleSlimness: 6.4
+    - _RippleSpeed: 1.42
+    - _WaterTransparency: 0.8
     m_Colors:
-    - _DarknessAmount: {r: 0.18, g: 1, b: 0, a: 0}
-    - _RippleSpeed: {r: 0, g: 0.4, b: 0, a: 0}
-    - _RipplesColor: {r: 1.9652004, g: 4.366875, b: 5.867922, a: 1}
+    - _Color: {r: 0.2747864, g: 0.7082127, b: 0.8962264, a: 1}
+    - _NoiseSpeed: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _RippleColor: {r: 1.3811073, g: 1.9799683, b: 2.0765586, a: 0}
+    - _RippleRadialStrenght: {r: 1, g: 1, b: 0, a: 0}
