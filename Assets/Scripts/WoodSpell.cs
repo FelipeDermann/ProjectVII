@@ -23,10 +23,15 @@ public class WoodSpell : MonoBehaviour
 
     [Header("Others")]
     public AudioEmitter audioEmitter;
+    public List<Collider> enemyColliders;
 
     Rigidbody rb;
     PoolableObject thisObject;
     Collider col;
+
+    public LayerMask enemyLayerMask;
+    Vector3 enemyDir;
+    Vector3 hitPoint;
 
     public void StartSpell()
     {
@@ -48,10 +53,29 @@ public class WoodSpell : MonoBehaviour
         {
             var enemy = other.gameObject.GetComponent<Enemy>();
             var enemyMove = other.gameObject.GetComponent<EnemyMove>();
+            if (enemyColliders.Contains(other.GetComponent<Collider>())) return;
 
             Vector3 knockbackDirection = transform.position - other.transform.position;
+            enemyDir = other.transform.position - transform.position;
+            enemyDir.Normalize();
             knockbackDirection.Normalize();
             knockbackDirection.y = 0;
+
+            //rickmartin
+            Ray ray = new Ray(transform.position, enemyDir);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayerMask))
+            {
+                print(hit.point + " on object: " + hit.transform.name);
+                hitPoint = hit.point;
+                var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point, transform.rotation);
+                var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
+                hitmarkerParticleSystem.Play();
+
+                GameManager.Instance.hitMarkerPool.ReturnObject(hitmarker, 2);
+            }
+
+            enemyColliders.Add(other.GetComponent<Collider>());
 
             enemyMove.KnockBack(knockbackDirection, knockbackForce, knockupForce, knockTime);
             enemy.TakeDamage(damage);
@@ -71,6 +95,7 @@ public class WoodSpell : MonoBehaviour
     void EndEffect()
     {
         CancelInvoke();
+        enemyColliders.Clear();
 
         rb.velocity = Vector3.zero;
         //rb.velocity = -transform.up * projectileSpeed;

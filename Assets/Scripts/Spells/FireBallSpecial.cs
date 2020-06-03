@@ -18,6 +18,8 @@ public class FireBallSpecial : MonoBehaviour
     public ParticleSystem explosionParticle;
     public ParticleSystem fireBallParticle;
     public ParticleSystem fireBallTrailParticle;
+    Vector3 enemyDir;
+    Vector3 hitPoint;
 
     [Header("Others")]
     public LayerMask enemyLayerMask;
@@ -62,8 +64,24 @@ public class FireBallSpecial : MonoBehaviour
                 var enemyMove = currentEnemy.gameObject.GetComponent<EnemyMove>();
 
                 Vector3 knockbackDirection = currentEnemy.transform.position - transform.position;
+                enemyDir = currentEnemy.transform.position - transform.position;
+                enemyDir.Normalize();
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
+
+                //rickmartin
+                Ray ray = new Ray(transform.position, enemyDir);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayerMask))
+                {
+                    print(hit.point + " on object: " + hit.transform.name);
+                    hitPoint = hit.point;
+                    var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point, transform.rotation);
+                    var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
+                    hitmarkerParticleSystem.Play();
+
+                    GameManager.Instance.hitMarkerPool.ReturnObject(hitmarker, 2);
+                }
 
                 enemyMove.KnockBack(knockbackDirection, knockbackForce, knockUpForce, knockTime);
                 enemy.TakeDamage(damage);

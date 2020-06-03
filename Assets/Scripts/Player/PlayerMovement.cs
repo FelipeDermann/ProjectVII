@@ -6,9 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     PlayerStatus playerStatus;
     LockOn playerLockOn;
-    CharacterController controller;
+    Rigidbody rb;
     Attack attack;
-    private MovementInput input;
 
     public Animator anim;
     public float jumpForce;
@@ -23,26 +22,32 @@ public class PlayerMovement : MonoBehaviour
 
     Camera cam;
 
+    [Header("Basic Input")]
+    public Vector2 input;
+    public Vector3 velocity;
+    private Vector3 inputDir;
+    private Quaternion rotation;
+    public float moveSpeed;
+    public float rotationSpeed;
+    public bool canMove;
+
     [Header("Attack Move Stop")]
     public BoxCollider attackMoveStopBoxPosition;
     public LayerMask attackMoveStopLayerMask;
 
     [Header("Ground Detection")]
     public bool isGrounded;
-    public bool canJump;
+    public float fallingSpeedLimit;
     public Transform boxPosition;
-    public Vector3 boxSize;
+    Vector3 boxSize;
     public LayerMask groundMask;
-
-    [Header("Gravity")]
-    public float gravity;
-    public float maxFallSpeed;
-    public float verticalSpeed;
+    public float slopeRaycastLength;
+    public float slopeForce;
 
     [Header("Particles")]
     public ParticleSystem[] dashParticles;
     public ParticleSystem hitParticle;
-
+    
     //dashing
     Vector3 dashMoveDirection;
     float DashInputX;
@@ -83,15 +88,16 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        input = GetComponent<MovementInput>();
         Cursor.lockState = CursorLockMode.Locked;
 
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         playerStatus = GetComponent<PlayerStatus>();
         playerLockOn = GetComponent<LockOn>();
         attack = GetComponent<Attack>();
 
         cam = Camera.main;
+
+        boxSize = boxPosition.GetComponent<Collider>().bounds.size;
 
         canDash = true;
     }
@@ -99,15 +105,82 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("Blend", input.Speed);
-
         Dash();
         DashMove();
         AttackMove();
-        //Jump();
-        Gravity();
-        //DetectGround();
+        DetectGround();
         DashInput();
+
+        Movement();
+    }
+
+    private void FixedUpdate()
+    {
+        ////gains speed
+        velocity.y = rb.velocity.y;
+        if(!isGrounded) DownForceWhenMidair();
+        rb.velocity = velocity;
+        Debug.Log(rb.velocity);
+    }
+
+    private void ApplyOrientation()
+    {
+        if (attack.attacking) return;
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed);
+    }
+
+    private void SetOrientation(Vector3 target)
+    {
+        rotation = Quaternion.LookRotation(target, Vector3.up);
+        ApplyOrientation();
+    }
+
+    void Movement()
+    {
+        if (!canMove) return;
+
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxisRaw("Vertical");
+        input.Normalize();
+
+        if (input.magnitude > 0)
+        {
+            var camera = Camera.main;
+
+            inputDir = camera.transform.forward * input.y;
+            inputDir += camera.transform.right * input.x;
+            inputDir.y = 0;
+            inputDir.Normalize();
+        }
+
+        //turns to moving direction
+        if (input.sqrMagnitude > 0.2f)
+        {
+            SetOrientation(inputDir);
+        }
+        else
+        {
+            inputDir = Vector3.zero;
+        }
+
+        //set speed variables
+        velocity = inputDir * moveSpeed;
+
+        ////////// ANIMATIONS
+        anim.SetFloat("Blend", input.sqrMagnitude);
+    }
+
+    bool OnSlope()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + new Vector3(0,1,0), Vector3.down, out hit, slopeRaycastLength, groundMask))
+        {
+            if (hit.normal != Vector3.up)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void HurtParticle()
@@ -153,7 +226,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void DashStart()
     {
-        canJump = false;
         CanWalkOff();
 
         for (int i = 0; i < dashParticles.Length; i++) dashParticles[i].Play();
@@ -170,8 +242,7 @@ public class PlayerMovement : MonoBehaviour
 
         dashCanGainSpeed = false;
         dashing = false;
-        canJump = true;
-        input.velocity = 9;
+        moveSpeed = 9;
         anim.SetBool("dashing", dashing);
     }
 
@@ -179,6 +250,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashCanGainSpeed)
         {
+            if (Physics.CheckBox(attackMoveStopBoxPosition.transform.position, attackMoveStopBoxPosition.bounds.size, Quaternion.identity, attackMoveStopLayerMask))
+            {
+                dashCanGainSpeed = false;
+            }
+
             var forward = cam.transform.forward;
             var right = cam.transform.right;
             desiredMoveDirection = forward * DashInputZ + right * DashInputX;
@@ -187,7 +263,7 @@ public class PlayerMovement : MonoBehaviour
             if ((DashInputZ == 0 && DashInputX == 0) && !playerLockOn.isLocked) desiredMoveDirection = transform.forward;
             //if ((DashInputZ == 0 && DashInputX == 0)) desiredMoveDirection = transform.forward;
 
-            controller.Move(desiredMoveDirection.normalized * Time.deltaTime * dashMoveSpeed);
+            velocity = desiredMoveDirection.normalized * dashMoveSpeed;
         }
     }
 
@@ -199,14 +275,14 @@ public class PlayerMovement : MonoBehaviour
     public void CanWalkOn()
     {
         if (playerStatus.shopping) return;
-        input.canMove = true;
-        canJump = true;
+        canMove = true;
     }
 
     public void CanWalkOff()
     {
-        input.canMove = false;
-        canJump = false;
+        canMove = false;
+        velocity.x = 0;
+        velocity.z = 0;
     }
 
     void AttackMove()
@@ -220,13 +296,16 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 movement = Vector3.zero;
             movement = transform.forward * attackMoveSpeed;
-            controller.Move(movement * Time.deltaTime);
+            velocity = movement;
         }
     }
 
     public void CanMoveWhenAttacking(bool _state)
     {
         attackCanGainSpeed = _state;
+        velocity.x = 0;
+        velocity.z = 0;
+
     }
 
     public void KnockBack(Vector3 _direction, float _power, float _time)
@@ -234,75 +313,35 @@ public class PlayerMovement : MonoBehaviour
         if (playerStatus.invincible) return;
         if (playerStatus.ignoreStagger) return;
 
-        StartCoroutine(KnockBackCoroutine(_direction, _power, _time));
+        rb.velocity = Vector3.zero;
+        velocity = _direction * _power;
+
+        //StartCoroutine(KnockBackCoroutine(_direction, _power, _time));
     }
 
     IEnumerator KnockBackCoroutine(Vector3 _direction, float _power, float _time)
     {
-        //controller.Move(_direction * _power * Time.deltaTime);
-
-        //yield return new WaitForSeconds(_time);
-
         float wait = _time;
-
-        Vector3 movement = Vector3.zero;
-        movement = transform.forward * attackMoveSpeed;
-
-        while (wait > 0)
-        {
-            wait -= Time.deltaTime;
-            controller.Move(_direction * _power * Time.deltaTime);
-
-            yield return null;
-        }
-        yield return null;
-    }
-
-    void Jump()
-    {
-        if (!isGrounded || !canJump) return;
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            //controller.SimpleMove
-            verticalSpeed = jumpForce;
-            jumped = true;
-        }
-    }
-
-    void Gravity()
-    {
-        verticalSpeed -= gravity * Time.deltaTime;
-        if (isGrounded && !jumped) verticalSpeed = -gravity * Time.deltaTime;
-        if (!isGrounded) verticalSpeed -= gravity * Time.deltaTime;
-
-        if (jumped) jumped = false;
-
-        Vector3 moveVector = Vector3.zero;
-        moveVector.y = verticalSpeed;
-
-        verticalSpeed = -maxFallSpeed;
-        controller.Move(moveVector * Time.deltaTime);
+        velocity = _direction * _power;
+        yield return new WaitForSeconds(_time);
     }
 
     void DetectGround()
     {
-        if (Physics.CheckBox(boxPosition.position, boxSize, Quaternion.identity, groundMask))
-        {
-            isGrounded = true;
-        }
-        else isGrounded = false;
+        isGrounded = Physics.CheckBox(boxPosition.position, boxSize, Quaternion.identity, groundMask);
+    }
+
+    void DownForceWhenMidair()
+    {
+        float downForce = -1 * slopeForce;
+        if (rb.velocity.y > fallingSpeedLimit) downForce = fallingSpeedLimit;
+
+        velocity.y = downForce;
+        Debug.Log(velocity);
     }
 
     public void ChangeDashState(bool _state)
     {
         canDash = _state;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        // Draw a semitransparent blue cube at the transforms position
-        //Gizmos.color = new Color(1, 0, 0, 0.5f);
-        //Gizmos.DrawCube(boxPosition.position, boxSize);
     }
 }

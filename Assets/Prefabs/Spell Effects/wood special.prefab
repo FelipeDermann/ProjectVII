@@ -102,6 +102,9 @@ MonoBehaviour:
   projectileLifeTime: 5
   timeToRemoveObjectAfterDeath: 4
   audioEmitter: {fileID: 7923125915321628052}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &8763361114149691391
 MonoBehaviour:
   m_ObjectHideFlags: 0

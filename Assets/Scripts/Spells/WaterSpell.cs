@@ -15,6 +15,9 @@ public class WaterSpell : MonoBehaviour
     bool canApplyDamage;
     public ParticleSystem tornadoParticle;
 
+    Vector3 enemyDir;
+    Vector3 hitPoint;
+
     [Header("Knockback")]
     public float KnockbackForce;
     public float KnockbackTimeToRecover;
@@ -81,8 +84,24 @@ public class WaterSpell : MonoBehaviour
                 var enemyMove = currentEnemy.gameObject.GetComponent<EnemyMove>();
 
                 Vector3 knockbackDirection = currentEnemy.transform.position - spell.playerPos.position;
+                enemyDir = currentEnemy.transform.position - transform.position;
+                enemyDir.Normalize();
                 knockbackDirection.Normalize();
                 knockbackDirection.y = 0;
+
+                //rickmartin
+                Ray ray = new Ray(transform.position, enemyDir);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayerMask))
+                {
+                    print(hit.point + " on object: " + hit.transform.name);
+                    hitPoint = hit.point;
+                    var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point, transform.rotation);
+                    var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
+                    hitmarkerParticleSystem.Play();
+
+                    GameManager.Instance.hitMarkerPool.ReturnObject(hitmarker, 2);
+                }
 
                 //if (numberOfHitsDone != maxNumberOfHits) enemyMove.SlightKnockUp(-knockbackDirection, KnockbackForce, smallKnockupForce, KnockbackTimeToRecover);
                 //else enemyMove.KnockUp(-knockbackDirection, knockbackForceOnFinalHit, hurtTime);

@@ -74,7 +74,6 @@ public class PlayerElements : MonoBehaviour
     {
         ElementRelation currentCycle = DefineCycle();
 
-        var materialsToChange = swordRenderer.materials;
         ComboEffect comboEffect = null;
 
         switch (currentElement.ElementName)
@@ -89,7 +88,7 @@ public class PlayerElements : MonoBehaviour
                 if (currentCycle == ElementRelation.GENERATION_CYCLE) comboEffect.ActivateGenerationCycleEffect();
 
                 //Change element
-                materialsToChange[0] = elementColors[0];
+                swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[0]);
                 weaponTrail._colors[0] = colorsToChange[0];
                 break;
             case ElementType.Water:
@@ -103,7 +102,7 @@ public class PlayerElements : MonoBehaviour
                 combo.GetComponentInChildren<TravelForward>().GainSpeed(GetComponent<PlayerStatus>());
 
                 //Change element
-                materialsToChange[0] = elementColors[1];
+                swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[1]);
                 weaponTrail._colors[0] = colorsToChange[1];
                 break;
             case ElementType.Metal:
@@ -116,7 +115,7 @@ public class PlayerElements : MonoBehaviour
                 if (currentCycle == ElementRelation.GENERATION_CYCLE) comboEffect.ActivateGenerationCycleEffect();
 
                 //Change element
-                materialsToChange[0] = elementColors[2];
+                swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[2]);
                 weaponTrail._colors[0] = colorsToChange[2];
                 break;
             case ElementType.Wood:
@@ -129,7 +128,7 @@ public class PlayerElements : MonoBehaviour
                 if (currentCycle == ElementRelation.GENERATION_CYCLE) comboEffect.ActivateGenerationCycleEffect();
 
                 //Change element
-                materialsToChange[0] = elementColors[3];
+                swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[3]);
                 weaponTrail._colors[0] = colorsToChange[3];
                 break;
             case ElementType.Earth:
@@ -145,7 +144,7 @@ public class PlayerElements : MonoBehaviour
             
 
                 //Change element
-                materialsToChange[0] = elementColors[4];
+                swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[4]);
                 weaponTrail._colors[0] = colorsToChange[4];
                 break;
         }
@@ -153,8 +152,6 @@ public class PlayerElements : MonoBehaviour
         //combo.gameObject.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
         uiElement.ChangeElementText(currentElement.ElementName);
         ChangeWeaponParticles(currentElement.ElementName);
-
-        swordRenderer.materials = materialsToChange;
     }
 
     ElementRelation DefineCycle()

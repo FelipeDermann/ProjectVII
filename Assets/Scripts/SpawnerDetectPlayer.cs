@@ -15,8 +15,6 @@ public class SpawnerDetectPlayer : MonoBehaviour
             waveController.IsPlayerInRange();
 
             gameObject.SetActive(false);
-
-            Debug.Log("YOO");
         }
     }
 }

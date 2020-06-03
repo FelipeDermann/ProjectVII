@@ -27,7 +27,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Animator anim;
     [SerializeField]
-    private CapsuleCollider capsuleCol;
+    private CapsuleCollider capsuleCol1;
+    [SerializeField]
+    private CapsuleCollider capsuleCol2;
     [SerializeField]
     private TargetScript targetScriptForLockOn;
     [SerializeField]
@@ -45,6 +47,7 @@ public class Enemy : MonoBehaviour
 
     public bool dead;
     public bool invincible;
+    public bool isElite;
 
     public GameObject deathParticles;
     public Transform deathParticlesSpawnPoint;
@@ -55,6 +58,8 @@ public class Enemy : MonoBehaviour
     private EnemyMove move;
     [SerializeField]
     private EnemyAttack attack;
+    [SerializeField]
+    private EnemySound sound;
 
     [Header("Spawners - do not alter")]
     public EnemySpawner mySpawner;
@@ -62,6 +67,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Particles")]
     public ParticleSystem hitParticle;
+    public ParticleSystem eliteParticle;
 
     public static event Action EnemyDead;
     public static event Action RemoveLockOnTarget;
@@ -83,9 +89,12 @@ public class Enemy : MonoBehaviour
 
     public void Activate()
     {
+        if (isElite) eliteParticle.Play();
+
         currentHealth = maxHealth;
 
-        capsuleCol.enabled = true;
+        capsuleCol1.enabled = true;
+        capsuleCol2.enabled = true;
         agent.enabled = true;
         rb.isKinematic = true;
         meshRenderer.enabled = true;
@@ -102,7 +111,10 @@ public class Enemy : MonoBehaviour
 
     void Deactivate()
     {
-        capsuleCol.enabled = false;
+        if (isElite) eliteParticle.Stop();
+     
+        capsuleCol1.enabled = false;
+        capsuleCol2.enabled = false;
         agent.enabled = false;
         meshRenderer.enabled = false;
         meshRenderer2.enabled = false;
@@ -158,6 +170,7 @@ public class Enemy : MonoBehaviour
     void EnemyDeathSimple()
     {
         GameObject deathParticleClone = Instantiate(deathParticles, deathParticlesSpawnPoint.position, transform.rotation);
+        sound.PlayDeathSound();
 
         if (mySpawner != null) mySpawner.CallSpawnEnemy();
         if (myWaveSpawner != null) myWaveSpawner.SpawnedEnemyDead();

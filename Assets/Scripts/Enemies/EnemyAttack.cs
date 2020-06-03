@@ -10,6 +10,9 @@ public class EnemyAttack : MonoBehaviour
     EnemyMove enemyMove;
 
     [Header("Colliders")]
+    public ParticleSystem attackParticle;
+
+    [Header("Colliders")]
     public Collider attackArea;
     public Collider attackHitbox;
     
@@ -25,6 +28,11 @@ public class EnemyAttack : MonoBehaviour
     {
         hurt = false;
         canAttack = true;
+    }
+
+    public void PlayAttackParticle()
+    {
+        attackParticle.Play();
     }
 
     public void ChangeHurtState(bool _state)

@@ -31,6 +31,14 @@ public class ObjectPool : MonoBehaviour
         StartCoroutine(RestoringObject(returnedObject, timeToReturn));
     }
 
+    public void RestoreObjectWithoutCoroutine(PoolableObject returnedObject)
+    {
+        returnedObject.transform.parent = transform;
+        returnedObject.transform.localPosition = Vector3.zero;
+        poolableObjects.Add(returnedObject);
+        returnedObject.DeactivateObject();
+    }
+
     private IEnumerator RestoringObject(PoolableObject returnedObject, float timeToReturn)
     {
         yield return new WaitForSeconds(timeToReturn);

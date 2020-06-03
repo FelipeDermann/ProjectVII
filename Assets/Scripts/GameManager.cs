@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [Header("Coin Pool")]
     public ObjectPool CoinPool;
 
+    [Header("Particle Pools")]
+    public ObjectPool hitMarkerPool;
+
     [Header("Enemies Pool")]
     public ObjectPool EnemyPool;
 
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
     public ObjectPool AudioStep2Pool;
     public ObjectPool AudioDashPool;
     public ObjectPool AudioHurtPool;
+    public ObjectPool AudioHurt2Pool;
     public ObjectPool AudioDeathPool;
     public ObjectPool AudioSlashPool;
 

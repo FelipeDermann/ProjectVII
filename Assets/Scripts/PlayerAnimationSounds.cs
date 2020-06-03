@@ -112,13 +112,27 @@ public class PlayerAnimationSounds : MonoBehaviour
 
     public void PlayHurtSound()
     {
-        var audioEmitter = GameManager.Instance.AudioHurtPool.RequestObject(transform.position, transform.rotation);
-        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+        int randomNumber = UnityEngine.Random.Range(0,2);
+        if (randomNumber == 0)
+        {
+            var audioEmitter = GameManager.Instance.AudioHurtPool.RequestObject(transform.position, transform.rotation);
+            var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
 
-        emitterScript.PlaySoundWithPitch();
-        float clipLength = emitterScript.clipToPlay.length;
+            emitterScript.PlaySoundWithPitch();
+            float clipLength = emitterScript.clipToPlay.length;
 
-        GameManager.Instance.AudioHurtPool.ReturnObject(audioEmitter, clipLength + 1);
+            GameManager.Instance.AudioHurtPool.ReturnObject(audioEmitter, clipLength + 1);
+        }
+        else
+        {
+            var audioEmitter = GameManager.Instance.AudioHurt2Pool.RequestObject(transform.position, transform.rotation);
+            var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+            emitterScript.PlaySoundWithPitch();
+            float clipLength = emitterScript.clipToPlay.length;
+
+            GameManager.Instance.AudioHurt2Pool.ReturnObject(audioEmitter, clipLength + 1);
+        }
     }
 
     public void PlayDeathSound()
