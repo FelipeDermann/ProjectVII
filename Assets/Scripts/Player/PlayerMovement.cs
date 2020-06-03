@@ -37,15 +37,17 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Ground Detection")]
     public bool isGrounded;
-    public bool canJump;
+    public float fallingSpeedLimit;
     public Transform boxPosition;
-    public Vector3 boxSize;
+    Vector3 boxSize;
     public LayerMask groundMask;
+    public float slopeRaycastLength;
+    public float slopeForce;
 
     [Header("Particles")]
     public ParticleSystem[] dashParticles;
     public ParticleSystem hitParticle;
-
+    
     //dashing
     Vector3 dashMoveDirection;
     float DashInputX;
@@ -95,6 +97,8 @@ public class PlayerMovement : MonoBehaviour
 
         cam = Camera.main;
 
+        boxSize = boxPosition.GetComponent<Collider>().bounds.size;
+
         canDash = true;
     }
 
@@ -104,10 +108,9 @@ public class PlayerMovement : MonoBehaviour
         Dash();
         DashMove();
         AttackMove();
-        //DetectGround();
+        DetectGround();
         DashInput();
 
-        //ApplyOrientation();
         Movement();
     }
 
@@ -115,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
     {
         ////gains speed
         velocity.y = rb.velocity.y;
+        if(!isGrounded) DownForceWhenMidair();
         rb.velocity = velocity;
         Debug.Log(rb.velocity);
     }
@@ -137,12 +141,10 @@ public class PlayerMovement : MonoBehaviour
 
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
-        //input = Vector2.ClampMagnitude(input, 1);
         input.Normalize();
 
         if (input.magnitude > 0)
         {
-            //anim.SetBool("InputDetected", true);
             var camera = Camera.main;
 
             inputDir = camera.transform.forward * input.y;
@@ -163,10 +165,22 @@ public class PlayerMovement : MonoBehaviour
 
         //set speed variables
         velocity = inputDir * moveSpeed;
-        //rb.MovePosition(rb.position + (inputDir * Time.deltaTime * moveSpeed));
 
         ////////// ANIMATIONS
         anim.SetFloat("Blend", input.sqrMagnitude);
+    }
+
+    bool OnSlope()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + new Vector3(0,1,0), Vector3.down, out hit, slopeRaycastLength, groundMask))
+        {
+            if (hit.normal != Vector3.up)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void HurtParticle()
@@ -212,7 +226,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void DashStart()
     {
-        canJump = false;
         CanWalkOff();
 
         for (int i = 0; i < dashParticles.Length; i++) dashParticles[i].Play();
@@ -229,7 +242,6 @@ public class PlayerMovement : MonoBehaviour
 
         dashCanGainSpeed = false;
         dashing = false;
-        canJump = true;
         moveSpeed = 9;
         anim.SetBool("dashing", dashing);
     }
@@ -264,13 +276,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerStatus.shopping) return;
         canMove = true;
-        canJump = true;
     }
 
     public void CanWalkOff()
     {
         canMove = false;
-        canJump = false;
         velocity.x = 0;
         velocity.z = 0;
     }
@@ -318,11 +328,16 @@ public class PlayerMovement : MonoBehaviour
 
     void DetectGround()
     {
-        if (Physics.CheckBox(boxPosition.position, boxSize, Quaternion.identity, groundMask))
-        {
-            isGrounded = true;
-        }
-        else isGrounded = false;
+        isGrounded = Physics.CheckBox(boxPosition.position, boxSize, Quaternion.identity, groundMask);
+    }
+
+    void DownForceWhenMidair()
+    {
+        float downForce = -1 * slopeForce;
+        if (rb.velocity.y > fallingSpeedLimit) downForce = fallingSpeedLimit;
+
+        velocity.y = downForce;
+        Debug.Log(velocity);
     }
 
     public void ChangeDashState(bool _state)
