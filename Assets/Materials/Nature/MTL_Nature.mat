@@ -71,7 +71,7 @@ Material:
     - _UseColorMap: 1
     - _UseEmissiveMap: 1
     - _UseMetallicMap: 0
-    - _UseNormalMap: 1
+    - _UseNormalMap: 0
     - _UseRoughnessMap: 1
     - _WorkflowMode: 0
     - _ZWrite: 1
