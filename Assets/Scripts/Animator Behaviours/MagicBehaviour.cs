@@ -5,7 +5,7 @@ using System;
 
 public class MagicBehaviour : StateMachineBehaviour
 {
-    //public static event Action<float> SpawnMagicHitbox;
+    public static event Action<bool> UsingMagic;
     //public static event Action CancelComboHitbox;
 
     //[Header("Event Times")]
@@ -16,6 +16,7 @@ public class MagicBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("casting", true);
+        UsingMagic?.Invoke(true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -28,6 +29,7 @@ public class MagicBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("casting", false);
+        UsingMagic?.Invoke(false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

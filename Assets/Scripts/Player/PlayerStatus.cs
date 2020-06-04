@@ -145,6 +145,7 @@ public class PlayerStatus : MonoBehaviour
         dead = true;
 
         playerMovement.ChangeDashState(false);
+        playerMovement.CanWalkOff();
 
         animator.SetBool("dead", true);
         animator.SetTrigger("death");
