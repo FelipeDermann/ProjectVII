@@ -55,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        MagicBehaviour.UsingMagic += CastingMagic;
+
         DisableAttackState.FinishedAttack += CanWalkOn;
         AttackAnimationBehaviour.StartedAttack += CanWalkOff;
 
@@ -71,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnDestroy()
     {
+        MagicBehaviour.UsingMagic -= CastingMagic;
+
         DisableAttackState.FinishedAttack -= CanWalkOn;
         AttackAnimationBehaviour.StartedAttack -= CanWalkOff;
 
@@ -120,7 +124,12 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = rb.velocity.y;
         if(!isGrounded) DownForceWhenMidair();
         rb.velocity = velocity;
-        Debug.Log(rb.velocity);
+    }
+
+    void CastingMagic(bool _canMove)
+    {
+        if (_canMove) CanWalkOff();
+        else CanWalkOn();
     }
 
     private void ApplyOrientation()
@@ -312,6 +321,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerStatus.invincible) return;
         if (playerStatus.ignoreStagger) return;
+        // if (playerStatus.dead) return;
 
         rb.velocity = Vector3.zero;
         velocity = _direction * _power;

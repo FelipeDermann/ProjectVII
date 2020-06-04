@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class Companion : MonoBehaviour
 {
     NavMeshAgent nav;
+    [SerializeField]
+    private Animator anim;
     public Transform playerPoints;
     public Transform target;
 
@@ -17,6 +19,21 @@ public class Companion : MonoBehaviour
 
     public bool playerInRange;
     public bool canRotate;
+
+    private void OnEnable()
+    {
+        //PlayerAnimation.SpawnMagicHitbox += PlaySpellAnim;
+        MagicBehaviour.StartMagicAnim += PlaySpellAnim;
+        //PlayerAnimation.SpawnComboHitbox += PlayComboAnim;
+        ComboBehaviour.StartComboAnim += PlayComboAnim;
+    }
+    private void OnDisable()
+    {
+        //PlayerAnimation.SpawnMagicHitbox -= PlaySpellAnim;
+        MagicBehaviour.StartMagicAnim -= PlaySpellAnim;
+        //PlayerAnimation.SpawnComboHitbox -= PlayComboAnim;
+        ComboBehaviour.StartComboAnim -= PlayComboAnim;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +50,18 @@ public class Companion : MonoBehaviour
         if (target != null) nav.SetDestination(target.position);
 
         if (canRotate && nav.velocity.sqrMagnitude < 2) StartCoroutine(nameof(RotateForward));
+        anim.SetFloat("Blend", nav.velocity.magnitude);
 
+    }
+
+    void PlayComboAnim()
+    {
+        anim.SetTrigger("Combo");
+    }
+
+    void PlaySpellAnim()
+    {
+        anim.SetTrigger("Spell");
     }
 
     void DecideDestination()
