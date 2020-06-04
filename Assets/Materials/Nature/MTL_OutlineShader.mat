@@ -28,8 +28,17 @@ Material:
         m_Texture: {fileID: 2800000, guid: 13fef6b2f0118874989e7d99ed03a1de, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmissionTexture:
+        m_Texture: {fileID: 2800000, guid: ee43bb87c3c86a3498a431a257a886ea, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_E8F3F0B8: 3.56
+    - Vector1_E8F3F0B8: 4
+    - _EmissionRange: -0
+    - _Metallic: 0
+    - _Occlusion: 0
+    - _Smoothness: 0
     m_Colors:
-    - Color_23F08B28: {r: 0.754717, g: 0.09611962, b: 0.24483533, a: 0}
+    - Color_23F08B28: {r: 1, g: 1, b: 1, a: 0}
     - Color_E2A3C90F: {r: 0, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
