@@ -16,12 +16,13 @@ public class EnemyDamageHitbox : MonoBehaviour
         if (other.gameObject.layer == layerIndex)
         {
             GameObject player = other.gameObject;
+            PlayerMovement playerMove = player.GetComponent<PlayerMovement>();
 
             Vector3 knockbackDirection = player.transform.position - transform.position;
             knockbackDirection.Normalize();
             knockbackDirection.y = 0;
 
-            player.GetComponent<PlayerMovement>().KnockBack(knockbackDirection, knockbackPower, knockbackTime);
+            playerMove.KnockBack(knockbackDirection, knockbackPower, knockbackTime);
             player.GetComponent<PlayerStatus>().TakeDamage(damageToDeal);
         }
     }

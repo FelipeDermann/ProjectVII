@@ -5,23 +5,13 @@ using System;
 
 public class ComboBehaviour : StateMachineBehaviour
 {
-    //public static event Action<float> SpawnComboHitbox;
+    public static event Action StartComboAnim;
     //public static event Action<float> ChangeElement;
-
-    //[Header("Event Times")]
-    //[Range(0.0f, 1.0f)]
-    //public float timeToEnableHitbox;
-    //[Range(0.0f, 1.0f)]
-    //public float timeToChangeElement;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //float timeHitbox = timeToEnableHitbox * stateInfo.length;
-        //float timeChangeElement = timeToChangeElement * stateInfo.length;
-
-        //SpawnComboHitbox?.Invoke(timeHitbox);
-        //ChangeElement?.Invoke(timeChangeElement);
+        StartComboAnim?.Invoke();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

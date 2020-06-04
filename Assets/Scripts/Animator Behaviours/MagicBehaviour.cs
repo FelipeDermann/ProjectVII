@@ -6,6 +6,7 @@ using System;
 public class MagicBehaviour : StateMachineBehaviour
 {
     public static event Action<bool> UsingMagic;
+    public static event Action StartMagicAnim;
     //public static event Action CancelComboHitbox;
 
     //[Header("Event Times")]
@@ -17,6 +18,7 @@ public class MagicBehaviour : StateMachineBehaviour
     {
         animator.SetBool("casting", true);
         UsingMagic?.Invoke(true);
+        StartMagicAnim?.Invoke();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
