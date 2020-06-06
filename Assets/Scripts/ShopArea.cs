@@ -9,75 +9,118 @@ public class ShopArea : MonoBehaviour
 {
     public static event Action<PlayerStatus, ShopArea> PlayerInShop;
 
-    [Header("Prices and Effects")]
+    [Header("Dialogues")]
+    public Dialogue dialogueBeforeShop;
+    public Dialogue dialogueAfterShop;
+
+    [Header("Prices")]
     public int healthUpPrice;
-    public int healthUpAmount;
     public int magnetPrice;
+
+    [Header("Effects")]
+    public int healthUpAmount;
 
     [Header("!")]
     public GameObject exclamationCanvas;
 
+    [Header("Utilities - do not alter")]
     public bool playerInRange;
     public bool shopping;
+    public bool talking;
     GameObject shopMenu;
     PlayerStatus playerStatus;
     CinemachineFreeLook cam;
     string camX;
     string camY;
 
+    bool canInteract;
+
     private void OnEnable()
     {
-        ShopMenu.ExitShop += EndShop; 
+        ShopMenu.ExitShop += EndShop;
+        DialogueManager.DialogueEnd += EventAfterDialogue;
     }
 
     private void OnDisable()
     {
         ShopMenu.ExitShop -= EndShop;
+        DialogueManager.DialogueEnd -= EventAfterDialogue;
     }
 
     void Start()
     {
         shopMenu = GameObject.FindGameObjectWithTag("ShopMenu").transform.GetChild(0).gameObject;
         cam = GameObject.FindGameObjectWithTag("FreeLook").GetComponent<CinemachineFreeLook>();
+        canInteract = true;
     }
 
     void Update()
     {
-        StartShop();
+        // StartShop();
+        CheckDialogue();
+    }
+
+    void CheckDialogue()
+    {
+        if (!Input.GetButtonDown("light")) return;
+        if (!playerInRange) return;
+        if (playerStatus.GetComponent<PlayerMovement>().dashing) return;
+        if (shopping) return;
+        if (talking) return;
+        if (!canInteract) return;
+
+        DialogueManager.Instance.StartDialogue(dialogueBeforeShop);
+
+        Music.Instance.TurnAllMusicVolumeDown();
+        Cursor.lockState = CursorLockMode.None;
+
+        camX = cam.m_XAxis.m_InputAxisName;
+        camY = cam.m_YAxis.m_InputAxisName;
+
+        cam.m_XAxis.m_InputAxisName = "";
+        cam.m_YAxis.m_InputAxisName = "";
+
+        cam.m_XAxis.m_InputAxisValue = 0;
+        cam.m_YAxis.m_InputAxisValue = 0;
+
+        playerStatus.CanMoveState(false);
+        talking = true;
+        shopping = true;
+    }
+
+    void EventAfterDialogue()
+    {
+        if (!shopping) ReturnPlayerToNormal();
+        else StartShop();
     }
 
     void StartShop()
     {
-        if (!Input.GetButtonDown("light") && playerInRange) return;
-        if (!playerInRange) return;
-        if (playerStatus.GetComponent<PlayerMovement>().dashing) return;
-        if (shopping) return;
-            
-        Music.Instance.TurnAllMusicVolumeDown();
         shopMenu.SetActive(true);
-        shopping = true;
         playerStatus.shopping = true;
-        Cursor.lockState = CursorLockMode.None;
-        
-        camX = cam.m_XAxis.m_InputAxisName;
-        camY = cam.m_YAxis.m_InputAxisName;
-        
-        cam.m_XAxis.m_InputAxisName = "";
-        cam.m_YAxis.m_InputAxisName = "";
-        
-        cam.m_XAxis.m_InputAxisValue = 0;     
-        cam.m_YAxis.m_InputAxisValue = 0;
-        
-        playerStatus.CanMoveState(false);
 
         PlayerInShop?.Invoke(playerStatus, this);
     }
 
     void EndShop()
     {
-        Music.Instance.NormalizeMusicVolume();
         shopMenu.SetActive(false);
         playerStatus.shopping = false;
+        shopping = false;
+
+        CancelInvoke();
+        Invoke(nameof(TriggerFinalDialog), 0.2f);
+    }
+
+    void TriggerFinalDialog()
+    {
+        DialogueManager.Instance.StartDialogue(dialogueAfterShop);
+    }
+
+    void ReturnPlayerToNormal()
+    {
+        Music.Instance.NormalizeMusicVolume();
+
         Cursor.lockState = CursorLockMode.Locked;
 
         cam.m_XAxis.m_InputAxisName = camX;
@@ -85,7 +128,15 @@ public class ShopArea : MonoBehaviour
 
         playerStatus.CanMoveState(true);
 
-        shopping = false;
+        talking = false;
+        canInteract = false;
+        StartCoroutine(InteractableCooldown());
+    }
+
+    IEnumerator InteractableCooldown()
+    {
+        yield return new WaitForSeconds(0.25f);
+        canInteract = true;
     }
 
     void OnTriggerEnter(Collider other)
