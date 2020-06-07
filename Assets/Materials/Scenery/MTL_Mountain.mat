@@ -56,7 +56,7 @@ Material:
     - _DstBlend: 0
     - _EnvironmentReflections: 0
     - _GlossMapScale: 0
-    - _Glossiness: 0
+    - _Glossiness: -68.55
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
