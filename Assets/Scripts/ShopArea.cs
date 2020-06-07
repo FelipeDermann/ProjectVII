@@ -27,6 +27,8 @@ public class ShopArea : MonoBehaviour
     public bool playerInRange;
     public bool shopping;
     public bool talking;
+    [SerializeField]
+    private Animator anim;
     GameObject shopMenu;
     PlayerStatus playerStatus;
     CinemachineFreeLook cam;
@@ -147,6 +149,9 @@ public class ShopArea : MonoBehaviour
             if(playerStatus == null) playerStatus = other.GetComponent<PlayerStatus>();
             playerStatus.CanAttackState(false);
             exclamationCanvas.SetActive(true);
+
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Hello"))
+            anim.SetTrigger("Hello");
         }
     }
 
