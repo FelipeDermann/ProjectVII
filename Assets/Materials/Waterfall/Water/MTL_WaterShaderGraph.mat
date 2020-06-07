@@ -23,11 +23,11 @@ Material:
     m_Floats:
     - _NoiseScale: 2
     - _RippleDensity: 27.9
-    - _RippleSlimness: 6.4
+    - _RippleSlimness: 9.17
     - _RippleSpeed: 1.42
     - _WaterTransparency: 0.8
     m_Colors:
-    - _Color: {r: 0.2747864, g: 0.7082127, b: 0.8962264, a: 1}
+    - _Color: {r: 0, g: 0.50960946, b: 0.8962264, a: 1}
     - _NoiseSpeed: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _RippleColor: {r: 1.3811073, g: 1.9799683, b: 2.0765586, a: 0}
+    - _RippleColor: {r: 1.561123, g: 1.8878967, b: 1.9354273, a: 0}
     - _RippleRadialStrenght: {r: 1, g: 1, b: 0, a: 0}
