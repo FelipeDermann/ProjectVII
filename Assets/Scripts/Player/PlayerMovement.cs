@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool jumped;
     public bool canDash;
     public bool dashing;
+    public bool beingKnocked;
     public bool dashCanGainSpeed;
     public bool attackCanGainSpeed;
     public float dashMoveSpeed;
@@ -121,9 +122,22 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         ////gains speed
+        if (beingKnocked) return;
+
         velocity.y = rb.velocity.y;
         if(!isGrounded) DownForceWhenMidair();
         rb.velocity = velocity;
+    }
+
+    public void Hurt(bool _isHurt)
+    {
+        beingKnocked = _isHurt;
+        if (beingKnocked)
+        {
+            velocity.x = 0;
+            velocity.z = 0;
+            rb.velocity = velocity;
+        }
     }
 
     void CastingMagic(bool _canMove)
@@ -259,11 +273,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dashCanGainSpeed)
         {
-            if (Physics.CheckBox(attackMoveStopBoxPosition.transform.position, attackMoveStopBoxPosition.bounds.size, Quaternion.identity, attackMoveStopLayerMask))
-            {
-                dashCanGainSpeed = false;
-            }
-
             var forward = cam.transform.forward;
             var right = cam.transform.right;
             desiredMoveDirection = forward * DashInputZ + right * DashInputX;
@@ -273,6 +282,13 @@ public class PlayerMovement : MonoBehaviour
             //if ((DashInputZ == 0 && DashInputX == 0)) desiredMoveDirection = transform.forward;
 
             velocity = desiredMoveDirection.normalized * dashMoveSpeed;
+
+            //if (Physics.CheckBox(attackMoveStopBoxPosition.transform.position, attackMoveStopBoxPosition.bounds.size, Quaternion.identity, attackMoveStopLayerMask))
+            //{
+            //    velocity.x = 0;
+            //    velocity.z = 0;
+            //    dashCanGainSpeed = false;
+            //}
         }
     }
 
@@ -298,14 +314,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (attackCanGainSpeed)
         {
-            if (Physics.CheckBox(attackMoveStopBoxPosition.transform.position, attackMoveStopBoxPosition.bounds.size, Quaternion.identity, attackMoveStopLayerMask))
-            {
-                attackCanGainSpeed = false;
-            }
-
             Vector3 movement = Vector3.zero;
             movement = transform.forward * attackMoveSpeed;
             velocity = movement;
+
+            if (Physics.CheckBox(attackMoveStopBoxPosition.transform.position, attackMoveStopBoxPosition.bounds.size, Quaternion.identity, attackMoveStopLayerMask))
+            {
+                velocity.x = 0;
+                velocity.z = 0;
+                attackCanGainSpeed = false;
+            }
         }
     }
 
@@ -323,6 +341,7 @@ public class PlayerMovement : MonoBehaviour
         if (playerStatus.ignoreStagger) return;
         // if (playerStatus.dead) return;
 
+        beingKnocked = true;
         rb.velocity = Vector3.zero;
         velocity = _direction * _power;
 

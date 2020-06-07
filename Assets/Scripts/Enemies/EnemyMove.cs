@@ -49,6 +49,7 @@ public class EnemyMove : MonoBehaviour
 
     void Update()
     {
+        if (enemy.isDummy) return;
         if (canMove && !knocked)
         {
             if (target != null) 
@@ -69,6 +70,7 @@ public class EnemyMove : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (enemy.isDummy) return;
         if (isRotating)
         {
             Quaternion rotationDirection = Quaternion.LookRotation(direction);
@@ -78,9 +80,22 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
+    public void DummyGetHit()
+    {
+        int random = Random.Range(0, 3);
+
+        anim.SetInteger("HitVariation", random);
+        anim.SetTrigger("Hurt");
+    }
+
     public void KnockBack(Vector3 _direction, float forceAmount, float _knockUpForce, float time)
     {
         if (enemy.dead) return;
+        if (enemy.isDummy)
+        {
+            DummyGetHit();
+            return;
+        }
         CancelInvoke(nameof(MoveAgain));
 
         rayKnockback = new Ray(transform.position + new Vector3(0, 1, 0), _direction);

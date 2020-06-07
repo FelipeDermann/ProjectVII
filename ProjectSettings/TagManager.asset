@@ -13,6 +13,7 @@ TagManager:
   - Fence
   - FreeLook
   - Coin
+  - Dummy
   layers:
   - Default
   - TransparentFX

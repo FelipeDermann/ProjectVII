@@ -50,6 +50,7 @@ public class MusicTrigger : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            if (other.GetComponent<Dummy>() != null) return;
             isInCombat = true;
             Music.Instance.StartMusicFade(true);
         }
@@ -59,6 +60,7 @@ public class MusicTrigger : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            if (other.GetComponent<Dummy>() != null) return;
             isInCombat = false;
             Music.Instance.StartMusicFade(false);
         }

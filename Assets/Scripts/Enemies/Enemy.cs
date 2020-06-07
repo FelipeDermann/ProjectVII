@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
     public bool dead;
     public bool invincible;
     public bool isElite;
+    public bool isDummy;
 
     public GameObject deathParticles;
     public Transform deathParticlesSpawnPoint;
@@ -188,6 +189,7 @@ public class Enemy : MonoBehaviour
         if (dead) return;
         if (move.knockedDown) return;
         if (invincible) return;
+        if (isDummy) return;
 
         currentHealth -= damage;
         CheckIfDead();
@@ -199,6 +201,7 @@ public class Enemy : MonoBehaviour
     {
         if (dead) return;
         if (move.knockedDown) return;
+        if (isDummy) return;
 
         currentHealth -= damage;
 

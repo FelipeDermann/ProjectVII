@@ -49,6 +49,7 @@ public class WeaponHitbox : MonoBehaviour
 
         PlayerAnimation.EndTrail += TrailOff;
         PlayerAnimation.StartTrail += TrailOn;
+        AttackAnimationBehaviour.StopTrail += TrailOff;
     }
 
     private void OnDisable()
@@ -64,6 +65,7 @@ public class WeaponHitbox : MonoBehaviour
 
         PlayerAnimation.EndTrail += TrailOff;
         PlayerAnimation.StartTrail += TrailOn;
+        AttackAnimationBehaviour.StopTrail -= TrailOff;
     }
 
     public void SetAttackType(AttackType _attackType)
@@ -164,7 +166,7 @@ public class WeaponHitbox : MonoBehaviour
                     GameManager.Instance.AudioSlashPool.ReturnObject(audioEmitter, clipLength + 1);
                 }
 
-                if(!enemy.isElite) enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
+                if (!enemy.isElite) enemyMove.KnockBack(knockbackDirection, knockbackForce, 0, knockTime);
 
                 if (attackType == AttackType.LIGHT)
                 {

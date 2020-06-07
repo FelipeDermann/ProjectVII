@@ -117,6 +117,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void HurtState(bool _state)
     {
+        playerMovement.Hurt(_state);
 
         if (_state)
         {
