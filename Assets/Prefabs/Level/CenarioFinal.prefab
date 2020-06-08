@@ -7536,6 +7536,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.8240001
       objectReference: {fileID: 0}
+    - target: {fileID: 6105276561080582626, guid: 787b109c13ad55f4da252306204b26c0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 70.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105276561080582626, guid: 787b109c13ad55f4da252306204b26c0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426996717080131992, guid: 787b109c13ad55f4da252306204b26c0,
+        type: 3}
+      propertyPath: ShapeModule.donutRadius
+      value: 5.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426996717080131992, guid: 787b109c13ad55f4da252306204b26c0,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 9.11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 787b109c13ad55f4da252306204b26c0, type: 3}
 --- !u!4 &3572730187630735134 stripped
@@ -7696,6 +7716,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.6
       objectReference: {fileID: 0}
+    - target: {fileID: 5318212287379087363, guid: a65582e76972f814289c5199235f5e3e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5318212287379087363, guid: a65582e76972f814289c5199235f5e3e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.2991061
+      objectReference: {fileID: 0}
     - target: {fileID: 8911103495265675668, guid: a65582e76972f814289c5199235f5e3e,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -7705,6 +7735,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061139491010812025, guid: a65582e76972f814289c5199235f5e3e,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 7.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a65582e76972f814289c5199235f5e3e, type: 3}
