@@ -27,7 +27,7 @@ Material:
     - _RippleSpeed: 1.42
     - _WaterTransparency: 0.9
     m_Colors:
-    - _Color: {r: 0, g: 0.2901961, b: 1.482353, a: 1}
+    - _Color: {r: 0, g: 0.21437287, b: 1.4823531, a: 1}
     - _NoiseSpeed: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _RippleColor: {r: 1.561123, g: 1.8878967, b: 1.9354273, a: 0}
     - _RippleRadialStrenght: {r: 1, g: 1, b: 0, a: 0}
