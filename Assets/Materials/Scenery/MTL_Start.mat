@@ -47,7 +47,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _GradientNoiseScale: 0
-    - _Metallic: 1
+    - _Metallic: 0.5
     - _Occlusion: 1
     - _Smoothness: 0.2
     - _VoronoiCellDensity: 50
