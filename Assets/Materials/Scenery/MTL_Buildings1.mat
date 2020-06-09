@@ -21,7 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MTL_Buildings1
-  m_Shader: {fileID: 4800000, guid: 0e9d5a909a1f7e84882a534d0d11e49f, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5c396e6618adf094b8d798a926e37472,
+    type: 3}
   m_ShaderKeywords: _ENVIRONMENTREFLECTIONS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -48,8 +49,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: d3a91e6cc3fae41449743614ccdee0b3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainText:
+        m_Texture: {fileID: 2800000, guid: d3a91e6cc3fae41449743614ccdee0b3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask:
+        m_Texture: {fileID: 2800000, guid: cf81d93ff962eae49af6a30234f8d821, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicText:
+        m_Texture: {fileID: 2800000, guid: cf81d93ff962eae49af6a30234f8d821, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -71,11 +84,12 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metallic: 0
+    - _Metallic: 0.5
+    - _Occlusion: 1
     - _OcclusionStrength: 1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0
+    - _Smoothness: 0.2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -86,12 +100,16 @@ Material:
     - _UseMetallicMap: 0
     - _UseNormalMap: 0
     - _UseRoughnessMap: 1
+    - _VoronoiCellDensity: 50
+    - _VoronoiPower: 2
+    - _VoronoiSpeed: 5
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.3764706, g: 0.03137255, b: 0.7294118, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _VoronoiRadialStrength: {r: 1, g: 1, b: 0, a: 0}

@@ -31,4 +31,4 @@ Material:
     m_Colors:
     - _DarknessAmount: {r: 0.4, g: 1, b: 0, a: 0}
     - _RippleSpeed: {r: 0, g: 0.4, b: 0, a: 0}
-    - _RipplesColor: {r: 0, g: 0.7745165, b: 2.4815445, a: 1}
+    - _RipplesColor: {r: 0, g: 0.5136818, b: 1.5094342, a: 1}

@@ -721,6 +721,7 @@ MonoBehaviour:
   dead: 0
   invincible: 0
   isElite: 1
+  isDummy: 0
   deathParticles: {fileID: 1076456873343246756, guid: 56194790b58def948ac41987e2769f04,
     type: 3}
   deathParticlesSpawnPoint: {fileID: 6672473265204452977}
