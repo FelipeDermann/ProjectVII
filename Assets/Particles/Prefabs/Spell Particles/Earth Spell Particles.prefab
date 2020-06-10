@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.078431375}
+      maxColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 0.078431375}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -881,7 +881,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
+          value: 0.29323387
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -896,7 +896,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.7894764
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -905,7 +905,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
+          value: 0.03007698
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -975,8 +975,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 100
-        minScalar: 90
+        scalar: 80
+        minScalar: 70
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -1033,8 +1033,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 150
-        minScalar: 70
+        scalar: 120
+        minScalar: 45
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -1091,8 +1091,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 250
-        minScalar: 150
+        scalar: 180
+        minScalar: 100
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -1149,7 +1149,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 80
+        scalar: 60
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -10093,8 +10093,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.49056602, g: 0.36412606, b: 0.071733706, a: 0.11764706}
-      maxColor: {r: 0.4056604, g: 0.2182507, b: 0.051664297, a: 0.19607843}
+      minColor: {r: 0.3301887, g: 0.29833385, b: 0.2258366, a: 0.11764706}
+      maxColor: {r: 0.4716981, g: 0.32818618, b: 0.18467425, a: 0.19607843}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10847,7 +10847,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 5
+        scalar: 3
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -10905,7 +10905,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 5
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -10963,7 +10963,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 15
+        scalar: 8
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -11021,7 +11021,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 20
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -15097,7 +15097,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.078431375}
+      maxColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 0.078431375}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15850,8 +15850,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 100
-        minScalar: 90
+        scalar: 80
+        minScalar: 70
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -15908,8 +15908,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 150
-        minScalar: 70
+        scalar: 120
+        minScalar: 45
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -15966,8 +15966,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 250
-        minScalar: 150
+        scalar: 180
+        minScalar: 100
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -16024,7 +16024,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 80
+        scalar: 60
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -19886,7 +19886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7700571377685083131
 Transform:
   m_ObjectHideFlags: 0
