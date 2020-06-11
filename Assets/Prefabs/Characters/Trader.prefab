@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!136 &4678938805755651319
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6011972225358848814}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.4
-  m_Height: 1.4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.58, z: 0}
 --- !u!1 &3127378514640418928
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +151,7 @@ MonoBehaviour:
   healthUpPrice: 200
   magnetPrice: 100
   healthUpAmount: 50
-  exclamationCanvas: {fileID: 6011972225358848814}
+  exclamationCanvas: {fileID: 6081628013599490936}
   playerInRange: 0
   shopping: 0
   talking: 0
@@ -406,6 +392,20 @@ CapsuleCollider:
   m_Height: 1.4
   m_Direction: 1
   m_Center: {x: 0, y: 0.58, z: 0}
+--- !u!136 &4678938805755651319
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011972225358848814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 1.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.58, z: 0}
 --- !u!1001 &2328147653542033959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -619,6 +619,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 90107dd2adea0d147b23b57cd8dcfed1, type: 2}
+    - target: {fileID: -675421424289463606, guid: 1924923800a554b449963b944a070c66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6814340063143263529, guid: 1924923800a554b449963b944a070c66,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d1b97ecdded0f4c40b757b29889b0bca, type: 2}
+    - target: {fileID: -6814340063143263529, guid: 1924923800a554b449963b944a070c66,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d1b97ecdded0f4c40b757b29889b0bca, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1924923800a554b449963b944a070c66, type: 3}
 --- !u!1 &5901913065077545147 stripped
@@ -636,6 +651,12 @@ Transform:
 --- !u!95 &663881482924541906 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 1924923800a554b449963b944a070c66,
+    type: 3}
+  m_PrefabInstance: {fileID: 2505729549499646386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6081628013599490936 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -675421424289463606, guid: 1924923800a554b449963b944a070c66,
     type: 3}
   m_PrefabInstance: {fileID: 2505729549499646386}
   m_PrefabAsset: {fileID: 0}
