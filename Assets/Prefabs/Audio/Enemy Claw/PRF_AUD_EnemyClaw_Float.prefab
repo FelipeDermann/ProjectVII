@@ -45,7 +45,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5199258190922609518, guid: 9f96cb92327c13746ba95a843e36ba23,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 01256f312e0f01041bb439f740dd8425, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -146,8 +146,8 @@ MonoBehaviour:
   clipToPlay: {fileID: 0}
   clipVolume: 0.8
   timeOfAudioFadeOut: 0.5
-  minPitch: 1
-  maxPitch: 1
+  minPitch: 0.9
+  maxPitch: 1.1
   loopSound: 0
 --- !u!114 &-3301908658744648921
 MonoBehaviour:
