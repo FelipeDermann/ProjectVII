@@ -150,7 +150,7 @@ public class PlayerElements : MonoBehaviour
         }
 
         //combo.gameObject.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
-        uiElement.ChangeElementText(currentElement.ElementName);
+        //uiElement.ChangeElementText(currentElement.ElementName);
         ChangeWeaponParticles(currentElement.ElementName);
     }
 

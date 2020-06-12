@@ -9659,6 +9659,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wave Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 1332118683691398224, guid: 33059a495af6d5d42b3b2de455f22818,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1332118683691398239, guid: 33059a495af6d5d42b3b2de455f22818,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9667,12 +9672,12 @@ PrefabInstance:
     - target: {fileID: 1332118683691398239, guid: 33059a495af6d5d42b3b2de455f22818,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1332118683691398239, guid: 33059a495af6d5d42b3b2de455f22818,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1332118683691398239, guid: 33059a495af6d5d42b3b2de455f22818,
         type: 3}
@@ -9718,7 +9723,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 4a994706992201649ab9f52ac0d89dac, type: 2}
     - target: {fileID: 1332118683691398237, guid: 33059a495af6d5d42b3b2de455f22818,
         type: 3}
       propertyPath: TrailModule.inheritParticleColor
@@ -9748,6 +9753,16 @@ PrefabInstance:
         type: 3}
       propertyPath: lengthInSec
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332118683691398237, guid: 33059a495af6d5d42b3b2de455f22818,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.atime2
+      value: 41827
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332118683691398237, guid: 33059a495af6d5d42b3b2de455f22818,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.key2.a
+      value: 0.3019608
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33059a495af6d5d42b3b2de455f22818, type: 3}
