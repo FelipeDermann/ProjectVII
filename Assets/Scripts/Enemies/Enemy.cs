@@ -94,6 +94,7 @@ public class Enemy : MonoBehaviour
 
         currentHealth = maxHealth;
 
+        sound.StartLoopSounds();
         capsuleCol1.enabled = true;
         capsuleCol2.enabled = true;
         agent.enabled = true;
@@ -113,7 +114,8 @@ public class Enemy : MonoBehaviour
     void Deactivate()
     {
         if (isElite) eliteParticle.Stop();
-     
+
+        sound.StopLoopSounds();
         capsuleCol1.enabled = false;
         capsuleCol2.enabled = false;
         agent.enabled = false;
@@ -215,8 +217,6 @@ public class Enemy : MonoBehaviour
             lifeBar.DisableBar();
 
             targetScriptForLockOn.RemoveFromList();
-
-            //gameObject.layer = layerWhenDead;
 
             anim.SetBool("dead", true);
             dead = true;

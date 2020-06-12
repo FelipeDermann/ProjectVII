@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public ObjectPool AudioHurt2Pool;
     public ObjectPool AudioDeathPool;
     public ObjectPool AudioSlashPool;
+    public ObjectPool AudioSpecialPool;
 
     [Header("Enemy Audio Pools")]
     public ObjectPool AudioEnemyAttackPool;

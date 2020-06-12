@@ -31,7 +31,7 @@ public class Magic : MonoBehaviour
     void Start()
     {
         var canvasText = GameObject.FindObjectOfType(typeof(UIPlayer)) as UIPlayer;
-        uiElement = canvasText.GetComponent<UIPlayer>();
+        //uiElement = canvasText.GetComponent<UIPlayer>();
 
         playerStatus = GetComponent<PlayerStatus>();
         playerElements = GetComponentInParent<PlayerElements>();

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemySound : MonoBehaviour
 {
+    [Header("Sounds that loop")]
+    public AudioSource[] loopSounds; 
+
     [Header("Pools with sounds to play")]
     public ObjectPool StepSound1;
     public ObjectPool StepSound2;
@@ -12,6 +15,24 @@ public class EnemySound : MonoBehaviour
     public ObjectPool HurtSound;
 
     int stepToPlayIndex;
+
+    public void StartLoopSounds()
+    {
+        if (loopSounds.Length < 1) return;
+        foreach (AudioSource source in loopSounds)
+        {
+            source.Play();
+        }
+    }
+
+    public void StopLoopSounds()
+    {
+        if (loopSounds.Length < 1) return;
+        foreach (AudioSource source in loopSounds)
+        {
+            source.Stop();
+        }
+    }
 
     public void PlayStepSound()
     {
