@@ -110,7 +110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 937081026228512464}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Trigger Areas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6435,7 +6435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3988438409594339677}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: companion target points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17323,7 +17323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152307418943751010}
   - component: {fileID: 7493205996337961251}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: ground collision box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23724,7 +23724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6797994875660475722}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25865,8 +25865,8 @@ MonoBehaviour:
   specialBackBarRect: {x: 0, y: 0, z: 0}
   playerMana: 0
   playerMaxMana: 0
-  colorNotFilled: {r: 0.0141509175, g: 0.9124529, b: 1, a: 1}
-  colorFilled: {r: 0.2028302, g: 0.450431, b: 1, a: 1}
+  colorNotFilled: {r: 0.6156863, g: 0, b: 0.7529412, a: 1}
+  colorFilled: {r: 0.9622642, g: 0.013616921, b: 0.7406659, a: 1}
 --- !u!114 &7316435880804652757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31578,7 +31578,7 @@ GameObject:
   - component: {fileID: 2257619499844539423}
   - component: {fileID: 700156094824935910}
   - component: {fileID: 7857664739257072392}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Buff Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37284,11 +37284,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dash Foot Particles
       objectReference: {fileID: 0}
-    - target: {fileID: 6951472039590918459, guid: f042dfc7c50db2c40bece6de6572dd74,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4672636071650359052, guid: f042dfc7c50db2c40bece6de6572dd74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37384,11 +37379,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dash Foot Particles (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6951472039590918459, guid: f042dfc7c50db2c40bece6de6572dd74,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4672636071650359052, guid: f042dfc7c50db2c40bece6de6572dd74,
         type: 3}
