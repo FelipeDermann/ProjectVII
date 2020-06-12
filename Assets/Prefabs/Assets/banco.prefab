@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8462620284075898839}
   - component: {fileID: 5135536680132514958}
   - component: {fileID: 7107328255979134737}
+  - component: {fileID: 572725037333315350}
   m_Layer: 0
   m_Name: banco_Mesh_banco1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,6 +55,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -78,6 +80,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &572725037333315350
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016548835265909803}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.345586, y: 1.2413392, z: 3.1645432}
+  m_Center: {x: -6.795134, y: 3.1105585, z: 0.0000005364418}
 --- !u!1 &2323940261540385689
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +106,7 @@ GameObject:
   - component: {fileID: 5407922773471404199}
   m_Layer: 0
   m_Name: banco1_p__banco
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,6 +147,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -169,7 +185,7 @@ GameObject:
   - component: {fileID: 8010531925180270710}
   m_Layer: 0
   m_Name: banco1_p__banco_2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,6 +226,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -245,7 +262,7 @@ GameObject:
   - component: {fileID: 7752604448493295940}
   m_Layer: 0
   m_Name: banco
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

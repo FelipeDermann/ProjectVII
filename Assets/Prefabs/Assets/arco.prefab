@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4372805177996915794}
   - component: {fileID: 6263384637115621392}
   - component: {fileID: 2497695499100312329}
-  m_Layer: 0
+  - component: {fileID: 559970091111682115}
+  m_Layer: 9
   m_Name: arco_parte_reta_arco
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,6 +55,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -78,6 +80,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &559970091111682115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207384477414745567}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.405784, y: 0.55535173, z: 0.450504}
+  m_Center: {x: 4.6502624, y: 8.238448, z: 0.0000009983778}
 --- !u!1 &2179361148113308315
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,9 +104,10 @@ GameObject:
   - component: {fileID: 2195965947941703894}
   - component: {fileID: 7890584791155597554}
   - component: {fileID: 7836768186040193028}
-  m_Layer: 0
+  - component: {fileID: 4864164868003061782}
+  m_Layer: 9
   m_Name: pilar_arco_arco
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,6 +148,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -156,6 +173,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &4864164868003061782
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179361148113308315}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.770149
+  m_Height: 9.35309
+  m_Direction: 1
+  m_Center: {x: 7.7670326, y: 4.7667923, z: 0}
 --- !u!1 &3665399363582515452
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,9 +196,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 325741959053421295}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: arco
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,9 +234,10 @@ GameObject:
   - component: {fileID: 1439019139345046990}
   - component: {fileID: 8182639208961843854}
   - component: {fileID: 7106486147179458846}
-  m_Layer: 0
+  - component: {fileID: 922509218319219648}
+  m_Layer: 9
   m_Name: arco_base_pilar
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,6 +278,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -270,6 +303,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &922509218319219648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3837091095110947333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.265668, y: 1.240827, z: 2.265668}
+  m_Center: {x: 7.767033, y: 0.5478205, z: 0}
 --- !u!1 &4389546956746026941
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,9 +327,10 @@ GameObject:
   - component: {fileID: 7207185952091871411}
   - component: {fileID: 6073944861026364858}
   - component: {fileID: 523578431844408167}
-  m_Layer: 0
+  - component: {fileID: 7500081793747201246}
+  m_Layer: 9
   m_Name: arco_parte_de_cima_arco
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,6 +371,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -348,6 +396,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &7500081793747201246
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4389546956746026941}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.405784, y: 1.0151167, z: 0.749362}
+  m_Center: {x: 4.6502624, y: 9.720978, z: 0.0000019967556}
 --- !u!1 &5216468833123847278
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,9 +420,10 @@ GameObject:
   - component: {fileID: 1553814849090513584}
   - component: {fileID: 7754560606513520783}
   - component: {fileID: 8509488450593509609}
-  m_Layer: 0
+  - component: {fileID: 1354874870033723623}
+  m_Layer: 9
   m_Name: arco_base_pilar1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -402,6 +464,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -426,6 +489,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1354874870033723623
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5216468833123847278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.265668, y: 1.240827, z: 2.265668}
+  m_Center: {x: 1.472513, y: 0.5478205, z: 0}
 --- !u!1 &8631021059502237092
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,9 +513,10 @@ GameObject:
   - component: {fileID: 7845605981191679798}
   - component: {fileID: 7871146959631990730}
   - component: {fileID: 6026303165877699766}
-  m_Layer: 0
+  - component: {fileID: 8717750387494855636}
+  m_Layer: 9
   m_Name: arco_pilar_arco1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,6 +557,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -504,3 +582,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &8717750387494855636
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631021059502237092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.770149
+  m_Height: 9.35309
+  m_Direction: 1
+  m_Center: {x: 1.4783931, y: 4.7667923, z: 0}
