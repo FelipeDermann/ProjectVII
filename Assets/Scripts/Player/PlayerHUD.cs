@@ -12,9 +12,7 @@ public class PlayerHUD : MonoBehaviour
     public TextMeshProUGUI coinText;
 
     [Header("Health HUD")]
-    public Image barImage;
-    public RectTransform bar;
-    public RectTransform backBar;
+    public Image bar;
 
     public Vector3 barRect;
     public Vector3 backBarRect;
@@ -23,9 +21,7 @@ public class PlayerHUD : MonoBehaviour
     public float playerMaxHealth;
 
     [Header("Special HUD")]
-    public Image specialBarImage;
-    public RectTransform specialBar;
-    public RectTransform specialBackBar;
+    public Image specialBar;
 
     public Vector3 specialBarRect;
     public Vector3 specialBackBarRect;
@@ -39,12 +35,6 @@ public class PlayerHUD : MonoBehaviour
     public void StartHUD()
     {
         playerStatus = GetComponent<PlayerStatus>();
-
-        barRect.y = bar.sizeDelta.y;
-        backBarRect = backBar.sizeDelta;
-
-        specialBarRect.y = specialBar.sizeDelta.y;
-        specialBackBarRect = specialBackBar.sizeDelta;
     }
 
     public void UpdateCoins(int _coins)
@@ -57,8 +47,7 @@ public class PlayerHUD : MonoBehaviour
         playerHealth = playerStatus.currentHealth;
         playerMaxHealth = playerStatus.maxHealth;
 
-        barRect.x = (playerHealth / playerMaxHealth) * backBarRect.x;
-        bar.sizeDelta = barRect;
+        bar.fillAmount = playerHealth / playerMaxHealth;
     }
 
     public void UpdateSpecialBar()
@@ -66,10 +55,9 @@ public class PlayerHUD : MonoBehaviour
         playerMana = playerStatus.mana;
         playerMaxMana = playerStatus.maxMana;
 
-        if (playerMana >= playerMaxMana) specialBarImage.color = colorFilled;
-        else specialBarImage.color = colorNotFilled;
+        if (playerMana >= playerMaxMana) specialBar.color = colorFilled;
+        else specialBar.color = colorNotFilled;
 
-        specialBarRect.x = (playerMana / playerMaxMana) * specialBackBarRect.x;
-        specialBar.sizeDelta = specialBarRect;
+        specialBar.fillAmount = playerMana / playerMaxMana;
     }
 }
