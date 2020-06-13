@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1525573916369314423}
   - component: {fileID: 3375955802143485988}
   - component: {fileID: 2753207599337508125}
-  - component: {fileID: 1003639179521199140}
   m_Layer: 0
   m_Name: braseiro_base_braseiro3
   m_TagString: Wall
@@ -55,7 +54,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,20 +78,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1003639179521199140
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175047921138689833}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3794700467171953035, guid: 9ee952ea631a9ad4c93eed0cb1f8a9df, type: 3}
 --- !u!1 &336519361263827120
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +89,6 @@ GameObject:
   - component: {fileID: 7762019319690742505}
   - component: {fileID: 6892995368424856484}
   - component: {fileID: 7262925289500665433}
-  - component: {fileID: 8553766915029979622}
   m_Layer: 0
   m_Name: base_braseiro_braseiro
   m_TagString: Wall
@@ -149,7 +132,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -174,20 +156,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8553766915029979622
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336519361263827120}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4675252414459565448, guid: 9ee952ea631a9ad4c93eed0cb1f8a9df, type: 3}
 --- !u!1 &1140639729025959776
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +167,6 @@ GameObject:
   - component: {fileID: 7005099683790207725}
   - component: {fileID: 354765984900361728}
   - component: {fileID: 6926751697947566538}
-  - component: {fileID: 3770151506385846933}
   m_Layer: 0
   m_Name: braseiro_polySurface3
   m_TagString: Wall
@@ -243,7 +210,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -268,20 +234,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3770151506385846933
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140639729025959776}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1413639029242812685, guid: 9ee952ea631a9ad4c93eed0cb1f8a9df, type: 3}
 --- !u!1 &3520505055768908556
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 468375920059900191}
+  - component: {fileID: 7127221281884339222}
   m_Layer: 0
   m_Name: braseiro
   m_TagString: Wall
@@ -317,6 +270,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7127221281884339222
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520505055768908556}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4
+  m_Center: {x: 5.52, y: 0.35, z: 3.4}
 --- !u!1 &5321547587844648869
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +294,6 @@ GameObject:
   - component: {fileID: 679177686795878021}
   - component: {fileID: 4568253268541557579}
   - component: {fileID: 706330962472698926}
-  - component: {fileID: 683105852175099384}
   m_Layer: 0
   m_Name: braseiro_base_braseiro1
   m_TagString: Wall
@@ -372,7 +337,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -397,20 +361,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &683105852175099384
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5321547587844648869}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -941054685020270734, guid: 9ee952ea631a9ad4c93eed0cb1f8a9df, type: 3}
 --- !u!1 &5694302389117627791
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +372,6 @@ GameObject:
   - component: {fileID: 7938937659297684296}
   - component: {fileID: 8296371370685304046}
   - component: {fileID: 6707648580316371881}
-  - component: {fileID: 6964164821172360210}
   m_Layer: 0
   m_Name: braseiro_base_braseiro2
   m_TagString: Wall
@@ -466,7 +415,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -491,17 +439,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6964164821172360210
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5694302389117627791}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3141063916496461835, guid: 9ee952ea631a9ad4c93eed0cb1f8a9df, type: 3}

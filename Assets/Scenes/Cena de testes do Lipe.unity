@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 112000000, guid: 7cc5445d62ad0484ea68beb84d985d15,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1253,12 +1253,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -4228616495870112633, guid: 2ea1888e16a0bdf4daa4244bac74caa5, type: 3}
---- !u!198 &225491245 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4994212686727718193, guid: abd9199a87380d9469bf43f638818600,
-    type: 3}
-  m_PrefabInstance: {fileID: 486536945}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &239837211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,12 +1775,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315222395}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!198 &316341244 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3032333530617840668, guid: abd9199a87380d9469bf43f638818600,
-    type: 3}
-  m_PrefabInstance: {fileID: 486536945}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &338545207
 GameObject:
   m_ObjectHideFlags: 0
@@ -8300,12 +8288,6 @@ Transform:
   m_Father: {fileID: 665968064892184372}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &840520453 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7065483172419300646, guid: abd9199a87380d9469bf43f638818600,
-    type: 3}
-  m_PrefabInstance: {fileID: 486536945}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &840826114
 GameObject:
   m_ObjectHideFlags: 0
@@ -11708,12 +11690,6 @@ Transform:
   m_Father: {fileID: 403214577}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &1569921522 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5417653566354415372, guid: abd9199a87380d9469bf43f638818600,
-    type: 3}
-  m_PrefabInstance: {fileID: 486536945}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1576396935
 GameObject:
   m_ObjectHideFlags: 0
@@ -17516,12 +17492,6 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 580010214, guid: 5769e34370b57ea42b9ad29177e74d82,
     type: 3}
   m_PrefabInstance: {fileID: 4504091159803620778}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1808356417 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1350433815727609652, guid: abd9199a87380d9469bf43f638818600,
-    type: 3}
-  m_PrefabInstance: {fileID: 486536945}
   m_PrefabAsset: {fileID: 0}
 --- !u!64 &1838358083
 MeshCollider:
@@ -117476,27 +117446,27 @@ PrefabInstance:
         type: 3}
       propertyPath: debuffParticles.Array.data[0]
       value: 
-      objectReference: {fileID: 840520453}
+      objectReference: {fileID: 0}
     - target: {fileID: 5260788855099874901, guid: 972f5000e3281b54484f262b5e8258de,
         type: 3}
       propertyPath: debuffParticles.Array.data[1]
       value: 
-      objectReference: {fileID: 1569921522}
+      objectReference: {fileID: 0}
     - target: {fileID: 5260788855099874901, guid: 972f5000e3281b54484f262b5e8258de,
         type: 3}
       propertyPath: debuffParticles.Array.data[2]
       value: 
-      objectReference: {fileID: 316341244}
+      objectReference: {fileID: 0}
     - target: {fileID: 5260788855099874901, guid: 972f5000e3281b54484f262b5e8258de,
         type: 3}
       propertyPath: debuffParticles.Array.data[3]
       value: 
-      objectReference: {fileID: 1808356417}
+      objectReference: {fileID: 0}
     - target: {fileID: 5260788855099874901, guid: 972f5000e3281b54484f262b5e8258de,
         type: 3}
       propertyPath: debuffParticles.Array.data[4]
       value: 
-      objectReference: {fileID: 225491245}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 972f5000e3281b54484f262b5e8258de, type: 3}
 --- !u!33 &5263823172615087689
@@ -129455,36 +129425,6 @@ PrefabInstance:
       propertyPath: specialBar
       value: 
       objectReference: {fileID: 395456156}
-    - target: {fileID: 7316435880804652755, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: colorFilled.r
-      value: 0.9622642
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316435880804652755, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: colorFilled.g
-      value: 0.013616921
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316435880804652755, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: colorFilled.b
-      value: 0.7406659
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316435880804652755, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: colorNotFilled.r
-      value: 0.6156863
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316435880804652755, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: colorNotFilled.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316435880804652755, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: colorNotFilled.b
-      value: 0.7529412
-      objectReference: {fileID: 0}
     - target: {fileID: 7316435880804652757, guid: bc2cb8716076628459d563d2721f861a,
         type: 3}
       propertyPath: normalCamera
@@ -129520,31 +129460,6 @@ PrefabInstance:
       propertyPath: audioSourceBattle
       value: 
       objectReference: {fileID: 1794239874}
-    - target: {fileID: 153182995999765618, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1705778829655934500, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5150663236200288934, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2920765875718991334, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8395706674114521344, guid: bc2cb8716076628459d563d2721f861a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc2cb8716076628459d563d2721f861a, type: 3}
 --- !u!33 &7348772833326702471

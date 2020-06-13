@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6263384637115621392}
   - component: {fileID: 2497695499100312329}
   - component: {fileID: 559970091111682115}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: arco_parte_reta_arco
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -55,7 +55,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -105,7 +104,7 @@ GameObject:
   - component: {fileID: 7890584791155597554}
   - component: {fileID: 7836768186040193028}
   - component: {fileID: 4864164868003061782}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: pilar_arco_arco
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -148,7 +147,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -235,7 +233,7 @@ GameObject:
   - component: {fileID: 8182639208961843854}
   - component: {fileID: 7106486147179458846}
   - component: {fileID: 922509218319219648}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: arco_base_pilar
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -278,7 +276,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -328,7 +325,7 @@ GameObject:
   - component: {fileID: 6073944861026364858}
   - component: {fileID: 523578431844408167}
   - component: {fileID: 7500081793747201246}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: arco_parte_de_cima_arco
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -371,7 +368,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -421,7 +417,7 @@ GameObject:
   - component: {fileID: 7754560606513520783}
   - component: {fileID: 8509488450593509609}
   - component: {fileID: 1354874870033723623}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: arco_base_pilar1
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -464,7 +460,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -514,7 +509,7 @@ GameObject:
   - component: {fileID: 7871146959631990730}
   - component: {fileID: 6026303165877699766}
   - component: {fileID: 8717750387494855636}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: arco_pilar_arco1
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -557,7 +552,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

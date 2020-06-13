@@ -6,6 +6,16 @@ using System;
 public class PlayerAnimationSounds : MonoBehaviour
 {
     int stepToPlayIndex = 0;
+    public void PlaySpecialSound()
+    {
+        var audioEmitter = GameManager.Instance.AudioSpecialPool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioSpecialPool.ReturnObject(audioEmitter, clipLength + 1);
+    }
 
     public void PlayStepSound()
     {
