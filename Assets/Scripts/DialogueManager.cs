@@ -47,20 +47,25 @@ public class DialogueManager : MonoBehaviour
     {
         if(Input.GetButtonDown("light") && isTalking)
         {
-            if(isWritingSentence)
+            if (isWritingSentence)
             {
                 StopAllCoroutines();
                 isWritingSentence = false;
                 dialogueText.text = currentSentence;
             }
-            else DisplayNextSentence();
+            else
+            {
+                if (sentences.Count > 0) DisplayNextSentence();
+                else EndDialogue();
+            }
         }
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
         Debug.Log("DIALOGUE IS ON");
-        isTalking = true;
+        Invoke(nameof(TimeToAllowSkipping), 0.1f);
+
         anim.SetTrigger("Open");
         DialogueStart?.Invoke();
 
@@ -77,11 +82,15 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    void TimeToAllowSkipping()
+    {
+        isTalking = true;
+    }
+
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
         {
-            EndDialogue();
             return;
         }
 

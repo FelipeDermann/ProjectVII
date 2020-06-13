@@ -1,5 +1,74 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2076634009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2076634010}
+  - component: {fileID: 2076634012}
+  - component: {fileID: 2076634011}
+  m_Layer: 0
+  m_Name: player detection area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2076634010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076634009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.836, y: 2.14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3563585629456449222}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2076634012
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076634009}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.1118617, z: 1.4458466}
+  m_Center: {x: 0, y: -0.70918155, z: -0.013496399}
+--- !u!114 &2076634011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076634009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebff0a36752b5d42b1fa83ea6aa401b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    npcImage: {fileID: 21300000, guid: 3af4971d9c6acd74c83c3449e87c0602, type: 3}
+    npcName: Tip
+    sentences:
+    - My name is Falconhoof and I'll be your guide on your quest! jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+      jjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+      jjjjjjjjjjjjjjjjj
+    - jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjj jjjjjjj jjjjjjjjjjjjjj;
+      Jjjjjjjjjjjjjjjjjjjj jjjjjjjjj jjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjjjjjjj.
+  outlineObject: {fileID: 4704964107797625538}
+  playerInRange: 0
+  talking: 0
 --- !u!1 &517702744579427541
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,12 +93,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517702744579427541}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -95.07, y: 21.24, z: 25.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4220508216642743999}
   - {fileID: 8579421291489757393}
+  - {fileID: 2076634010}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40,7 +110,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517702744579427541}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 21146fea33cfe684f9ef4e0dfa8230ec, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -57,6 +127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SIGN2
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: cde6c12f65e89e04bafb53b625994249,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: cde6c12f65e89e04bafb53b625994249,
         type: 3}
@@ -120,6 +195,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d1b97ecdded0f4c40b757b29889b0bca, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cde6c12f65e89e04bafb53b625994249, type: 3}
+--- !u!1 &4704964107797625538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: cde6c12f65e89e04bafb53b625994249,
+    type: 3}
+  m_PrefabInstance: {fileID: 3632873262279697355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8579421291489757393 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: cde6c12f65e89e04bafb53b625994249,

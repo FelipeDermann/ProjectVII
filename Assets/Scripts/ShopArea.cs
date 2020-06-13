@@ -92,6 +92,7 @@ public class ShopArea : MonoBehaviour
 
     void EventAfterDialogue()
     {
+        if (!talking) return;
         if (!shopping) ReturnPlayerToNormal();
         else StartShop();
     }
