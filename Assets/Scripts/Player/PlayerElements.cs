@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum ElementType
 {
@@ -21,6 +22,8 @@ public enum ElementRelation
 
 public class PlayerElements : MonoBehaviour
 {
+    public static event Action<Element> ElementChanged;
+
     public SkinnedMeshRenderer swordRenderer;
     public Color[] colorsToChange;
     public Material[] elementColors;
@@ -33,7 +36,6 @@ public class PlayerElements : MonoBehaviour
     public Element currentElement;
     public Element previousElement;
     //public Element nextElement;
-
 
     public bool cancelComboHitbox;
 
@@ -141,7 +143,6 @@ public class PlayerElements : MonoBehaviour
                 if (currentCycle == ElementRelation.GENERATION_CYCLE) comboEffect.ActivateGenerationCycleEffect();
 
                 combo.GetComponent<CameraShake>().Shake();
-            
 
                 //Change element
                 swordRenderer.material.SetColor("_GradientNoiseColor", colorsToChange[4]);
@@ -152,6 +153,7 @@ public class PlayerElements : MonoBehaviour
         //combo.gameObject.GetComponent<ComboEffect>().playerStatus = GetComponent<PlayerStatus>();
         //uiElement.ChangeElementText(currentElement.ElementName);
         ChangeWeaponParticles(currentElement.ElementName);
+        ElementChanged?.Invoke(currentElement);
     }
 
     ElementRelation DefineCycle()

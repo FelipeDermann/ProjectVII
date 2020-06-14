@@ -11,6 +11,8 @@ public enum AttackType
 
 public class Attack : MonoBehaviour
 {
+    public static event Action<int, string> AttackExecuted;
+
     public Animator anim;
     PlayerMovement playerMove;
     PlayerElements elements;
@@ -204,12 +206,16 @@ public class Attack : MonoBehaviour
 
         if (!attacking)
         {
+            AttackExecuted?.Invoke(inputs.Count, "light");
+
             inputs.Add("light");
             anim.SetTrigger("startL");
             ResetAnimTriggers();
         }
         if (attacking && canInputNextAttack)
         {
+            AttackExecuted?.Invoke(inputs.Count, "light");
+
             canInputNextAttack = false;
             inputs.Add("light");
 
@@ -230,13 +236,17 @@ public class Attack : MonoBehaviour
         if (!canAttack) return;
 
         if (!attacking)
-        { 
+        {
+            AttackExecuted?.Invoke(inputs.Count, "heavy");
+
             inputs.Add("heavy");
             anim.SetTrigger("startH");
             ResetAnimTriggers();
         }
         if (attacking && canInputNextAttack)
         {
+            AttackExecuted?.Invoke(inputs.Count, "heavy");
+
             canInputNextAttack = false;
             inputs.Add("heavy");
 

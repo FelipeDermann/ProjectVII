@@ -22618,11 +22618,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: banco (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 6759218540254374743, guid: a2205fb6b62391146bf94e5968729ffb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7752604448493295940, guid: a2205fb6b62391146bf94e5968729ffb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22762,16 +22757,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 2323940261540385689, guid: a2205fb6b62391146bf94e5968729ffb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458724553374396606, guid: a2205fb6b62391146bf94e5968729ffb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2205fb6b62391146bf94e5968729ffb, type: 3}
@@ -25077,6 +25062,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mountain entrance collider
+      objectReference: {fileID: 0}
+    - target: {fileID: -7633410055249818231, guid: f99d0a29dd9924246950bc30400352e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -7633410055249818231, guid: f99d0a29dd9924246950bc30400352e5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: -7633410055249818231, guid: f99d0a29dd9924246950bc30400352e5,
         type: 3}
