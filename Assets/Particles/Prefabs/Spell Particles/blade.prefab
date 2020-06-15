@@ -14362,6 +14362,65 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6675309191496515156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3370122516497380422}
+  - component: {fileID: 8253406469789520751}
+  - component: {fileID: 3805788181763264503}
+  m_Layer: 11
+  m_Name: hitbox for walls and ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3370122516497380422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675309191496515156}
+  m_LocalRotation: {x: 0.03363046, y: -0.011450858, z: 0.046628013, w: 0.9982804}
+  m_LocalPosition: {x: -0.001, y: 0.021, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8825443551766924981}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 3.9110003, y: -1.133, z: 5.3100004}
+--- !u!136 &8253406469789520751
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675309191496515156}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.06
+  m_Height: 1
+  m_Direction: 0
+  m_Center: {x: -0.06, y: 0.03, z: -0.03}
+--- !u!114 &3805788181763264503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6675309191496515156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c7ce3605194b749be3f51f4a085ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blade: {fileID: 8825443551766893202}
 --- !u!1 &8716988671907615746
 GameObject:
   m_ObjectHideFlags: 0
@@ -19128,7 +19187,6 @@ GameObject:
   - component: {fileID: 8825443551766924981}
   - component: {fileID: 8825443551766893202}
   - component: {fileID: 8825443551766893230}
-  - component: {fileID: 8825443551766893200}
   m_Layer: 11
   m_Name: blade
   m_TagString: Untagged
@@ -19150,6 +19208,7 @@ Transform:
   - {fileID: 6418259287014897403}
   - {fileID: 5052675291044953634}
   - {fileID: 8553744757007957028}
+  - {fileID: 3370122516497380422}
   - {fileID: 8272781057152314852}
   - {fileID: 7569990544631555757}
   - {fileID: 8938299099546429070}
@@ -19204,20 +19263,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &8825443551766893200
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8825443551766893205}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.06
-  m_Height: 1
-  m_Direction: 0
-  m_Center: {x: -0.06, y: 0.03, z: -0.03}
 --- !u!1001 &244322095242745144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19373,7 +19418,7 @@ PrefabInstance:
     - target: {fileID: 4399665046852560289, guid: cd7845d89afd36c4cbf40edc1c7d3871,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4399665046852560289, guid: cd7845d89afd36c4cbf40edc1c7d3871,
         type: 3}
@@ -19469,7 +19514,7 @@ PrefabInstance:
     - target: {fileID: 1837000052617181491, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1837000052617181491, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
@@ -19592,7 +19637,7 @@ PrefabInstance:
     - target: {fileID: 1837000052617181491, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1837000052617181491, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}

@@ -82,6 +82,7 @@ public class Sign : MonoBehaviour
 
         playerStatus.CanMoveState(true);
 
+        canInteract = false;
         talking = false;
         StartCoroutine(InteractableCooldown());
     }

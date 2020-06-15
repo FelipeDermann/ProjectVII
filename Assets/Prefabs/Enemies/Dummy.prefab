@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 5260788854880802287}
   - component: {fileID: 5260788854880802284}
   - component: {fileID: 5260788854880802285}
-  - component: {fileID: 5260788854880802274}
+  - component: {fileID: 8803755774343842690}
   m_Layer: 5
   m_Name: Canvas Dummy
   m_TagString: Untagged
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5260788854880802274
+--- !u!114 &8803755774343842690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -826,9 +826,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5260788854880802272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beca20083143e0049822e7299fdefa77, type: 3}
+  m_Script: {fileID: 11500000, guid: 082f6c1c9ad8e9e428113800a02017c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barCurrentHealth: {fileID: 5260788855812425147}
   initialDistance: 4
   constantScale: 0
 --- !u!1 &5260788855099874921
@@ -913,7 +914,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 5260788854846050056}
+  enemyScript: {fileID: 5260788855099874922}
+  lifeBar: {fileID: 8803755774343842690}
   invincible: 0
+  delayToStartRegen: 3
+  regenSpeed: 100
+  recovering: 0
 --- !u!114 &5260788855099874922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,7 +955,7 @@ MonoBehaviour:
   isDummy: 1
   deathParticles: {fileID: 0}
   deathParticlesSpawnPoint: {fileID: 0}
-  lifeBar: {fileID: 0}
+  lifeBar: {fileID: 8803755774343842690}
   move: {fileID: 5260788855099874902}
   attack: {fileID: 0}
   sound: {fileID: 0}
@@ -1402,6 +1408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockOn: {fileID: 0}
+  parentTransform: {fileID: 5260788855099874900}
 --- !u!1 &8354602706327580310
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,13 +16,13 @@ public class WeaponHitbox : MonoBehaviour
     Vector3 hitPoint;
 
     public bool active;
+    [Header("References")]
     public PlayerStatus playerStatus;
     public PlayerMovement playerMove;
-
-    Transform playerPos;
-
+    public Transform playerPos;
     public MeleeWeaponTrail weaponTrail;
 
+    [Header("Attributes")]
     public float knockbackForce;
     public float knockTime;
     public AttackType attackType;
@@ -77,11 +77,6 @@ public class WeaponHitbox : MonoBehaviour
     void Start()
     {
         active = false;
-        playerStatus = GetComponentInParent<PlayerStatus>();
-        playerPos = FindObjectOfType<PlayerMovement>().transform;
-        playerMove = GetComponentInParent<PlayerMovement>();
-
-        weaponTrail = GetComponentInParent<MeleeWeaponTrail>();
         weaponTrail.Emit = false;
     }
 

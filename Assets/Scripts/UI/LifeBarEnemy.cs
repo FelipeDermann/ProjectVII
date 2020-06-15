@@ -9,7 +9,8 @@ public class LifeBarEnemy : MonoBehaviour
     Image bar;
     public Image barCurrentHealth;
     public float initialDistance;
-    public Transform camTransform;
+    public bool constantScale;
+    Transform camTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class LifeBarEnemy : MonoBehaviour
     {
         if (!gameObject.activeSelf) return;
         var dist = Vector3.Distance(transform.position, camTransform.position);
-        transform.localScale = Vector3.one * dist / initialDistance;
+        if (constantScale) transform.localScale = Vector3.one * dist / initialDistance;
 
         transform.LookAt(transform.position + camTransform.rotation * Vector3.back, camTransform.rotation * Vector3.down);
         transform.forward = camTransform.forward;

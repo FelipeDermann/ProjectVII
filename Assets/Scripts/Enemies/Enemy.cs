@@ -191,7 +191,7 @@ public class Enemy : MonoBehaviour
         if (dead) return;
         if (move.knockedDown) return;
         if (invincible) return;
-        if (isDummy) return;
+        //if (isDummy) return;
 
         currentHealth -= damage;
         CheckIfDead();
@@ -212,6 +212,8 @@ public class Enemy : MonoBehaviour
 
     public void CheckIfDead()
     {
+        if (isDummy) return;
+
         if (currentHealth <= 0)
         {
             lifeBar.DisableBar();
@@ -232,7 +234,7 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < numberOfCoinsToDrop; i++)
         {
             PoolableObject coin = GameManager.Instance.CoinPool.RequestObject(transform.position + Vector3.up/2, transform.rotation);
-            coin.GetComponent<Coin>().Activate();
+            coin.GetComponentInChildren<Coin>().Activate();
         }
     }
 

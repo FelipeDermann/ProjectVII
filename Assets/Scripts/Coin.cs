@@ -12,6 +12,7 @@ public class Coin : MonoBehaviour
     public float timeToDespawnAfterCollected;
 
     [SerializeField] private PoolableObject thisObject;
+    [SerializeField] private Animator anim;
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private SphereCollider sphereCollider;
@@ -39,7 +40,7 @@ public class Coin : MonoBehaviour
         boxCollider.enabled = true;
     }
 
-    void Deactivate()
+    public void Deactivate()
     {
         meshRenderer.enabled = false;
         sphereCollider.enabled = false;
@@ -84,7 +85,7 @@ public class Coin : MonoBehaviour
 
             flying = false;
             StopCoroutine(nameof(FlyToPlayer));
-            Deactivate();
+            anim.SetTrigger("Collected");
 
             GameManager.Instance.CoinPool.ReturnObject(thisObject, timeToDespawnAfterCollected);
         }
@@ -95,6 +96,7 @@ public class Coin : MonoBehaviour
         if(collision.gameObject.CompareTag("Ground"))
         {
             EnableCollectHitbox();
+            anim.SetTrigger("Start");
         }
     }
 }

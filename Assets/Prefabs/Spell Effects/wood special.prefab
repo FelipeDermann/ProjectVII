@@ -97,11 +97,12 @@ MonoBehaviour:
   parentParticle: {fileID: 8923235144790893566}
   glowParticle: {fileID: 6980582748087848276}
   root: {fileID: 6980582748693666585}
-  damage: 50
+  damage: 70
   projectileSpeed: 8
   projectileLifeTime: 5
   timeToRemoveObjectAfterDeath: 4
   audioEmitter: {fileID: 7923125915321628052}
+  enemyColliders: []
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -138,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 7431159314908911632, guid: 8440c977c0ae3e34eb4161952f684e98,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7431159314908911632, guid: 8440c977c0ae3e34eb4161952f684e98,
         type: 3}

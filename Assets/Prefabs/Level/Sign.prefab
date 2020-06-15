@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    npcImage: {fileID: 21300000, guid: 3af4971d9c6acd74c83c3449e87c0602, type: 3}
+    npcImage: {fileID: 0}
     npcName: Tip
     sentences:
     - My name is Falconhoof and I'll be your guide on your quest! jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj

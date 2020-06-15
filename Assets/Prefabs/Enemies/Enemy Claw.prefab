@@ -1469,6 +1469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockOn: {fileID: 0}
+  parentTransform: {fileID: 3803824610637138614}
 --- !u!1 &2139849659924669849
 GameObject:
   m_ObjectHideFlags: 0
@@ -16689,7 +16690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barCurrentHealth: {fileID: 4625974653453308551}
   initialDistance: 4
-  camTransform: {fileID: 0}
+  constantScale: 1
 --- !u!1 &3803824609144052008
 GameObject:
   m_ObjectHideFlags: 0

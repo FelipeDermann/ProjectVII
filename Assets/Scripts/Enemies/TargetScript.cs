@@ -5,6 +5,7 @@ using UnityEngine;
 public class TargetScript : MonoBehaviour
 {
     public LockOn lockOn;
+    public Transform parentTransform;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class TargetScript : MonoBehaviour
 
     private void OnBecameVisible()
     {
-        if (!lockOn.screenTargets.Contains(transform) && !transform.root.GetComponent<Enemy>().dead)
+        if (!lockOn.screenTargets.Contains(transform) && !parentTransform.GetComponent<Enemy>().dead)
             lockOn.screenTargets.Add(transform);
     }
 

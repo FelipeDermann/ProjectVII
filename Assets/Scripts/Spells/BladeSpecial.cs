@@ -47,7 +47,7 @@ public class BladeSpecial : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         box = GetComponentInChildren<BoxCollider>();
-        capsule = GetComponent<CapsuleCollider>();
+        capsule = GetComponentInChildren<CapsuleCollider>();
 
         mesh = GetComponentInChildren<MeshRenderer>();
         mesh.enabled = true;
@@ -109,9 +109,9 @@ public class BladeSpecial : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void CollisionRegistered(bool _wallHit)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (!_wallHit)
         {
             rb.velocity = Vector3.zero;
             rb.isKinematic = true;
@@ -121,8 +121,7 @@ public class BladeSpecial : MonoBehaviour
 
             Invoke(nameof(CallEndBlade), timeToDestroyAfterImpact);
         }
-
-        if (collision.gameObject.CompareTag("Wall"))
+        else
         {
             rb.velocity = Vector3.zero;
             rb.isKinematic = true;

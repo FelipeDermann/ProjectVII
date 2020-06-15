@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeUntilNextHit: 0.4
   maxNumberOfHits: 10
-  damagePerHit: 10
+  damagePerHit: 5
   timeToRemoveObjectAfterFinalHit: 8
   tornadoParticle: {fileID: 1205590964205408385}
   KnockbackForce: 0

@@ -13,6 +13,7 @@ public class EnemyMove : MonoBehaviour
     Rigidbody rb;
     [SerializeField]
     Enemy enemy;
+    Dummy dummy;
     [SerializeField]
     EnemyGroundDetect groundDetect;
 
@@ -80,20 +81,13 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    public void DummyGetHit()
-    {
-        int random = Random.Range(0, 3);
-
-        anim.SetInteger("HitVariation", random);
-        anim.SetTrigger("Hurt");
-    }
-
     public void KnockBack(Vector3 _direction, float forceAmount, float _knockUpForce, float time)
     {
         if (enemy.dead) return;
         if (enemy.isDummy)
         {
-            DummyGetHit();
+            if (dummy == null) dummy = GetComponent<Dummy>();
+            dummy.GetHit();
             return;
         }
         CancelInvoke(nameof(MoveAgain));
