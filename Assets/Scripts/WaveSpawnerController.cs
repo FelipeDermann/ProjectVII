@@ -65,12 +65,16 @@ public class WaveSpawnerController : MonoBehaviour
 
     void DisableBarriers()
     {
+        Music.Instance.StartMusicFade(false);
+        
         for (int i = 0; i < barriers.Length; i++)
-        barriers[i].SetActive(false);
+            barriers[i].SetActive(false);
     }
 
     void EnableBarriers()
     {
+        Music.Instance.StartMusicFade(true);
+        
         for (int i = 0; i < barriers.Length; i++)
             barriers[i].SetActive(true);
     }
