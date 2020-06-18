@@ -46,7 +46,7 @@ public class Sign : MonoBehaviour
 
     void CheckDialogue()
     {
-        if (!Input.GetButtonDown("light")) return;
+        if (!Input.GetButtonDown("Interact")) return;
         if (!playerInRange) return;
         if (playerStatus.GetComponent<PlayerMovement>().dashing) return;
         if (talking) return;

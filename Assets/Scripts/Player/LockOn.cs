@@ -64,7 +64,7 @@ public class LockOn : MonoBehaviour
             target = screenTargets[targetIndex()];
         }
 
-        if (Input.GetButtonDown("LockOn") && canLock)
+        if ((Input.GetButtonDown("LockOn") || Mathf.Abs(Input.GetAxis("LockOnController")) > 0.8f) && canLock)
         {
             checkIfBelnding = true;
             if (isLocked) CameraLockOff();
