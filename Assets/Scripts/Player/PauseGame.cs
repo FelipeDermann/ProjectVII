@@ -9,7 +9,7 @@ public class PauseGame : MonoBehaviour
 {
     public AudioMixer mixer;
     public GameObject pauseMenu;
-    public bool paused;
+    public static bool paused;
     PlayerStatus playerStatus;
 
     //event system

@@ -66,6 +66,7 @@ public class LockOn : MonoBehaviour
 
         if ((Input.GetButtonDown("LockOn") || Mathf.Abs(Input.GetAxis("LockOnController")) > 0.8f) && canLock)
         {
+            if (PauseGame.paused) return;
             checkIfBelnding = true;
             if (isLocked) CameraLockOff();
             else

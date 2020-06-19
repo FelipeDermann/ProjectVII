@@ -171,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
     void Movement()
     {
         if (!canMove) return;
+        if (PauseGame.paused) return;
 
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
@@ -231,6 +232,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
+        if (PauseGame.paused) return;
         if (!Input.GetButtonDown("dash")) return;
         if (anim.GetBool("casting")) return;
         if (dashing) return;

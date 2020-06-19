@@ -51,6 +51,7 @@ public class Magic : MonoBehaviour
 
     void MagicInput()
     {
+        if (PauseGame.paused) return;
         if (!Input.GetButtonDown("Special")) return;
         if (anim.GetBool("attacking")) return;
         if (playerMove.dashing) return;
