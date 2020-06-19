@@ -57,7 +57,7 @@ public class Attack : MonoBehaviour
         canAttack = true;
     }
 
-    private void OnEnable()
+    private void Awake()
     {
         AttackAnimationBehaviour.StartedAttack += StartAttacking;
         AttackAnimationBehaviour.StartedAttack += LookToEnemy;
@@ -66,7 +66,7 @@ public class Attack : MonoBehaviour
         PlayerAnimation.StartNextAttackInput += EnableNextAttackInput;
         DisableAttackState.FinishedAttack += StopAttacking;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         AttackAnimationBehaviour.StartedAttack -= StartAttacking;
         AttackAnimationBehaviour.StartedAttack -= LookToEnemy;

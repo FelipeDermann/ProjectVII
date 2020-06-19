@@ -28,12 +28,12 @@ public class LockOn : MonoBehaviour
     public float pointDistance;
     public CinemachineBrain mainCamera;
 
-    private void OnEnable()
+    private void Awake()
     {
         PlayerAnimation.TurnToEnemyIfLockedOn += TurnToLockedEnemy;
         Enemy.RemoveLockOnTarget += CameraLockOff;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         PlayerAnimation.TurnToEnemyIfLockedOn -= TurnToLockedEnemy;
         Enemy.RemoveLockOnTarget -= CameraLockOff;

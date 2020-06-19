@@ -18,12 +18,12 @@ public class Dummy : MonoBehaviour
     public float regenSpeed;
     public bool recovering;
 
-    void OnEnable()
+    void Awake()
     {
         WeaponHitbox.AttackEnded += CanBeHurtAgainBySword;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         WeaponHitbox.AttackEnded -= CanBeHurtAgainBySword;
     }

@@ -45,7 +45,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("light") && isTalking)
+        if((Input.GetButtonDown("Interact") || Input.GetButtonDown("light")) && isTalking)
         {
             if (isWritingSentence)
             {
@@ -63,7 +63,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        Debug.Log("DIALOGUE IS ON");
         Invoke(nameof(TimeToAllowSkipping), 0.1f);
 
         anim.SetTrigger("Open");

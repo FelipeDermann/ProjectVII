@@ -19,6 +19,7 @@ public class PlayerStatus : MonoBehaviour
     public bool ignoreStagger;
     public bool dead;
     public bool shopping;
+    public bool talking;
     public bool coinMagnetIsOn;
 
     [Header("Health Attributes")]
@@ -33,11 +34,11 @@ public class PlayerStatus : MonoBehaviour
     [Header("Money")]
     public int money;
 
-    private void OnEnable()
+    private void Awake()
     {
         PlayerAnimation.RestartScene += RestartSceneCountdown;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         PlayerAnimation.RestartScene -= RestartSceneCountdown;
     }
@@ -141,8 +142,6 @@ public class PlayerStatus : MonoBehaviour
     {
         if (dead) return;
 
-        Debug.Log("YOU ARE DEAD, DEAD, DEAD!");
-
         dead = true;
 
         playerMovement.ChangeDashState(false);
@@ -158,6 +157,7 @@ public class PlayerStatus : MonoBehaviour
         playerMovement.ChangeDashState(_canControl);
         playerMovement.canMove = _canControl;
         playerMovement.velocity = Vector3.zero;
+        playerMovement.ResetBlend();
     }
 
     public void CanAttackState(bool _canControl)

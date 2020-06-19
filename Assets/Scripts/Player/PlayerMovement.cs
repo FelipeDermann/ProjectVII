@@ -56,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        //DialogueManager.DialogueStart += ResetBlend;
+
         MagicBehaviour.UsingMagic += CastingMagic;
 
         DisableAttackState.FinishedAttack += CanWalkOn;
@@ -74,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnDestroy()
     {
+        //DialogueManager.DialogueStart += ResetBlend;
+
         MagicBehaviour.UsingMagic -= CastingMagic;
 
         DisableAttackState.FinishedAttack -= CanWalkOn;
@@ -94,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         rb = GetComponent<Rigidbody>();
         playerStatus = GetComponent<PlayerStatus>();
@@ -127,6 +132,11 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = rb.velocity.y;
         if(!isGrounded) DownForceWhenMidair();
         rb.velocity = velocity;
+    }
+
+    public void ResetBlend()
+    {
+        anim.SetFloat("Blend", 0);
     }
 
     public void Hurt(bool _isHurt)
@@ -300,6 +310,7 @@ public class PlayerMovement : MonoBehaviour
     public void CanWalkOn()
     {
         if (playerStatus.shopping) return;
+        if (playerStatus.talking) return;
         canMove = true;
     }
 

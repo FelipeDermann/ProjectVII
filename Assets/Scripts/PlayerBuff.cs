@@ -27,7 +27,7 @@ public class PlayerBuff : MonoBehaviour
     public int buffStacks;
     bool buffIsActive;
 
-    void OnEnable()
+    void Awake()
     {
         ComboEffect.GenerationCycleHit += GainStack;
         TravelForward.GenerationCycleHit += GainStack;
@@ -35,7 +35,7 @@ public class PlayerBuff : MonoBehaviour
         ComboEffect.EnemyHit += Heal;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         ComboEffect.GenerationCycleHit -= GainStack;
         TravelForward.GenerationCycleHit -= GainStack;

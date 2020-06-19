@@ -20,14 +20,14 @@ public class Companion : MonoBehaviour
     public bool playerInRange;
     public bool canRotate;
 
-    private void OnEnable()
+    private void Awake()
     {
         //PlayerAnimation.SpawnMagicHitbox += PlaySpellAnim;
         MagicBehaviour.StartMagicAnim += PlaySpellAnim;
         //PlayerAnimation.SpawnComboHitbox += PlayComboAnim;
         ComboBehaviour.StartComboAnim += PlayComboAnim;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         //PlayerAnimation.SpawnMagicHitbox -= PlaySpellAnim;
         MagicBehaviour.StartMagicAnim -= PlaySpellAnim;

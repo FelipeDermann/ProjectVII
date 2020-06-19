@@ -11,11 +11,11 @@ public class MusicTrigger : MonoBehaviour
     public bool isInCombat;
     public LayerMask enemyLayerIndex;
 
-    private void OnEnable()
+    private void Awake()
     {
         Enemy.EnemyDead += CheckIfEnemiesAreNearby;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         Enemy.EnemyDead -= CheckIfEnemiesAreNearby;
     }

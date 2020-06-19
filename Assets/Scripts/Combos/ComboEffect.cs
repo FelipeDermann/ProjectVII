@@ -52,7 +52,7 @@ public class ComboEffect : MonoBehaviour
         canApplyGenerationCycle = true;
     }
 
-    void OnEnable()
+    void Awake()
     {
         if (comboFX == null) comboFX = transform.GetChild(0).GetComponent<ParticleSystem>();
         if (hitbox == null) hitbox = GetComponent<Collider>();
@@ -69,7 +69,7 @@ public class ComboEffect : MonoBehaviour
         ReturnObjectToPool(timeToRemoveEntireObject);
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         //comboFX.Stop();
     }

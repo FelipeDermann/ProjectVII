@@ -48,11 +48,11 @@ public class PlayerElements : MonoBehaviour
 
     public MeleeWeaponTrail weaponTrail;
 
-    private void OnEnable()
+    private void Awake()
     {
         PlayerAnimation.SpawnComboHitbox += ElementComboSpawn;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         PlayerAnimation.SpawnComboHitbox -= ElementComboSpawn;
     }

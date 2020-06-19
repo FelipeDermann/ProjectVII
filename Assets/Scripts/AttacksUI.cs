@@ -6,12 +6,12 @@ public class AttacksUI : MonoBehaviour
 {
     public AttacksIcon[] attacksIcon;
 
-    private void OnEnable()
+    private void Awake()
     {
         Attack.AttackExecuted += AddAttack;
         DisableAttackState.FinishedAttack += ResetAttacks;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         Attack.AttackExecuted += AddAttack;
         DisableAttackState.FinishedAttack -= ResetAttacks;

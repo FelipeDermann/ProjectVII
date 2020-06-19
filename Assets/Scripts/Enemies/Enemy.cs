@@ -73,12 +73,12 @@ public class Enemy : MonoBehaviour
     public static event Action EnemyDead;
     public static event Action RemoveLockOnTarget;
 
-    void OnEnable()
+    void Awake()
     {
         WeaponHitbox.AttackEnded += CanBeHurtAgainBySword;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         WeaponHitbox.AttackEnded -= CanBeHurtAgainBySword;
     }

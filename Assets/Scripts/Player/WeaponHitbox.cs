@@ -36,7 +36,7 @@ public class WeaponHitbox : MonoBehaviour
 
     public List<Collider> enemyColliders;
 
-    private void OnEnable()
+    private void Awake()
     {
         PlayerAnimation.LightAttackDamage += SetAttackType;
         PlayerAnimation.HeavyAttackDamage += SetAttackType;
@@ -52,7 +52,7 @@ public class WeaponHitbox : MonoBehaviour
         AttackAnimationBehaviour.StopTrail += TrailOff;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         PlayerAnimation.LightAttackDamage -= SetAttackType;
         PlayerAnimation.HeavyAttackDamage -= SetAttackType;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 
@@ -9,12 +10,26 @@ public class PauseGame : MonoBehaviour
     public AudioMixer mixer;
     public GameObject pauseMenu;
     public bool paused;
+    PlayerStatus playerStatus;
+
+    //event system
+    public GameObject firstMenuButton;
+    EventSystem eventSystem;
+
+    private void Awake()
+    {
+        if (playerStatus == null) playerStatus = GameObject.FindObjectOfType<PlayerStatus>();
+        eventSystem = GameObject.FindObjectOfType<EventSystem>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetButtonDown("Pause"))
         {
+            if (playerStatus == null) return;
+            if (playerStatus.shopping) return;
+
             if (!paused)
             {
                 Pause();
@@ -30,6 +45,10 @@ public class PauseGame : MonoBehaviour
     {
         paused = true;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        eventSystem.SetSelectedGameObject(firstMenuButton);
+
         AudioListener.pause = true;
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
@@ -39,6 +58,8 @@ public class PauseGame : MonoBehaviour
     {
         paused = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         AudioListener.pause = false;
         Time.timeScale = 1;
         pauseMenu.SetActive(false);

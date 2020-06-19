@@ -85,6 +85,7 @@ public class Coin : MonoBehaviour
 
             flying = false;
             StopCoroutine(nameof(FlyToPlayer));
+            rb.velocity = Vector3.zero;
             anim.SetTrigger("Collected");
 
             GameManager.Instance.CoinPool.ReturnObject(thisObject, timeToDespawnAfterCollected);

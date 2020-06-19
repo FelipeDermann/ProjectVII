@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 using TMPro;
@@ -21,12 +22,17 @@ public class ShopMenu : MonoBehaviour
     PlayerStatus playerStatus;
     ShopArea shop;
 
-    private void OnEnable()
+    //event system
+    public GameObject firstMenuButton;
+    EventSystem eventSystem;
+
+    private void Awake()
     {
         ShopArea.PlayerInShop += StartShop;
+        eventSystem = GameObject.FindObjectOfType<EventSystem>();
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         ShopArea.PlayerInShop -= StartShop;
     }
@@ -35,6 +41,8 @@ public class ShopMenu : MonoBehaviour
     {
         playerStatus = _player;
         shop = _shop;
+
+        eventSystem.SetSelectedGameObject(firstMenuButton);
 
         healthPriceText.text = shop.healthUpPrice.ToString();
         magnetPriceText.text = shop.magnetPrice.ToString();

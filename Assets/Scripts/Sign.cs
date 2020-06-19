@@ -23,12 +23,12 @@ public class Sign : MonoBehaviour
 
     bool canInteract;
 
-    private void OnEnable()
+    private void Awake()
     {
         DialogueManager.DialogueEnd += ReturnPlayerToNormal;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         DialogueManager.DialogueEnd -= ReturnPlayerToNormal;
     }
@@ -56,6 +56,7 @@ public class Sign : MonoBehaviour
 
         Music.Instance.TurnAllMusicVolumeDown();
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         camX = cam.m_XAxis.m_InputAxisName;
         camY = cam.m_YAxis.m_InputAxisName;
@@ -67,6 +68,7 @@ public class Sign : MonoBehaviour
         cam.m_YAxis.m_InputAxisValue = 0;
 
         playerStatus.CanMoveState(false);
+        playerStatus.talking = true;
         talking = true;
     }
 
@@ -76,11 +78,13 @@ public class Sign : MonoBehaviour
         Music.Instance.NormalizeMusicVolume();
 
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         cam.m_XAxis.m_InputAxisName = camX;
         cam.m_YAxis.m_InputAxisName = camY;
 
         playerStatus.CanMoveState(true);
+        playerStatus.talking = false;
 
         canInteract = false;
         talking = false;

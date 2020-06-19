@@ -18,11 +18,11 @@ public class Magic : MonoBehaviour
 
     PoolableObject special;
 
-    private void OnEnable()
+    private void Awake()
     {
         PlayerAnimation.SpawnMagicHitbox += MagicAttack;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         PlayerAnimation.SpawnMagicHitbox -= MagicAttack;
     }

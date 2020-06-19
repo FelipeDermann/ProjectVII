@@ -29,7 +29,9 @@ public class ShopArea : MonoBehaviour
     public bool talking;
     [SerializeField]
     private Animator anim;
+    [SerializeField]
     GameObject shopMenu;
+    [SerializeField]
     PlayerStatus playerStatus;
     CinemachineFreeLook cam;
     string camX;
@@ -37,13 +39,13 @@ public class ShopArea : MonoBehaviour
 
     bool canInteract;
 
-    private void OnEnable()
+    private void Awake()
     {
         ShopMenu.ExitShop += EndShop;
         DialogueManager.DialogueEnd += EventAfterDialogue;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         ShopMenu.ExitShop -= EndShop;
         DialogueManager.DialogueEnd -= EventAfterDialogue;
@@ -75,6 +77,7 @@ public class ShopArea : MonoBehaviour
 
         Music.Instance.TurnAllMusicVolumeDown();
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         camX = cam.m_XAxis.m_InputAxisName;
         camY = cam.m_YAxis.m_InputAxisName;
@@ -86,6 +89,7 @@ public class ShopArea : MonoBehaviour
         cam.m_YAxis.m_InputAxisValue = 0;
 
         playerStatus.CanMoveState(false);
+        playerStatus.talking = true;
         talking = true;
         shopping = true;
     }
@@ -125,11 +129,13 @@ public class ShopArea : MonoBehaviour
         Music.Instance.NormalizeMusicVolume();
 
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         cam.m_XAxis.m_InputAxisName = camX;
         cam.m_YAxis.m_InputAxisName = camY;
 
         playerStatus.CanMoveState(true);
+        playerStatus.talking = false;
 
         talking = false;
         canInteract = false;

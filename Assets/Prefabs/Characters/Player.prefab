@@ -25729,7 +25729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 100
   maxHealth: 100
-  invincibilityTime: 3
+  invincibilityTime: 1
   invincible: 0
   ignoreStagger: 0
   dead: 0

@@ -7,11 +7,11 @@ public class ElementUI : MonoBehaviour
 {
     public ArrowUI[] UIToActivate;
 
-    private void OnEnable()
+    private void Awake()
     {
         PlayerElements.ElementChanged += ChangeCurrentElementOnUI;
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         PlayerElements.ElementChanged -= ChangeCurrentElementOnUI;
     }
