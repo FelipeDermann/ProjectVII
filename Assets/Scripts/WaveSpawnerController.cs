@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class WaveSpawnerController : MonoBehaviour
 {
+    public static event Action FinalWaveEnd;
+
     [Header("Set up variables. Alter these at will")]
     public float numberOfWaves;
     public float waitTimeBetweenWaves;
@@ -14,6 +17,7 @@ public class WaveSpawnerController : MonoBehaviour
     float currentNumberOfWaves;
     public bool startWaveOfEnemies;
     public bool waveCompleted;
+    public bool finalWave;
 
 
     // Start is called before the first frame update
@@ -69,6 +73,8 @@ public class WaveSpawnerController : MonoBehaviour
         
         for (int i = 0; i < barriers.Length; i++)
             barriers[i].SetActive(false);
+
+        if (finalWave) FinalWaveEnd?.Invoke();
     }
 
     void EnableBarriers()

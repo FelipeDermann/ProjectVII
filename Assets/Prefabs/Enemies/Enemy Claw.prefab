@@ -16734,7 +16734,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 40
+  m_Radius: 200
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3803824609144052011
 MonoBehaviour:
@@ -17225,8 +17225,8 @@ MonoBehaviour:
   capsuleCol2: {fileID: 3803824610637138619}
   targetScriptForLockOn: {fileID: 1976945221632113127}
   agent: {fileID: 3803824610637138608}
-  currentHealth: 100
-  maxHealth: 100
+  currentHealth: 150
+  maxHealth: 150
   numberOfCoinsToDrop: 3
   timeUntilReturnToPool: 3
   layerWhenDead: 13

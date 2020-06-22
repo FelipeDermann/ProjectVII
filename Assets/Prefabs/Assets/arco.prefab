@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 8182639208961843854}
   - component: {fileID: 7106486147179458846}
   - component: {fileID: 922509218319219648}
+  - component: {fileID: 5902578941815923566}
   m_Layer: 0
   m_Name: arco_base_pilar
   m_TagString: Wall
@@ -313,6 +314,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.265668, y: 1.240827, z: 2.265668}
   m_Center: {x: 7.767033, y: 0.5478205, z: 0}
+--- !u!208 &5902578941815923566
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3837091095110947333}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.133, y: 0.62, z: 1.133}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 7.767, y: 0.54800004, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4389546956746026941
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +434,7 @@ GameObject:
   - component: {fileID: 7754560606513520783}
   - component: {fileID: 8509488450593509609}
   - component: {fileID: 1354874870033723623}
+  - component: {fileID: 2758692006505230516}
   m_Layer: 0
   m_Name: arco_base_pilar1
   m_TagString: Wall
@@ -497,6 +515,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.265668, y: 1.240827, z: 2.265668}
   m_Center: {x: 1.472513, y: 0.5478205, z: 0}
+--- !u!208 &2758692006505230516
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5216468833123847278}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.133, y: 0.62, z: 1.133}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 1.473, y: 0.54800004, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8631021059502237092
 GameObject:
   m_ObjectHideFlags: 0
