@@ -64,7 +64,7 @@ public class LockOn : MonoBehaviour
             target = screenTargets[targetIndex()];
         }
 
-        if ((Input.GetButtonDown("LockOn") || Mathf.Abs(Input.GetAxis("LockOnController")) > 0.8f) && canLock)
+        if ((Input.GetButtonDown("LockOn") || Input.GetAxis("LockOnController") >= 0.8f) && canLock)
         {
             if (PauseGame.paused) return;
             checkIfBelnding = true;

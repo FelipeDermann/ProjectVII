@@ -23,6 +23,7 @@ public enum ElementRelation
 public class PlayerElements : MonoBehaviour
 {
     public static event Action<Element> ElementChanged;
+    public static event Action<AttackType> AttackTypeInput;
 
     public SkinnedMeshRenderer swordRenderer;
     public Color[] colorsToChange;
@@ -68,6 +69,9 @@ public class PlayerElements : MonoBehaviour
 
     public void ChangeElements(Element _newElement)
     {
+        if(_newElement.ElementName == ElementType.Earth || _newElement.ElementName == ElementType.Wood) AttackTypeInput?.Invoke(AttackType.LIGHT);
+        else AttackTypeInput?.Invoke(AttackType.HEAVY);
+
         previousElement = currentElement;
         currentElement = _newElement;
     }

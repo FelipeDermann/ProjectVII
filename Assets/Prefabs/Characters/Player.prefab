@@ -25734,6 +25734,7 @@ MonoBehaviour:
   ignoreStagger: 0
   dead: 0
   shopping: 0
+  talking: 0
   coinMagnetIsOn: 0
   lightAttackDamage: 10
   heavyAttackDamage: 20
@@ -38099,11 +38100,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hitmarker
       objectReference: {fileID: 0}
-    - target: {fileID: 5309460256514450087, guid: 458378f81268dc64c80e4d027db21c63,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5309460256514450081, guid: 458378f81268dc64c80e4d027db21c63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38173,6 +38169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.054654606
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309460256514450087, guid: 458378f81268dc64c80e4d027db21c63,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458378f81268dc64c80e4d027db21c63, type: 3}
