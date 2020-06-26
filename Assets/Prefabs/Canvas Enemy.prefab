@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 7321303083899148456}
   - component: {fileID: 7194886596064388774}
   - component: {fileID: 3805847827066867195}
+  - component: {fileID: 6045072789088712921}
   m_Layer: 5
   m_Name: Stack (4)
   m_TagString: Untagged
@@ -368,7 +369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.196, y: 0}
+  m_AnchoredPosition: {x: 0.196, y: -0.009999594}
   m_SizeDelta: {x: 0.1, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7321303083899148456
@@ -398,13 +399,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b5f3683357261ec4e9199cfa6218c3a8, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!95 &3805847827066867195
@@ -426,6 +427,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6045072789088712921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763131932133803990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74798394c20ff044926310aa0ff5efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debuffStackImage: {fileID: 7194886596064388774}
 --- !u!1 &3254007095869385390
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +525,7 @@ GameObject:
   - component: {fileID: 22307671946728861}
   - component: {fileID: 2349296350975029390}
   - component: {fileID: 1666210992309045157}
+  - component: {fileID: 2760983066725077829}
   m_Layer: 5
   m_Name: Stack (1)
   m_TagString: Untagged
@@ -535,7 +550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.101, y: 0}
+  m_AnchoredPosition: {x: -0.101, y: -0.009999594}
   m_SizeDelta: {x: 0.1, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &22307671946728861
@@ -565,13 +580,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b5f3683357261ec4e9199cfa6218c3a8, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!95 &1666210992309045157
@@ -593,6 +608,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2760983066725077829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3994090808494909289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74798394c20ff044926310aa0ff5efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debuffStackImage: {fileID: 2349296350975029390}
 --- !u!1 &4153809558550415354
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +633,7 @@ GameObject:
   - component: {fileID: 1376117931173781598}
   - component: {fileID: 8304375895137233513}
   - component: {fileID: 4968679386607890422}
+  - component: {fileID: 2829236566834801805}
   m_Layer: 5
   m_Name: Stack (2)
   m_TagString: Untagged
@@ -629,7 +658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.001, y: 0}
+  m_AnchoredPosition: {x: -0.001, y: -0.009999594}
   m_SizeDelta: {x: 0.1, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1376117931173781598
@@ -659,13 +688,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b5f3683357261ec4e9199cfa6218c3a8, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!95 &4968679386607890422
@@ -687,6 +716,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2829236566834801805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153809558550415354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74798394c20ff044926310aa0ff5efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debuffStackImage: {fileID: 8304375895137233513}
 --- !u!1 &4303251371758137055
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +741,7 @@ GameObject:
   - component: {fileID: 6840057343970385881}
   - component: {fileID: 3613444231786380440}
   - component: {fileID: 2101495047582812541}
+  - component: {fileID: 7375020774429812584}
   m_Layer: 5
   m_Name: Stack
   m_TagString: Untagged
@@ -723,7 +766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.198, y: 0}
+  m_AnchoredPosition: {x: -0.198, y: -0.009999594}
   m_SizeDelta: {x: 0.1, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6840057343970385881
@@ -753,13 +796,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b5f3683357261ec4e9199cfa6218c3a8, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!95 &2101495047582812541
@@ -781,6 +824,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7375020774429812584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4303251371758137055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74798394c20ff044926310aa0ff5efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debuffStackImage: {fileID: 3613444231786380440}
 --- !u!1 &4563965618702335195
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +1032,7 @@ GameObject:
   - component: {fileID: 9125985708104102032}
   - component: {fileID: 5838140278028110130}
   - component: {fileID: 2169649983181448708}
+  - component: {fileID: 5048887272681160133}
   m_Layer: 5
   m_Name: Stack (3)
   m_TagString: Untagged
@@ -1000,7 +1057,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.096, y: 0}
+  m_AnchoredPosition: {x: 0.096, y: -0.01}
   m_SizeDelta: {x: 0.1, y: 0.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9125985708104102032
@@ -1030,13 +1087,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: b5f3683357261ec4e9199cfa6218c3a8, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!95 &2169649983181448708
@@ -1058,6 +1115,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5048887272681160133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6828150756097731550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d74798394c20ff044926310aa0ff5efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debuffStackImage: {fileID: 5838140278028110130}
 --- !u!1 &6932915288903995259
 GameObject:
   m_ObjectHideFlags: 0

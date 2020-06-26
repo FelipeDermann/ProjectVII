@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyDebuff : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class EnemyDebuff : MonoBehaviour
     private Enemy enemy;
 
     [Header("Icons to activate on each stack")]
+    public DebuffStack[] debuffIcons;
     public Animator[] stackIconsAnims;
     public Animator barAnim;
 
@@ -43,6 +45,8 @@ public class EnemyDebuff : MonoBehaviour
             stackIconsAnims[i].gameObject.SetActive(true);
             stackIconsAnims[debuffStacks - 1].SetBool("Playing", true);
             stackIconsAnims[i].Play("IconDebuff", 0, 0);
+
+            debuffIcons[i].StartTimer(debuffDuration);
         }
         barAnim.SetBool("Playing", true);
         barAnim.Play("BarDebuff", 0, 0);
@@ -75,6 +79,7 @@ public class EnemyDebuff : MonoBehaviour
 
         for (int i = 0; i < stackIconsAnims.Length; i++)
         {
+            debuffIcons[i].ResetTimer();
             stackIconsAnims[i].SetBool("Playing", false);
             stackIconsAnims[i].gameObject.SetActive(false);
         }

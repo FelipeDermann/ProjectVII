@@ -6,6 +6,7 @@ using System;
 public class PlayerBuff : MonoBehaviour
 {
     public static event Action<int> BuffStackGained;
+    public static event Action<float> BuffRefreshed;
     public static event Action BuffEnded;
 
     [SerializeField]
@@ -66,6 +67,7 @@ public class PlayerBuff : MonoBehaviour
         if (buffStacks == 5) IgnoreStagger(true);
 
         BuffStackGained?.Invoke(buffStacks);
+        BuffRefreshed?.Invoke(buffDuration);
     }
 
     void IgnoreStagger(bool _state)
