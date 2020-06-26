@@ -8,6 +8,7 @@ public class TitleScreen : MonoBehaviour
     public GameObject creditsWindow;
     public GameObject loadingText;
     public GameObject creditsButton;
+    //      public GameObject[] 
 
     private void Awake()
     {
@@ -22,12 +23,13 @@ public class TitleScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("dash"))
         {
             if (creditsWindow.activeSelf) Credits();
             else Application.Quit();
         }
-        if (Input.GetButtonDown("Pause") || Input.GetButtonDown("Interact") || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetButtonDown("Pause") /*|| Input.GetButtonDown("Interact")*/ || Input.GetKeyDown(KeyCode.Return))
         {
             if (creditsWindow.activeSelf) return;
             ScreenTransitions.Instance.StartFade();
