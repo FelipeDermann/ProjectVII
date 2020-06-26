@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerBuff : MonoBehaviour
 {
+    public static event Action<int> BuffStackGained;
+    public static event Action BuffEnded;
+
     [SerializeField]
     private PlayerStatus status;
 
@@ -13,7 +17,7 @@ public class PlayerBuff : MonoBehaviour
     [Header("Attack Speed Buff")]
     [Range(0f, 1f)]
     public float bonusSpeedPerStack;
-    public int maxAtkSpeedStack;
+    //public int maxAtkSpeedStack;
     public static float atkSpeedToAnimator;
 
     [Header("Duration")]
@@ -21,8 +25,8 @@ public class PlayerBuff : MonoBehaviour
 
     [Header("Attack Heal Buff")]
     public float healingPerStack;
-    public float maxHealingStack;
-    public float minimalNumberOfStacksToEnableHeal;
+    //public float maxHealingStack;
+    //public float minimalNumberOfStacksToEnableHeal;
 
     public int buffStacks;
     bool buffIsActive;
@@ -60,6 +64,8 @@ public class PlayerBuff : MonoBehaviour
 
         AttackSpeed();
         if (buffStacks == 5) IgnoreStagger(true);
+
+        BuffStackGained?.Invoke(buffStacks);
     }
 
     void IgnoreStagger(bool _state)
@@ -69,18 +75,18 @@ public class PlayerBuff : MonoBehaviour
 
     void Heal()
     {
-        if (buffStacks < minimalNumberOfStacksToEnableHeal) return;
+        //if (buffStacks < minimalNumberOfStacksToEnableHeal) return;
 
-        float healStacks = buffStacks - minimalNumberOfStacksToEnableHeal;
-        if (healStacks > maxHealingStack) healStacks = maxHealingStack;
-        status.IncreaseHealth(healingPerStack * healStacks);
+        //float healStacks = buffStacks - minimalNumberOfStacksToEnableHeal;
+        //if (healStacks > maxHealingStack) healStacks = maxHealingStack;
+        status.IncreaseHealth(healingPerStack * buffStacks);
     }
 
     void AttackSpeed()
     {
-        int atkSpeedStacks = buffStacks;
-        if (atkSpeedStacks > maxAtkSpeedStack) atkSpeedStacks = maxAtkSpeedStack;
-        atkSpeedToAnimator = bonusSpeedPerStack * atkSpeedStacks;
+        //int atkSpeedStacks = buffStacks;
+        //if (atkSpeedStacks > maxAtkSpeedStack) atkSpeedStacks = maxAtkSpeedStack;
+        atkSpeedToAnimator = bonusSpeedPerStack * buffStacks;
     }
 
     IEnumerator BuffTime()
@@ -91,6 +97,8 @@ public class PlayerBuff : MonoBehaviour
 
     public void Deactivate()
     {
+        BuffEnded?.Invoke();
+
         IgnoreStagger(false);
 
         buffIsActive = false;

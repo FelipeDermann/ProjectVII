@@ -26,6 +26,9 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     string currentSentence;
 
+    Dialogue currentDialogue;
+    bool canEnd;
+
     private void Awake()
     {
         if (Instance != null)
@@ -35,6 +38,16 @@ public class DialogueManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        DialogueBox.DialogueStart += WriteDialogue;
+        DialogueBox.DialogueEnd += End;
+    }
+
+    private void OnDestroy()
+    {
+        DialogueBox.DialogueStart -= WriteDialogue;
+        DialogueBox.DialogueEnd -= End;
+
     }
 
     // Start is called before the first frame update
@@ -63,17 +76,26 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        Invoke(nameof(TimeToAllowSkipping), 0.1f);
+        canEnd = true;
+        currentDialogue = dialogue;
 
-        anim.SetTrigger("Open");
         DialogueStart?.Invoke();
-
-        nameText.text = dialogue.npcName;
-        npcImage.sprite = dialogue.npcImage;
 
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        nameText.text = currentDialogue.npcName;
+        npcImage.sprite = currentDialogue.npcImage;
+        dialogueText.text = "";
+
+        anim.SetTrigger("Open");
+
+    }
+
+    public void WriteDialogue()
+    {
+        Invoke(nameof(TimeToAllowSkipping), 0.1f);
+
+        foreach (string sentence in currentDialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -88,6 +110,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+
         if (sentences.Count == 0)
         {
             return;
@@ -114,8 +137,15 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        isTalking = false;
+        if (!canEnd) return;
+        canEnd = false;
+
         anim.SetTrigger("Close");
+    }
+
+    void End()
+    {
+        isTalking = false;
         DialogueEnd?.Invoke();
     }
 }

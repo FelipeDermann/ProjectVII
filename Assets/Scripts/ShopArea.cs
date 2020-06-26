@@ -53,6 +53,7 @@ public class ShopArea : MonoBehaviour
 
     void Start()
     {
+
         shopMenu = GameObject.FindGameObjectWithTag("ShopMenu").transform.GetChild(0).gameObject;
         cam = GameObject.FindGameObjectWithTag("FreeLook").GetComponent<CinemachineFreeLook>();
         canInteract = true;

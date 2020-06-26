@@ -25823,12 +25823,9 @@ MonoBehaviour:
   - {fileID: 7446502959986515114}
   - {fileID: 3945825210769409982}
   - {fileID: 7568825901994872340}
-  bonusSpeedPerStack: 0.1
-  maxAtkSpeedStack: 2
+  bonusSpeedPerStack: 0.04
   buffDuration: 10
   healingPerStack: 0.75
-  maxHealingStack: 2
-  minimalNumberOfStacksToEnableHeal: 2
   buffStacks: 0
 --- !u!114 &7316435880804652753
 MonoBehaviour:

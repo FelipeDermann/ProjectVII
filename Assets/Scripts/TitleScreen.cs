@@ -7,6 +7,7 @@ public class TitleScreen : MonoBehaviour
 {
     public GameObject creditsWindow;
     public GameObject loadingText;
+    public GameObject creditsButton;
 
     private void Awake()
     {
@@ -39,8 +40,16 @@ public class TitleScreen : MonoBehaviour
 
     public void Credits()
     {
-        if (creditsWindow.activeSelf) creditsWindow.SetActive(false);
-        else creditsWindow.SetActive(true);
+        if (creditsWindow.activeSelf)
+        {
+            creditsButton.SetActive(true);
+            creditsWindow.SetActive(false);
+        }
+        else
+        {
+            creditsButton.SetActive(false);
+            creditsWindow.SetActive(true);
+        }
     }
 
     void LoadLevel()

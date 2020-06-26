@@ -131,13 +131,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBeforeShop:
-    npcImage: {fileID: 0}
+    npcImage: {fileID: 21300000, guid: 5b1ed029c16a9c1408adba38bcbe15dc, type: 3}
     npcName: Vendor
     sentences:
     - Greetings traveller! I have a few trinkets in my bag that could be of your interest.....
       As long as you have a couple coins to spare.
   dialogueAfterShop:
-    npcImage: {fileID: 0}
+    npcImage: {fileID: 21300000, guid: 5b1ed029c16a9c1408adba38bcbe15dc, type: 3}
     npcName: Vendor
     sentences:
     - it's a pleasure doing business with you, adventurer. Safe travels!
@@ -149,6 +149,8 @@ MonoBehaviour:
   shopping: 0
   talking: 0
   anim: {fileID: 663881482924541906}
+  shopMenu: {fileID: 0}
+  playerStatus: {fileID: 0}
 --- !u!1 &3127378515165764533
 GameObject:
   m_ObjectHideFlags: 0

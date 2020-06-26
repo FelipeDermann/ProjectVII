@@ -7,7 +7,7 @@ public class EnemyDebuff : MonoBehaviour
     [SerializeField]
     private Enemy enemy;
 
-    [Header("Particles to activate on each stack")]
+    [Header("Icons to activate on each stack")]
     public Animator[] stackIconsAnims;
     public Animator barAnim;
 
