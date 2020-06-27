@@ -15,6 +15,7 @@ public class Magic : MonoBehaviour
     public bool canUseMagic;
 
     public Transform specialSpawnPoint;
+    public Transform specialSpawnPointFireBall;
 
     PoolableObject special;
 
@@ -72,7 +73,7 @@ public class Magic : MonoBehaviour
         switch (playerElements.currentElement.ElementName)
         {
             case ElementType.Fire:
-                special = GameManager.Instance.FireSpellPool.RequestObject(specialSpawnPoint.position, transform.rotation);
+                special = GameManager.Instance.FireSpellPool.RequestObject(specialSpawnPointFireBall.position, transform.rotation);
                 special.GetComponent<FireBallSpecial>().StartSpell();
                 break;
             case ElementType.Water:

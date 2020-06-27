@@ -31,6 +31,7 @@ public class PlayerElements : MonoBehaviour
     public ParticleSystem[] elementParticles;
 
     public Transform comboSpawnPoint;
+    public Transform fireAndWoodComboSpawnPoint;
     public Transform earthComboSpawnPoint;
 
     public Element[] allElementsReference;
@@ -86,7 +87,7 @@ public class PlayerElements : MonoBehaviour
         {
             case ElementType.Fire:
                 //Spawn Combo Hitbox
-                combo = GameManager.Instance.FireComboPool.RequestObject(comboSpawnPoint.position, transform.rotation);
+                combo = GameManager.Instance.FireComboPool.RequestObject(fireAndWoodComboSpawnPoint.position, transform.rotation);
                 comboEffect = combo.GetComponent<ComboEffect>();
                 comboEffect.playerPos = transform;
                 comboEffect.playerStatus = GetComponent<PlayerStatus>();
@@ -126,7 +127,7 @@ public class PlayerElements : MonoBehaviour
                 break;
             case ElementType.Wood:
                 //Spawn Combo Hitbox
-                combo = GameManager.Instance.WoodComboPool.RequestObject(comboSpawnPoint.position, transform.rotation);
+                combo = GameManager.Instance.WoodComboPool.RequestObject(fireAndWoodComboSpawnPoint.position, transform.rotation);
                 comboEffect = combo.GetComponent<ComboEffect>();
                 comboEffect.playerPos = transform;
                 comboEffect.playerStatus = GetComponent<PlayerStatus>();

@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public ObjectPool AudioDeathPool;
     public ObjectPool AudioSlashPool;
     public ObjectPool AudioSpecialPool;
+    public ObjectPool BuffBurstPool;
 
     [Header("Enemy Audio Pools")]
     public ObjectPool AudioEnemyAttackPool;
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
     public ObjectPool AudioEnemyDeathPool;
     public ObjectPool AudioEnemyStep1Pool;
     public ObjectPool AudioEnemyStep2Pool;
+    public ObjectPool AudioEnemyDebuffBurst;
 
 
     private void Awake()

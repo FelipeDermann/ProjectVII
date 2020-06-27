@@ -30,7 +30,7 @@ public class WeaponHitbox : MonoBehaviour
     float lightDamage;
     float heavyDamage;
 
-    public ParticleSystem[] attackTrail;
+    //public ParticleSystem[] attackTrail;
     public ParticleSystem[] attackParticle;
     public float particlePosXOn, particlePosXOff, particleLenghtOn, particleLenghtOff;
 
@@ -83,30 +83,10 @@ public class WeaponHitbox : MonoBehaviour
     void TrailOn()
     {
         weaponTrail.Emit = true;
-        foreach (var particle in attackParticle)
-        {
-            var particleShape = particle.shape;
-            particleShape.radius = particleLenghtOn;
-            particleShape.position = new Vector3(particlePosXOn, 0, 0);
-        }
-        foreach (var trail in attackTrail)
-        {
-            trail.Play();
-        }
     }
     void TrailOff()
     {
         weaponTrail.Emit = false;
-        foreach (var particle in attackParticle)
-        {
-            var particleShape = particle.shape;
-            particleShape.radius = particleLenghtOff;
-            particleShape.position = new Vector3(particlePosXOff, 0, 0);
-        }
-        foreach (var trail in attackTrail)
-        {
-            trail.Stop();
-        }
     }
 
     public void ActivateHitbox()
@@ -143,7 +123,15 @@ public class WeaponHitbox : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayerMask))
                 {
                     hitPoint = hit.point;
-                    var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point, transform.rotation);
+                    var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point + new Vector3(0,1,0), transform.rotation);
+                    var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
+                    hitmarkerParticleSystem.Play();
+
+                    GameManager.Instance.hitMarkerPool.ReturnObject(hitmarker, 2);
+                }
+                else
+                {
+                    var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(other.transform.position + new Vector3(0, 1, 0), transform.rotation);
                     var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
                     hitmarkerParticleSystem.Play();
 

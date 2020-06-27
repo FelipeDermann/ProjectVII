@@ -94,9 +94,16 @@ public class WaterSpell : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, enemyLayerMask))
                 {
-                    print(hit.point + " on object: " + hit.transform.name);
                     hitPoint = hit.point;
-                    var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point, transform.rotation);
+                    var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(hit.point + new Vector3(0, 1, 0), transform.rotation);
+                    var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
+                    hitmarkerParticleSystem.Play();
+
+                    GameManager.Instance.hitMarkerPool.ReturnObject(hitmarker, 2);
+                }
+                else
+                {
+                    var hitmarker = GameManager.Instance.hitMarkerPool.RequestObject(enemy.transform.position + new Vector3(0, 1, 0), transform.rotation);
                     var hitmarkerParticleSystem = hitmarker.GetComponent<ParticleSystem>();
                     hitmarkerParticleSystem.Play();
 

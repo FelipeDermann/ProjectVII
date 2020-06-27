@@ -82,6 +82,7 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  enemyColliders: []
 --- !u!114 &2229401535341728904
 MonoBehaviour:
   m_ObjectHideFlags: 0

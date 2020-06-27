@@ -15,6 +15,7 @@ public class EnemyDebuff : MonoBehaviour
 
     [Header("Particles to activate on each stack")]
     public ParticleSystem[] debuffParticles;
+    public ParticleSystem debuffBurst;
 
     [Header("Debuff Attributes")]
     public float damagePerStack;
@@ -31,6 +32,7 @@ public class EnemyDebuff : MonoBehaviour
         StartCoroutine(nameof(DebuffTime));
 
         debuffParticles[debuffStacks].Play();
+        debuffBurst.Play();
 
         debuffStacks += 1;
 
@@ -48,9 +50,22 @@ public class EnemyDebuff : MonoBehaviour
 
             debuffIcons[i].StartTimer(debuffDuration);
         }
+
+        DebuffBurstSound();
         barAnim.SetBool("Playing", true);
         barAnim.Play("BarDebuff", 0, 0);
         
+    }
+
+    void DebuffBurstSound()
+    {
+        var audioEmitter = GameManager.Instance.AudioEnemyDebuffBurst.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.AudioEnemyDebuffBurst.ReturnObject(audioEmitter, clipLength + 1);
     }
 
     IEnumerator DebuffTime()

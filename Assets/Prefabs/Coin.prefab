@@ -321,7 +321,7 @@ PrefabInstance:
         type: 3}
       propertyPath: clipToPlay
       value: 
-      objectReference: {fileID: 8300000, guid: a3de27718424d1240a8ff0ca1a7ae861, type: 3}
+      objectReference: {fileID: 8300000, guid: 6b1277f2842a1fb49b612b26c1e32658, type: 3}
     - target: {fileID: 8434961965418210085, guid: 766857c30753cec4fa33b1b1827ea9b4,
         type: 3}
       propertyPath: OutputAudioMixerGroup

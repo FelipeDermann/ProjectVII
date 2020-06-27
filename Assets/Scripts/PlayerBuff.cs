@@ -14,6 +14,7 @@ public class PlayerBuff : MonoBehaviour
 
     [Header("Particles to activate on each stack")]
     public ParticleSystem[] buffParticles;
+    public ParticleSystem buffBurst;
 
     [Header("Attack Speed Buff")]
     [Range(0f, 1f)]
@@ -66,8 +67,22 @@ public class PlayerBuff : MonoBehaviour
         AttackSpeed();
         if (buffStacks == 5) IgnoreStagger(true);
 
+        BurstSound();
+
+        buffBurst.Play();
         BuffStackGained?.Invoke(buffStacks);
         BuffRefreshed?.Invoke(buffDuration);
+    }
+
+    void BurstSound()
+    {
+        var audioEmitter = GameManager.Instance.BuffBurstPool.RequestObject(transform.position, transform.rotation);
+        var emitterScript = audioEmitter.GetComponent<AudioEmitter>();
+
+        emitterScript.PlaySoundWithPitch();
+        float clipLength = emitterScript.clipToPlay.length;
+
+        GameManager.Instance.BuffBurstPool.ReturnObject(audioEmitter, clipLength + 1);
     }
 
     void IgnoreStagger(bool _state)
