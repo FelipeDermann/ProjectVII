@@ -23,7 +23,7 @@ public class BuffStack : MonoBehaviour
     {
         StopAllCoroutines();
         buffStackImage.fillAmount = 1;
-        StartCoroutine(Timer(_time));
+        if(gameObject.activeSelf) StartCoroutine(Timer(_time));
     }
 
     IEnumerator Timer(float _time)

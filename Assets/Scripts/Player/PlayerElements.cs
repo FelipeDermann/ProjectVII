@@ -37,6 +37,8 @@ public class PlayerElements : MonoBehaviour
     public Element[] allElementsReference;
     public Element currentElement;
     public Element previousElement;
+    public Element currentElementTemp;
+    public Element previousElementTemp;
     //public Element nextElement;
 
     public bool cancelComboHitbox;
@@ -53,10 +55,12 @@ public class PlayerElements : MonoBehaviour
     private void Awake()
     {
         PlayerAnimation.SpawnComboHitbox += ElementComboSpawn;
+        //PlayerAnimation.ReceiveNewElement += ReceiveNewElement;
     }
     private void OnDestroy()
     {
         PlayerAnimation.SpawnComboHitbox -= ElementComboSpawn;
+        //PlayerAnimation.ReceiveNewElement -= ReceiveNewElement;
     }
 
     // Start is called before the first frame update
@@ -73,12 +77,19 @@ public class PlayerElements : MonoBehaviour
         if(_newElement.ElementName == ElementType.Earth || _newElement.ElementName == ElementType.Wood) AttackTypeInput?.Invoke(AttackType.LIGHT);
         else AttackTypeInput?.Invoke(AttackType.HEAVY);
 
-        previousElement = currentElement;
-        currentElement = _newElement;
+        previousElementTemp = currentElement;
+        currentElementTemp = _newElement;
+    }
+
+    void ReceiveNewElement()
+    {
+        previousElement = previousElementTemp;
+        currentElement = currentElementTemp;
     }
 
     void ElementComboSpawn()
     {
+        ReceiveNewElement();
         ElementRelation currentCycle = DefineCycle();
 
         ComboEffect comboEffect = null;

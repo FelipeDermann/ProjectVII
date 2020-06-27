@@ -20,7 +20,10 @@ public class TargetScript : MonoBehaviour
     private void OnBecameVisible()
     {
         if (!lockOn.screenTargets.Contains(transform) && !parentTransform.GetComponent<Enemy>().dead)
-            lockOn.screenTargets.Add(transform);
+        {
+            float dist = Vector3.Distance(lockOn.transform.position, transform.position);
+            if(dist <= 40) lockOn.screenTargets.Add(transform);
+        }
     }
 
     private void OnBecameInvisible()

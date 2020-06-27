@@ -25,6 +25,8 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action SpawnMagicHitbox;
     public static event Action SpawnComboHitbox;
 
+    public static event Action ReceiveNewElement;
+
     public static event Action StartSpellAnimation;
     public static event Action TurnToEnemyIfLockedOn;
 
@@ -33,6 +35,11 @@ public class PlayerAnimation : MonoBehaviour
     public static event Action RestartScene;
 
     public float secondsOfInputDetection;
+
+    public void PlayerReceiveNewElement()
+    {
+        ReceiveNewElement?.Invoke();
+    }
 
     public void Hurt()
     {

@@ -29,6 +29,7 @@ public class PauseGame : MonoBehaviour
         {
             if (playerStatus == null) return;
             if (playerStatus.shopping) return;
+            if (playerStatus.talking) return;
 
             if (!paused)
             {
