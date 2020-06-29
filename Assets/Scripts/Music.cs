@@ -44,7 +44,10 @@ public class Music : MonoBehaviour
     {
         audioSourceAmbient.Play();
 
+        AudioListener.pause = false;
+
         mixer.SetFloat("BattleVolume", -80f);
+        mixer.SetFloat("AmbientVolume", 0);
     }
 
     public void StartMusicFade(bool _state)

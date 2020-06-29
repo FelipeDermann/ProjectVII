@@ -88,6 +88,7 @@ public class PauseGame : MonoBehaviour
 
     public void ExitToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Title");
     }
     public void ExitGame()

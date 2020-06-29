@@ -127,30 +127,28 @@ public class DialogueManager : MonoBehaviour
         isWritingSentence = true;
 
         bool canWrite = true;
+        string dialogueTemp = "";
 
         foreach (char letter in sentence.ToCharArray())
         {
-            //if (canWrite)
-            //{
-            //    if (letter == '<')
-            //    {
-            //        canWrite = false;
-            //        yield return null;
-            //    }
-            //    else
-            //    {
-            //        dialogueText.text += letter;
-            //        yield return new WaitForSeconds(characterDrawingDelay);
-            //    }
-            //}
-            //else
-            //{
-            //    if (letter == '>')
-            //    yield return null;
-            //}
+            if (letter == '<') canWrite = false;
+            if (letter == '>')
+            {
+                canWrite = true;
+                dialogueText.text += dialogueTemp;
+                dialogueTemp = "";
+            }
 
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(characterDrawingDelay);
+            if (canWrite)
+            {
+                dialogueText.text += letter;
+                yield return new WaitForSeconds(characterDrawingDelay);
+            }
+            else
+            {
+                dialogueTemp += letter;
+                //yield return null;
+            }
         }
 
         isWritingSentence = false;

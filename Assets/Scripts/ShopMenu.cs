@@ -18,6 +18,7 @@ public class ShopMenu : MonoBehaviour
 
     public TextMeshProUGUI healthPriceText;
     public TextMeshProUGUI magnetPriceText;
+    public TextMeshProUGUI coinText;
 
     PlayerStatus playerStatus;
     ShopArea shop;
@@ -46,6 +47,7 @@ public class ShopMenu : MonoBehaviour
 
         healthPriceText.text = shop.healthUpPrice.ToString();
         magnetPriceText.text = shop.magnetPrice.ToString();
+        coinText.text = _player.money.ToString();
     }
 
     public void Exit()
@@ -64,6 +66,8 @@ public class ShopMenu : MonoBehaviour
 
         buyHealthButton.gameObject.SetActive(false);
         BuyHealth?.Invoke();
+
+        coinText.text = playerStatus.money.ToString();
     }
 
     public void BuyMagnetButton()
@@ -76,5 +80,7 @@ public class ShopMenu : MonoBehaviour
 
         buyMagnetButton.gameObject.SetActive(false);
         BuyMagnet?.Invoke();
+
+        coinText.text = playerStatus.money.ToString();
     }
 }

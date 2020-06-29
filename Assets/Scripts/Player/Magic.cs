@@ -65,11 +65,12 @@ public class Magic : MonoBehaviour
         anim.SetTrigger("special");
         playerAttack.DisableNextAttackInput();
 
-        playerStatus.DecreaseAllMana();
     }
 
     void MagicAttack()
     {
+        playerStatus.DecreaseAllMana();
+
         switch (playerElements.currentElement.ElementName)
         {
             case ElementType.Fire:

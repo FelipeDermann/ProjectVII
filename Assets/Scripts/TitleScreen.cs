@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TitleScreen : MonoBehaviour
 {
     public GameObject creditsWindow;
+    public GameObject quitWindow;
     public GameObject loadingText;
     public GameObject creditsButton;
     //      public GameObject[] 
@@ -13,7 +14,7 @@ public class TitleScreen : MonoBehaviour
     private void Awake()
     {
         ScreenTransitions.FadeOutEnd += LoadLevel;
-
+        Cursor.visible = true;
     }
     private void OnDestroy()
     {
@@ -27,21 +28,25 @@ public class TitleScreen : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("dash"))
         {
             if (creditsWindow.activeSelf) Credits();
-            else Application.Quit();
+            else ToggleQuit();
         }
         if (Input.GetButtonDown("Pause") /*|| Input.GetButtonDown("Interact")*/ || Input.GetKeyDown(KeyCode.Return))
         {
             if (creditsWindow.activeSelf) return;
+            if (quitWindow.activeSelf) return;
             ScreenTransitions.Instance.StartFade();
         }
         if (Input.GetButtonDown("Credits"))
         {
             Credits();
         }
+
+        if (Input.GetButtonDown("Interact") && quitWindow.activeSelf) QuitGame();
     }
 
     public void Credits()
     {
+        if (quitWindow.activeSelf) return;
         if (creditsWindow.activeSelf)
         {
             creditsButton.SetActive(true);
@@ -58,5 +63,18 @@ public class TitleScreen : MonoBehaviour
     {
         loadingText.SetActive(true);
         SceneManager.LoadScene(1);
+    }
+
+
+    public void ToggleQuit()
+    {
+        if (creditsWindow.activeSelf) return;
+        quitWindow.SetActive(!quitWindow.activeSelf);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("asoidhnjauodjasn");
+        Application.Quit();
     }
 }

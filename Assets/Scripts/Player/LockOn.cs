@@ -7,6 +7,7 @@ using Cinemachine;
 public class LockOn : MonoBehaviour
 {
     int targetIndexToUse;
+    PlayerStatus playerStatus;
 
     [Header("Cameras")]
     public CinemachineFreeLook normalCamera;
@@ -42,6 +43,7 @@ public class LockOn : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main.GetComponent<CinemachineBrain>();
+        playerStatus = GetComponent<PlayerStatus>();
 
         canLock = true;
     }
@@ -66,6 +68,8 @@ public class LockOn : MonoBehaviour
 
         if ((Input.GetButtonDown("LockOn") || Input.GetAxis("LockOnController") >= 0.8f) && canLock)
         {
+            if (playerStatus.shopping || playerStatus.talking) return;
+
             if (PauseGame.paused) return;
             checkIfBelnding = true;
             if (isLocked) CameraLockOff();

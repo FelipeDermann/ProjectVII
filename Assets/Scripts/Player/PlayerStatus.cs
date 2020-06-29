@@ -167,11 +167,13 @@ public class PlayerStatus : MonoBehaviour
 
     void RestartSceneCountdown()
     {
+        ScreenTransitions.Instance.StartFade();
         Invoke(nameof(RestartScene), 2);
     }
 
     void RestartScene()
     {
+        AudioListener.pause = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
