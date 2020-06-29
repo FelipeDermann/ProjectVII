@@ -11,6 +11,7 @@ public class ScreenTransitions : MonoBehaviour
 
     public static event Action FadeOutEnd;
 
+    public GameObject loadingAnim;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class ScreenTransitions : MonoBehaviour
 
     public void FadeOutEnded()
     {
+        loadingAnim.SetActive(true);
         FadeOutEnd?.Invoke();
     }
 

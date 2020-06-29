@@ -17837,7 +17837,7 @@ MonoBehaviour:
   agent: {fileID: 7714432960180948837}
   currentHealth: 300
   maxHealth: 300
-  numberOfCoinsToDrop: 3
+  numberOfCoinsToDrop: 6
   timeUntilReturnToPool: 3
   layerWhenDead: 13
   dead: 0
@@ -18149,7 +18149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerIndex: 12
-  damageToDeal: 10
+  damageToDeal: 20
   knockbackPower: 4
   knockbackTime: 0.5
 --- !u!1 &7714432961219429780

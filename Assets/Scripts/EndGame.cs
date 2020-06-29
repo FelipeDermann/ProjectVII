@@ -7,6 +7,7 @@ public class EndGame : MonoBehaviour
 {
     public Animator endMessage;
     PlayerStatus player;
+    public bool canEnd;
 
     private void Start()
     {
@@ -27,11 +28,13 @@ public class EndGame : MonoBehaviour
 
     void FadeOut()
     {
+        if (!canEnd) return;
         Invoke(nameof(StartFadeOut), 3);
     }
 
     void StartFadeOut()
     {
+        if (!canEnd) return;
         ScreenTransitions.Instance.StartFade();
         player.CanAttackState(false);
         player.CanMoveState(false);
@@ -39,6 +42,7 @@ public class EndGame : MonoBehaviour
 
     void Message()
     {
+        if (!canEnd) return;
         AudioListener.pause = true;
         endMessage.SetTrigger("Start");
     }
@@ -46,5 +50,13 @@ public class EndGame : MonoBehaviour
     public void BackToTitle()
     {
         SceneManager.LoadScene(0);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canEnd = true;
+        }
     }
 }

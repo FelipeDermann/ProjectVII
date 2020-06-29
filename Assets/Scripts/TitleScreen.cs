@@ -7,9 +7,8 @@ public class TitleScreen : MonoBehaviour
 {
     public GameObject creditsWindow;
     public GameObject quitWindow;
-    public GameObject loadingText;
     public GameObject creditsButton;
-    //      public GameObject[] 
+    bool gameStarted;
 
     private void Awake()
     {
@@ -24,6 +23,7 @@ public class TitleScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameStarted) return;
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("dash"))
         {
@@ -46,6 +46,7 @@ public class TitleScreen : MonoBehaviour
 
     public void Credits()
     {
+        if (gameStarted) return;
         if (quitWindow.activeSelf) return;
         if (creditsWindow.activeSelf)
         {
@@ -61,19 +62,23 @@ public class TitleScreen : MonoBehaviour
 
     void LoadLevel()
     {
-        loadingText.SetActive(true);
-        SceneManager.LoadScene(1);
+        if (gameStarted) return;
+        AudioListener.pause = true;
+        gameStarted = true;
+        SceneManager.LoadSceneAsync("Combat");
     }
 
 
     public void ToggleQuit()
     {
+        if (gameStarted) return;
         if (creditsWindow.activeSelf) return;
         quitWindow.SetActive(!quitWindow.activeSelf);
     }
 
     public void QuitGame()
     {
+        if (gameStarted) return;
         Debug.Log("asoidhnjauodjasn");
         Application.Quit();
     }

@@ -717,7 +717,7 @@ MonoBehaviour:
   agent: {fileID: 1073756839937691451}
   currentHealth: 200
   maxHealth: 200
-  numberOfCoinsToDrop: 8
+  numberOfCoinsToDrop: 6
   timeUntilReturnToPool: 3
   layerWhenDead: 13
   dead: 0

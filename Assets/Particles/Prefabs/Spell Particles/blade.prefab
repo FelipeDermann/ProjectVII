@@ -19246,7 +19246,7 @@ MonoBehaviour:
   knockbackForce: 2
   knockupForce: 0
   knockTime: 1
-  damage: 40
+  damage: 20
 --- !u!54 &8825443551766893230
 Rigidbody:
   m_ObjectHideFlags: 0
