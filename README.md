@@ -12,5 +12,5 @@ To curse enemies: Wood -> Earth -> Water -> Fire -> Metal -> Wood -> repeat....
 Keep doing attacks in these orders to increase stacks of buff or debuffs, amplifying their effects up to 5 stacks maximum.
 Even if you max out the stacks it's still important to keep the orders right to refresh the duration of the buffs/debuffs.
 
-I loved the idea for this game but in the end we didn't have enough time to properly implement the idea and expand the game 
-so it is just a small scene where you fight enemies and can buy a few upgrades from the vendor and that's it.
+I loved the idea for this game but in the end we didn't have enough time to properly implement and polish the gameplay and expand 
+the game so it is just a small scene where you fight enemies and can buy a few upgrades from the vendor and that's it.
